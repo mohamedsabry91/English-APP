@@ -20,7 +20,7 @@ export function PlacementResult() {
       <h1>{t('result.title')}</h1>
       <section className="card">
         <h2>{t('result.level')}</h2>
-        <p className="big-level" data-testid="result-level"><bdi dir="ltr">{t(`result.${r.result}`)}</bdi></p>
+        <p className="big-level" data-testid="result-level"><bdi>{t(`result.${r.result}`)}</bdi></p>
         <p>{t(`result.can.${r.result}`)}</p>
       </section>
       <section className="card">

@@ -1,0 +1,32 @@
+{
+  "id": "g-a1-01",
+  "track": "general",
+  "level": "A1",
+  "order": 1,
+  "titleEn": "I am, you are, he is",
+  "titleAr": "الفعل be: am و is و are",
+  "tags": ["BE"],
+  "explanationAr": "في العربية نقول «أنا مهندس» دون فعل. أما في الإنجليزية فلا بد من فعل في كل جملة. نستخدم am مع I، ونستخدم is مع he و she و it ومع الاسم المفرد، ونستخدم are مع you و we و they ومع الجمع.",
+  "explanationEn": "In English, every sentence needs a verb. Use am with I. Use is with he, she, it and singular nouns. Use are with you, we, they and plural nouns.",
+  "comparison": [
+    { "ar": "أنا مهندس.", "en": "I am an engineer.", "noteAr": "لا يوجد فعل في الجملة العربية، لكن الجملة الإنجليزية تحتاج am." },
+    { "ar": "الغرفة نظيفة.", "en": "The room is clean.", "noteAr": "نضع is بين الاسم والصفة." },
+    { "ar": "هم في المكتب.", "en": "They are in the office.", "noteAr": "نضع are قبل المكان أيضًا." }
+  ],
+  "examples": [
+    { "en": "She is a teacher.", "ar": "هي معلّمة." },
+    { "en": "We are at work.", "ar": "نحن في العمل." },
+    { "en": "The tea is hot.", "ar": "الشاي ساخن." }
+  ],
+  "exercises": [
+    { "id": "g-a1-01-e1", "type": "mc", "tags": ["BE"], "prompt": "My father ___ at home.", "options": ["is", "am", "are"], "answer": 0, "explanationAr": "My father اسم مفرد، مثل he، لذلك نستخدم is." },
+    { "id": "g-a1-01-e2", "type": "fill", "tags": ["BE"], "prompt": "They ___ engineers.", "accepted": ["are"], "explanationAr": "They للجمع، لذلك نستخدم are." },
+    { "id": "g-a1-01-e3", "type": "fill", "tags": ["BE"], "prompt": "I ___ tired today.", "accepted": ["am"], "explanationAr": "مع I نستخدم am دائمًا." },
+    { "id": "g-a1-01-e4", "type": "fix", "tags": ["BE"], "sentence": "She tired after work.", "accepted": ["She is tired after work.", "She's tired after work."], "explanationAr": "الجملة تحتاج فعلًا. نضع is بعد She: She is tired." },
+    { "id": "g-a1-01-e5", "type": "reorder", "tags": ["BE", "ORDER"], "words": ["The", "office", "is", "very", "quiet."], "explanationAr": "الترتيب: الاسم (The office) ثم is ثم الصفة (very quiet)." },
+    { "id": "g-a1-01-e6", "type": "mc", "tags": ["BE"], "prompt": "Choose the correct sentence.", "options": ["We in the meeting room.", "We are in the meeting room.", "We is in the meeting room."], "answer": 1, "explanationAr": "We للجمع، فنستخدم are، ولا نحذف الفعل." },
+    { "id": "g-a1-01-e7", "type": "fix", "tags": ["BE"], "sentence": "My brother a doctor.", "accepted": ["My brother is a doctor."], "explanationAr": "نحتاج is بين My brother و a doctor." }
+  ],
+  "writingTaskId": "w-g-a1-01",
+  "reviewed": false
+}

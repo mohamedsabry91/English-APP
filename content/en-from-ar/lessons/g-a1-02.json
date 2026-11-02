@@ -1,0 +1,32 @@
+{
+  "id": "g-a1-02",
+  "track": "general",
+  "level": "A1",
+  "order": 2,
+  "titleEn": "a and an",
+  "titleAr": "أداة التنكير a و an",
+  "tags": ["ARTICLE"],
+  "explanationAr": "نستخدم a أو an قبل الاسم المفرد المعدود عندما نذكره أول مرة، وقبل المهن: I am an engineer. نختار بين a و an حسب الصوت الأول للكلمة، لا حسب الحرف الأول. نستخدم an قبل صوت علّة، مثل an apple و an hour (حرف h في hour لا يُنطق). ونستخدم a قبل الصوت الساكن، مثل a book و a university (تبدأ university بصوت «يو»).",
+  "explanationEn": "Use a or an before a singular countable noun, for example the first time you mention it, and before jobs: I am an engineer. Choose by the first sound, not the first letter. Use an before a vowel sound: an apple, an hour (the h is silent). Use a before a consonant sound: a book, a university (it starts with a \"you\" sound).",
+  "comparison": [
+    { "ar": "أنا مهندس.", "en": "I am an engineer.", "noteAr": "العربية لا تضع أداة قبل المهنة، أما الإنجليزية فتضع a أو an." },
+    { "ar": "عندي سيارةٌ.", "en": "I have a car.", "noteAr": "التنوين في «سيارةٌ» يدل على النكرة، ويقابله في الإنجليزية غالبًا a أو an." }
+  ],
+  "examples": [
+    { "en": "He is a teacher.", "ar": "هو معلّم." },
+    { "en": "This is an old bridge.", "ar": "هذا جسر قديم." },
+    { "en": "She studies at a university.", "ar": "هي تدرس في جامعة." },
+    { "en": "The meeting takes an hour.", "ar": "يستغرق الاجتماع ساعة." }
+  ],
+  "exercises": [
+    { "id": "g-a1-02-e1", "type": "mc", "tags": ["ARTICLE"], "prompt": "She is ___ architect.", "options": ["a", "an"], "answer": 1, "explanationAr": "architect تبدأ بصوت علّة، لذلك نستخدم an." },
+    { "id": "g-a1-02-e2", "type": "mc", "tags": ["ARTICLE"], "prompt": "He works at ___ university in the city.", "options": ["a", "an"], "answer": 0, "explanationAr": "university تبدأ بصوت «يو»، وهو صوت ساكن، لذلك نستخدم a." },
+    { "id": "g-a1-02-e3", "type": "fill", "tags": ["ARTICLE"], "prompt": "I waited for ___ hour.", "accepted": ["an"], "explanationAr": "حرف h في hour لا يُنطق، فالكلمة تبدأ بصوت علّة، لذلك نستخدم an." },
+    { "id": "g-a1-02-e4", "type": "fix", "tags": ["ARTICLE"], "sentence": "My sister is engineer.", "accepted": ["My sister is an engineer."], "explanationAr": "نضع a أو an قبل المهنة. engineer تبدأ بصوت علّة، فنقول an engineer." },
+    { "id": "g-a1-02-e5", "type": "fix", "tags": ["ARTICLE"], "sentence": "I wrote a report and a email.", "accepted": ["I wrote a report and an email."], "explanationAr": "email تبدأ بصوت علّة، لذلك نقول an email." },
+    { "id": "g-a1-02-e6", "type": "mc", "tags": ["ARTICLE"], "prompt": "Choose the correct sentence.", "options": ["He is a doctor.", "He is doctor.", "He is an doctor."], "answer": 0, "explanationAr": "doctor تبدأ بصوت ساكن، فنقول a doctor، ولا نحذف الأداة." },
+    { "id": "g-a1-02-e7", "type": "reorder", "tags": ["ARTICLE"], "words": ["She", "is", "an", "honest", "engineer."], "explanationAr": "حرف h في honest لا يُنطق، لذلك نقول an honest engineer." }
+  ],
+  "writingTaskId": "w-g-a1-02",
+  "reviewed": false
+}

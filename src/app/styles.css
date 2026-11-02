@@ -209,3 +209,9 @@ mark.finding { background: var(--mark); border-bottom: 2px solid var(--bad); pad
 @media (min-width: 700px) {
   .screen { padding: 24px; }
 }
+
+.option:disabled, .word:disabled { opacity: 1; cursor: default; }
+.big-level { font-size: 1.8rem; font-weight: 800; color: var(--primary); margin: 0.2em 0; }
+.small { font-size: 0.9rem; }
+.question { font-size: 1.15rem; font-weight: 600; }
+.gap { display: inline-block; min-width: 3em; border-bottom: 2px solid var(--text); color: transparent; }

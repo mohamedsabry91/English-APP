@@ -1,0 +1,32 @@
+{
+  "id": "g-a1-05",
+  "track": "general",
+  "level": "A1",
+  "order": 5,
+  "titleEn": "He works, she goes",
+  "titleAr": "المضارع البسيط: he works و she goes",
+  "tags": ["SVA", "PB"],
+  "explanationAr": "في المضارع البسيط نضيف s أو es إلى الفعل مع he و she و it ومع الاسم المفرد: He works. She teaches. أما مع I و you و we و they والجمع فلا نضيف شيئًا: They work. وبعض الأفعال تتغير: have تصبح has، و do تصبح does، و go تصبح goes.",
+  "explanationEn": "In the present simple, add s or es to the verb after he, she, it and singular nouns: He works. She teaches. After I, you, we, they and plural nouns, add nothing: They work. Some verbs change: have becomes has, do becomes does, and go becomes goes.",
+  "comparison": [
+    { "ar": "هو يعمل. هم يعملون.", "en": "He works. They work.", "noteAr": "في العربية يتغير الفعل مع الفاعل. وفي الإنجليزية التغيير صغير: s مع he و she و it فقط." },
+    { "ar": "أبي عنده محل.", "en": "My father has a shop.", "noteAr": "مع الاسم المفرد نستخدم has، وليس have." }
+  ],
+  "examples": [
+    { "en": "He works for a water company.", "ar": "هو يعمل في شركة مياه." },
+    { "en": "She teaches mathematics.", "ar": "هي تدرّس الرياضيات." },
+    { "en": "It rains a lot in winter.", "ar": "تمطر كثيرًا في الشتاء." },
+    { "en": "My manager has two meetings today.", "ar": "عند مديري اجتماعان اليوم." }
+  ],
+  "exercises": [
+    { "id": "g-a1-05-e1", "type": "mc", "tags": ["SVA"], "prompt": "She ___ in a hospital.", "options": ["work", "works", "working"], "answer": 1, "explanationAr": "مع she نضيف s إلى الفعل: works." },
+    { "id": "g-a1-05-e2", "type": "fill", "tags": ["SVA"], "prompt": "He ___ (go) to the site every Monday.", "accepted": ["goes"], "explanationAr": "مع he يصبح go هو goes." },
+    { "id": "g-a1-05-e3", "type": "fix", "tags": ["SVA"], "sentence": "My father have a small shop.", "accepted": ["My father has a small shop."], "explanationAr": "My father مفرد مثل he، فنستخدم has." },
+    { "id": "g-a1-05-e4", "type": "mc", "tags": ["SVA"], "prompt": "The engineers ___ the plans every week.", "options": ["check", "checks"], "answer": 0, "explanationAr": "The engineers جمع مثل they، فلا نضيف s." },
+    { "id": "g-a1-05-e5", "type": "mc", "tags": ["SVA", "PB"], "prompt": "She ___ the bills every month.", "options": ["bays", "pays", "pay"], "answer": 1, "explanationAr": "الفعل pay بحرف p، ومع she نضيف s: pays." },
+    { "id": "g-a1-05-e6", "type": "fix", "tags": ["SVA"], "sentence": "The machine make a loud noise.", "accepted": ["The machine makes a loud noise."], "explanationAr": "The machine مفرد مثل it، فنقول makes." },
+    { "id": "g-a1-05-e7", "type": "reorder", "tags": ["SVA", "ORDER"], "words": ["He", "drinks", "tea", "every", "morning."], "explanationAr": "الفاعل He ثم الفعل drinks ثم المفعول tea ثم الوقت." }
+  ],
+  "writingTaskId": "w-g-a1-05",
+  "reviewed": false
+}

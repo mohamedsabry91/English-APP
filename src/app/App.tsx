@@ -9,6 +9,9 @@ import { Settings } from './screens/Settings';
 import { About } from './screens/About';
 import { Placement } from './screens/Placement';
 import { PlacementResult } from './screens/PlacementResult';
+import { Session } from './screens/Session';
+import { Lessons } from './screens/Lessons';
+import { LessonPractice } from './screens/LessonPractice';
 
 const NAV_SCREENS = ['today', 'lessons', 'lesson', 'mistakes', 'writing', 'settings', 'about', 'session', 'practice'];
 
@@ -35,11 +38,19 @@ export function App() {
       case 'result':
         body = <PlacementResult />;
         break;
+      case 'session':
+        body = <Session />;
+        break;
+      case 'lessons':
+        body = <Lessons />;
+        break;
+      case 'lesson':
+        body = <LessonPractice key={arg} id={arg ?? ''} />;
+        break;
       case 'about':
         body = <About />;
         break;
       default:
-        void arg;
         body = <Today />;
     }
   }
