@@ -1,0 +1,40 @@
+{
+  "reviewed": false,
+  "questions": [
+    { "id": "p-a1-1", "level": "A1", "tag": "BE", "prompt": "I ___ an engineer.", "options": ["is", "am", "are"], "answer": 1 },
+    { "id": "p-a1-2", "level": "A1", "tag": "BE", "prompt": "They ___ in the office now.", "options": ["are", "is", "am"], "answer": 0 },
+    { "id": "p-a1-3", "level": "A1", "tag": "ARTICLE", "prompt": "I eat ___ apple every morning.", "options": ["a", "the a", "an"], "answer": 2 },
+    { "id": "p-a1-4", "level": "A1", "tag": "SVA", "prompt": "He ___ to work by bus every day.", "options": ["go", "goes", "going"], "answer": 1 },
+    { "id": "p-a1-5", "level": "A1", "tag": null, "prompt": "___ is my phone? I can't find it.", "options": ["Who", "What", "Where"], "answer": 2 },
+    { "id": "p-a1-6", "level": "A1", "tag": "PREPOSITION", "prompt": "We have lunch ___ one o'clock.", "options": ["at", "in", "on"], "answer": 0 },
+    { "id": "p-a1-7", "level": "A1", "tag": "ORDER", "prompt": "Choose the correct sentence.", "options": ["She is a teacher good.", "She is a good teacher.", "She a good teacher is."], "answer": 1 },
+    { "id": "p-a1-8", "level": "A1", "tag": "SPELLING", "prompt": "Choose the correct spelling: I work on ___.", "options": ["Wensday", "Wednesday", "Wednsday"], "answer": 1 },
+
+    { "id": "p-a2-1", "level": "A2", "tag": "TENSE", "prompt": "Yesterday I ___ to the market with my father.", "options": ["go", "goes", "went"], "answer": 2 },
+    { "id": "p-a2-2", "level": "A2", "tag": "UNCOUNTABLE", "prompt": "Can you give me some ___ about the course?", "options": ["information", "informations", "an information"], "answer": 0 },
+    { "id": "p-a2-3", "level": "A2", "tag": "SVA", "prompt": "My manager ___ like long meetings.", "options": ["don't", "doesn't", "isn't"], "answer": 1 },
+    { "id": "p-a2-4", "level": "A2", "tag": "PRONOUN", "prompt": "Choose the correct sentence.", "options": ["My brother he works in a bank.", "My brother working in a bank.", "My brother works in a bank."], "answer": 2 },
+    { "id": "p-a2-5", "level": "A2", "tag": "PREPOSITION", "prompt": "I am interested ___ civil engineering.", "options": ["on", "in", "at"], "answer": 1 },
+    { "id": "p-a2-6", "level": "A2", "tag": "TENSE", "prompt": "Did you ___ the email to the client?", "options": ["send", "sent", "sending"], "answer": 0 },
+    { "id": "p-a2-7", "level": "A2", "tag": null, "prompt": "We were very tired, ___ we went home early.", "options": ["because", "so", "but"], "answer": 1 },
+    { "id": "p-a2-8", "level": "A2", "tag": "PB", "prompt": "Write with a ___, not a pencil.", "options": ["ben", "pen", "bin"], "answer": 1 },
+
+    { "id": "p-b1-1", "level": "B1", "tag": "PREPOSITION", "prompt": "I have worked for this company ___ 2019.", "options": ["since", "for", "from"], "answer": 0 },
+    { "id": "p-b1-2", "level": "B1", "tag": "PREPOSITION", "prompt": "She has lived in this city ___ three years.", "options": ["since", "from", "for"], "answer": 2 },
+    { "id": "p-b1-3", "level": "B1", "tag": "TENSE", "prompt": "When I arrived, the meeting ___ already started.", "options": ["has", "had", "have"], "answer": 1 },
+    { "id": "p-b1-4", "level": "B1", "tag": "PREPOSITION", "prompt": "Choose the correct sentence.", "options": ["We need to discuss about the budget.", "We need to discuss the budget.", "We need discuss the budget."], "answer": 1 },
+    { "id": "p-b1-5", "level": "B1", "tag": "PREPOSITION", "prompt": "Choose the correct sentence.", "options": ["Could you explain me how this pump works?", "Could you explain how me this pump works?", "Could you explain to me how this pump works?"], "answer": 2 },
+    { "id": "p-b1-6", "level": "B1", "tag": "TENSE", "prompt": "If it rains tomorrow, we ___ the site visit.", "options": ["will postpone", "would postpone", "postponed"], "answer": 0 },
+    { "id": "p-b1-7", "level": "B1", "tag": "UNCOUNTABLE", "prompt": "The new equipment ___ delivered last week.", "options": ["were", "was", "are"], "answer": 1 },
+    { "id": "p-b1-8", "level": "B1", "tag": "ARTICLE", "prompt": "He is ___ honest person.", "options": ["a", "the", "an"], "answer": 2 },
+
+    { "id": "p-b2-1", "level": "B2", "tag": "TENSE", "prompt": "By the end of next month, we ___ the first phase of the project.", "options": ["will have completed", "will complete already", "have completed"], "answer": 0 },
+    { "id": "p-b2-2", "level": "B2", "tag": "ORDER", "prompt": "Hardly ___ the test begun when the power failed.", "options": ["has", "did", "had"], "answer": 2 },
+    { "id": "p-b2-3", "level": "B2", "tag": null, "prompt": "The report, ___ was written by the site team, is very clear.", "options": ["who", "which", "what"], "answer": 1 },
+    { "id": "p-b2-4", "level": "B2", "tag": "TENSE", "prompt": "I'd rather you ___ the drawings before the meeting, not after it.", "options": ["checked", "will check", "have checked"], "answer": 0 },
+    { "id": "p-b2-5", "level": "B2", "tag": "SVA", "prompt": "Neither the manager nor the engineers ___ aware of the change.", "options": ["was", "were", "is"], "answer": 1 },
+    { "id": "p-b2-6", "level": "B2", "tag": null, "prompt": "She suggested ___ the diameter of the main pipe.", "options": ["to increase", "increase", "increasing"], "answer": 2 },
+    { "id": "p-b2-7", "level": "B2", "tag": "ORDER", "prompt": "Not only ___ late, but he also forgot the samples.", "options": ["did he arrive", "he arrived", "he did arrive"], "answer": 0 },
+    { "id": "p-b2-8", "level": "B2", "tag": null, "prompt": "The test results were ___ than we expected.", "options": ["more better", "far better", "very better"], "answer": 1 }
+  ]
+}

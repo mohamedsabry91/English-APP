@@ -7,6 +7,8 @@ import { Welcome } from './screens/Welcome';
 import { Today } from './screens/Today';
 import { Settings } from './screens/Settings';
 import { About } from './screens/About';
+import { Placement } from './screens/Placement';
+import { PlacementResult } from './screens/PlacementResult';
 
 const NAV_SCREENS = ['today', 'lessons', 'lesson', 'mistakes', 'writing', 'settings', 'about', 'session', 'practice'];
 
@@ -26,6 +28,12 @@ export function App() {
     switch (screen) {
       case 'settings':
         body = <Settings />;
+        break;
+      case 'placement':
+        body = <Placement />;
+        break;
+      case 'result':
+        body = <PlacementResult />;
         break;
       case 'about':
         body = <About />;
