@@ -10,7 +10,7 @@
     "BE"
   ],
   "explanationAr": "تستخدم المواصفات الفنية كلمات بمعانٍ دقيقة: shall و must تعنيان أن الأمر إلزامي، و should تعني أنه مستحسن، و may تعني أنه مسموح. ومن العبارات الشائعة: unless otherwise specified (ما لم يُذكر خلاف ذلك)، و not less than (لا يقل عن)، و shall not exceed (يجب ألا يتجاوز). وكثيرًا ما نجد المبني للمجهول: All pipes shall be tested. اقرأ الأرقام والوحدات بعناية.",
-  "explanationEn": "Specifications use words with exact meanings: shall and must mean the requirement is required; should means it is recommended; may means it is allowed. Common phrases: unless otherwise specified, not less than, shall not exceed. The passive is common: All pipes shall be tested. Read numbers and units carefully.",
+  "explanationEn": "Specifications use words with exact meanings: shall and must mean that something is required; should means it is recommended; may means it is allowed. Common phrases: unless otherwise specified, not less than, shall not exceed. The passive is common: All pipes shall be tested. Read numbers and units carefully.",
   "comparison": [
     {
       "ar": "يجب اختبار جميع الأنابيب.",

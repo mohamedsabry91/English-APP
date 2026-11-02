@@ -9,8 +9,8 @@
     "WORD",
     "SPELLING"
   ],
-  "explanationAr": "في الإنجليزية نستخدم النقطة للكسور العشرية (2.5 m)، والفاصلة للآلاف (12,000). وتأخذ الوحدة s عندما يكون العدد أكثر من واحد: 1 meter و 3 meters. لكن عندما يكون الرقم والوحدة صفة قبل الاسم، لا نضيف s ونضع شرطة: a 10-meter pipe. ولا نضيف s إلى الرمز: 3 m وليس 3 ms. ونقرأ 0.5 هكذا: zero point five. ونقول 20 degrees Celsius، و 5 percent.",
-  "explanationEn": "English uses a point for decimals (2.5 m) and a comma for thousands (12,000). A unit takes -s when the number is more than one: 1 meter, 3 meters. When the number and unit come before a noun as an adjective, use a hyphen and no -s: a 10-meter pipe. Symbols never take -s: 3 m, not 3 ms. Read 0.5 as \"zero point five\". Say 20 degrees Celsius and 5 percent.",
+  "explanationAr": "في الإنجليزية نستخدم النقطة للكسور العشرية (2.5 m)، والفاصلة للآلاف (12,000). وتأخذ الوحدة s عندما يكون العدد أكثر من واحد: 1 meter و 3 meters. لكن عندما يكون الرقم والوحدة صفة قبل الاسم، لا نضيف s ونضع شرطة: a 10-meter pipe. ولا نضيف s إلى رمز الوحدة: 3 kg وليس 3 kgs. ونقرأ 0.5 هكذا: zero point five. ونقول 20 degrees Celsius، و 5 percent.",
+  "explanationEn": "English uses a point for decimals (2.5 m) and a comma for thousands (12,000). A unit takes -s when the number is more than one: 1 meter, 3 meters. When the number and unit come before a noun as an adjective, use a hyphen and no -s: a 10-meter pipe. Unit symbols never take -s: 3 kg, not 3 kgs. Read 0.5 as \"zero point five\". Say 20 degrees Celsius and 5 percent.",
   "comparison": [
     {
       "ar": "2,5 متر",

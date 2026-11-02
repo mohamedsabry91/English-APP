@@ -5,28 +5,145 @@
   "order": 1,
   "titleEn": "Writing a work email",
   "titleAr": "كتابة بريد إلكتروني في العمل",
-  "tags": ["PREPOSITION", "ORDER", "TENSE"],
+  "tags": [
+    "PREPOSITION",
+    "WORD",
+    "TENSE"
+  ],
   "explanationAr": "للبريد الإلكتروني في العمل شكل واضح: تحية (Dear Mr. Hassan,)، ثم سبب الرسالة في الجملة الأولى (I am writing to ask about...)، ثم التفاصيل، ثم الطلب (Could you please...?)، ثم الختام (Best regards,). اجعل الجمل قصيرة، واطلب شيئًا واحدًا واضحًا. وتجنّب الترجمة الحرفية لعبارات المجاملة العربية الطويلة.",
   "explanationEn": "A work email has a clear shape: a greeting (Dear Mr. Hassan,), the reason in the first sentence (I am writing to ask about...), the details, the request (Could you please...?), and a closing (Best regards,). Keep sentences short and make one clear request. Do not translate long Arabic courtesy phrases word for word.",
   "comparison": [
-    { "ar": "تحية طيبة وبعد،", "en": "Dear Ms. Salem,", "noteAr": "نبدأ بالتحية والاسم، ثم فاصلة." },
-    { "ar": "أرجو التكرّم بإرسال...", "en": "Could you please send...?", "noteAr": "الطلب في الإنجليزية قصير ومهذب." },
-    { "ar": "وتفضلوا بقبول فائق الاحترام،", "en": "Best regards,", "noteAr": "يكفي ختام قصير." }
+    {
+      "ar": "تحية طيبة وبعد،",
+      "en": "Dear Ms. Salem,",
+      "noteAr": "نبدأ بالتحية والاسم، ثم فاصلة."
+    },
+    {
+      "ar": "أرجو التكرّم بإرسال...",
+      "en": "Could you please send...?",
+      "noteAr": "الطلب في الإنجليزية قصير ومهذب."
+    },
+    {
+      "ar": "وتفضلوا بقبول فائق الاحترام،",
+      "en": "Best regards,",
+      "noteAr": "يكفي ختام قصير."
+    }
   ],
   "examples": [
-    { "en": "I am writing to ask about the delivery date.", "ar": "أكتب لأسأل عن موعد التسليم." },
-    { "en": "Please find the drawings attached.", "ar": "تجد المخططات مرفقة." },
-    { "en": "Could you please confirm the meeting time?", "ar": "هل يمكنك تأكيد موعد الاجتماع؟" },
-    { "en": "Thank you for your quick reply.", "ar": "شكرًا لردّك السريع." }
+    {
+      "en": "I am writing to ask about the delivery date.",
+      "ar": "أكتب لأسأل عن موعد التسليم."
+    },
+    {
+      "en": "Please find the drawings attached.",
+      "ar": "تجد المخططات مرفقة."
+    },
+    {
+      "en": "Could you please confirm the meeting time?",
+      "ar": "هل يمكنك تأكيد موعد الاجتماع؟"
+    },
+    {
+      "en": "Thank you for your quick reply.",
+      "ar": "شكرًا لردّك السريع."
+    }
   ],
   "exercises": [
-    { "id": "e-01-e1", "type": "mc", "tags": ["ORDER"], "prompt": "Choose the best first sentence for a work email.", "options": ["I am writing to ask about the delivery date.", "I write you for ask about delivery date.", "Delivery date, what is it?"], "answer": 0, "explanationAr": "الجملة الأولى تذكر سبب الرسالة بصيغة واضحة: I am writing to ask about..." },
-    { "id": "e-01-e2", "type": "fill", "tags": ["SPELLING"], "prompt": "Please find the report ___.", "accepted": ["attached"], "explanationAr": "نقول Please find the report attached، أي: تجد التقرير مرفقًا." },
-    { "id": "e-01-e3", "type": "fix", "tags": ["PREPOSITION"], "sentence": "I am writing to discuss about the new schedule.", "accepted": ["I am writing to discuss the new schedule."], "explanationAr": "الفعل discuss لا يحتاج about بعده: discuss the schedule." },
-    { "id": "e-01-e4", "type": "mc", "tags": ["TENSE"], "prompt": "Could you please ___ me the updated drawings?", "options": ["send", "sending", "sent"], "answer": 0, "explanationAr": "بعد Could you نستخدم الفعل في صورته الأساسية: send." },
-    { "id": "e-01-e5", "type": "reorder", "tags": ["ORDER"], "words": ["Thank", "you", "for", "your", "quick", "reply."], "explanationAr": "Thank you for ثم ما نشكر عليه: your quick reply." },
-    { "id": "e-01-e6", "type": "fix", "tags": ["PREPOSITION"], "sentence": "Could you explain me the new procedure?", "accepted": ["Could you explain the new procedure to me?", "Could you explain to me the new procedure?", "Could you explain the new procedure?"], "explanationAr": "لا نقول explain me. نقول explain something to me." },
-    { "id": "e-01-e7", "type": "fill", "tags": ["PREPOSITION"], "prompt": "We look forward ___ hearing from you.", "accepted": ["to"], "explanationAr": "العبارة الثابتة هي look forward to، وبعدها فعل بـ ing." }
+    {
+      "id": "e-01-e1",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "Choose the best first sentence for a work email.",
+      "options": [
+        "I am writing to ask about the delivery date.",
+        "I write you for ask about delivery date.",
+        "Delivery date, what is it?"
+      ],
+      "answer": 0,
+      "explanationAr": "الجملة الأولى تذكر سبب الرسالة بصيغة واضحة: I am writing to ask about..."
+    },
+    {
+      "id": "e-01-e2",
+      "type": "fill",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "Please find the report ___.",
+      "accepted": [
+        "attached"
+      ],
+      "explanationAr": "نقول Please find the report attached، أي: تجد التقرير مرفقًا."
+    },
+    {
+      "id": "e-01-e3",
+      "type": "fix",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "sentence": "I am writing to discuss about the new schedule.",
+      "accepted": [
+        "I am writing to discuss the new schedule."
+      ],
+      "explanationAr": "الفعل discuss لا يحتاج about بعده: discuss the schedule."
+    },
+    {
+      "id": "e-01-e4",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Could you please ___ me the updated drawings?",
+      "options": [
+        "send",
+        "sending",
+        "sent"
+      ],
+      "answer": 0,
+      "explanationAr": "بعد Could you نستخدم الفعل في صورته الأساسية: send."
+    },
+    {
+      "id": "e-01-e5",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "Thank",
+        "you",
+        "for",
+        "your",
+        "quick",
+        "reply."
+      ],
+      "explanationAr": "Thank you for ثم ما نشكر عليه: your quick reply."
+    },
+    {
+      "id": "e-01-e6",
+      "type": "fix",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "sentence": "Could you explain me the new procedure?",
+      "accepted": [
+        "Could you explain the new procedure to me?",
+        "Could you explain to me the new procedure?",
+        "Could you explain the new procedure?"
+      ],
+      "explanationAr": "لا نقول explain me. نقول explain something to me."
+    },
+    {
+      "id": "e-01-e7",
+      "type": "fill",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "We look forward ___ hearing from you.",
+      "accepted": [
+        "to"
+      ],
+      "explanationAr": "العبارة الثابتة هي look forward to، وبعدها فعل بـ ing."
+    }
   ],
   "writingTaskId": "w-e-01",
   "reviewed": false

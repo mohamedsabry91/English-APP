@@ -44,12 +44,12 @@
       ],
       "prompt": "When we reached the station, the train ___.",
       "options": [
-        "left",
-        "had left",
-        "has left"
+        "has already left",
+        "had already left",
+        "already leaves"
       ],
       "answer": 1,
-      "explanationAr": "غادر القطار أولًا، ثم وصلنا، فنستخدم had left."
+      "explanationAr": "غادر القطار أولًا، ثم وصلنا، فنستخدم had already left."
     },
     {
       "id": "g-b2-01-e2",
