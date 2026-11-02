@@ -128,8 +128,12 @@ test('also fits at 320 px and on a desktop', async ({ page }) => {
       await page.goto('./');
       await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [STORAGE_KEY, JSON.stringify(seed(lang))]);
       for (const route of ['today', 'lessons', 'mistakes', 'writing', 'writing/w-e-01', 'settings', 'about', 'lesson/e-06']) {
+        // One full, fresh load per screen. (A hash change followed at once by reload() can be
+        // cancelled by WebKit: "Navigation canceled by policy check".)
+        await page.goto('about:blank');
         await page.goto(`./#/${route}`);
-        await page.reload();
+        await expect(page.locator('#main')).toBeVisible();
+        await expect(page.locator('html')).toHaveAttribute('lang', lang);
         await expectNoOverflow(page, `${size.width}px ${lang} ${route}`);
       }
     }
