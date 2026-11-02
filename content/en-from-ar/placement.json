@@ -3,7 +3,7 @@
   "questions": [
     { "id": "p-a1-1", "level": "A1", "tag": "BE", "prompt": "I ___ an engineer.", "options": ["is", "am", "are"], "answer": 1 },
     { "id": "p-a1-2", "level": "A1", "tag": "BE", "prompt": "They ___ in the office now.", "options": ["are", "is", "am"], "answer": 0 },
-    { "id": "p-a1-3", "level": "A1", "tag": "ARTICLE", "prompt": "I eat ___ apple every morning.", "options": ["a", "the a", "an"], "answer": 2 },
+    { "id": "p-a1-3", "level": "A1", "tag": "ARTICLE", "prompt": "I eat ___ apple every morning.", "options": ["a", "the", "an"], "answer": 2 },
     { "id": "p-a1-4", "level": "A1", "tag": "SVA", "prompt": "He ___ to work by bus every day.", "options": ["go", "goes", "going"], "answer": 1 },
     { "id": "p-a1-5", "level": "A1", "tag": null, "prompt": "___ is my phone? I can't find it.", "options": ["Who", "What", "Where"], "answer": 2 },
     { "id": "p-a1-6", "level": "A1", "tag": "PREPOSITION", "prompt": "We have lunch ___ one o'clock.", "options": ["at", "in", "on"], "answer": 0 },

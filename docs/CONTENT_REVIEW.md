@@ -50,9 +50,13 @@ These are listed first because they are the most likely to be wrong, unclear or 
    interview advice, not a grammar rule.
 10. **Placement question p-b2-2** ("Hardly ___ the test begun when the power failed") and **p-b2-6**
     ("She suggested ___") are formal structures. Check that they fit B2.
-11. **Arabic style.** The Arabic aims to be simple Modern Standard Arabic. Some phrases may read as
+11. **Placement question p-a1-3** ("I eat ___ apple every morning", options a / the / an, answer an).
+    After a review, the option "the a" was changed to "the". "I eat the apple every morning" is
+    grammatical if a specific apple is meant, so a reviewer should check that "an" is clearly the
+    best answer, or change the sentence.
+12. **Arabic style.** The Arabic aims to be simple Modern Standard Arabic. Some phrases may read as
     translated. Please check the interface text in `src/i18n/ar.json` as well as the lessons.
-12. **The writing checker's catch rate** (98.8% on the fixture file) is much higher than it will be on
+13. **The writing checker's catch rate** (98.8% on the fixture file) is much higher than it will be on
     real learner writing, because the same author wrote the rules and the fixture sentences. Treat it
     as a check that the rules work, not as a measure of real accuracy. A second, held-out set
     (`tests/fixtures/writing-checker-holdout.json`, written after the rules were finished, with no rule
