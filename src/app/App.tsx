@@ -14,6 +14,7 @@ import { Lessons } from './screens/Lessons';
 import { LessonPractice } from './screens/LessonPractice';
 import { Mistakes } from './screens/Mistakes';
 import { TagPractice } from './screens/TagPractice';
+import { WritingList, WritingScreen } from './screens/Writing';
 import type { TagId } from '../core/types';
 
 const NAV_SCREENS = ['today', 'lessons', 'lesson', 'mistakes', 'writing', 'settings', 'about', 'session', 'practice'];
@@ -55,6 +56,9 @@ export function App() {
         break;
       case 'practice':
         body = <TagPractice key={arg} tag={(arg ?? 'BE') as TagId} />;
+        break;
+      case 'writing':
+        body = arg ? <WritingScreen key={arg} id={arg} /> : <WritingList />;
         break;
       case 'about':
         body = <About />;

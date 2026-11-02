@@ -1,0 +1,62 @@
+[
+  {
+    "id": "w-g-a1-01", "track": "general", "level": "A1", "lessonId": "g-a1-01",
+    "titleEn": "Introduce yourself", "titleAr": "عرّف بنفسك",
+    "promptEn": "Write 3 or 4 short sentences about yourself: your name, your job, and where you are now.",
+    "promptAr": "اكتب ثلاث جمل قصيرة أو أربعًا عن نفسك: اسمك، ومهنتك، وأين أنت الآن.",
+    "wordLimit": 40,
+    "modelAnswer": "My name is Khalid. I am an engineer. I am at work now. My office is quiet and clean.",
+    "selfCheckAr": ["هل استخدمت am مع I في كل جملة تحتاجها؟", "هل وضعت a أو an قبل المهنة؟", "هل بدأت كل جملة بحرف كبير وأنهيتها بنقطة؟"],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-a1-02", "track": "general", "level": "A1", "lessonId": "g-a1-02",
+    "titleEn": "Jobs in your family", "titleAr": "المهن في عائلتك",
+    "promptEn": "Write about the jobs of two people in your family.",
+    "promptAr": "اكتب عن مهنتي شخصين من عائلتك.",
+    "wordLimit": 40,
+    "modelAnswer": "My father is a teacher. He works at a school near our home. My sister is an architect. She designs houses.",
+    "selfCheckAr": ["هل وضعت a أو an قبل كل مهنة؟", "هل اخترت an قبل صوت العلّة، مثل an architect؟", "هل أضفت s إلى الفعل بعد he و she؟"],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-a1-03", "track": "general", "level": "A1", "lessonId": "g-a1-03",
+    "titleEn": "Your home", "titleAr": "بيتك",
+    "promptEn": "Describe your home in 3 or 4 sentences. Use adjectives such as big, small, new and quiet.",
+    "promptAr": "صف بيتك في ثلاث جمل أو أربع. استخدم صفات مثل big و small و new و quiet.",
+    "wordLimit": 40,
+    "modelAnswer": "We live in a small apartment. It has two bedrooms and a big kitchen. The living room is bright. Our street is quiet at night.",
+    "selfCheckAr": ["هل وضعت الصفة قبل الاسم، مثل a big kitchen؟", "هل استخدمت is أو are قبل الصفة عندما تأتي وحدها؟", "هل تجنبت إضافة s إلى الصفات؟"],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-a1-04", "track": "general", "level": "A1", "lessonId": "g-a1-04",
+    "titleEn": "A short note at work", "titleAr": "ملاحظة قصيرة في العمل",
+    "promptEn": "Write a short note to a colleague. Ask them to bring a pen and to pay a bill. Check every p and b.",
+    "promptAr": "اكتب ملاحظة قصيرة لزميل. اطلب منه أن يحضر قلمًا وأن يدفع فاتورة. راجع كل حرف p و b.",
+    "wordLimit": 40,
+    "modelAnswer": "Please bring a pen to the meeting. Also, please pay the water bill today. The office closes at five. Thank you.",
+    "selfCheckAr": ["هل كتبت please و pen و pay بحرف p؟", "هل كتبت bill و bring بحرف b؟", "هل الملاحظة قصيرة ومهذبة؟"],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-a1-05", "track": "general", "level": "A1", "lessonId": "g-a1-05",
+    "titleEn": "Someone's day", "titleAr": "يوم شخص تعرفه",
+    "promptEn": "Describe a normal day of a person you know. Use he or she.",
+    "promptAr": "صف يومًا عاديًا لشخص تعرفه. استخدم he أو she.",
+    "wordLimit": 40,
+    "modelAnswer": "My brother is a driver. He wakes up at six. He drinks tea and goes to work. He finishes at four and helps his children with their homework.",
+    "selfCheckAr": ["هل أضفت s أو es إلى كل فعل بعد he أو she؟", "هل كتبت goes و has بالشكل الصحيح؟", "هل ذكرت أوقاتًا مع at؟"],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-a1-06", "track": "general", "level": "A1", "lessonId": "g-a1-06",
+    "titleEn": "Your week", "titleAr": "أسبوعك",
+    "promptEn": "Write about your week. Use at, on and in with times and days.",
+    "promptAr": "اكتب عن أسبوعك. استخدم at و on و in مع الأوقات والأيام.",
+    "wordLimit": 40,
+    "modelAnswer": "I start work at eight o'clock. On Monday, I have a meeting in the morning. I visit the site on Wednesday. At night, I read at home.",
+    "selfCheckAr": ["هل استخدمت at مع الساعة؟", "هل استخدمت on مع الأيام؟", "هل استخدمت in مع أجزاء اليوم، و at night؟"],
+    "reviewed": false
+  }
+]

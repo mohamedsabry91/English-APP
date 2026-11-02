@@ -1,0 +1,22 @@
+[
+  {
+    "id": "w-e-01", "track": "engineers", "level": "B1", "lessonId": "e-01",
+    "titleEn": "Email: asking for drawings", "titleAr": "بريد إلكتروني: طلب مخططات",
+    "promptEn": "Write a short email to a colleague. Ask for the updated drawings of the pump station before Thursday, and say why you need them.",
+    "promptAr": "اكتب بريدًا إلكترونيًا قصيرًا لزميل. اطلب المخططات المحدّثة لمحطة الضخ قبل يوم الخميس، واذكر سبب حاجتك إليها.",
+    "wordLimit": 80,
+    "modelAnswer": "Dear Mr. Hassan,\nI am writing to ask about the updated drawings for the pump station. Could you please send them to me before Thursday? We need them for the site meeting on Sunday.\nThank you for your help.\nBest regards,\nOmar",
+    "selfCheckAr": ["هل ذكرت سبب الرسالة في الجملة الأولى؟", "هل الطلب واضح ومهذب، مثل Could you please...؟", "هل ذكرت الموعد والسبب؟", "هل بدأت بتحية وختمت بختام مناسب؟"],
+    "reviewed": false
+  },
+  {
+    "id": "w-e-02", "track": "engineers", "level": "B1", "lessonId": "e-02",
+    "titleEn": "Daily site report", "titleAr": "تقرير موقع يومي",
+    "promptEn": "Write a short daily site report: what the team did today, one problem, and the next step.",
+    "promptAr": "اكتب تقرير موقع يوميًا قصيرًا: ماذا أنجز الفريق اليوم، ومشكلة واحدة، والخطوة التالية.",
+    "wordLimit": 80,
+    "modelAnswer": "Daily site report\nToday the team installed 40 meters of the new water pipe. The excavator stopped for two hours because of a hydraulic leak. The equipment is working again now. Tomorrow we will test the pressure in the new section.",
+    "selfCheckAr": ["هل استخدمت الماضي لما حدث اليوم؟", "هل استخدمت will للخطوة التالية؟", "هل كتبت equipment دون s؟", "هل ذكرت الأرقام والوحدات بوضوح؟"],
+    "reviewed": false
+  }
+]
