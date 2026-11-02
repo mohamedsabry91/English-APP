@@ -49,8 +49,8 @@ on your machine, run only Chromium with `E2E_WEBKIT=0 npm run test:e2e`.
 ### Continuous tests
 
 `.github/workflows/ci.yml` runs lint, typecheck, unit tests and the build on Ubuntu and Windows, and
-the browser tests on Chromium and WebKit, for every push to `main` or `feat/first-version` and every
-pull request. It only runs tests. It does not deploy or publish anything.
+the browser tests on Chromium and WebKit, for every push to `main` and every pull
+request. It only runs tests. It does not deploy or publish anything.
 
 ## Build and preview
 
