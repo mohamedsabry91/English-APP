@@ -8,7 +8,8 @@ browser on the device. There is no server, no account, no AI and no audio.
 
 Nothing is sent anywhere. Progress is kept in the browser's `localStorage` on the device. While a
 learner writes, the unfinished text is kept there too, so they can come back to it. It is deleted when
-the task is finished or skipped, when another task is started, or when all progress is deleted. It is
+the task is finished or skipped, or when all progress is deleted, and it is replaced when the learner
+starts writing another task. It is
 never included in an exported progress file. After a task is finished, only mistake types, counts and
 dates are kept.
 
