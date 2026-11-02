@@ -1,4 +1,5 @@
 import { useStore } from '../store';
+import { ArText } from '../ArText';
 import { go } from '../router';
 import { lessonsForTrack, nextLesson } from '../../core/content';
 import type { TrackId } from '../../core/types';
@@ -22,7 +23,7 @@ export function Lessons() {
                 <li key={l.id}>
                   <button type="button" className="list-button" onClick={() => go('lesson', l.id)} data-testid={`lesson-${l.id}`}>
                     <span>
-                      <bdi>{lang === 'ar' ? l.titleAr : l.titleEn}</bdi>
+                      <bdi>{lang === 'ar' ? <ArText>{l.titleAr}</ArText> : l.titleEn}</bdi>
                     </span>
                     <span className="meta">
                       <bdi dir="ltr">{l.level}</bdi>

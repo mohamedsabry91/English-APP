@@ -1,4 +1,5 @@
 import { useStore } from '../store';
+import { ArText } from '../ArText';
 import { go } from '../router';
 import { WRITING_TASKS, getTask } from '../../core/content';
 import { WritingTaskView } from '../WritingTaskView';
@@ -18,7 +19,7 @@ export function WritingList() {
           <li key={task.id}>
             <button type="button" className="list-button" onClick={() => go('writing', task.id)} data-testid={`task-${task.id}`}>
               <span>
-                <bdi>{lang === 'ar' ? task.titleAr : task.titleEn}</bdi>
+                <bdi>{lang === 'ar' ? <ArText>{task.titleAr}</ArText> : task.titleEn}</bdi>
               </span>
               <span className="meta">
                 {t(task.track === 'general' ? 'writing.track.general' : 'writing.track.engineers')} · <bdi dir="ltr">{task.level}</bdi>

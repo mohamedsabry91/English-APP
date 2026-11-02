@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { ArText } from './ArText';
 import type { Exercise } from '../core/contentTypes';
 import { isCorrect, rightAnswerText, shuffleWords, type Response } from '../core/answers';
 import { useStore } from './store';
@@ -169,7 +170,7 @@ export function ExerciseView({ exercise, onAnswer, onNext, counter }: Props) {
                 {t('session.answerIs')} <bdi className="en" lang="en" dir="ltr" data-testid="right-answer">{rightAnswerText(exercise)}</bdi>
               </p>
             )}
-            <p lang="ar" dir="rtl" className="explanation">{exercise.explanationAr}</p>
+            <p lang="ar" dir="rtl" className="explanation"><ArText>{exercise.explanationAr}</ArText></p>
           </div>
           <button type="button" className="primary big" onClick={onNext} data-testid="next" autoFocus>
             {t('session.next')}

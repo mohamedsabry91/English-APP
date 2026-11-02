@@ -1,42 +1,83 @@
-import type { Page } from '@playwright/test';
+import { readFileSync, readdirSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { expect, type Page } from '@playwright/test';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const LESSON_DIR = join(ROOT, 'content', 'en-from-ar', 'lessons');
+
+interface Ex {
+  id: string;
+  type: 'mc' | 'fill' | 'reorder' | 'fix';
+  answer?: number;
+  options?: string[];
+  accepted?: string[];
+  words?: string[];
+}
+const EXERCISES = new Map<string, Ex>();
+for (const f of readdirSync(LESSON_DIR)) {
+  const l = JSON.parse(readFileSync(join(LESSON_DIR, f), 'utf8')) as { exercises: Ex[] };
+  for (const e of l.exercises) EXERCISES.set(e.id, e);
+}
+
+export const STORAGE_KEY = 'english-practice:progress';
 
 /** Finish the welcome screen in the given language. */
 export async function welcome(page: Page, lang: 'ar' | 'en') {
   await page.goto('./');
   await page.getByTestId(`lang-${lang}`).click();
+  await expect(page.locator('html')).toHaveAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  await expect(page.locator('html')).toHaveAttribute('lang', lang);
   await page.getByTestId('welcome-continue').click();
 }
 
-/** Answer the placement test: choose option 0 for every question until it ends. */
+/** Answer the placement test choosing option 0 every time (this stops early, at "Starting A1"). */
 export async function placementAllFirst(page: Page) {
   await page.getByTestId('placement-start').click();
   for (let i = 0; i < 40; i++) {
-    if (!(await page.getByTestId('placement-next').isVisible().catch(() => false))) break;
+    if (!(await page.getByTestId('placement-next').isVisible())) break;
     await page.getByTestId('placement-option-0').click();
     await page.getByTestId('placement-next').click();
   }
+  await expect(page.getByTestId('result-level')).toBeVisible();
 }
 
-/** Answer the current exercise wrongly where possible (choose a wrong option or type nonsense). */
-export async function answerWrong(page: Page) {
-  const ex = page.getByTestId('exercise');
-  const type = await ex.getAttribute('data-type');
-  if (type === 'mc') {
-    // Try options until one is marked wrong; the first click decides.
-    const n = await ex.locator('[data-testid^="option-"]').count();
-    // We cannot see the answer, so pick by trial on a fresh exercise: choose the last option.
-    await ex.getByTestId(`option-${n - 1}`).click();
-  } else if (type === 'reorder') {
-    const words = ex.locator('[data-testid^="word-"]');
-    const n = await words.count();
-    for (let i = 0; i < n; i++) await words.first().click();
+async function currentExercise(page: Page): Promise<Ex> {
+  const id = await page.getByTestId('exercise').getAttribute('data-exercise-id');
+  const ex = id ? EXERCISES.get(id) : undefined;
+  if (!ex) throw new Error(`Unknown exercise ${id}`);
+  return ex;
+}
+
+/** Answer the exercise on screen, right or wrong, using the content files. */
+export async function answer(page: Page, correct: boolean): Promise<string> {
+  const ex = await currentExercise(page);
+  const box = page.getByTestId('exercise');
+  if (ex.type === 'mc') {
+    const n = ex.options?.length ?? 2;
+    const pick = correct ? (ex.answer as number) : ((ex.answer as number) + 1) % n;
+    await box.getByTestId(`option-${pick}`).click();
+  } else if (ex.type === 'reorder') {
+    const target = correct ? (ex.words as string[]) : [...(ex.words as string[])].reverse();
+    for (const w of target) {
+      await box.locator('.word-bank button', { hasText: new RegExp(`^${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) }).first().click();
+    }
   } else {
-    await ex.getByTestId('answer-input').fill('zzz');
+    await box.getByTestId('answer-input').fill(correct ? (ex.accepted as string[])[0] as string : 'zzz');
   }
   await page.getByTestId('check').click();
+  await expect(page.getByTestId('feedback')).toHaveAttribute('data-correct', correct ? 'yes' : 'no');
+  return ex.id;
 }
 
-/** Answer the current exercise in any way (used to move through a session). */
-export async function answerAny(page: Page) {
-  await answerWrong(page);
+/** Read the saved progress record. */
+export async function stored(page: Page): Promise<Record<string, unknown> | null> {
+  const raw = await page.evaluate((k) => localStorage.getItem(k), STORAGE_KEY);
+  return raw ? (JSON.parse(raw) as Record<string, unknown>) : null;
+}
+
+/** Fail if the page scrolls sideways. */
+export async function expectNoOverflow(page: Page, label: string) {
+  const { sw, cw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
+  expect(sw, `${label}: scrollWidth ${sw} > clientWidth ${cw}`).toBeLessThanOrEqual(cw);
 }

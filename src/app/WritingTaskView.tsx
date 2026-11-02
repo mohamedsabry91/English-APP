@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ArText } from './ArText';
 import type { WritingTask } from '../core/contentTypes';
 import { check, type Finding } from '../checker';
 import { exercisesWithTag, getLesson } from '../core/content';
@@ -84,10 +85,10 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
   return (
     <section className="writing" data-testid="writing-task" data-task-id={task.id}>
       <h2>
-        <bdi>{lang === 'ar' ? task.titleAr : task.titleEn}</bdi>
+        {lang === 'ar' ? <ArText>{task.titleAr}</ArText> : <bdi>{task.titleEn}</bdi>}
       </h2>
       <p className="en-block" lang="en" dir="ltr">{task.promptEn}</p>
-      <p lang="ar" dir="rtl">{task.promptAr}</p>
+      <p lang="ar" dir="rtl"><ArText>{task.promptAr}</ArText></p>
       <p className="muted">{t('writing.limit', { n: task.wordLimit })}</p>
 
       {findings === null ? (
@@ -122,11 +123,11 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
                     <bdi className="en" lang="en" dir="ltr">“{text.slice(f.start, f.end)}”</bdi>
                   </p>
                   {lang === 'ar' ? (
-                    <p lang="ar" dir="rtl">{f.explanationAr}</p>
+                    <p lang="ar" dir="rtl"><ArText>{f.explanationAr}</ArText></p>
                   ) : (
                     <>
                       <p lang="en" dir="ltr">{f.explanationEn}</p>
-                      <p lang="ar" dir="rtl" className="muted">{f.explanationAr}</p>
+                      <p lang="ar" dir="rtl" className="muted"><ArText>{f.explanationAr}</ArText></p>
                     </>
                   )}
                   {f.suggestion !== undefined && f.suggestion !== '' && (
@@ -141,9 +142,9 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
           <h3>{t('writing.model')}</h3>
           <p className="written en-block" lang="en" dir="ltr" data-testid="model-answer">{task.modelAnswer}</p>
           <h3>{t('writing.selfCheck')}</h3>
-          <ul data-testid="self-check">
+          <ul data-testid="self-check" lang="ar" dir="rtl" className="self-check">
             {task.selfCheckAr.map((s, i) => (
-              <li key={i} lang="ar" dir="rtl">{s}</li>
+              <li key={i}><ArText>{s}</ArText></li>
             ))}
           </ul>
           <p className="muted small">{t('writing.privacy')}</p>

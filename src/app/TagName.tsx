@@ -1,4 +1,5 @@
 import { getTag } from '../core/content';
+import { ArText } from './ArText';
 import type { TagId } from '../core/types';
 import { useStore } from './store';
 
@@ -7,5 +8,5 @@ export function TagName({ id }: { id: TagId }) {
   const { lang } = useStore();
   const tag = getTag(id);
   if (!tag) return <bdi>{id}</bdi>;
-  return <bdi>{lang === 'ar' ? tag.nameAr : tag.nameEn}</bdi>;
+  return <bdi>{lang === 'ar' ? <ArText>{tag.nameAr}</ArText> : tag.nameEn}</bdi>;
 }
