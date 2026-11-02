@@ -54,7 +54,10 @@ These are listed first because they are the most likely to be wrong, unclear or 
     translated. Please check the interface text in `src/i18n/ar.json` as well as the lessons.
 12. **The writing checker's catch rate** (98.8% on the fixture file) is much higher than it will be on
     real learner writing, because the same author wrote the rules and the fixture sentences. Treat it
-    as a check that the rules work, not as a measure of real accuracy.
+    as a check that the rules work, not as a measure of real accuracy. A second, held-out set
+    (`tests/fixtures/writing-checker-holdout.json`, written after the rules were finished, with no rule
+    changes afterwards) gave 35 of 37 caught and 0 false marks on 12 correct sentences. It has the same
+    author, so real learner writing will still score lower.
 
 ## Which CEFR labels are most uncertain
 

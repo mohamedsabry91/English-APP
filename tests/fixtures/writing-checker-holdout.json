@@ -1,0 +1,201 @@
+{
+ "_note": "Held-out sentences written after the checker rules were finished. Used only to report a fairer catch rate; the rules were not changed for them.",
+ "items": [
+  {
+   "text": "My sister is architect in a big company.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "I bought a umbrella yesterday.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "He is a honest worker.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "We need an new printer.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "She busy with the report.",
+   "expect": "BE"
+  },
+  {
+   "text": "They at home now.",
+   "expect": "BE"
+  },
+  {
+   "text": "I happy with the results.",
+   "expect": "BE"
+  },
+  {
+   "text": "My father engineer.",
+   "expect": "BE"
+  },
+  {
+   "text": "We last month finished the bridge.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "I tomorrow will send it.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "He has a car black.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "The temprature is very high today.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "I recieved the drawings.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "The bulding is old.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "We need to check the presure.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "There is a broblem in the system.",
+   "expect": "PB"
+  },
+  {
+   "text": "Blease close the valve.",
+   "expect": "PB"
+  },
+  {
+   "text": "She work in the lab.",
+   "expect": "SVA"
+  },
+  {
+   "text": "He need more time.",
+   "expect": "SVA"
+  },
+  {
+   "text": "The engineer have a question.",
+   "expect": "SVA"
+  },
+  {
+   "text": "It work well now.",
+   "expect": "SVA"
+  },
+  {
+   "text": "My uncle he lives in the village.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "The tool which I bought it is useful.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "They gave us useful informations.",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "We received the equipments today.",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "Please explain me the steps.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "I have studied English since four years.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "We discussed about the risks.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "The test is in Sunday.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "Yesterday we start the test early.",
+   "expect": "TENSE"
+  },
+  {
+   "text": "She didn't came to the meeting.",
+   "expect": "TENSE"
+  },
+  {
+   "text": "i will call you later.",
+   "expect": "CAPITAL"
+  },
+  {
+   "text": "the report is ready.",
+   "expect": "CAPITAL"
+  },
+  {
+   "text": "The valve is open",
+   "expect": "PUNCTUATION"
+  },
+  {
+   "text": "He arrive at eight every day.",
+   "expect": "SVA"
+  },
+  {
+   "text": "Our manager he wants a meeting.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "They was late again.",
+   "expect": "SVA"
+  },
+  {
+   "text": "An engineer from our team checked the pump.",
+   "expect": null
+  },
+  {
+   "text": "She is an architect.",
+   "expect": null
+  },
+  {
+   "text": "We bought an umbrella.",
+   "expect": null
+  },
+  {
+   "text": "The report was ready on time.",
+   "expect": null
+  },
+  {
+   "text": "He has worked here for two years.",
+   "expect": null
+  },
+  {
+   "text": "I like my job very much.",
+   "expect": null
+  },
+  {
+   "text": "Our manager wants a meeting.",
+   "expect": null
+  },
+  {
+   "text": "They were late again.",
+   "expect": null
+  },
+  {
+   "text": "The office closed early today.",
+   "expect": null
+  },
+  {
+   "text": "We need an MBA graduate.",
+   "expect": null
+  },
+  {
+   "text": "Is the valve open?",
+   "expect": null
+  },
+  {
+   "text": "He arrives at eight every day.",
+   "expect": null
+  }
+ ]
+}
