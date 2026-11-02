@@ -7,6 +7,7 @@ import {
   deleteAllProgress,
   exportProgress,
   importProgress,
+  LIMITS,
   loadProgress,
   migrate,
   saveProgress,
@@ -171,5 +172,68 @@ describe('delete all', () => {
     expect(s.getItem(BACKUP_KEY)).toBeNull();
     expect(s.getItem('other-app')).toBe('keep');
     expect(loadProgress(s).progress).toEqual(defaultProgress());
+  });
+});
+
+describe('import limits', () => {
+  const wrap = (progress: unknown) => JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-02', progress });
+  const log = (n: number) => Array.from({ length: n }, (_, i) => ({ date: '2026-11-01', tag: 'BE', source: 'lesson', count: i + 1 }));
+  const cards = (n: number) =>
+    Object.fromEntries(Array.from({ length: n }, (_, i) => [`c${i}`, { id: `c${i}`, tags: ['BE'], box: 1, due: '2026-11-03', lastAnswered: null, mistakes: 1, learned: false, created: '2026-11-01' }]));
+  const ids = (n: number) => Array.from({ length: n }, (_, i) => `l${i}`);
+
+  it('still imports a normal export', () => {
+    const r = importProgress(exportProgress(sample(), '2026-11-02'));
+    expect(r.ok).toBe(true);
+  });
+
+  it('imports data exactly at every limit', () => {
+    const p = {
+      ...defaultProgress(),
+      mistakeLog: log(LIMITS.mistakeLog),
+      cards: cards(LIMITS.cards),
+      completedLessons: ids(LIMITS.completedLessons),
+      placementInProgress: { index: 0, answers: Array.from({ length: LIMITS.placementAnswers }, () => 0) },
+    };
+    const text = wrap(p);
+    expect(text.length).toBeLessThan(LIMITS.importChars);
+    const r = importProgress(text);
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      expect(r.progress.mistakeLog).toHaveLength(LIMITS.mistakeLog);
+      expect(Object.keys(r.progress.cards)).toHaveLength(LIMITS.cards);
+    }
+  });
+
+  it('rejects a file that is too large, before parsing it', () => {
+    const big = wrap({ ...defaultProgress(), note: 'x'.repeat(LIMITS.importChars) });
+    expect(importProgress(big)).toEqual({ ok: false, reason: 'tooLarge' });
+    expect(importProgress(' '.repeat(LIMITS.importChars + 1))).toEqual({ ok: false, reason: 'tooLarge' });
+  });
+
+  it.each([
+    ['mistakeLog', { mistakeLog: log(LIMITS.mistakeLog + 1) }],
+    ['cards', { cards: cards(LIMITS.cards + 1) }],
+    ['completedLessons', { completedLessons: ids(LIMITS.completedLessons + 1) }],
+    ['completedWriting', { completedWriting: ids(LIMITS.completedWriting + 1) }],
+    ['placementInProgress.answers', { placementInProgress: { index: 0, answers: Array.from({ length: LIMITS.placementAnswers + 1 }, () => 0) } }],
+  ])('rejects a file with too many %s', (_name, extra) => {
+    expect(importProgress(wrap({ ...defaultProgress(), ...extra }))).toEqual({ ok: false, reason: 'tooMany' });
+  });
+
+  it('does not throw away this device\'s own data that is over a limit; it keeps the newest log entries', () => {
+    const s = new MemoryStorage();
+    s.setItem(STORAGE_KEY, JSON.stringify({ ...sample(), mistakeLog: log(LIMITS.mistakeLog + 10), completedLessons: ids(LIMITS.completedLessons + 5) }));
+    const r = loadProgress(s);
+    expect(r.status).toBe('ok');
+    expect(r.progress.mistakeLog).toHaveLength(LIMITS.mistakeLog);
+    expect(r.progress.mistakeLog[r.progress.mistakeLog.length - 1]?.count).toBe(LIMITS.mistakeLog + 10);
+    expect(r.progress.completedLessons).toHaveLength(LIMITS.completedLessons);
+    expect(r.progress.onboarded).toBe(true);
+  });
+
+  it('shortens a stored draft that is over the length limit', () => {
+    const p = migrate({ version: 1, writingDraft: { taskId: 'w', text: 'a'.repeat(LIMITS.draftChars + 50) } });
+    expect(p.writingDraft?.text).toHaveLength(LIMITS.draftChars);
   });
 });

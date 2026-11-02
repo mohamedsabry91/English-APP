@@ -183,5 +183,7 @@
   "error.reset": "Delete all progress and start again",
   "error.resetConfirm": "This deletes all your progress on this device: your level, lessons, review items and mistakes. It cannot be undone. Try reloading first. Are you sure?",
   "error.resetYes": "Yes, delete everything",
-  "error.resetFailed": "The progress could not be deleted, because this browser does not allow it."
+  "error.resetFailed": "The progress could not be deleted, because this browser does not allow it.",
+  "settings.importError.tooLarge": "This file is too large to be a progress file from this app, so it was not loaded.",
+  "settings.importError.tooMany": "This file has more data than a progress file from this app can have, so it was not loaded. Your current progress has not changed."
 }

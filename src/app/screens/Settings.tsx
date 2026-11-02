@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useStore } from '../store';
 import { go } from '../router';
-import { importProgress } from '../../core/storage';
+import { importProgress, LIMITS } from '../../core/storage';
 import type { Progress, TrackChoice, UiLang } from '../../core/types';
 import { exportToFile } from '../exportFile';
 import { ConfirmDialog } from '../ConfirmDialog';
@@ -33,6 +33,11 @@ export function Settings() {
     const file = e.target.files?.[0];
     e.target.value = '';
     if (!file) return;
+    // Check the size before reading, so a huge file is never loaded into memory.
+    if (file.size > LIMITS.importChars * 4) {
+      setNotice(t('settings.importError.tooLarge'));
+      return;
+    }
     let text: string;
     try {
       text = await file.text();

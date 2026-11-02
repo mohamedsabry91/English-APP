@@ -73,3 +73,18 @@ test('the app still runs when storage is blocked, and says so', async ({ page })
   await page.getByTestId('welcome-continue').click();
   await expect(page.getByTestId('placement-start')).toBeVisible();
 });
+
+test('import rejects a file over the limits with a clear message and keeps current progress', async ({ page }, info) => {
+  await welcome(page, 'en');
+  await page.getByTestId('placement-skip').click();
+  await page.goto('./#/settings');
+  const before = await stored(page);
+  const file = info.outputPath('too-many.json');
+  const completedLessons = Array.from({ length: 1001 }, (_, i) => `l${i}`);
+  writeFileSync(file, JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-02', progress: { version: 1, onboarded: true, completedLessons } }));
+  await page.getByTestId('import-file').setInputFiles(file);
+  await expect(page.getByTestId('settings-notice')).toHaveText(
+    'This file has more data than a progress file from this app can have, so it was not loaded. Your current progress has not changed.',
+  );
+  expect(await stored(page)).toEqual(before);
+});

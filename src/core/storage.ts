@@ -43,6 +43,48 @@ export function defaultProgress(): Progress {
 
 export class InvalidProgressError extends Error {}
 
+/**
+ * Limits for progress data. They are far above what real use produces (there are 224 exercises,
+ * 32 lessons, 32 writing tasks and 32 placement questions), but stop a damaged or hostile file
+ * from filling the browser or slowing the app.
+ */
+export const LIMITS = {
+  /**
+   * Largest import file, in characters (about 4 MB). A file at every array limit below is about
+   * 2.5 MB; a real export is usually well under 100 KB.
+   */
+  importChars: 4_000_000,
+  /** One entry per day, tag and source: about 10 years of daily use. */
+  mistakeLog: 20_000,
+  cards: 5_000,
+  completedLessons: 1_000,
+  completedWriting: 1_000,
+  placementAnswers: 64,
+  reviewIds: 50,
+  draftChars: 2_000,
+} as const;
+
+export interface MigrateOptions {
+  /**
+   * strict (import): reject data over the limits.
+   * Not strict (loading this device's own data): keep the data, but trim the oldest log entries,
+   * so a learner never loses everything because of one large list.
+   */
+  strict?: boolean;
+}
+
+function overLimit(rec: Obj): string | null {
+  const len = (v: unknown) => (Array.isArray(v) ? v.length : 0);
+  if (len(rec.mistakeLog) > LIMITS.mistakeLog) return 'mistakeLog';
+  if (isObj(rec.cards) && Object.keys(rec.cards).length > LIMITS.cards) return 'cards';
+  if (len(rec.completedLessons) > LIMITS.completedLessons) return 'completedLessons';
+  if (len(rec.completedWriting) > LIMITS.completedWriting) return 'completedWriting';
+  if (isObj(rec.placementInProgress) && len(rec.placementInProgress.answers) > LIMITS.placementAnswers) return 'placementInProgress.answers';
+  if (isObj(rec.session) && len(rec.session.reviewIds) > LIMITS.reviewIds) return 'session.reviewIds';
+  if (isObj(rec.writingDraft) && typeof rec.writingDraft.text === 'string' && rec.writingDraft.text.length > LIMITS.draftChars) return 'writingDraft';
+  return null;
+}
+
 type Obj = Record<string, unknown>;
 const isObj = (v: unknown): v is Obj => typeof v === 'object' && v !== null && !Array.isArray(v);
 const isTag = (v: unknown): v is TagId => typeof v === 'string' && (TAGS as readonly string[]).includes(v);
@@ -111,7 +153,7 @@ function sanitizeSession(v: unknown): DailySession | null {
     date: v.date,
     lessonId: v.lessonId,
     step: v.step as DailySession['step'],
-    reviewIds: strArr(v.reviewIds),
+    reviewIds: strArr(v.reviewIds).slice(0, LIMITS.reviewIds),
     reviewIndex: num(v.reviewIndex),
     exerciseIndex: num(v.exerciseIndex),
     writingTaskId: typeof v.writingTaskId === 'string' ? v.writingTaskId : null,
@@ -123,7 +165,7 @@ function sanitizeSession(v: unknown): DailySession | null {
  * Throws InvalidProgressError if it is not a progress record at all,
  * or if it comes from a newer version of the app.
  */
-export function migrate(raw: unknown): Progress {
+export function migrate(raw: unknown, options: MigrateOptions = {}): Progress {
   if (!isObj(raw)) throw new InvalidProgressError('not an object');
   let rec: Obj = raw;
   let version = typeof rec.version === 'number' ? rec.version : 0;
@@ -135,11 +177,13 @@ export function migrate(raw: unknown): Progress {
     rec = step(rec);
     version += 1;
   }
+  const over = overLimit(rec);
+  if (over && options.strict) throw new InvalidProgressError(`limits: ${over}`);
 
   const d = defaultProgress();
   const cards: Record<string, ReviewCard> = {};
   if (isObj(rec.cards)) {
-    for (const value of Object.values(rec.cards)) {
+    for (const value of Object.values(rec.cards).slice(0, LIMITS.cards)) {
       const c = sanitizeCard(value);
       if (c) cards[c.id] = c;
     }
@@ -149,11 +193,11 @@ export function migrate(raw: unknown): Progress {
   const pip = isObj(rec.placementInProgress) && typeof rec.placementInProgress.index === 'number' && Array.isArray(rec.placementInProgress.answers)
     ? {
         index: Math.max(0, Math.floor(rec.placementInProgress.index)),
-        answers: rec.placementInProgress.answers.map((a) => (typeof a === 'number' ? a : null)),
+        answers: rec.placementInProgress.answers.slice(0, LIMITS.placementAnswers).map((a) => (typeof a === 'number' ? a : null)),
       }
     : null;
   const draft = isObj(rec.writingDraft) && typeof rec.writingDraft.taskId === 'string' && typeof rec.writingDraft.text === 'string'
-    ? { taskId: rec.writingDraft.taskId, text: rec.writingDraft.text }
+    ? { taskId: rec.writingDraft.taskId, text: rec.writingDraft.text.slice(0, LIMITS.draftChars) }
     : null;
 
   return {
@@ -164,10 +208,11 @@ export function migrate(raw: unknown): Progress {
     track,
     placement: sanitizePlacement(rec.placement),
     placementInProgress: pip,
-    completedLessons: strArr(rec.completedLessons),
-    completedWriting: strArr(rec.completedWriting),
+    completedLessons: strArr(rec.completedLessons).slice(0, LIMITS.completedLessons),
+    completedWriting: strArr(rec.completedWriting).slice(0, LIMITS.completedWriting),
     cards,
-    mistakeLog: Array.isArray(rec.mistakeLog) ? rec.mistakeLog.map(sanitizeLog).filter((x): x is MistakeLogEntry => x !== null) : [],
+    // Keep the newest entries if the log is too long.
+    mistakeLog: Array.isArray(rec.mistakeLog) ? rec.mistakeLog.slice(-LIMITS.mistakeLog).map(sanitizeLog).filter((x): x is MistakeLogEntry => x !== null) : [],
     session: sanitizeSession(rec.session),
     writingDraft: draft,
     lastExport: isLocalDate(rec.lastExport) ? rec.lastExport : null,
@@ -259,9 +304,10 @@ export function exportProgress(p: Progress, exportedOn: string): string {
   return JSON.stringify(file, null, 2);
 }
 
-export type ImportResult = { ok: true; progress: Progress } | { ok: false; reason: 'json' | 'kind' | 'invalid' | 'newer' };
+export type ImportResult = { ok: true; progress: Progress } | { ok: false; reason: 'json' | 'kind' | 'invalid' | 'newer' | 'tooLarge' | 'tooMany' };
 
 export function importProgress(text: string): ImportResult {
+  if (text.length > LIMITS.importChars) return { ok: false, reason: 'tooLarge' };
   let parsed: unknown;
   try {
     parsed = JSON.parse(text);
@@ -270,9 +316,10 @@ export function importProgress(text: string): ImportResult {
   }
   if (!isObj(parsed) || parsed.kind !== EXPORT_KIND || !isObj(parsed.progress)) return { ok: false, reason: 'kind' };
   try {
-    return { ok: true, progress: migrate(parsed.progress) };
+    return { ok: true, progress: migrate(parsed.progress, { strict: true }) };
   } catch (e) {
     if (e instanceof InvalidProgressError && e.message === 'newer version') return { ok: false, reason: 'newer' };
+    if (e instanceof InvalidProgressError && e.message.startsWith('limits')) return { ok: false, reason: 'tooMany' };
     return { ok: false, reason: 'invalid' };
   }
 }
