@@ -50,10 +50,10 @@ These are listed first because they are the most likely to be wrong, unclear or 
    interview advice, not a grammar rule.
 10. **Placement question p-b2-2** ("Hardly ___ the test begun when the power failed") and **p-b2-6**
     ("She suggested ___") are formal structures. Check that they fit B2.
-11. **Placement question p-a1-3** ("I eat ___ apple every morning", options a / the / an, answer an).
-    After a review, the option "the a" was changed to "the". "I eat the apple every morning" is
-    grammatical if a specific apple is meant, so a reviewer should check that "an" is clearly the
-    best answer, or change the sentence.
+11. **Placement question p-a1-3** ("I eat ___ apple every morning", options a / many / an, answer an).
+    The first wrong option, "the a", was changed to "the" after a review, and then to "many", because
+    "I eat the apple every morning" is correct English and a good learner would have been marked wrong.
+    Check that "many" is clearly wrong here ("many apple") and that "an" is the only right answer.
 12. **Arabic style.** The Arabic aims to be simple Modern Standard Arabic. Some phrases may read as
     translated. Please check the interface text in `src/i18n/ar.json` as well as the lessons.
 13. **The writing checker's catch rate** (98.8% on the fixture file) is much higher than it will be on
