@@ -1,42 +1,111 @@
 [
   {
-    "id": "w-g-a2-01", "track": "general", "level": "A2", "lessonId": "g-a2-01",
-    "titleEn": "A place you visited", "titleAr": "مكان زرته",
+    "id": "w-g-a2-01",
+    "track": "general",
+    "level": "A2",
+    "lessonId": "g-a2-01",
+    "titleEn": "A place you visited",
+    "titleAr": "مكان زرته",
     "promptEn": "Write about a place you visited. Use a or an the first time you mention something, and the after that.",
     "promptAr": "اكتب عن مكان زرته. استخدم a أو an عندما تذكر الشيء أول مرة، ثم the بعد ذلك.",
     "wordLimit": 60,
     "modelAnswer": "Last month, I visited a new library in our city. The library has a big reading room and a small cafe. The cafe sells tea and fresh juice. I went there again last week with my brother.",
-    "selfCheckAr": ["هل استخدمت a أو an عند ذكر الشيء أول مرة؟", "هل استخدمت the عندما ذكرت الشيء مرة ثانية؟", "هل استخدمت الماضي مع last month و last week؟"],
+    "selfCheckAr": [
+      "هل استخدمت a أو an عند ذكر الشيء أول مرة؟",
+      "هل استخدمت the عندما ذكرت الشيء مرة ثانية؟",
+      "هل استخدمت الماضي مع last month و last week؟"
+    ],
     "reviewed": false
   },
   {
-    "id": "w-g-a2-02", "track": "general", "level": "A2", "lessonId": "g-a2-02",
-    "titleEn": "Yesterday", "titleAr": "أمس",
+    "id": "w-g-a2-02",
+    "track": "general",
+    "level": "A2",
+    "lessonId": "g-a2-02",
+    "titleEn": "Yesterday",
+    "titleAr": "أمس",
     "promptEn": "Write about what you did yesterday, from the morning to the evening.",
     "promptAr": "اكتب عمّا فعلته أمس، من الصباح إلى المساء.",
     "wordLimit": 60,
     "modelAnswer": "Yesterday I woke up early. I had breakfast and drove to work. In the afternoon, I wrote a report and sent it to my manager. In the evening, I visited my parents and we had dinner together.",
-    "selfCheckAr": ["هل كل الأفعال في الماضي؟", "هل كتبت الأفعال الشاذة بشكل صحيح، مثل woke و had و wrote؟", "هل كتبت الأفعال المنتهية بـ ed بشكل صحيح؟", "هل وضعت فاصلة بعد In the afternoon؟"],
+    "selfCheckAr": [
+      "هل كل الأفعال في الماضي؟",
+      "هل كتبت الأفعال الشاذة بشكل صحيح، مثل woke و had و wrote؟",
+      "هل كتبت الأفعال المنتهية بـ ed بشكل صحيح؟",
+      "هل وضعت فاصلة بعد In the afternoon؟"
+    ],
     "reviewed": false
   },
   {
-    "id": "w-g-a2-03", "track": "general", "level": "A2", "lessonId": "g-a2-03",
-    "titleEn": "A colleague", "titleAr": "زميل في العمل",
+    "id": "w-g-a2-03",
+    "track": "general",
+    "level": "A2",
+    "lessonId": "g-a2-03",
+    "titleEn": "A colleague",
+    "titleAr": "زميل في العمل",
     "promptEn": "Write about a colleague: what they do at work and what they like about the job.",
     "promptAr": "اكتب عن زميل في العمل: ماذا يعمل، وماذا يحب في عمله.",
     "wordLimit": 60,
     "modelAnswer": "My colleague Sami works in the design office. He checks the drawings and talks to the clients. He likes his job because every day is different. His team trusts him.",
-    "selfCheckAr": ["هل تجنبت تكرار الفاعل، مثل My colleague he؟", "هل أضفت s إلى الأفعال بعد he؟", "هل ربطت السبب بكلمة because؟"],
+    "selfCheckAr": [
+      "هل تجنبت تكرار الفاعل، مثل My colleague he؟",
+      "هل أضفت s إلى الأفعال بعد he؟",
+      "هل ربطت السبب بكلمة because؟"
+    ],
     "reviewed": false
   },
   {
-    "id": "w-g-a2-04", "track": "general", "level": "A2", "lessonId": "g-a2-04",
-    "titleEn": "Questions for a new colleague", "titleAr": "أسئلة لزميل جديد",
+    "id": "w-g-a2-04",
+    "track": "general",
+    "level": "A2",
+    "lessonId": "g-a2-04",
+    "titleEn": "Questions for a new colleague",
+    "titleAr": "أسئلة لزميل جديد",
     "promptEn": "Write four questions to ask a new colleague about work and daily life.",
     "promptAr": "اكتب أربعة أسئلة تسألها لزميل جديد عن العمل والحياة اليومية.",
     "wordLimit": 60,
     "modelAnswer": "Where do you live? Do you drive to work? What does your team do? Does your office have a parking area?",
-    "selfCheckAr": ["هل استخدمت do مع you و does مع he و she والاسم المفرد؟", "هل جاء الفعل بعد does دون s؟", "هل أنهيت كل سؤال بعلامة استفهام؟"],
+    "selfCheckAr": [
+      "هل استخدمت do مع you و does مع he و she والاسم المفرد؟",
+      "هل جاء الفعل بعد does دون s؟",
+      "هل أنهيت كل سؤال بعلامة استفهام؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-a2-05",
+    "track": "general",
+    "level": "A2",
+    "lessonId": "g-a2-05",
+    "titleEn": "Things the office needs",
+    "titleAr": "ما يحتاجه المكتب",
+    "promptEn": "Write a short message to a colleague about things the office needs. Use some, much and many.",
+    "promptAr": "اكتب رسالة قصيرة لزميل عن أشياء يحتاجها المكتب. استخدم some و much و many.",
+    "wordLimit": 60,
+    "modelAnswer": "Hello Ali,\nWe need some things for the office. We need new furniture for the meeting room and some paper for the printer. We do not have much coffee, and we need two new chairs.\nThanks,\nHani",
+    "selfCheckAr": [
+      "هل كتبت furniture و equipment و information دون s؟",
+      "هل استخدمت much مع غير المعدود و many مع الجمع؟",
+      "هل الرسالة قصيرة وواضحة؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-a2-06",
+    "track": "general",
+    "level": "A2",
+    "lessonId": "g-a2-06",
+    "titleEn": "A message with difficult words",
+    "titleAr": "رسالة فيها كلمات صعبة",
+    "promptEn": "Write a short message to a colleague. Use these words: receive, problem, necessary, because, tomorrow.",
+    "promptAr": "اكتب رسالة قصيرة لزميل. استخدم هذه الكلمات: receive و problem و necessary و because و tomorrow.",
+    "wordLimit": 60,
+    "modelAnswer": "Did you receive my email? We have a problem with the printer, so it is necessary to call the technician. He can come tomorrow because he is busy today.",
+    "selfCheckAr": [
+      "هل كتبت الكلمات الخمس بإملاء صحيح؟",
+      "هل كتبت problem بحرف p؟",
+      "هل بدأت كل جملة بحرف كبير؟"
+    ],
     "reviewed": false
   }
 ]

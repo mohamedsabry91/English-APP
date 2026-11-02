@@ -1,22 +1,152 @@
 [
   {
-    "id": "w-e-01", "track": "engineers", "level": "B1", "lessonId": "e-01",
-    "titleEn": "Email: asking for drawings", "titleAr": "بريد إلكتروني: طلب مخططات",
+    "id": "w-e-01",
+    "track": "engineers",
+    "level": "B1",
+    "lessonId": "e-01",
+    "titleEn": "Email: asking for drawings",
+    "titleAr": "بريد إلكتروني: طلب مخططات",
     "promptEn": "Write a short email to a colleague. Ask for the updated drawings of the pump station before Thursday, and say why you need them.",
     "promptAr": "اكتب بريدًا إلكترونيًا قصيرًا لزميل. اطلب المخططات المحدّثة لمحطة الضخ قبل يوم الخميس، واذكر سبب حاجتك إليها.",
     "wordLimit": 80,
     "modelAnswer": "Dear Mr. Hassan,\nI am writing to ask about the updated drawings for the pump station. Could you please send them to me before Thursday? We need them for the site meeting on Sunday.\nThank you for your help.\nBest regards,\nOmar",
-    "selfCheckAr": ["هل ذكرت سبب الرسالة في الجملة الأولى؟", "هل الطلب واضح ومهذب، مثل Could you please...؟", "هل ذكرت الموعد والسبب؟", "هل بدأت بتحية وختمت بختام مناسب؟"],
+    "selfCheckAr": [
+      "هل ذكرت سبب الرسالة في الجملة الأولى؟",
+      "هل الطلب واضح ومهذب، مثل Could you please...؟",
+      "هل ذكرت الموعد والسبب؟",
+      "هل بدأت بتحية وختمت بختام مناسب؟"
+    ],
     "reviewed": false
   },
   {
-    "id": "w-e-02", "track": "engineers", "level": "B1", "lessonId": "e-02",
-    "titleEn": "Daily site report", "titleAr": "تقرير موقع يومي",
+    "id": "w-e-02",
+    "track": "engineers",
+    "level": "B1",
+    "lessonId": "e-02",
+    "titleEn": "Daily site report",
+    "titleAr": "تقرير موقع يومي",
     "promptEn": "Write a short daily site report: what the team did today, one problem, and the next step.",
     "promptAr": "اكتب تقرير موقع يوميًا قصيرًا: ماذا أنجز الفريق اليوم، ومشكلة واحدة، والخطوة التالية.",
     "wordLimit": 80,
     "modelAnswer": "Daily site report\nToday the team installed 40 meters of the new water pipe. The excavator stopped for two hours because of a hydraulic leak. The equipment is working again now. Tomorrow we will test the pressure in the new section.",
-    "selfCheckAr": ["هل استخدمت الماضي لما حدث اليوم؟", "هل استخدمت will للخطوة التالية؟", "هل كتبت equipment دون s؟", "هل ذكرت الأرقام والوحدات بوضوح؟"],
+    "selfCheckAr": [
+      "هل استخدمت الماضي لما حدث اليوم؟",
+      "هل استخدمت will للخطوة التالية؟",
+      "هل كتبت equipment دون s؟",
+      "هل ذكرت الأرقام والوحدات بوضوح؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-e-03",
+    "track": "engineers",
+    "level": "B1",
+    "lessonId": "e-03",
+    "titleEn": "Report a fault",
+    "titleAr": "الإبلاغ عن عطل",
+    "promptEn": "Write a short message to your supervisor about a problem on site. Say what the problem is, when it started, and its probable cause.",
+    "promptAr": "اكتب رسالة قصيرة لمشرفك عن مشكلة في الموقع. اذكر المشكلة، ومتى بدأت، وسببها المحتمل.",
+    "wordLimit": 80,
+    "modelAnswer": "Dear Eng. Samir,\nThere is a leak in the main pipe near valve 3. The problem started this morning at about six. It is probably caused by a damaged joint. As a result, the pressure in the network has dropped. We have closed the valve, and we are waiting for your instructions.\nRegards,\nTariq",
+    "selfCheckAr": [
+      "هل ذكرت المشكلة والمكان والوقت؟",
+      "هل استخدمت probably أو may للسبب غير المؤكد؟",
+      "هل استخدمت caused by بشكل صحيح؟",
+      "هل ذكرت ما فعلته حتى الآن؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-e-04",
+    "track": "engineers",
+    "level": "B1",
+    "lessonId": "e-04",
+    "titleEn": "Describe a water tank",
+    "titleAr": "وصف خزان مياه",
+    "promptEn": "Write the main dimensions and the capacity of a water tank. Use numbers and units correctly.",
+    "promptAr": "اكتب الأبعاد الرئيسية لخزان مياه وسعته. استخدم الأرقام والوحدات بشكل صحيح.",
+    "wordLimit": 80,
+    "modelAnswer": "The new water tank is 12 meters long, 8 meters wide and 4 meters high. It can hold about 384,000 liters. The walls are 0.3 meters thick. We need a 10-meter ladder for the inspection.",
+    "selfCheckAr": [
+      "هل استخدمت النقطة للكسور العشرية؟",
+      "هل أضفت s إلى الوحدة عندما يكون العدد أكثر من واحد؟",
+      "هل كتبت الصفة مثل 10-meter بشرطة ودون s؟",
+      "هل الحساب صحيح؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-e-05",
+    "track": "engineers",
+    "level": "B1",
+    "lessonId": "e-05",
+    "titleEn": "A weekly update",
+    "titleAr": "تحديث أسبوعي",
+    "promptEn": "Write a short weekly update for your manager: what is finished, what is happening now, and what comes next.",
+    "promptAr": "اكتب تحديثًا أسبوعيًا قصيرًا لمديرك: ما أُنجز، وما يجري الآن، وما الخطوة التالية.",
+    "wordLimit": 80,
+    "modelAnswer": "Weekly update\nWe have finished 70% of the excavation for the new line. This week, the team is installing the main valves. We are still waiting for the steel delivery. Next week, we will start the concrete work for the pump room.",
+    "selfCheckAr": [
+      "هل استخدمت have finished لما أُنجز؟",
+      "هل استخدمت is أو are مع ing لما يجري الآن؟",
+      "هل استخدمت will لما سيأتي؟",
+      "هل ذكرت أرقامًا أو نسبًا؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-e-06",
+    "track": "engineers",
+    "level": "B2",
+    "lessonId": "e-06",
+    "titleEn": "Explain a specification line",
+    "titleAr": "شرح سطر من مواصفة",
+    "promptEn": "Read this line: \"All pipes shall be pressure tested for 2 hours at 1.5 times the working pressure.\" Explain it in simple English.",
+    "promptAr": "اقرأ هذا السطر: \"All pipes shall be pressure tested for 2 hours at 1.5 times the working pressure.\" واشرحه بإنجليزية بسيطة.",
+    "wordLimit": 100,
+    "modelAnswer": "This line means that the test is required. The team must test every pipe for two hours. The test pressure must be one and a half times the normal working pressure. The pipes cannot be used before they pass this test.",
+    "selfCheckAr": [
+      "هل شرحت أن shall تعني أن الأمر إلزامي؟",
+      "هل ذكرت المدة والضغط بشكل صحيح؟",
+      "هل استخدمت جملًا قصيرة وبسيطة؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-e-07",
+    "track": "engineers",
+    "level": "B1",
+    "lessonId": "e-07",
+    "titleEn": "Meeting summary",
+    "titleAr": "ملخص اجتماع",
+    "promptEn": "Write a short summary of a meeting: the aim, one opinion, and the next steps.",
+    "promptAr": "اكتب ملخصًا قصيرًا لاجتماع: الهدف، ورأيًا واحدًا، والخطوات التالية.",
+    "wordLimit": 80,
+    "modelAnswer": "The aim of the meeting was to agree on the new schedule. The site manager thought that we needed one more week for the excavation. In the end, we agreed to start the concrete work on 15 May. Next steps: Ahmed will update the schedule, and I will inform the client.",
+    "selfCheckAr": [
+      "هل ذكرت هدف الاجتماع؟",
+      "هل نقلت الرأي بالماضي؟",
+      "هل ذكرت من سيفعل ماذا ومتى؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-e-08",
+    "track": "engineers",
+    "level": "B2",
+    "lessonId": "e-08",
+    "titleEn": "An interview answer",
+    "titleAr": "إجابة في مقابلة عمل",
+    "promptEn": "Answer this interview question: \"Tell us about a project you are proud of.\"",
+    "promptAr": "أجب عن سؤال المقابلة هذا: \"Tell us about a project you are proud of.\"",
+    "wordLimit": 100,
+    "modelAnswer": "I am proud of a water network project in a new residential area. I was responsible for the design of the pipe network. During the project, I noticed that the pump size was too small for future demand. I suggested a larger pump, and the client agreed. As a result, the system now works well.",
+    "selfCheckAr": [
+      "هل ذكرت الموقف والمهمة وما فعلته والنتيجة؟",
+      "هل استخدمت الماضي البسيط لما فعلته؟",
+      "هل تكلمت عن دورك أنت؟",
+      "هل تجنبت المبالغة؟"
+    ],
     "reviewed": false
   }
 ]

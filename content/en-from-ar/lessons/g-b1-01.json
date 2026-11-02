@@ -1,0 +1,146 @@
+{
+  "id": "g-b1-01",
+  "track": "general",
+  "level": "B1",
+  "order": 1,
+  "titleEn": "Present perfect with for and since",
+  "titleAr": "المضارع التام مع for و since",
+  "tags": [
+    "TENSE",
+    "PREPOSITION"
+  ],
+  "explanationAr": "نستخدم المضارع التام (have أو has + التصريف الثالث للفعل) لحدث بدأ في الماضي وما زال مستمرًا: I have worked here for five years. نستخدم for مع المدة (for three years, for a long time)، و since مع نقطة البداية (since 2019, since Monday). خطأ شائع عند المتعلمين العرب: since 3 years، لأن «منذ» في العربية تأتي مع المدة ومع نقطة البداية. والصحيح: for 3 years.",
+  "explanationEn": "Use the present perfect (have or has + past participle) for something that started in the past and is still true: I have worked here for five years. Use for with a length of time (for three years) and since with a starting point (since 2019). Arabic \"mundhu\" covers both, so learners often say \"since 3 years\". Say \"for 3 years\".",
+  "comparison": [
+    {
+      "ar": "أعمل هنا منذ ثلاث سنوات.",
+      "en": "I have worked here for three years.",
+      "noteAr": "«منذ» + مدة = for، والفعل في المضارع التام."
+    },
+    {
+      "ar": "أعمل هنا منذ عام 2019.",
+      "en": "I have worked here since 2019.",
+      "noteAr": "«منذ» + نقطة بداية = since."
+    }
+  ],
+  "examples": [
+    {
+      "en": "She has lived in this city since 2015.",
+      "ar": "تسكن في هذه المدينة منذ عام 2015."
+    },
+    {
+      "en": "We have known each other for ten years.",
+      "ar": "نعرف بعضنا منذ عشر سنوات."
+    },
+    {
+      "en": "The pump has worked well since March.",
+      "ar": "تعمل المضخة جيدًا منذ مارس."
+    },
+    {
+      "en": "How long have you been an engineer?",
+      "ar": "منذ متى وأنت مهندس؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b1-01-e1",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "I have worked here ___ six years.",
+      "options": [
+        "since",
+        "for",
+        "from"
+      ],
+      "answer": 1,
+      "explanationAr": "six years مدة، فنستخدم for."
+    },
+    {
+      "id": "g-b1-01-e2",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "She has been in the office ___ 8 a.m.",
+      "options": [
+        "for",
+        "since"
+      ],
+      "answer": 1,
+      "explanationAr": "8 a.m. نقطة بداية، فنستخدم since."
+    },
+    {
+      "id": "g-b1-01-e3",
+      "type": "fix",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "sentence": "We have lived here since five years.",
+      "accepted": [
+        "We have lived here for five years."
+      ],
+      "explanationAr": "five years مدة، فنستخدم for."
+    },
+    {
+      "id": "g-b1-01-e4",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "He ___ (be) a manager since 2020.",
+      "accepted": [
+        "has been"
+      ],
+      "explanationAr": "حدث بدأ في 2020 وما زال مستمرًا: has been."
+    },
+    {
+      "id": "g-b1-01-e5",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "I work here since 2018.",
+      "accepted": [
+        "I have worked here since 2018.",
+        "I've worked here since 2018."
+      ],
+      "explanationAr": "مع since لحدث مستمر نستخدم المضارع التام: have worked."
+    },
+    {
+      "id": "g-b1-01-e6",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "How long ___ you known him?",
+      "options": [
+        "do",
+        "have",
+        "are"
+      ],
+      "answer": 1,
+      "explanationAr": "How long + المضارع التام: How long have you known...?"
+    },
+    {
+      "id": "g-b1-01-e7",
+      "type": "reorder",
+      "tags": [
+        "TENSE"
+      ],
+      "words": [
+        "They",
+        "have",
+        "used",
+        "this",
+        "software",
+        "for",
+        "years."
+      ],
+      "explanationAr": "have used ثم المفعول ثم for years."
+    }
+  ],
+  "writingTaskId": "w-g-b1-01",
+  "reviewed": false
+}

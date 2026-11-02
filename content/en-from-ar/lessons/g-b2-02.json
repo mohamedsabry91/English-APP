@@ -1,0 +1,147 @@
+{
+  "id": "g-b2-02",
+  "track": "general",
+  "level": "B2",
+  "order": 2,
+  "titleEn": "Conditionals: if it rains, if I had",
+  "titleAr": "جمل الشرط: if",
+  "tags": [
+    "TENSE"
+  ],
+  "explanationAr": "الشرط الأول لاحتمال حقيقي في المستقبل: If it rains, we will stop the work. وبعد if نستخدم المضارع، لا will. والشرط الثاني لحالة غير حقيقية أو بعيدة في الحاضر: If I had more time, I would take another course. والشرط الثالث لماضٍ لم يحدث: If we had checked the levels, we would have avoided the problem. الخطأ الشائع: If it will rain.",
+  "explanationEn": "First conditional, for a real possibility: If it rains, we will stop the work. Use the present after if, not will. Second conditional, for an unreal or unlikely present: If I had more time, I would take another course. Third conditional, for a past that did not happen: If we had checked the levels, we would have avoided the problem.",
+  "comparison": [
+    {
+      "ar": "إذا أمطرت، سنوقف العمل.",
+      "en": "If it rains, we will stop the work.",
+      "noteAr": "بعد if نستخدم المضارع rains، لا will rain."
+    },
+    {
+      "ar": "لو كان عندي وقت أكثر، لأخذتُ دورة أخرى.",
+      "en": "If I had more time, I would take another course.",
+      "noteAr": "حالة غير حقيقية: had ثم would."
+    }
+  ],
+  "examples": [
+    {
+      "en": "If the pressure drops, the system will stop the pump.",
+      "ar": "إذا انخفض الضغط، سيوقف النظام المضخة."
+    },
+    {
+      "en": "If I were you, I would ask the supervisor.",
+      "ar": "لو كنتُ مكانك، لسألتُ المشرف."
+    },
+    {
+      "en": "If we had ordered earlier, the steel would have arrived on time.",
+      "ar": "لو طلبنا مبكرًا، لوصل الحديد في موعده."
+    },
+    {
+      "en": "Unless you save the file, you will lose your changes.",
+      "ar": "إذا لم تحفظ الملف، ستفقد تعديلاتك."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b2-02-e1",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "If the test ___, we will start production.",
+      "options": [
+        "will pass",
+        "passes",
+        "passed"
+      ],
+      "answer": 1,
+      "explanationAr": "بعد if في الشرط الأول نستخدم المضارع: passes."
+    },
+    {
+      "id": "g-b2-02-e2",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "If I will see him, I will tell him.",
+      "accepted": [
+        "If I see him, I will tell him.",
+        "If I see him, I'll tell him."
+      ],
+      "explanationAr": "لا نستخدم will بعد if: If I see him."
+    },
+    {
+      "id": "g-b2-02-e3",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "If I ___ (have) a car, I would drive to work.",
+      "accepted": [
+        "had"
+      ],
+      "explanationAr": "حالة غير حقيقية: If I had..., I would..."
+    },
+    {
+      "id": "g-b2-02-e4",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "If we had left earlier, we ___ the traffic.",
+      "options": [
+        "would avoid",
+        "would have avoided",
+        "will avoid"
+      ],
+      "answer": 1,
+      "explanationAr": "ماضٍ لم يحدث: would have avoided."
+    },
+    {
+      "id": "g-b2-02-e5",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "If I would know the answer, I would tell you.",
+      "accepted": [
+        "If I knew the answer, I would tell you."
+      ],
+      "explanationAr": "بعد if نستخدم الماضي knew، لا would know."
+    },
+    {
+      "id": "g-b2-02-e6",
+      "type": "reorder",
+      "tags": [
+        "TENSE"
+      ],
+      "words": [
+        "If",
+        "it",
+        "rains,",
+        "we",
+        "will",
+        "stop",
+        "the",
+        "work."
+      ],
+      "explanationAr": "If + المضارع، ثم will + الفعل."
+    },
+    {
+      "id": "g-b2-02-e7",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Unless you ___ the valve, the water will not flow.",
+      "options": [
+        "open",
+        "will open",
+        "opened"
+      ],
+      "answer": 0,
+      "explanationAr": "بعد unless نستخدم المضارع: open."
+    }
+  ],
+  "writingTaskId": "w-g-b2-02",
+  "reviewed": false
+}

@@ -172,7 +172,7 @@ function ruleOrder(ws: Token[], add: Add) {
     }
     // "I very much like it"
     if (a.lower === 'very' && b.lower === 'much' && c && c.sentence === s.sentence && c.kind === 'word') {
-      add({ from: a, to: b, tag: 'ORDER', rule: 'very-much', explanationAr: 'نضع very much في آخر الجملة: I like it very much.', explanationEn: 'Put "very much" at the end: I like it very much.' });
+      add({ from: a, to: b, tag: 'ORDER', rule: 'very-much', explanationAr: 'الترتيب الأكثر شيوعًا أن نضع very much في آخر الجملة: I like it very much.', explanationEn: 'The usual order puts "very much" at the end: I like it very much.' });
       continue;
     }
     // "I very like"
@@ -418,7 +418,7 @@ function ruleBasics(text: string, tokens: Token[], ws: Token[], add: Add) {
   }
 }
 
-const PRIORITY: TagId[] = ['TENSE', 'PRONOUN', 'UNCOUNTABLE', 'PB', 'SPELLING', 'PREPOSITION', 'ARTICLE', 'ORDER', 'SVA', 'BE', 'CAPITAL', 'PUNCTUATION'];
+const PRIORITY: TagId[] = ['TENSE', 'PRONOUN', 'UNCOUNTABLE', 'PB', 'SPELLING', 'PREPOSITION', 'ARTICLE', 'ORDER', 'SVA', 'BE', 'CAPITAL', 'PUNCTUATION', 'WORD'];
 
 export function check(text: string, level: Level = 'B1'): Finding[] {
   const tokens = tokenize(text);

@@ -19,7 +19,7 @@ export const CURRENT_VERSION = 1;
 export const EXPORT_KIND = 'english-practice-progress';
 
 const TAGS: readonly TagId[] = [
-  'ARTICLE', 'BE', 'ORDER', 'SPELLING', 'PB', 'SVA', 'PREPOSITION', 'TENSE', 'PRONOUN', 'UNCOUNTABLE', 'CAPITAL', 'PUNCTUATION',
+  'ARTICLE', 'BE', 'ORDER', 'SPELLING', 'PB', 'SVA', 'PREPOSITION', 'TENSE', 'PRONOUN', 'UNCOUNTABLE', 'CAPITAL', 'PUNCTUATION', 'WORD',
 ];
 
 export function defaultProgress(): Progress {

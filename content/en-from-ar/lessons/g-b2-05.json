@@ -1,0 +1,147 @@
+{
+  "id": "g-b2-05",
+  "track": "general",
+  "level": "B2",
+  "order": 5,
+  "titleEn": "Indirect questions and reported speech",
+  "titleAr": "الأسئلة غير المباشرة ونقل الكلام",
+  "tags": [
+    "ORDER",
+    "TENSE"
+  ],
+  "explanationAr": "في السؤال غير المباشر لا نقلب ترتيب الفاعل والفعل: Can you tell me where the office is? وليس where is the office. وكذلك: He asked me when the test would start. وعند نقل كلام قيل في الماضي نرجع الزمن خطوة إلى الوراء في الغالب: قال He said, \"I am busy.\" فنكتب: He said that he was busy.",
+  "explanationEn": "In an indirect question, keep the normal order of subject and verb: Can you tell me where the office is? (not where is the office). He asked me when the test would start. When you report past speech, the tense usually moves one step back: He said, \"I am busy.\" becomes He said that he was busy.",
+  "comparison": [
+    {
+      "ar": "هل تعرف أين المكتب؟",
+      "en": "Do you know where the office is?",
+      "noteAr": "بعد where يأتي الفاعل ثم الفعل: the office is."
+    },
+    {
+      "ar": "قال إنه مشغول.",
+      "en": "He said that he was busy.",
+      "noteAr": "نرجع am إلى was."
+    }
+  ],
+  "examples": [
+    {
+      "en": "Do you know where the meeting room is?",
+      "ar": "هل تعرف أين غرفة الاجتماعات؟"
+    },
+    {
+      "en": "She asked if the drawings were ready.",
+      "ar": "سألت هل المخططات جاهزة."
+    },
+    {
+      "en": "He said that the delivery would be late.",
+      "ar": "قال إن التسليم سيتأخر."
+    },
+    {
+      "en": "Could you tell me how much it costs?",
+      "ar": "هل يمكنك أن تخبرني كم يكلّف؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b2-05-e1",
+      "type": "mc",
+      "tags": [
+        "ORDER"
+      ],
+      "prompt": "Can you tell me where ___?",
+      "options": [
+        "is the station",
+        "the station is",
+        "does the station"
+      ],
+      "answer": 1,
+      "explanationAr": "في السؤال غير المباشر: الفاعل ثم الفعل."
+    },
+    {
+      "id": "g-b2-05-e2",
+      "type": "fix",
+      "tags": [
+        "ORDER"
+      ],
+      "sentence": "I don't know what time does the meeting start.",
+      "accepted": [
+        "I don't know what time the meeting starts.",
+        "I do not know what time the meeting starts."
+      ],
+      "explanationAr": "لا نستخدم does في السؤال غير المباشر: what time the meeting starts."
+    },
+    {
+      "id": "g-b2-05-e3",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "He said, \"I am tired.\" He said that he ___ tired.",
+      "accepted": [
+        "was"
+      ],
+      "explanationAr": "عند النقل نرجع am إلى was."
+    },
+    {
+      "id": "g-b2-05-e4",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "Do",
+        "you",
+        "know",
+        "where",
+        "the",
+        "manager",
+        "is?"
+      ],
+      "explanationAr": "where ثم الفاعل the manager ثم is."
+    },
+    {
+      "id": "g-b2-05-e5",
+      "type": "mc",
+      "tags": [
+        "ORDER"
+      ],
+      "prompt": "She asked me ___ I had finished the report.",
+      "options": [
+        "if",
+        "that",
+        "did"
+      ],
+      "answer": 0,
+      "explanationAr": "لسؤال «هل» غير المباشر نستخدم if أو whether."
+    },
+    {
+      "id": "g-b2-05-e6",
+      "type": "fix",
+      "tags": [
+        "ORDER"
+      ],
+      "sentence": "He asked me where was the file.",
+      "accepted": [
+        "He asked me where the file was."
+      ],
+      "explanationAr": "الفاعل the file قبل الفعل was."
+    },
+    {
+      "id": "g-b2-05-e7",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "The supplier said the steel ___ next week.",
+      "options": [
+        "would arrive",
+        "will arrived",
+        "arrives would"
+      ],
+      "answer": 0,
+      "explanationAr": "عند النقل في الماضي: will تصبح would."
+    }
+  ],
+  "writingTaskId": "w-g-b2-05",
+  "reviewed": false
+}

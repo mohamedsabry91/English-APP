@@ -1,0 +1,147 @@
+{
+  "id": "g-b1-03",
+  "track": "general",
+  "level": "B1",
+  "order": 3,
+  "titleEn": "There is and there are",
+  "titleAr": "There is و There are",
+  "tags": [
+    "BE",
+    "ARTICLE"
+  ],
+  "explanationAr": "عندما نقول إن شيئًا موجودًا نستخدم There is مع المفرد وغير المعدود، و There are مع الجمع: There is a problem. There is some water. There are two problems. في العربية نقول «توجد مشكلة» أو «هناك مشكلة»، وقد ينسى المتعلم is فيكتب There a problem. ولا نستخدم has بمعنى «يوجد»: لا نقول In the room has a table، بل There is a table in the room.",
+  "explanationEn": "To say that something exists, use There is with singular and uncountable nouns and There are with plurals: There is a problem. There is some water. There are two problems. Do not leave out is or are. Do not use \"has\" to mean \"there is\": say There is a table in the room, not In the room has a table.",
+  "comparison": [
+    {
+      "ar": "توجد مشكلة في المضخة.",
+      "en": "There is a problem with the pump.",
+      "noteAr": "There is + مفرد."
+    },
+    {
+      "ar": "في الغرفة طاولتان.",
+      "en": "There are two tables in the room.",
+      "noteAr": "There are + جمع، والمكان في آخر الجملة."
+    }
+  ],
+  "examples": [
+    {
+      "en": "There is a meeting at ten.",
+      "ar": "يوجد اجتماع في الساعة العاشرة."
+    },
+    {
+      "en": "There are three engineers on site.",
+      "ar": "يوجد ثلاثة مهندسين في الموقع."
+    },
+    {
+      "en": "Is there a parking area near the office?",
+      "ar": "هل يوجد موقف سيارات قرب المكتب؟"
+    },
+    {
+      "en": "There isn't any water in the tank.",
+      "ar": "لا يوجد ماء في الخزان."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b1-03-e1",
+      "type": "mc",
+      "tags": [
+        "BE"
+      ],
+      "prompt": "___ two cracks in the wall.",
+      "options": [
+        "There is",
+        "There are",
+        "It has"
+      ],
+      "answer": 1,
+      "explanationAr": "two cracks جمع، فنستخدم There are."
+    },
+    {
+      "id": "g-b1-03-e2",
+      "type": "fix",
+      "tags": [
+        "BE"
+      ],
+      "sentence": "There a mistake in the report.",
+      "accepted": [
+        "There is a mistake in the report."
+      ],
+      "explanationAr": "لا نحذف is: There is a mistake."
+    },
+    {
+      "id": "g-b1-03-e3",
+      "type": "fill",
+      "tags": [
+        "BE"
+      ],
+      "prompt": "___ there a bank near here?",
+      "accepted": [
+        "Is"
+      ],
+      "explanationAr": "في السؤال نقدّم Is على there: Is there...?"
+    },
+    {
+      "id": "g-b1-03-e4",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "There is ___ old bridge near the river.",
+      "options": [
+        "a",
+        "an"
+      ],
+      "answer": 1,
+      "explanationAr": "old تبدأ بصوت علّة، فنستخدم an."
+    },
+    {
+      "id": "g-b1-03-e5",
+      "type": "fix",
+      "tags": [
+        "BE"
+      ],
+      "sentence": "In our office has a big printer.",
+      "accepted": [
+        "There is a big printer in our office.",
+        "Our office has a big printer."
+      ],
+      "explanationAr": "لا نستخدم has بمعنى «يوجد». نقول There is a big printer in our office."
+    },
+    {
+      "id": "g-b1-03-e6",
+      "type": "mc",
+      "tags": [
+        "BE",
+        "UNCOUNTABLE"
+      ],
+      "prompt": "There ___ some information on the website.",
+      "options": [
+        "is",
+        "are"
+      ],
+      "answer": 0,
+      "explanationAr": "information غير معدود، فنستخدم is."
+    },
+    {
+      "id": "g-b1-03-e7",
+      "type": "reorder",
+      "tags": [
+        "BE",
+        "ORDER"
+      ],
+      "words": [
+        "There",
+        "are",
+        "five",
+        "valves",
+        "on",
+        "this",
+        "line."
+      ],
+      "explanationAr": "There are ثم العدد والاسم ثم المكان."
+    }
+  ],
+  "writingTaskId": "w-g-b1-03",
+  "reviewed": false
+}

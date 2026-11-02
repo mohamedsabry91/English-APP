@@ -1,0 +1,149 @@
+{
+  "id": "e-03",
+  "track": "engineers",
+  "level": "B1",
+  "order": 3,
+  "titleEn": "Describing a problem and its cause",
+  "titleAr": "وصف مشكلة وسببها",
+  "tags": [
+    "TENSE",
+    "PREPOSITION",
+    "ARTICLE"
+  ],
+  "explanationAr": "عند وصف مشكلة فنية، اذكر ثلاثة أشياء: ما المشكلة، ومتى بدأت، وما سببها المحتمل. ومن العبارات المفيدة: There is a leak in... و The problem started on... و This is probably caused by... و As a result, ... واستخدم probably أو may عندما لا تكون متأكدًا، ولا تكتب السبب كأنه مؤكد قبل الفحص.",
+  "explanationEn": "When you describe a technical problem, say three things: what the problem is, when it started, and its probable cause. Useful phrases: There is a leak in... The problem started on... This is probably caused by... As a result, ... Use probably or may when you are not sure. Do not write a cause as a fact before it is checked.",
+  "comparison": [
+    {
+      "ar": "يوجد تسرّب في الأنبوب الرئيسي.",
+      "en": "There is a leak in the main pipe.",
+      "noteAr": "There is + a + المشكلة + المكان."
+    },
+    {
+      "ar": "السبب على الأرجح ضغط مرتفع.",
+      "en": "This is probably caused by high pressure.",
+      "noteAr": "caused by، و probably لعدم التأكد."
+    }
+  ],
+  "examples": [
+    {
+      "en": "There is a leak in the main pipe near valve 3.",
+      "ar": "يوجد تسرّب في الأنبوب الرئيسي قرب الصمام رقم 3."
+    },
+    {
+      "en": "The problem started on Monday morning.",
+      "ar": "بدأت المشكلة صباح يوم الاثنين."
+    },
+    {
+      "en": "This is probably caused by high pressure.",
+      "ar": "السبب على الأرجح ضغط مرتفع."
+    },
+    {
+      "en": "As a result, the pump stopped twice.",
+      "ar": "ونتيجة لذلك، توقفت المضخة مرتين."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "e-03-e1",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "The crack is probably caused ___ settlement of the soil.",
+      "options": [
+        "of",
+        "by",
+        "from"
+      ],
+      "answer": 1,
+      "explanationAr": "نقول caused by."
+    },
+    {
+      "id": "e-03-e2",
+      "type": "fix",
+      "tags": [
+        "BE",
+        "TENSE"
+      ],
+      "sentence": "The leak caused by an old joint.",
+      "accepted": [
+        "The leak was caused by an old joint.",
+        "The leak is caused by an old joint."
+      ],
+      "explanationAr": "نحتاج was أو is قبل caused: The leak was caused by..."
+    },
+    {
+      "id": "e-03-e3",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "The problem ___ (start) on Monday morning.",
+      "accepted": [
+        "started"
+      ],
+      "explanationAr": "حدث في الماضي: started."
+    },
+    {
+      "id": "e-03-e4",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "There is ___ leak in the main pipe.",
+      "options": [
+        "a",
+        "an",
+        "the"
+      ],
+      "answer": 0,
+      "explanationAr": "نذكر التسرّب أول مرة، و leak تبدأ بصوت ساكن: a leak."
+    },
+    {
+      "id": "e-03-e5",
+      "type": "reorder",
+      "tags": [
+        "TENSE"
+      ],
+      "words": [
+        "The",
+        "problem",
+        "started",
+        "on",
+        "Monday",
+        "morning."
+      ],
+      "explanationAr": "الفاعل ثم الفعل الماضي ثم الوقت."
+    },
+    {
+      "id": "e-03-e6",
+      "type": "fix",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "sentence": "There is a damage to the wall near the door.",
+      "accepted": [
+        "There is damage to the wall near the door.",
+        "There is some damage to the wall near the door."
+      ],
+      "explanationAr": "damage بمعنى «ضرر» غير معدود، فلا نضع قبله a."
+    },
+    {
+      "id": "e-03-e7",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "The pump stopped ___ the power failed.",
+      "options": [
+        "because",
+        "because of",
+        "due"
+      ],
+      "answer": 0,
+      "explanationAr": "the power failed جملة، فنستخدم because."
+    }
+  ],
+  "writingTaskId": "w-e-03",
+  "reviewed": false
+}

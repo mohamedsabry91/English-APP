@@ -1,0 +1,145 @@
+{
+  "id": "g-b1-05",
+  "track": "general",
+  "level": "B1",
+  "order": 5,
+  "titleEn": "The future: will and going to",
+  "titleAr": "المستقبل: will و going to",
+  "tags": [
+    "TENSE"
+  ],
+  "explanationAr": "نستخدم going to لخطة قررناها من قبل: We are going to replace the pipe next week. ونستخدم will لقرار نتخذه الآن، أو لوعد، أو لتوقّع: I will call you later. The test will take two hours. وبعد will يأتي الفعل في صورته الأساسية، دون to ودون s: She will send it، وليس will sends ولا will to send.",
+  "explanationEn": "Use going to for a plan you made before: We are going to replace the pipe next week. Use will for a decision you make now, a promise, or a prediction: I will call you later. The test will take two hours. After will, use the base verb, with no to and no -s: She will send it.",
+  "comparison": [
+    {
+      "ar": "سأتصل بك لاحقًا.",
+      "en": "I will call you later.",
+      "noteAr": "وعد أو قرار الآن: will."
+    },
+    {
+      "ar": "سنستبدل الأنبوب الأسبوع القادم.",
+      "en": "We are going to replace the pipe next week.",
+      "noteAr": "خطة سابقة: going to."
+    }
+  ],
+  "examples": [
+    {
+      "en": "I will send you the file after lunch.",
+      "ar": "سأرسل لك الملف بعد الغداء."
+    },
+    {
+      "en": "We are going to visit the site on Sunday.",
+      "ar": "سنزور الموقع يوم الأحد."
+    },
+    {
+      "en": "The new road will reduce traffic.",
+      "ar": "سيقلّل الطريق الجديد الازدحام."
+    },
+    {
+      "en": "Are you going to attend the meeting?",
+      "ar": "هل ستحضر الاجتماع؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b1-05-e1",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Don't worry, I ___ help you with the report.",
+      "options": [
+        "will",
+        "am going",
+        "going to"
+      ],
+      "answer": 0,
+      "explanationAr": "وعد أو قرار الآن: will help."
+    },
+    {
+      "id": "g-b1-05-e2",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "She will sends the invoice tomorrow.",
+      "accepted": [
+        "She will send the invoice tomorrow."
+      ],
+      "explanationAr": "بعد will يأتي الفعل دون s: send."
+    },
+    {
+      "id": "g-b1-05-e3",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "We are going ___ start the new project in May.",
+      "accepted": [
+        "to"
+      ],
+      "explanationAr": "نقول going to + الفعل."
+    },
+    {
+      "id": "g-b1-05-e4",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Look at those dark clouds. It ___ rain.",
+      "options": [
+        "is going to",
+        "going to",
+        "will to"
+      ],
+      "answer": 0,
+      "explanationAr": "نرى دليلًا الآن، فنستخدم is going to."
+    },
+    {
+      "id": "g-b1-05-e5",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "I will to finish the drawings tonight.",
+      "accepted": [
+        "I will finish the drawings tonight."
+      ],
+      "explanationAr": "لا نضع to بعد will."
+    },
+    {
+      "id": "g-b1-05-e6",
+      "type": "reorder",
+      "tags": [
+        "TENSE"
+      ],
+      "words": [
+        "They",
+        "are",
+        "going",
+        "to",
+        "test",
+        "the",
+        "pump."
+      ],
+      "explanationAr": "are going to ثم الفعل test."
+    },
+    {
+      "id": "g-b1-05-e7",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "The meeting ___ about one hour.",
+      "options": [
+        "will take",
+        "will takes",
+        "is take"
+      ],
+      "answer": 0,
+      "explanationAr": "will + الفعل الأساسي: will take."
+    }
+  ],
+  "writingTaskId": "w-g-b1-05",
+  "reviewed": false
+}

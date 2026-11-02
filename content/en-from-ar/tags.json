@@ -1,14 +1,67 @@
 [
-  { "id": "ARTICLE", "nameEn": "Articles (a, an, the)", "nameAr": "أدوات التعريف والتنكير (a, an, the)" },
-  { "id": "BE", "nameEn": "Missing am, is, are", "nameAr": "نسيان am و is و are" },
-  { "id": "ORDER", "nameEn": "Word order", "nameAr": "ترتيب الكلمات" },
-  { "id": "SPELLING", "nameEn": "Spelling", "nameAr": "الإملاء" },
-  { "id": "PB", "nameEn": "The letters p and b", "nameAr": "الحرفان p و b" },
-  { "id": "SVA", "nameEn": "Subject and verb (he goes)", "nameAr": "توافق الفاعل والفعل (he goes)" },
-  { "id": "PREPOSITION", "nameEn": "Prepositions", "nameAr": "حروف الجر" },
-  { "id": "TENSE", "nameEn": "Verb tenses", "nameAr": "أزمنة الأفعال" },
-  { "id": "PRONOUN", "nameEn": "Extra pronoun (my brother he...)", "nameAr": "ضمير زائد (my brother he...)" },
-  { "id": "UNCOUNTABLE", "nameEn": "Uncountable nouns (information)", "nameAr": "الأسماء غير المعدودة (information)" },
-  { "id": "CAPITAL", "nameEn": "Capital letters", "nameAr": "الحروف الكبيرة" },
-  { "id": "PUNCTUATION", "nameEn": "Punctuation", "nameAr": "علامات الترقيم" }
+  {
+    "id": "ARTICLE",
+    "nameEn": "Articles (a, an, the)",
+    "nameAr": "أدوات التعريف والتنكير (a, an, the)"
+  },
+  {
+    "id": "BE",
+    "nameEn": "Missing am, is, are",
+    "nameAr": "نسيان am و is و are"
+  },
+  {
+    "id": "ORDER",
+    "nameEn": "Word order",
+    "nameAr": "ترتيب الكلمات"
+  },
+  {
+    "id": "SPELLING",
+    "nameEn": "Spelling",
+    "nameAr": "الإملاء"
+  },
+  {
+    "id": "PB",
+    "nameEn": "The letters p and b",
+    "nameAr": "الحرفان p و b"
+  },
+  {
+    "id": "SVA",
+    "nameEn": "Subject and verb (he goes)",
+    "nameAr": "توافق الفاعل والفعل (he goes)"
+  },
+  {
+    "id": "PREPOSITION",
+    "nameEn": "Prepositions",
+    "nameAr": "حروف الجر"
+  },
+  {
+    "id": "TENSE",
+    "nameEn": "Verb tenses",
+    "nameAr": "أزمنة الأفعال"
+  },
+  {
+    "id": "PRONOUN",
+    "nameEn": "Extra pronoun (my brother he...)",
+    "nameAr": "ضمير زائد (my brother he...)"
+  },
+  {
+    "id": "UNCOUNTABLE",
+    "nameEn": "Uncountable nouns (information)",
+    "nameAr": "الأسماء غير المعدودة (information)"
+  },
+  {
+    "id": "CAPITAL",
+    "nameEn": "Capital letters",
+    "nameAr": "الحروف الكبيرة"
+  },
+  {
+    "id": "PUNCTUATION",
+    "nameEn": "Punctuation",
+    "nameAr": "علامات الترقيم"
+  },
+  {
+    "id": "WORD",
+    "nameEn": "Word choice",
+    "nameAr": "اختيار الكلمة المناسبة"
+  }
 ]

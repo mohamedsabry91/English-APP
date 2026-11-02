@@ -1,0 +1,110 @@
+[
+  {
+    "id": "w-g-b1-01",
+    "track": "general",
+    "level": "B1",
+    "lessonId": "g-b1-01",
+    "titleEn": "Your experience",
+    "titleAr": "خبرتك",
+    "promptEn": "Write about your job or your studies. How long have you done it? Use for and since.",
+    "promptAr": "اكتب عن عملك أو دراستك. منذ متى تقوم به؟ استخدم for و since.",
+    "wordLimit": 80,
+    "modelAnswer": "I am a civil engineer. I have worked for a water company since 2019, so I have been there for more than five years. I have learned a lot about pipe networks. I have also lived in the same city since I was a child.",
+    "selfCheckAr": [
+      "هل استخدمت for مع المدة و since مع نقطة البداية؟",
+      "هل استخدمت have أو has مع التصريف الثالث؟",
+      "هل تجنبت since 3 years؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b1-02",
+    "track": "general",
+    "level": "B1",
+    "lessonId": "g-b1-02",
+    "titleEn": "A message after a meeting",
+    "titleAr": "رسالة بعد اجتماع",
+    "promptEn": "Write a short message after a meeting. Say what you discussed, and ask a colleague to explain one point to you.",
+    "promptAr": "اكتب رسالة قصيرة بعد اجتماع. اذكر ما ناقشتموه، واطلب من زميل أن يشرح لك نقطة واحدة.",
+    "wordLimit": 80,
+    "modelAnswer": "Dear team,\nThank you for today's meeting. We discussed the new schedule and the budget for the second phase. Sara, could you please explain the new cost table to me? I did not understand the last column.\nBest regards,\nYousef",
+    "selfCheckAr": [
+      "هل كتبت discussed دون about؟",
+      "هل كتبت explain ... to me، وليس explain me؟",
+      "هل الطلب مهذب وواضح؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b1-03",
+    "track": "general",
+    "level": "B1",
+    "lessonId": "g-b1-03",
+    "titleEn": "Your workplace",
+    "titleAr": "مكان عملك",
+    "promptEn": "Describe your workplace. Use there is and there are.",
+    "promptAr": "صف مكان عملك. استخدم there is و there are.",
+    "wordLimit": 80,
+    "modelAnswer": "Our office is on the third floor. There is a large meeting room near the entrance. There are ten desks in the main area, and there is a small kitchen at the end of the corridor. There are no windows in the store room.",
+    "selfCheckAr": [
+      "هل استخدمت There is مع المفرد و There are مع الجمع؟",
+      "هل تجنبت حذف is و are؟",
+      "هل ذكرت أين يوجد كل شيء؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b1-04",
+    "track": "general",
+    "level": "B1",
+    "lessonId": "g-b1-04",
+    "titleEn": "Your work habits",
+    "titleAr": "عاداتك في العمل",
+    "promptEn": "Write about your work habits. Use always, usually, often and never in the right place.",
+    "promptAr": "اكتب عن عاداتك في العمل. ضع always و usually و often و never في المكان الصحيح.",
+    "wordLimit": 80,
+    "modelAnswer": "I usually arrive at the office at half past seven. I always check my email first. I often visit the site on Tuesdays. I never send a report before my manager reviews it. I enjoy my work very much.",
+    "selfCheckAr": [
+      "هل وضعت ظروف التكرار قبل الفعل الأساسي؟",
+      "هل وضعت very much في آخر الجملة؟",
+      "هل جاء المفعول بعد الفعل مباشرة؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b1-05",
+    "track": "general",
+    "level": "B1",
+    "lessonId": "g-b1-05",
+    "titleEn": "Plans for next week",
+    "titleAr": "خطط الأسبوع القادم",
+    "promptEn": "Write about your plans for next week. Use going to and will.",
+    "promptAr": "اكتب عن خططك للأسبوع القادم. استخدم going to و will.",
+    "wordLimit": 80,
+    "modelAnswer": "Next week, I am going to visit the new pump station. On Monday, we are going to test the main valves. I think the test will take two days. After that, I will write a short report for the client.",
+    "selfCheckAr": [
+      "هل استخدمت going to للخطط المقررة؟",
+      "هل جاء الفعل بعد will دون to ودون s؟",
+      "هل ذكرت الأيام بوضوح؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b1-06",
+    "track": "general",
+    "level": "B1",
+    "lessonId": "g-b1-06",
+    "titleEn": "A building or bridge in your city",
+    "titleAr": "مبنى أو جسر في مدينتك",
+    "promptEn": "Describe a building or a bridge in your city. Use the passive, for example was built and is used.",
+    "promptAr": "صف مبنى أو جسرًا في مدينتك. استخدم المبني للمجهول، مثل was built و is used.",
+    "wordLimit": 80,
+    "modelAnswer": "The main bridge in our city was built in 1998. It was designed by a local company. Today it is used by thousands of cars every day. It was repaired in 2020, and new lights were installed.",
+    "selfCheckAr": [
+      "هل وضعت was أو is قبل التصريف الثالث؟",
+      "هل كتبت التصريف الثالث بشكل صحيح؟",
+      "هل ذكرت تواريخ أو أرقامًا؟"
+    ],
+    "reviewed": false
+  }
+]

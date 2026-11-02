@@ -19,7 +19,8 @@ export type TagId =
   | 'PRONOUN'
   | 'UNCOUNTABLE'
   | 'CAPITAL'
-  | 'PUNCTUATION';
+  | 'PUNCTUATION'
+  | 'WORD';
 
 /** A date in the learner's local calendar, as YYYY-MM-DD. */
 export type LocalDate = string;

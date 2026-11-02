@@ -1,0 +1,110 @@
+[
+  {
+    "id": "w-g-b2-01",
+    "track": "general",
+    "level": "B2",
+    "lessonId": "g-b2-01",
+    "titleEn": "A problem on a past project",
+    "titleAr": "مشكلة في مشروع سابق",
+    "promptEn": "Describe a problem on a past project. Explain what had happened before you noticed it.",
+    "promptAr": "صف مشكلة في مشروع سابق. اشرح ما كان قد حدث قبل أن تلاحظها.",
+    "wordLimit": 100,
+    "modelAnswer": "Last year, we noticed a crack in a water tank. We found out that the contractor had removed the supports too early. The concrete had not reached its full strength. We repaired the crack, and since then we have checked the curing time on every project.",
+    "selfCheckAr": [
+      "هل استخدمت had + التصريف الثالث للحدث الأقدم؟",
+      "هل استخدمت الماضي البسيط للأحداث الرئيسية؟",
+      "هل ذكرت ما تعلمته من المشكلة؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b2-02",
+    "track": "general",
+    "level": "B2",
+    "lessonId": "g-b2-02",
+    "titleEn": "If you were the manager",
+    "titleAr": "لو كنت المدير",
+    "promptEn": "Write what you would do if you were the manager of your team for one month.",
+    "promptAr": "اكتب ماذا ستفعل لو كنت مدير فريقك لمدة شهر.",
+    "wordLimit": 100,
+    "modelAnswer": "If I were the manager of my team for one month, I would hold a short meeting every morning. I would ask each engineer about their problems. If we had more time, we would also train new staff on the design software. I think these changes would improve our work.",
+    "selfCheckAr": [
+      "هل استخدمت الماضي بعد if و would في الجملة الأخرى؟",
+      "هل تجنبت would بعد if؟",
+      "هل أعطيت أسبابًا واضحة؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b2-03",
+    "track": "general",
+    "level": "B2",
+    "lessonId": "g-b2-03",
+    "titleEn": "A person you respect at work",
+    "titleAr": "شخص تحترمه في العمل",
+    "promptEn": "Describe a colleague or a teacher you respect. Use who, which and that.",
+    "promptAr": "صف زميلًا أو معلّمًا تحترمه. استخدم who و which و that.",
+    "wordLimit": 100,
+    "modelAnswer": "The person who taught me the most is my first supervisor. He gave me tasks that were difficult but useful. He always explained the reasons for his decisions, which helped me to understand the work. The advice that he gave me is still useful today.",
+    "selfCheckAr": [
+      "هل استخدمت who للأشخاص و which أو that للأشياء؟",
+      "هل تجنبت تكرار الضمير بعد who و that؟",
+      "هل وضعت فاصلة قبل which عندما تعلّق على الجملة كلها؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b2-04",
+    "track": "general",
+    "level": "B2",
+    "lessonId": "g-b2-04",
+    "titleEn": "Safety on site",
+    "titleAr": "الأمان في الموقع",
+    "promptEn": "Write a short paragraph about safety on construction sites.",
+    "promptAr": "اكتب فقرة قصيرة عن الأمان في مواقع البناء.",
+    "wordLimit": 100,
+    "modelAnswer": "Safety is the most important part of any project. Workers need good training and the right equipment. On our site, the safety officer checks helmets and boots every morning. The rules are strict, but they protect everyone.",
+    "selfCheckAr": [
+      "هل استخدمت الاسم دون the عند الكلام العام، مثل Safety؟",
+      "هل استخدمت the مع الأشياء المحددة؟",
+      "هل كتبت equipment دون s؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b2-05",
+    "track": "general",
+    "level": "B2",
+    "lessonId": "g-b2-05",
+    "titleEn": "Report a phone call",
+    "titleAr": "نقل مكالمة هاتفية",
+    "promptEn": "Write a short message to your manager. Report what a supplier told you on the phone.",
+    "promptAr": "اكتب رسالة قصيرة لمديرك. انقل ما قاله لك مورّد في الهاتف.",
+    "wordLimit": 100,
+    "modelAnswer": "Dear Mr. Fares,\nThe supplier called me this morning. He said that the steel would arrive next Tuesday. He asked whether we could receive the delivery at the north gate. I told him that the gate opens at seven.\nBest regards,\nNabil",
+    "selfCheckAr": [
+      "هل أرجعت الزمن خطوة عند نقل الكلام، مثل will إلى would؟",
+      "هل رتّبت السؤال غير المباشر: whether we could؟",
+      "هل الرسالة مختصرة؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-g-b2-06",
+    "track": "general",
+    "level": "B2",
+    "lessonId": "g-b2-06",
+    "titleEn": "Working from home",
+    "titleAr": "العمل من البيت",
+    "promptEn": "Write about one advantage and one disadvantage of working from home. Use although, however and because.",
+    "promptAr": "اكتب عن ميزة واحدة وعيب واحد للعمل من البيت. استخدم although و however و because.",
+    "wordLimit": 100,
+    "modelAnswer": "Working from home has clear advantages. For example, I save time because I do not drive to the office. However, it is harder to talk to the team. Although online meetings are useful, they cannot replace a visit to the site.",
+    "selfCheckAr": [
+      "هل تجنبت استخدام although و but معًا؟",
+      "هل وضعت فاصلة بعد However؟",
+      "هل استخدمت because مع جملة و because of مع اسم؟"
+    ],
+    "reviewed": false
+  }
+]

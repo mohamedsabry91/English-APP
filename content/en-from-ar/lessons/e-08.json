@@ -1,0 +1,147 @@
+{
+  "id": "e-08",
+  "track": "engineers",
+  "level": "B2",
+  "order": 8,
+  "titleEn": "A job interview answer",
+  "titleAr": "الإجابة في مقابلة عمل",
+  "tags": [
+    "TENSE",
+    "WORD"
+  ],
+  "explanationAr": "عند الإجابة في مقابلة عمل، رتّب كلامك بطريقة واضحة: الموقف، ثم المهمة، ثم ما فعلتَه، ثم النتيجة. استخدم الماضي البسيط لما فعلتَه في مشروع انتهى (I designed...)، والمضارع التام لخبرتك حتى الآن (I have worked on three water projects). اذكر أرقامًا صحيحة دون مبالغة، وتكلّم عن دورك أنت: I checked... I suggested...",
+  "explanationEn": "In a job interview, give a clear structure: the situation, the task, what you did, and the result. Use the past simple for what you did in a finished project (I designed...) and the present perfect for your experience up to now (I have worked on three water projects). Give true numbers without exaggeration, and talk about your own role: I checked... I suggested...",
+  "comparison": [
+    {
+      "ar": "أعمل مهندس موقع منذ أربع سنوات.",
+      "en": "I have worked as a site engineer for four years.",
+      "noteAr": "خبرة مستمرة حتى الآن: have worked + for."
+    },
+    {
+      "ar": "تخرّجتُ عام 2019.",
+      "en": "I graduated in 2019.",
+      "noteAr": "وقت محدد في الماضي: الماضي البسيط، لا have graduated."
+    }
+  ],
+  "examples": [
+    {
+      "en": "I have worked as a site engineer for four years.",
+      "ar": "أعمل مهندس موقع منذ أربع سنوات."
+    },
+    {
+      "en": "In my last project, I was responsible for the pipe network.",
+      "ar": "في مشروعي الأخير، كنت مسؤولًا عن شبكة الأنابيب."
+    },
+    {
+      "en": "I suggested a new schedule, and we saved two weeks.",
+      "ar": "اقترحتُ جدولًا جديدًا، فوفّرنا أسبوعين."
+    },
+    {
+      "en": "I am looking for a role where I can learn and grow.",
+      "ar": "أبحث عن وظيفة أتعلم فيها وأتطور."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "e-08-e1",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "I ___ as a site engineer for four years.",
+      "options": [
+        "work",
+        "have worked",
+        "am working since"
+      ],
+      "answer": 1,
+      "explanationAr": "خبرة مستمرة حتى الآن مع for: have worked."
+    },
+    {
+      "id": "e-08-e2",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "In my last project, I am responsible for the pumps.",
+      "accepted": [
+        "In my last project, I was responsible for the pumps."
+      ],
+      "explanationAr": "المشروع انتهى، فنستخدم was."
+    },
+    {
+      "id": "e-08-e3",
+      "type": "fill",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "I was responsible ___ the quality checks.",
+      "accepted": [
+        "for"
+      ],
+      "explanationAr": "نقول responsible for."
+    },
+    {
+      "id": "e-08-e4",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "Which sentence talks about the result?",
+      "options": [
+        "As a result, we finished two weeks early.",
+        "I joined the company in 2021.",
+        "My task was to check the drawings."
+      ],
+      "answer": 0,
+      "explanationAr": "النتيجة تبدأ غالبًا بـ As a result."
+    },
+    {
+      "id": "e-08-e5",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "I",
+        "suggested",
+        "a",
+        "new",
+        "schedule",
+        "for",
+        "the",
+        "team."
+      ],
+      "explanationAr": "الفاعل ثم الفعل ثم المفعول ثم for the team."
+    },
+    {
+      "id": "e-08-e6",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "I have graduated in 2019.",
+      "accepted": [
+        "I graduated in 2019."
+      ],
+      "explanationAr": "مع سنة محددة في الماضي نستخدم الماضي البسيط: graduated."
+    },
+    {
+      "id": "e-08-e7",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "Choose the best answer to \"Why do you want this job?\"",
+      "options": [
+        "Because I need money.",
+        "I want to use my experience in water projects and learn new skills.",
+        "I don't know."
+      ],
+      "answer": 1,
+      "explanationAr": "الإجابة الجيدة تربط خبرتك بالوظيفة وبما تريد أن تتعلمه."
+    }
+  ],
+  "writingTaskId": "w-e-08",
+  "reviewed": false
+}

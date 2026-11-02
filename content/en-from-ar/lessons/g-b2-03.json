@@ -1,0 +1,150 @@
+{
+  "id": "g-b2-03",
+  "track": "general",
+  "level": "B2",
+  "order": 3,
+  "titleEn": "Relative clauses: who, which, that",
+  "titleAr": "الجمل الموصولة: who و which و that",
+  "tags": [
+    "PRONOUN"
+  ],
+  "explanationAr": "نستخدم who للأشخاص، و which للأشياء، و that للأشخاص والأشياء في الجمل غير المفصولة بفواصل: The engineer who designed the bridge... The report which (أو that) you sent... في العربية نقول «التقرير الذي أرسلتَه» مع الضمير «ـه»، أما في الإنجليزية فلا نكرر الضمير: the report that you sent، وليس that you sent it. وإذا كانت الجملة الموصولة بين فاصلتين، فلا نستخدم that: The pipe, which is old, needs repair.",
+  "explanationEn": "Use who for people, which for things, and that for both when there are no commas: The engineer who designed the bridge... The report which (or that) you sent... Do not repeat the object pronoun: the report that you sent, not that you sent it. If the clause is between commas, do not use that: The pipe, which is old, needs repair.",
+  "comparison": [
+    {
+      "ar": "التقرير الذي أرسلتَه",
+      "en": "the report that you sent",
+      "noteAr": "لا نضيف it في آخر الجملة الإنجليزية."
+    },
+    {
+      "ar": "المقاول الذي بنى الخزان",
+      "en": "the contractor who built the tank",
+      "noteAr": "who للأشخاص."
+    }
+  ],
+  "examples": [
+    {
+      "en": "The contractor who built the tank is very experienced.",
+      "ar": "المقاول الذي بنى الخزان خبير جدًا."
+    },
+    {
+      "en": "This is the software that we use for design.",
+      "ar": "هذا هو البرنامج الذي نستخدمه في التصميم."
+    },
+    {
+      "en": "The site, which is near the river, floods in winter.",
+      "ar": "الموقع، وهو قرب النهر، تغمره المياه في الشتاء."
+    },
+    {
+      "en": "The client whose project we finished sent a thank-you letter.",
+      "ar": "أرسل العميل الذي أنهينا مشروعه رسالة شكر."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b2-03-e1",
+      "type": "mc",
+      "tags": [
+        "PRONOUN"
+      ],
+      "prompt": "The engineer ___ manages our office is very organized.",
+      "options": [
+        "which",
+        "who",
+        "whose"
+      ],
+      "answer": 1,
+      "explanationAr": "نستخدم who للأشخاص."
+    },
+    {
+      "id": "g-b2-03-e2",
+      "type": "fix",
+      "tags": [
+        "PRONOUN"
+      ],
+      "sentence": "The pump which we bought it last year is broken.",
+      "accepted": [
+        "The pump which we bought last year is broken.",
+        "The pump that we bought last year is broken.",
+        "The pump we bought last year is broken."
+      ],
+      "explanationAr": "لا نكرر الضمير it بعد which."
+    },
+    {
+      "id": "g-b2-03-e3",
+      "type": "fill",
+      "tags": [
+        "PRONOUN"
+      ],
+      "prompt": "The drawings ___ you sent are very clear.",
+      "accepted": [
+        "that",
+        "which"
+      ],
+      "explanationAr": "للأشياء نستخدم that أو which."
+    },
+    {
+      "id": "g-b2-03-e4",
+      "type": "mc",
+      "tags": [
+        "PRONOUN"
+      ],
+      "prompt": "Our office, ___ is on the fifth floor, has a nice view.",
+      "options": [
+        "that",
+        "which",
+        "who"
+      ],
+      "answer": 1,
+      "explanationAr": "بين فاصلتين نستخدم which، لا that."
+    },
+    {
+      "id": "g-b2-03-e5",
+      "type": "fix",
+      "tags": [
+        "PRONOUN"
+      ],
+      "sentence": "The engineer who I called him did not answer.",
+      "accepted": [
+        "The engineer who I called did not answer.",
+        "The engineer whom I called did not answer.",
+        "The engineer I called did not answer."
+      ],
+      "explanationAr": "لا نكرر الضمير him بعد who."
+    },
+    {
+      "id": "g-b2-03-e6",
+      "type": "reorder",
+      "tags": [
+        "PRONOUN"
+      ],
+      "words": [
+        "This",
+        "is",
+        "the",
+        "valve",
+        "that",
+        "failed",
+        "yesterday."
+      ],
+      "explanationAr": "that تأتي بعد الاسم valve مباشرة."
+    },
+    {
+      "id": "g-b2-03-e7",
+      "type": "mc",
+      "tags": [
+        "PRONOUN"
+      ],
+      "prompt": "The client ___ project we finished was happy.",
+      "options": [
+        "whose",
+        "who",
+        "which"
+      ],
+      "answer": 0,
+      "explanationAr": "whose للملكية: العميل الذي أنهينا مشروعه."
+    }
+  ],
+  "writingTaskId": "w-g-b2-03",
+  "reviewed": false
+}

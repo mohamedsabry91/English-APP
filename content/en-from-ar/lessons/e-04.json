@@ -1,0 +1,145 @@
+{
+  "id": "e-04",
+  "track": "engineers",
+  "level": "B1",
+  "order": 4,
+  "titleEn": "Units and numbers",
+  "titleAr": "الوحدات والأرقام",
+  "tags": [
+    "WORD",
+    "SPELLING"
+  ],
+  "explanationAr": "في الإنجليزية نستخدم النقطة للكسور العشرية (2.5 m)، والفاصلة للآلاف (12,000). وتأخذ الوحدة s عندما يكون العدد أكثر من واحد: 1 meter و 3 meters. لكن عندما يكون الرقم والوحدة صفة قبل الاسم، لا نضيف s ونضع شرطة: a 10-meter pipe. ولا نضيف s إلى الرمز: 3 m وليس 3 ms. ونقرأ 0.5 هكذا: zero point five. ونقول 20 degrees Celsius، و 5 percent.",
+  "explanationEn": "English uses a point for decimals (2.5 m) and a comma for thousands (12,000). A unit takes -s when the number is more than one: 1 meter, 3 meters. When the number and unit come before a noun as an adjective, use a hyphen and no -s: a 10-meter pipe. Symbols never take -s: 3 m, not 3 ms. Read 0.5 as \"zero point five\". Say 20 degrees Celsius and 5 percent.",
+  "comparison": [
+    {
+      "ar": "2,5 متر",
+      "en": "2.5 meters",
+      "noteAr": "في الإنجليزية نستخدم النقطة للكسر العشري، لا الفاصلة."
+    },
+    {
+      "ar": "أنبوب طوله 10 أمتار",
+      "en": "a 10-meter pipe",
+      "noteAr": "صفة قبل الاسم: شرطة ودون s."
+    }
+  ],
+  "examples": [
+    {
+      "en": "The pipe is 2.5 meters long.",
+      "ar": "طول الأنبوب 2.5 متر."
+    },
+    {
+      "en": "The tank holds 12,000 liters.",
+      "ar": "يتسع الخزان لـ 12,000 لتر."
+    },
+    {
+      "en": "We need a 10-meter ladder.",
+      "ar": "نحتاج سلّمًا طوله 10 أمتار."
+    },
+    {
+      "en": "The temperature reached 45 degrees Celsius.",
+      "ar": "وصلت الحرارة إلى 45 درجة مئوية."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "e-04-e1",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "The wall is 3 ___ high.",
+      "options": [
+        "meter",
+        "meters",
+        "meteres"
+      ],
+      "answer": 1,
+      "explanationAr": "العدد أكثر من واحد، فنقول meters."
+    },
+    {
+      "id": "e-04-e2",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "We ordered a ___ pipe.",
+      "options": [
+        "6-meter",
+        "6-meters",
+        "6 meters"
+      ],
+      "answer": 0,
+      "explanationAr": "صفة قبل الاسم: 6-meter، بشرطة ودون s."
+    },
+    {
+      "id": "e-04-e3",
+      "type": "fill",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "Write two and a half in numbers, in English style: ___",
+      "accepted": [
+        "2.5"
+      ],
+      "explanationAr": "في الإنجليزية نكتب 2.5 بنقطة."
+    },
+    {
+      "id": "e-04-e4",
+      "type": "fix",
+      "tags": [
+        "WORD"
+      ],
+      "sentence": "The tank capacity is 5000 liter.",
+      "accepted": [
+        "The tank capacity is 5,000 liters.",
+        "The tank capacity is 5000 liters."
+      ],
+      "explanationAr": "العدد أكثر من واحد، فنقول liters."
+    },
+    {
+      "id": "e-04-e5",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "How do we read 0.75?",
+      "options": [
+        "zero point seven five",
+        "zero comma seventy-five",
+        "zero and seventy-five"
+      ],
+      "answer": 0,
+      "explanationAr": "نقرأ النقطة point، ثم كل رقم وحده: zero point seven five."
+    },
+    {
+      "id": "e-04-e6",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "The price increased by 5 ___.",
+      "options": [
+        "percent",
+        "percents",
+        "percentage"
+      ],
+      "answer": 0,
+      "explanationAr": "نقول 5 percent، دون s."
+    },
+    {
+      "id": "e-04-e7",
+      "type": "fix",
+      "tags": [
+        "WORD"
+      ],
+      "sentence": "The flow rate is 20 liter per second.",
+      "accepted": [
+        "The flow rate is 20 liters per second."
+      ],
+      "explanationAr": "العدد أكثر من واحد: 20 liters."
+    }
+  ],
+  "writingTaskId": "w-e-04",
+  "reviewed": false
+}

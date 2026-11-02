@@ -1,0 +1,146 @@
+{
+  "id": "g-a2-02",
+  "track": "general",
+  "level": "A2",
+  "order": 2,
+  "titleEn": "Past simple: worked, went",
+  "titleAr": "الماضي البسيط: worked و went",
+  "tags": [
+    "TENSE",
+    "SPELLING"
+  ],
+  "explanationAr": "نستخدم الماضي البسيط لحدث انتهى في وقت محدد في الماضي، مثل yesterday و last week و in 2020 و two days ago. نضيف ed إلى أغلب الأفعال: work تصبح worked، و finish تصبح finished. وهناك أفعال شاذة يجب حفظها: go → went، و write → wrote، و buy → bought، و see → saw. وانتبه إلى الإملاء: stop → stopped، و study → studied، و plan → planned. وفي النفي والسؤال نستخدم did مع الفعل في صورته الأساسية: I didn't go. Did you finish?",
+  "explanationEn": "Use the past simple for a finished action at a time in the past: yesterday, last week, in 2020, two days ago. Add -ed to most verbs: worked, finished. Learn the irregular verbs: go → went, write → wrote, buy → bought, see → saw. Check the spelling: stopped, studied, planned. In negatives and questions, use did with the base verb: I didn't go. Did you finish?",
+  "comparison": [
+    {
+      "ar": "ذهبتُ إلى الموقع أمس.",
+      "en": "I went to the site yesterday.",
+      "noteAr": "الفعل go شاذ، وماضيه went."
+    },
+    {
+      "ar": "لم أُنهِ التقرير.",
+      "en": "I didn't finish the report.",
+      "noteAr": "بعد didn't يأتي الفعل في صورته الأساسية: finish، وليس finished."
+    }
+  ],
+  "examples": [
+    {
+      "en": "We started the test at nine.",
+      "ar": "بدأنا الاختبار في الساعة التاسعة."
+    },
+    {
+      "en": "She studied engineering at a university in the capital.",
+      "ar": "درست الهندسة في جامعة في العاصمة."
+    },
+    {
+      "en": "They bought new tools last week.",
+      "ar": "اشتروا أدوات جديدة الأسبوع الماضي."
+    },
+    {
+      "en": "Did you send the email?",
+      "ar": "هل أرسلت البريد الإلكتروني؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-a2-02-e1",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Last week, we ___ the new pipe.",
+      "options": [
+        "install",
+        "installed",
+        "installing"
+      ],
+      "answer": 1,
+      "explanationAr": "last week تدل على الماضي، فنضيف ed: installed."
+    },
+    {
+      "id": "g-a2-02-e2",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Yesterday I ___ (go) to the bank.",
+      "accepted": [
+        "went"
+      ],
+      "explanationAr": "go فعل شاذ، وماضيه went."
+    },
+    {
+      "id": "g-a2-02-e3",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "She didn't finished her work.",
+      "accepted": [
+        "She didn't finish her work.",
+        "She did not finish her work."
+      ],
+      "explanationAr": "بعد didn't يأتي الفعل في صورته الأساسية: finish."
+    },
+    {
+      "id": "g-a2-02-e4",
+      "type": "mc",
+      "tags": [
+        "SPELLING",
+        "TENSE"
+      ],
+      "prompt": "The machine ___ at noon.",
+      "options": [
+        "stoped",
+        "stopped",
+        "stopt"
+      ],
+      "answer": 1,
+      "explanationAr": "في stop نضاعف الحرف p قبل ed: stopped."
+    },
+    {
+      "id": "g-a2-02-e5",
+      "type": "fill",
+      "tags": [
+        "SPELLING",
+        "TENSE"
+      ],
+      "prompt": "He ___ (study) for the exam all night.",
+      "accepted": [
+        "studied"
+      ],
+      "explanationAr": "إذا انتهى الفعل بحرف ساكن ثم y، نحذف y ونضيف ied: studied."
+    },
+    {
+      "id": "g-a2-02-e6",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "Two days ago, I write a letter to the company.",
+      "accepted": [
+        "Two days ago, I wrote a letter to the company.",
+        "Two days ago I wrote a letter to the company."
+      ],
+      "explanationAr": "two days ago تدل على الماضي، وماضي write هو wrote."
+    },
+    {
+      "id": "g-a2-02-e7",
+      "type": "reorder",
+      "tags": [
+        "TENSE",
+        "ORDER"
+      ],
+      "words": [
+        "Did",
+        "you",
+        "send",
+        "the",
+        "report?"
+      ],
+      "explanationAr": "في السؤال نبدأ بـ Did ثم الفاعل ثم الفعل الأساسي send."
+    }
+  ],
+  "writingTaskId": "w-g-a2-02",
+  "reviewed": false
+}

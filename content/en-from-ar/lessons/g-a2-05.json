@@ -1,0 +1,145 @@
+{
+  "id": "g-a2-05",
+  "track": "general",
+  "level": "A2",
+  "order": 5,
+  "titleEn": "Countable and uncountable nouns",
+  "titleAr": "الأسماء المعدودة وغير المعدودة",
+  "tags": [
+    "UNCOUNTABLE"
+  ],
+  "explanationAr": "بعض الأسماء معدودة: a pipe، و two pipes. وبعضها غير معدود: water و information و advice و equipment و furniture و money. الأسماء غير المعدودة لا تأخذ s، ولا نضع قبلها a أو an، ونستخدم معها much و some و a lot of. انتبه: بعض هذه الكلمات جمع في العربية («معلومات»، «نصائح»، «معدات»، «أثاث»)، لكنها غير معدودة في الإنجليزية، ويأتي بعدها فعل المفرد: The equipment is new. وللعدّ نقول: a piece of advice، و two pieces of equipment.",
+  "explanationEn": "Some nouns are countable: a pipe, two pipes. Others are uncountable: water, information, advice, equipment, furniture, money. Uncountable nouns have no -s and no a or an. Use much, some or a lot of with them. Some of these words are plural in Arabic, but in English they are uncountable and take a singular verb: The equipment is new. To count them, say a piece of advice or two pieces of equipment.",
+  "comparison": [
+    {
+      "ar": "معلومات مفيدة",
+      "en": "useful information",
+      "noteAr": "«معلومات» جمع في العربية، و information دون s."
+    },
+    {
+      "ar": "المعدات جديدة.",
+      "en": "The equipment is new.",
+      "noteAr": "equipment غير معدود، فنستخدم is."
+    },
+    {
+      "ar": "نصيحة",
+      "en": "a piece of advice",
+      "noteAr": "لا نقول an advice."
+    }
+  ],
+  "examples": [
+    {
+      "en": "Can you give me some information about the course?",
+      "ar": "هل يمكنك أن تعطيني بعض المعلومات عن الدورة؟"
+    },
+    {
+      "en": "He gave me a good piece of advice.",
+      "ar": "أعطاني نصيحة جيدة."
+    },
+    {
+      "en": "We need new equipment for the lab.",
+      "ar": "نحتاج معدات جديدة للمختبر."
+    },
+    {
+      "en": "How much money do we need?",
+      "ar": "كم من المال نحتاج؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-a2-05-e1",
+      "type": "mc",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "prompt": "I need some ___ about the test.",
+      "options": [
+        "information",
+        "informations",
+        "an information"
+      ],
+      "answer": 0,
+      "explanationAr": "information غير معدود: لا s ولا an."
+    },
+    {
+      "id": "g-a2-05-e2",
+      "type": "fix",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "sentence": "We bought new furnitures for the office.",
+      "accepted": [
+        "We bought new furniture for the office."
+      ],
+      "explanationAr": "furniture غير معدود، فلا نضيف s."
+    },
+    {
+      "id": "g-a2-05-e3",
+      "type": "mc",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "prompt": "How ___ water do we need?",
+      "options": [
+        "many",
+        "much"
+      ],
+      "answer": 1,
+      "explanationAr": "water غير معدود، فنستخدم much."
+    },
+    {
+      "id": "g-a2-05-e4",
+      "type": "fill",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "prompt": "She gave me a useful piece of ___.",
+      "accepted": [
+        "advice"
+      ],
+      "explanationAr": "نقول a piece of advice، و advice دون s."
+    },
+    {
+      "id": "g-a2-05-e5",
+      "type": "fix",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "sentence": "The equipments are very expensive.",
+      "accepted": [
+        "The equipment is very expensive."
+      ],
+      "explanationAr": "equipment غير معدود، فلا نضيف s، ونستخدم is."
+    },
+    {
+      "id": "g-a2-05-e6",
+      "type": "mc",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "prompt": "How ___ pipes do we need?",
+      "options": [
+        "many",
+        "much"
+      ],
+      "answer": 0,
+      "explanationAr": "pipes جمع معدود، فنستخدم many."
+    },
+    {
+      "id": "g-a2-05-e7",
+      "type": "fix",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "sentence": "Can you give me an advice?",
+      "accepted": [
+        "Can you give me some advice?",
+        "Can you give me a piece of advice?",
+        "Can you give me advice?"
+      ],
+      "explanationAr": "advice غير معدود، فلا نضع قبله an. نقول some advice أو a piece of advice."
+    }
+  ],
+  "writingTaskId": "w-g-a2-05",
+  "reviewed": false
+}

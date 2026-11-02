@@ -1,0 +1,143 @@
+{
+  "id": "g-b2-01",
+  "track": "general",
+  "level": "B2",
+  "order": 1,
+  "titleEn": "The past perfect",
+  "titleAr": "الماضي التام",
+  "tags": [
+    "TENSE"
+  ],
+  "explanationAr": "نستخدم الماضي التام (had + التصريف الثالث للفعل) لحدث وقع قبل حدث آخر في الماضي: When I arrived, the meeting had already started. أي أن الاجتماع بدأ أولًا، ثم وصلتُ. وإذا كان الترتيب واضحًا من before أو after، فيمكن أحيانًا استخدام الماضي البسيط: I left after I finished the report.",
+  "explanationEn": "Use the past perfect (had + past participle) for an action that happened before another past action: When I arrived, the meeting had already started. The meeting started first, then I arrived. If before or after already makes the order clear, the past simple is often fine: I left after I finished the report.",
+  "comparison": [
+    {
+      "ar": "عندما وصلتُ، كان الاجتماع قد بدأ.",
+      "en": "When I arrived, the meeting had already started.",
+      "noteAr": "«كان قد» تقابل had + التصريف الثالث."
+    }
+  ],
+  "examples": [
+    {
+      "en": "By the time the crew arrived, the rain had stopped.",
+      "ar": "عندما وصل الطاقم، كان المطر قد توقف."
+    },
+    {
+      "en": "She had worked in two companies before she joined us.",
+      "ar": "كانت قد عملت في شركتين قبل أن تنضم إلينا."
+    },
+    {
+      "en": "We realized that we had used the wrong drawing.",
+      "ar": "أدركنا أننا كنا قد استخدمنا المخطط الخطأ."
+    },
+    {
+      "en": "Had you seen the site before the visit?",
+      "ar": "هل كنت قد رأيت الموقع قبل الزيارة؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b2-01-e1",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "When we reached the station, the train ___.",
+      "options": [
+        "left",
+        "had left",
+        "has left"
+      ],
+      "answer": 1,
+      "explanationAr": "غادر القطار أولًا، ثم وصلنا، فنستخدم had left."
+    },
+    {
+      "id": "g-b2-01-e2",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "I ___ (not / see) the report before the meeting.",
+      "accepted": [
+        "had not seen",
+        "hadn't seen"
+      ],
+      "explanationAr": "حدث قبل حدث آخر في الماضي: had not seen."
+    },
+    {
+      "id": "g-b2-01-e3",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "After he has finished the test, he wrote the report.",
+      "accepted": [
+        "After he had finished the test, he wrote the report.",
+        "After he finished the test, he wrote the report."
+      ],
+      "explanationAr": "القصة في الماضي، فلا نستخدم has finished. نستخدم had finished أو finished."
+    },
+    {
+      "id": "g-b2-01-e4",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "They told us that the pump ___ twice that week.",
+      "options": [
+        "had failed",
+        "has failed",
+        "fails"
+      ],
+      "answer": 0,
+      "explanationAr": "التعطل حدث قبل أن يخبرونا، فنستخدم had failed."
+    },
+    {
+      "id": "g-b2-01-e5",
+      "type": "reorder",
+      "tags": [
+        "TENSE"
+      ],
+      "words": [
+        "The",
+        "concrete",
+        "had",
+        "set",
+        "before",
+        "the",
+        "rain",
+        "started."
+      ],
+      "explanationAr": "had set حدث أولًا، ثم before the rain started."
+    },
+    {
+      "id": "g-b2-01-e6",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "By the time I arrived, everyone has gone home.",
+      "accepted": [
+        "By the time I arrived, everyone had gone home."
+      ],
+      "explanationAr": "By the time + ماضٍ، فنستخدم had gone."
+    },
+    {
+      "id": "g-b2-01-e7",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "She was tired because she ___ all night.",
+      "options": [
+        "has worked",
+        "had worked",
+        "works"
+      ],
+      "answer": 1,
+      "explanationAr": "العمل كان قبل التعب في الماضي: had worked."
+    }
+  ],
+  "writingTaskId": "w-g-b2-01",
+  "reviewed": false
+}
