@@ -9,6 +9,9 @@ import { logMistakes } from './mistakes';
 import { useStore } from './store';
 import { TagName } from './TagName';
 
+/** Longest text the writing box accepts. Tasks ask for 100 words or fewer. */
+export const MAX_WRITING_CHARS = 2000;
+
 export function countWords(text: string): number {
   const m = text.trim().match(/[A-Za-z0-9؀-ۿ'’-]+/g);
   return m ? m.length : 0;
@@ -94,11 +97,12 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
       {findings === null ? (
         <>
           <label htmlFor={id}>{t('writing.yourText')}</label>
-          <textarea id={id} dir="ltr" lang="en" spellCheck={false} value={text} onChange={(e) => onChange(e.target.value)} data-testid="writing-input" />
+          <textarea id={id} dir="ltr" lang="en" spellCheck={false} maxLength={MAX_WRITING_CHARS} value={text} onChange={(e) => onChange(e.target.value.slice(0, MAX_WRITING_CHARS))} aria-describedby={`${id}-draft`} data-testid="writing-input" />
           <p className="muted" aria-live="polite">
             {t('writing.words', { n: words, max: task.wordLimit })}
           </p>
           {words > task.wordLimit && <p className="banner">{t('writing.tooLong')}</p>}
+          <p className="muted small" id={`${id}-draft`} data-testid="draft-note">{t('writing.draftNote')}</p>
           <p className="honesty">{t('writing.honesty')}</p>
           <button type="button" className="primary big" disabled={words === 0} onClick={() => setFindings(check(text, task.level))} data-testid="writing-check">
             {t('writing.check')}

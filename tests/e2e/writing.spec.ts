@@ -8,6 +8,10 @@ for (const lang of ['ar', 'en'] as const) {
     await page.getByTestId('nav-writing').click();
     await page.getByTestId('task-w-g-a1-01').click();
     await page.getByTestId('writing-input').fill('My name is Sami. I am engineer. He go to work early.');
+    // The unfinished draft is kept on the device while writing.
+    expect((await stored(page))?.writingDraft).toEqual({ taskId: 'w-g-a1-01', text: 'My name is Sami. I am engineer. He go to work early.' });
+    await expect(page.getByTestId('writing-input')).toHaveAttribute('maxlength', '2000');
+    await expect(page.getByTestId('draft-note')).toBeVisible();
     await page.getByTestId('writing-check').click();
 
     await expect(page.getByTestId('honesty')).toBeVisible();
@@ -23,7 +27,7 @@ for (const lang of ['ar', 'en'] as const) {
     const body = (await page.locator('body').innerText()).toLowerCase();
     expect(body).not.toMatch(/perfect|no mistakes|\/100|out of 100|100%/);
 
-    // While writing, the draft is saved; after finishing, only tags and dates stay.
+    // After finishing, the draft is deleted; only tags and dates stay.
     await page.getByTestId('writing-done').click();
     const p = await stored(page);
     expect(JSON.stringify(p)).not.toContain('He go to work');

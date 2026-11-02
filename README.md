@@ -4,6 +4,14 @@ A free, installable web app (PWA) for Arabic-speaking adults who are learning En
 "English for Engineers" track. It works offline after the first load. All progress stays in the
 browser on the device. There is no server, no account, no AI and no audio.
 
+## Privacy
+
+Nothing is sent anywhere. Progress is kept in the browser's `localStorage` on the device. While a
+learner writes, the unfinished text is kept there too, so they can come back to it. It is deleted when
+the task is finished or skipped, when another task is started, or when all progress is deleted. It is
+never included in an exported progress file. After a task is finished, only mistake types, counts and
+dates are kept.
+
 The app name is not final. Change `APP_NAME` in `src/app/config.ts` (and the `name` fields in
 `vite.config.ts` and `index.html`).
 

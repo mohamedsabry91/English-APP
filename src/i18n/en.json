@@ -10,9 +10,7 @@
   "common.cancel": "Cancel",
   "common.close": "Close",
   "common.level": "Level",
-
   "home.promise": "Stop repeating the same English mistakes, in 10 minutes a day, explained in Arabic.",
-
   "welcome.title": "Welcome",
   "welcome.chooseLang": "Choose the language of the app",
   "welcome.langAr": "العربية",
@@ -23,7 +21,6 @@
   "welcome.notCert": "This app does not give a certificate.",
   "welcome.content": "The lessons were written with the help of AI and have not yet been reviewed by a teacher.",
   "welcome.continue": "Continue",
-
   "placement.title": "Placement test",
   "placement.intro": "32 short questions, from easy to harder. It takes about 10 minutes. The test may stop early when the questions become too hard. That is normal.",
   "placement.start": "Start the test",
@@ -33,7 +30,6 @@
   "placement.choose": "Choose one answer.",
   "placement.next": "Next",
   "placement.resume": "Continue the test",
-
   "result.title": "Your result",
   "result.level": "Your estimated level",
   "result.START_A1": "Starting A1",
@@ -51,7 +47,6 @@
   "result.start": "Your lessons start at",
   "result.disclaimer": "This is an estimate, not a certificate, and it has not been validated against an official test.",
   "result.continue": "Go to today's practice",
-
   "today.title": "Today",
   "today.plan": "Today's plan, about 10 minutes",
   "today.reviewItems": "Review: {n} items",
@@ -67,7 +62,6 @@
   "today.allDone": "You have finished every lesson in your track. You can open any lesson again from the Lessons page.",
   "today.exportReminder": "Reminder: browsers can delete site data, especially on iPhone. Save a copy of your progress from time to time.",
   "today.exportNow": "Save a copy now",
-
   "session.part": "Part {n} of 4",
   "session.review": "Review",
   "session.lesson": "Lesson",
@@ -87,7 +81,6 @@
   "session.toExercises": "Start the exercises",
   "session.finish": "Finish",
   "session.home": "Back to Today",
-
   "ex.mc": "Choose the correct answer.",
   "ex.fill": "Type the missing word or words.",
   "ex.reorder": "Tap the words to put them in the correct order.",
@@ -98,12 +91,10 @@
   "ex.wordBank": "Words",
   "ex.built": "Your sentence",
   "ex.empty": "Write an answer first.",
-
   "lesson.rule": "The rule",
   "lesson.compare": "Arabic and English",
   "lesson.examples": "Examples",
   "lesson.unreviewed": "Not yet reviewed by a teacher.",
-
   "lessons.title": "Lessons",
   "lessons.intro": "Your daily lesson follows this order. You can also open any lesson.",
   "lessons.general": "General English",
@@ -112,7 +103,6 @@
   "lessons.next": "Next",
   "lessons.practice": "Practice: {title}",
   "lessons.finished": "Lesson finished",
-
   "mistakes.title": "My Mistakes",
   "mistakes.top": "Your most common mistake types",
   "mistakes.times": "Times: {n}",
@@ -126,7 +116,6 @@
   "mistakes.placementOnly": "Some of these come from the placement test.",
   "mistakes.noExercise": "There are no exercises for this type yet.",
   "mistakes.toLearn": "Items waiting in review: {n}",
-
   "writing.title": "Writing",
   "writing.intro": "Choose a task. Write a short answer. Then compare it with the model answer and the self-check list.",
   "writing.limit": "Up to {n} words",
@@ -141,12 +130,11 @@
   "writing.yourText": "Your text",
   "writing.edit": "Edit my text",
   "writing.done": "Finish this task",
-  "writing.privacy": "Your text is not saved after you finish. Only the mistake types and dates are kept.",
+  "writing.privacy": "Your text is not kept after you finish. Only the mistake types and dates are kept.",
   "writing.suggestion": "Suggestion:",
   "writing.track.general": "General",
   "writing.track.engineers": "Engineers",
   "writing.completed": "Done before",
-
   "settings.title": "Settings",
   "settings.language": "Language of the app",
   "settings.track": "Track",
@@ -174,19 +162,18 @@
   "settings.about": "About this app",
   "settings.lastExport": "Last copy saved: {date}",
   "settings.neverExported": "You have not saved a copy yet.",
-
   "storage.unavailable": "This browser does not allow saving. You can practise, but your progress will be lost when you close the page.",
   "storage.full": "The browser storage is full. Your latest progress may not be saved.",
   "storage.recovered": "Saved progress could not be read, so the app started fresh. A copy of the old data was kept in the browser.",
-
   "about.title": "About",
   "about.slogan": "The only limit is your imagination, without exceeding the limits of Islam.",
   "about.what": "A free practice tool for Arabic-speaking adults who are learning English, with a track for engineers.",
   "about.privacyTitle": "Privacy",
-  "about.privacy": "Nothing leaves your device. There is no account, no tracking and no advertising. The app works offline.",
+  "about.privacy": "Nothing leaves your device. There is no account, no tracking and no advertising. The app works offline. Your progress, and any unfinished writing, are kept only in this browser. Exported files do not include unfinished writing.",
   "about.contentTitle": "About the content",
   "about.content": "All lessons, exercises and writing tasks were written with the help of AI. A person has not yet reviewed them. Levels (A1 to B2) are our own estimate.",
   "about.noSound": "The app has no sound and no audio.",
   "about.notCert": "This app does not give certificates and is not an official test.",
-  "about.version": "Version {v}"
+  "about.version": "Version {v}",
+  "writing.draftNote": "While you write, your unfinished text is kept in this browser on this device, so you can come back to it. It is deleted when you finish or skip the task, start writing another task, or delete all progress. It is never put in an exported file."
 }
