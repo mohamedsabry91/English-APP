@@ -215,3 +215,7 @@ mark.finding { background: var(--mark); border-bottom: 2px solid var(--bad); pad
 .small { font-size: 0.9rem; }
 .question { font-size: 1.15rem; font-weight: 600; }
 .gap { display: inline-block; min-width: 3em; border-bottom: 2px solid var(--text); color: transparent; }
+.week-table { width: 100%; border-collapse: collapse; }
+.week-table th { font-weight: 400; color: var(--muted); width: 4.5em; text-align: start; padding: 4px 0; white-space: nowrap; }
+.week-table .bar-cell { width: 100%; padding: 4px 8px; }
+.week-table .num { width: 2.5em; text-align: end; font-variant-numeric: tabular-nums; }

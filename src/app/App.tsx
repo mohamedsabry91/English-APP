@@ -12,6 +12,9 @@ import { PlacementResult } from './screens/PlacementResult';
 import { Session } from './screens/Session';
 import { Lessons } from './screens/Lessons';
 import { LessonPractice } from './screens/LessonPractice';
+import { Mistakes } from './screens/Mistakes';
+import { TagPractice } from './screens/TagPractice';
+import type { TagId } from '../core/types';
 
 const NAV_SCREENS = ['today', 'lessons', 'lesson', 'mistakes', 'writing', 'settings', 'about', 'session', 'practice'];
 
@@ -47,6 +50,12 @@ export function App() {
       case 'lesson':
         body = <LessonPractice key={arg} id={arg ?? ''} />;
         break;
+      case 'mistakes':
+        body = <Mistakes />;
+        break;
+      case 'practice':
+        body = <TagPractice key={arg} tag={(arg ?? 'BE') as TagId} />;
+        break;
       case 'about':
         body = <About />;
         break;
@@ -55,7 +64,7 @@ export function App() {
     }
   }
 
-  const navCurrent = screen === 'lesson' ? 'lessons' : screen === 'about' ? 'settings' : screen === 'session' || screen === 'practice' ? 'today' : screen;
+  const navCurrent = screen === 'lesson' ? 'lessons' : screen === 'about' ? 'settings' : screen === 'practice' ? 'mistakes' : screen === 'session' ? 'today' : screen;
   return (
     <div className="app">
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>
