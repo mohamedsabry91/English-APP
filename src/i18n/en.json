@@ -175,5 +175,13 @@
   "about.noSound": "The app has no sound and no audio.",
   "about.notCert": "This app does not give certificates and is not an official test.",
   "about.version": "Version {v}",
-  "writing.draftNote": "While you write, your unfinished text is kept in this browser on this device, so you can come back to it. It is deleted when you finish or skip the task, start writing another task, or delete all progress. It is never put in an exported file."
+  "writing.draftNote": "While you write, your unfinished text is kept in this browser on this device, so you can come back to it. It is deleted when you finish or skip the task, start writing another task, or delete all progress. It is never put in an exported file.",
+  "error.title": "Something went wrong",
+  "error.body": "The app hit an unexpected problem. Your progress is probably still saved. Try reloading first.",
+  "error.reload": "Reload the app",
+  "error.home": "Go to Today",
+  "error.reset": "Delete all progress and start again",
+  "error.resetConfirm": "This deletes all your progress on this device: your level, lessons, review items and mistakes. It cannot be undone. Try reloading first. Are you sure?",
+  "error.resetYes": "Yes, delete everything",
+  "error.resetFailed": "The progress could not be deleted, because this browser does not allow it."
 }
