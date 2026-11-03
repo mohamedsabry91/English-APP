@@ -11,6 +11,7 @@ import {
   planPhraseIds,
   practiceDays,
   practiceDaysInWindow,
+  phrasesToRecall,
   recallCountsForBox,
   setRating,
   startPlan,
@@ -158,5 +159,30 @@ describe('the days goal is measured honestly', () => {
     for (let d = 1; d <= 12; d++) rec = completeDay(plan, rec, d, addDaysLocal('2026-11-01', d - 1 + (d > 6 ? 2 : 0)));
     expect(practiceDaysInWindow(rec, 15)).toBe(12);
     expect(goalStatus(plan, { ...defaultProgress(), plan: rec }).find((g) => g.id === 'days')?.reached).toBe(true);
+  });
+});
+
+describe('review day: no duplicate phrases', () => {
+  it('the recall step leaves out phrases already answered today, and keeps ones with no card', () => {
+    const today = '2026-11-06';
+    const answered = { ...recordLearn(undefined, 'ph-01', [], '2026-11-01'), lastAnswered: today, box: 2 };
+    const notYet = { ...recordLearn(undefined, 'ph-02', [], '2026-11-01'), lastAnswered: '2026-11-02', box: 2 };
+    const cards = { 'ph-01': answered, 'ph-02': notYet };
+    expect(phrasesToRecall(cards, ['ph-01', 'ph-02', 'ph-03'], today)).toEqual(['ph-02', 'ph-03']);
+  });
+
+  it('on day 6, review plus recall shows each phrase at most once', () => {
+    // Learn on days 1-5, answer every due card each day, then run day 6.
+    let cards: Record<string, ReturnType<typeof recordLearn>> = {};
+    const day = (n: number) => `2026-11-${String(n).padStart(2, '0')}`;
+    for (let d = 1; d <= 5; d++) {
+      for (const c of dueCards(cards, day(d), 8)) cards[c.id] = recordRight(c, day(d));
+      cards = learnPhrases(cards, plan.schedule[d - 1]!.phrases, day(d));
+    }
+    const reviewIds = dueCards(cards, day(6), 20).map((c) => c.id);
+    for (const id of reviewIds) cards[id] = recordRight(cards[id]!, day(6));
+    const recall = phrasesToRecall(cards, plan.schedule[5]!.phrases, day(6));
+    expect(recall.filter((id) => reviewIds.includes(id))).toEqual([]);
+    expect(reviewIds.length + recall.length).toBe(20);
   });
 });

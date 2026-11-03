@@ -83,6 +83,14 @@ export function planPhraseIds(plan: Plan): string[] {
   return plan.schedule.filter((d) => d.type === 'learn').flatMap((d) => d.phrases);
 }
 
+/**
+ * Phrases for the recall step of a review day: the review step before it may already have shown some of
+ * them today, so those are left out. Phrases with no card yet (a skipped day) are kept.
+ */
+export function phrasesToRecall(cards: Record<string, ReviewCard>, ids: readonly string[], today: LocalDate): string[] {
+  return ids.filter((id) => cards[id]?.lastAnswered !== today);
+}
+
 /** On a review day, only due cards change box. Others are practice only, so spacing stays honest. */
 export function recallCountsForBox(card: ReviewCard | undefined, today: LocalDate): boolean {
   return !!card && isDue(card, today);

@@ -9,6 +9,7 @@ import {
   completeDay,
   learnPhrases,
   nextDayNumber,
+  phrasesToRecall,
   recallCountsForBox,
   validCurrent,
   setRating,
@@ -91,6 +92,7 @@ export function PlanDayScreen() {
         <h1><bdi>{title}</bdi></h1>
         <p className="big-level" data-testid="plan-day-title">{t('plan.dayOf', { n: day.day, total: plan.days })}</p>
         <p>{day.type === 'review' ? t('plan.reviewDay') : t('plan.learnDay')}</p>
+        {day.type === 'review' && <p className="banner" data-testid="review-day-note">{t('plan.reviewDayLonger')}</p>}
         <ol>
           {steps.map((s, i) => (
             <li key={i}>{t(STEP_LABEL[s])}</li>
@@ -154,7 +156,7 @@ export function PlanDayScreen() {
       break;
     }
     case 'recall':
-      body = <RecallStep phrases={day.phrases.map((id) => getPhrase(id)).filter((x): x is Phrase => !!x)} onDone={() => advance()} />;
+      body = <RecallStep ids={day.phrases} onDone={() => advance()} />;
       break;
     case 'message': {
       const task = day.type === 'review' ? getTask(day.writingTaskId) : undefined;
@@ -205,7 +207,7 @@ export function PlanDayScreen() {
 
 function NextOnly({ onDone }: { onDone: () => void }) {
   const { t } = useStore();
-  return <button type="button" className="primary big" onClick={onDone}>{t('common.next')}</button>;
+  return <button type="button" className="primary big" onClick={onDone} data-testid="plan-next">{t('common.next')}</button>;
 }
 
 function SelfCheckStep({ plan, end, onDone }: { plan: Plan; end: boolean; onDone: (answers: SelfRating[]) => void }) {
@@ -348,11 +350,24 @@ function StoryStep({ story, onDone }: { story: Story; onDone: () => void }) {
   );
 }
 
-function RecallStep({ phrases, onDone }: { phrases: Phrase[]; onDone: () => void }) {
-  const { t, update, today } = useStore();
+function RecallStep({ ids, onDone }: { ids: string[]; onDone: () => void }) {
+  const { t, progress, update, today } = useStore();
+  // Choose once, when the step opens: phrases already answered today in the review step are left out.
+  const [phrases] = useState(() =>
+    phrasesToRecall(progress.cards, ids, today())
+      .map((id) => getPhrase(id))
+      .filter((x): x is Phrase => !!x),
+  );
   const [index, setIndex] = useState(0);
   const ph = phrases[index];
-  if (!ph) return <NextOnly onDone={onDone} />;
+  if (!ph) {
+    return (
+      <section>
+        <p data-testid="recall-all-done">{t('step.recallAllDone')}</p>
+        <NextOnly onDone={onDone} />
+      </section>
+    );
+  }
   return (
     <>
       {index === 0 && <p className="banner info">{t('step.recallNote')}</p>}

@@ -264,5 +264,7 @@
   "progress.privacy": "This information stays on this device. It is included when you save a copy of your progress. There is no score and no tracking.",
   "progress.noPlan": "You have not started a plan.",
   "progress.dayLabel": "Day {n}",
-  "plan.stepOf": "Step {n} of {total}"
+  "plan.stepOf": "Step {n} of {total}",
+  "step.recallAllDone": "All of these phrases were already reviewed today. Nothing more to do here.",
+  "plan.reviewDayLonger": "Review days can take longer than 15 minutes, because they bring back many phrases at once. You can stop at any time and continue later."
 }
