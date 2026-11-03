@@ -81,6 +81,18 @@ export async function stored(page: Page): Promise<Record<string, unknown> | null
   return raw ? (JSON.parse(raw) as Record<string, unknown>) : null;
 }
 
+/**
+ * Open the app and wait until it has settled. On a fresh start the app moves to #/welcome right after
+ * the first render (App.tsx). Navigating again while that hash change is still happening made WebKit
+ * cancel or stall the navigation in CI ("Navigation canceled by policy check", a page.goto timeout on
+ * about:blank, and "Load request cancelled"). So tests wait for it before they seed storage and reload.
+ */
+export async function openApp(page: Page) {
+  await page.goto('./');
+  await page.waitForFunction((k) => window.location.hash === '#/welcome' || localStorage.getItem(k) !== null, STORAGE_KEY);
+  await expect(page.locator('#main')).toBeVisible();
+}
+
 let loads = 0;
 
 /**

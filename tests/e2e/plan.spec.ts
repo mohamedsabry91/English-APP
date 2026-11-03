@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { answer, expectNoOverflow, stored, welcome, STORAGE_KEY, loadApp } from './helpers';
+import { answer, expectNoOverflow, stored, welcome, STORAGE_KEY, loadApp, openApp } from './helpers';
 
 const SHOTS = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs', 'screenshots');
 
@@ -130,7 +130,7 @@ for (const lang of ['ar', 'en'] as const) {
 
 test('a review day has the goal message, and the end shows what you can and cannot do yet', async ({ page }, info) => {
   await page.clock.install({ time: new Date('2026-11-20T09:00:00+03:00') });
-  await page.goto('./');
+  await openApp(page);
   const days = (n: number) => Array.from({ length: n }, (_, i) => ({ day: i + 1, date: `2026-11-${String(i + 1).padStart(2, '0')}` }));
   const base = { version: 2, uiLang: 'en', onboarded: true, placement: { result: 'START_A1', date: '2026-11-01', correctByLevel: [], mistakeTags: [] } };
   await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [
@@ -158,7 +158,7 @@ test('a review day has the goal message, and the end shows what you can and cann
 
 test('day 15: the real last day finishes the plan, and the end screen shows what you can and cannot do yet', async ({ page }, info) => {
   await page.clock.install({ time: new Date('2026-11-15T09:00:00+03:00') });
-  await page.goto('./');
+  await openApp(page);
   const days = Array.from({ length: 14 }, (_, i) => ({ day: i + 1, date: `2026-11-${String(i + 1).padStart(2, '0')}` }));
   await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [
     STORAGE_KEY,
