@@ -200,3 +200,122 @@ human reading.
 | src/i18n/en.json |  |  |
 | content/en-from-ar/tags.json |  |  |
 | Checker explanations in src/checker/index.ts |  |  |
+
+## 15-Day Start plan (added after PR 1)
+
+All of this was written by AI and has **not been reviewed by a person**. Every file keeps `"reviewed": false`.
+
+### Read these first: the items I am least sure about
+
+1. **The honest position of the plan** (`content/en-from-ar/plans/15-day-start.json`, `honestAr` and `honestEn`). "About 4 hours" is 15 minutes × 15 days = 3 hours 45 minutes. "Below A1" and "a working level takes hundreds of hours" are general estimates, not measured. Check that the wording is fair and not discouraging.
+2. **Arabic for some phrases:** "I need it by Thursday" (أحتاجه في موعد أقصاه يوم الخميس), "Have a good evening" (أتمنى لك مساءً طيبًا), "I really appreciate it" (أقدّر ذلك حقًا) and "No problem" (لا مشكلة). Check that they sound natural.
+3. **Register:** "Can I speak to Mr. Hassan, please?" is polite enough for most offices, but "Could I speak to ..." is more formal. "You're welcome" and "No problem" are both taught; some offices prefer the first.
+4. **Stories** use the past tense in the retelling samples ("Today I met ..."), although the plan is below A1. The samples are short, but a teacher should check that they are not too hard.
+5. **Phrase recall on review days:** only phrases that are due move to the next box; the others are practice only. This keeps the spacing honest, but it means some phrases learned late (days 12 to 14) cannot reach box 3 by day 15. The phrase goal is "most" (25 of 48), not all.
+6. **The self-check** (5 statements, answered "Not yet", "A little" or "Yes" on day 1 and on the last day) is not a test and has not been validated.
+7. **Say it aloud:** the app cannot hear the learner. The self-rating labels ("I needed to read the sample", "I said it with some pauses", "I said it clearly without reading") should be checked for clarity in Arabic.
+8. **Names** (Omar, Khalid, Huda, Mona, Sami, Ali, Yousef, Mr. Fares, Nabil, Sara, Tariq, Hani, Ahmed, Mr. Hassan) are ordinary names, not real people.
+
+### Plan
+
+| File | Owner read | English teacher checked |
+|---|---|---|
+| content/en-from-ar/plans/15-day-start.json (honest position, how it works, goals, routine, self-check, can do / cannot yet) |  |  |
+
+### Phrases (48)
+
+| Id | Day | English | Arabic | Owner read | English teacher checked |
+|---|---|---|---|---|---|
+| ph-01 | 1 | Good morning. | صباح الخير. |  |  |
+| ph-02 | 1 | Nice to meet you. | سعيد بلقائك. |  |  |
+| ph-03 | 1 | I am a new engineer here. | أنا مهندس جديد هنا. |  |  |
+| ph-04 | 1 | I work in the design team. | أعمل في فريق التصميم. |  |  |
+| ph-05 | 2 | Can you help me, please? | هل يمكنك مساعدتي من فضلك؟ |  |  |
+| ph-06 | 2 | Could you say that again, please? | هل يمكنك أن تقول ذلك مرة أخرى من فضلك؟ |  |  |
+| ph-07 | 2 | Sorry, I don't understand. | عذرًا، لا أفهم. |  |  |
+| ph-08 | 2 | What does this word mean? | ماذا تعني هذه الكلمة؟ |  |  |
+| ph-09 | 3 | Thank you for your help. | شكرًا لمساعدتك. |  |  |
+| ph-10 | 3 | You're welcome. | على الرحب والسعة. |  |  |
+| ph-11 | 3 | No problem. | لا مشكلة. |  |  |
+| ph-12 | 3 | I really appreciate it. | أقدّر ذلك حقًا. |  |  |
+| ph-13 | 4 | What time is the meeting? | متى موعد الاجتماع؟ |  |  |
+| ph-14 | 4 | The meeting starts at ten. | يبدأ الاجتماع في الساعة العاشرة. |  |  |
+| ph-15 | 4 | I will be there. | سأكون هناك. |  |  |
+| ph-16 | 4 | See you at the meeting. | أراك في الاجتماع. |  |  |
+| ph-17 | 5 | Could you send me the file? | هل يمكنك أن ترسل لي الملف؟ |  |  |
+| ph-18 | 5 | Please check this drawing. | من فضلك راجع هذا المخطط. |  |  |
+| ph-19 | 5 | When do you need it? | متى تحتاجه؟ |  |  |
+| ph-20 | 5 | I need it by Thursday. | أحتاجه في موعد أقصاه يوم الخميس. |  |  |
+| ph-21 | 7 | I'm working on it. | أعمل عليه الآن. |  |  |
+| ph-22 | 7 | It's almost finished. | أوشك على الانتهاء. |  |  |
+| ph-23 | 7 | It's ready. | إنه جاهز. |  |  |
+| ph-24 | 7 | I'll send it today. | سأرسله اليوم. |  |  |
+| ph-25 | 8 | There is a problem with the pump. | توجد مشكلة في المضخة. |  |  |
+| ph-26 | 8 | The printer is not working. | الطابعة لا تعمل. |  |  |
+| ph-27 | 8 | I will check it now. | سأتحقق منه الآن. |  |  |
+| ph-28 | 8 | Let me call the technician. | دعني أتصل بالفني. |  |  |
+| ph-29 | 9 | Sorry for the delay. | آسف على التأخير. |  |  |
+| ph-30 | 9 | The delivery is late. | التوريد متأخر. |  |  |
+| ph-31 | 9 | We need one more day. | نحتاج يومًا آخر. |  |  |
+| ph-32 | 9 | It will be ready tomorrow. | سيكون جاهزًا غدًا. |  |  |
+| ph-33 | 10 | I agree. | أوافق. |  |  |
+| ph-34 | 10 | That's a good idea. | هذه فكرة جيدة. |  |  |
+| ph-35 | 10 | I'm not sure. | لست متأكدًا. |  |  |
+| ph-36 | 10 | Let's discuss it tomorrow. | لنناقش ذلك غدًا. |  |  |
+| ph-37 | 12 | Please wear your helmet. | من فضلك ارتدِ خوذتك. |  |  |
+| ph-38 | 12 | Be careful, the floor is wet. | انتبه، الأرض مبتلة. |  |  |
+| ph-39 | 12 | Where is the site office? | أين مكتب الموقع؟ |  |  |
+| ph-40 | 12 | The site is closed today. | الموقع مغلق اليوم. |  |  |
+| ph-41 | 13 | Can I speak to Mr. Hassan, please? | هل يمكنني التحدث مع السيد حسن من فضلك؟ |  |  |
+| ph-42 | 13 | He is in a meeting now. | هو في اجتماع الآن. |  |  |
+| ph-43 | 13 | Can I leave a message? | هل يمكنني ترك رسالة؟ |  |  |
+| ph-44 | 13 | I'll call you back. | سأعاود الاتصال بك. |  |  |
+| ph-45 | 14 | I'm leaving now. | سأغادر الآن. |  |  |
+| ph-46 | 14 | See you tomorrow. | أراك غدًا. |  |  |
+| ph-47 | 14 | Have a good evening. | أتمنى لك مساءً طيبًا. |  |  |
+| ph-48 | 14 | Thanks for today. | شكرًا على اليوم. |  |  |
+
+### Work stories (12)
+
+| Id | Title | Owner read | English teacher checked |
+|---|---|---|---|
+| st-01 | A new engineer |  |  |
+| st-02 | A word in the report |  |  |
+| st-03 | Help with the printer |  |  |
+| st-04 | The meeting time |  |  |
+| st-05 | A file for Thursday |  |  |
+| st-06 | Almost ready |  |  |
+| st-07 | A problem with the pump |  |  |
+| st-08 | The late delivery |  |  |
+| st-09 | A new idea |  |  |
+| st-10 | Safety on site |  |  |
+| st-11 | A phone call |  |  |
+| st-12 | The end of the day |  |  |
+
+### Say-aloud prompts (15)
+
+| Id | Prompt | Owner read | English teacher checked |
+|---|---|---|---|
+| sa-01 | Greet a new colleague. Say that you are new and which team you work in. |  |  |
+| sa-02 | You did not understand something in a meeting. Ask politely. |  |  |
+| sa-03 | A colleague helped you. Thank them. |  |  |
+| sa-04 | Ask about the time of a meeting, and say that you will come. |  |  |
+| sa-05 | Ask a colleague to send you a file, and say when you need it. |  |  |
+| sa-06 | Review: greet someone, ask for help, and thank them. |  |  |
+| sa-07 | Your manager asks about your report. Give a short update. |  |  |
+| sa-08 | Tell your supervisor about a problem with a machine. |  |  |
+| sa-09 | A delivery is late. Say sorry and say when it will be ready. |  |  |
+| sa-10 | In a meeting, agree with one idea and say you are not sure about another. |  |  |
+| sa-11 | Review: give an update, and say that something is late. |  |  |
+| sa-12 | Give two safety instructions to a new worker on site. |  |  |
+| sa-13 | Call an office. Ask for a person, and leave a message. |  |  |
+| sa-14 | Say goodbye to your colleagues at the end of the day. |  |  |
+| sa-15 | Introduce yourself for about 30 seconds: your name, your job, your team, and one thing you do at work. |  |  |
+
+### Goal writing tasks (3)
+
+| Id | Title | Owner read | English teacher checked |
+|---|---|---|---|
+| w-p15-request | A short request |  |  |
+| w-p15-thanks | A short thank-you |  |  |
+| w-p15-delay | A short delay message |  |  |
