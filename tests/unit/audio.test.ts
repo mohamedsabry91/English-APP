@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { cleanManifest, clipUrl, findClip, playClip, stopAudio, type AudioLike } from '../../src/audio/player';
-import { AUDIO_CACHE, countDownloaded, downloadClips, removeClips, type CachesLike } from '../../src/audio/offline';
+import { AUDIO_CACHE, countDownloaded, downloadClips, removeCourseAudio, type CachesLike } from '../../src/audio/offline';
 import { AUDIO, loadCourse } from '../../src/core/content';
 
 class FakeAudio implements AudioLike {
@@ -18,21 +18,25 @@ class FakeAudio implements AudioLike {
   }
 }
 
+/** Stores entries under full URLs, as a browser does. `failAfter` stores that many clips, then fails. */
 class FakeCaches implements CachesLike {
   store = new Map<string, Set<string>>();
   opened: string[] = [];
-  failAdd = false;
+  failAdd: Error | null = null;
+  failAfter = Infinity;
   async open(name: string) {
     this.opened.push(name);
     const set = this.store.get(name) ?? new Set<string>();
     this.store.set(name, set);
+    const full = (u: string) => `http://localhost:4173/${u}`;
     return {
       addAll: async (urls: string[]) => {
-        if (this.failAdd) throw new Error('network');
-        for (const u of urls) set.add(u);
+        urls.slice(0, this.failAfter).forEach((u) => set.add(full(u)));
+        if (this.failAdd) throw this.failAdd;
+        urls.forEach((u) => set.add(full(u)));
       },
-      match: async (url: string) => (set.has(url) ? {} : undefined),
-      delete: async (url: string) => set.delete(url),
+      keys: async () => [...set].map((url) => ({ url })),
+      delete: async (r: string | { url: string }) => set.delete(typeof r === 'string' ? r : r.url),
     };
   }
 }
@@ -88,6 +92,40 @@ describe('player', () => {
     expect(FakeAudio.made[1]?.paused).toBe(true);
   });
 
+  it('a second tap while the first clip is starting keeps the second clip as the one playing', async () => {
+    // The first play() is interrupted by the second tap (as a browser rejects play() after pause()).
+    class SlowAudio implements AudioLike {
+      currentTime = 0;
+      paused = false;
+      private reject: ((e: Error) => void) | null = null;
+      play() {
+        return new Promise<void>((resolve, reject) => {
+          this.reject = reject;
+          if (FakeAudio.made.length > 1) resolve();
+        });
+      }
+      pause() {
+        this.paused = true;
+        this.reject?.(Object.assign(new Error('interrupted'), { name: 'AbortError' }));
+      }
+    }
+    FakeAudio.made = [];
+    const made: SlowAudio[] = [];
+    const make = () => {
+      const a = new SlowAudio();
+      made.push(a);
+      FakeAudio.made.push(a as unknown as FakeAudio);
+      return a;
+    };
+    const first = playClip('audio/en-from-ar/ph-01.opus', make);
+    const second = playClip('audio/en-from-ar/ph-02.opus', make);
+    // The interrupted first tap is not a failure, and the second clip is still the current one.
+    expect(await first).toBe(true);
+    expect(await second).toBe(true);
+    stopAudio();
+    expect(made[1]?.paused).toBe(true);
+  });
+
   it('reports a clip that cannot be played, and never plays a URL from another place', async () => {
     FakeAudio.made = [];
     expect(await playClip('audio/en-from-ar/ph-01.opus', (u) => new FakeAudio(u, true))).toBe(false);
@@ -106,11 +144,37 @@ describe('download for offline', () => {
     let asked = 0;
     expect(await downloadClips(urls, c, async () => (asked++, true))).toBe('ok');
     expect(c.opened).toEqual([AUDIO_CACHE]);
-    expect([...(c.store.get(AUDIO_CACHE) ?? [])]).toEqual(urls);
     expect(asked).toBe(1);
-    expect(await countDownloaded(urls, c)).toBe(2);
-    expect(await removeClips(urls, c)).toBe(true);
-    expect(await countDownloaded(urls, c)).toBe(0);
+    expect(await countDownloaded(urls, 'en-from-ar', c)).toEqual({ listed: 2, course: 2 });
+    expect(await removeCourseAudio('en-from-ar', c)).toBe(true);
+    expect(await countDownloaded(urls, 'en-from-ar', c)).toEqual({ listed: 0, course: 0 });
+  });
+
+  it('counts what is really stored after a failed download, so Remove is offered', async () => {
+    const c = new FakeCaches();
+    c.failAdd = new Error('network');
+    c.failAfter = 1;
+    expect(await downloadClips(urls, c, async () => true)).toBe('failed');
+    expect(await countDownloaded(urls, 'en-from-ar', c)).toEqual({ listed: 1, course: 1 });
+    expect(await removeCourseAudio('en-from-ar', c)).toBe(true);
+    expect(await countDownloaded(urls, 'en-from-ar', c)).toEqual({ listed: 0, course: 0 });
+  });
+
+  it('removes every stored clip of the course, also files no longer listed, and only that course', async () => {
+    const c = new FakeCaches();
+    await downloadClips([...urls, 'audio/en-from-ar/old-name.opus', 'audio/zh-from-ar/x.opus'], c, async () => true);
+    expect(await countDownloaded(urls, 'en-from-ar', c)).toEqual({ listed: 2, course: 3 });
+    await removeCourseAudio('en-from-ar', c);
+    expect(await countDownloaded(['audio/zh-from-ar/x.opus'], 'zh-from-ar', c)).toEqual({ listed: 1, course: 1 });
+    expect(await removeCourseAudio('../x', c)).toBe(false);
+  });
+
+  it('says when the device is full', async () => {
+    const c = new FakeCaches();
+    const e = new Error('full');
+    e.name = 'QuotaExceededError';
+    c.failAdd = e;
+    expect(await downloadClips(urls, c, async () => true)).toBe('full');
   });
 
   it('does nothing for a course with no clips, and refuses anything that is not a relative clip path', async () => {
@@ -122,11 +186,9 @@ describe('download for offline', () => {
     expect(c.opened).toEqual([]);
   });
 
-  it('reports a browser without the Cache API, and a failed download', async () => {
+  it('reports a browser without the Cache API', async () => {
     expect(await downloadClips(urls, null)).toBe('unavailable');
-    const c = new FakeCaches();
-    c.failAdd = true;
-    expect(await downloadClips(urls, c, async () => true)).toBe('failed');
-    expect(await countDownloaded(urls, null)).toBe(0);
+    expect(await countDownloaded(urls, 'en-from-ar', null)).toEqual({ listed: 0, course: 0 });
+    expect(await removeCourseAudio('en-from-ar', null)).toBe(false);
   });
 });

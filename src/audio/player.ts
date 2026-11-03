@@ -76,13 +76,17 @@ export function stopAudio(): void {
 export async function playClip(url: string, make: MakeAudio = defaultMake): Promise<boolean> {
   if (!/^audio\/[a-z]{2,3}-from-[a-z]{2,3}\/[a-z0-9][a-z0-9-]*\.opus$/.test(url)) return false;
   stopAudio();
+  let a: AudioLike | null = null;
   try {
-    const a = make(url);
+    a = make(url);
     current = a;
     await a.play();
     return true;
   } catch {
-    if (current) current = null;
+    // Another tap started a newer clip while this one was starting: that is not a failure, and the
+    // newer clip must stay the one that Next or leaving the screen stops.
+    if (a !== null && current !== a) return true;
+    current = null;
     return false;
   }
 }

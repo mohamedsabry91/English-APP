@@ -77,11 +77,16 @@ Keep written consent outside the repository.
   controls at all**, and About still says the app has no sound.
 - A "Listen" button appears next to a phrase only when that phrase has a clip. Synthetic clips show a
   "synthetic voice" label.
-- **Offline:** clips are not part of the app's precache. Settings shows "Download audio for offline use"
-  (only when the course has clips). It stores the clips in the `english-practice-audio` cache
-  (`src/audio/offline.ts`, the only file allowed to use the Cache API), and asks the browser to keep the
-  app's data (persistent storage). The service worker serves `audio/*.opus` from that cache first
-  (CacheFirst), answers range requests from the full cached file, and stores only full (200) responses.
+- **Offline:** clips are not part of the app's precache, and **they are saved for offline use only by
+  "Download audio for offline use"** in Settings (shown only when the course has clips). That button
+  stores the clips in the `english-practice-audio` cache (`src/audio/offline.ts`, the only file allowed
+  to use the Cache API), and asks the browser to keep the app's data (persistent storage).
+- The service worker reads `audio/*.opus` from that cache first (answering range requests from the
+  full cached file), and otherwise goes to the network **without storing anything**. So listening never
+  saves a clip, on any server.
+- Settings counts what is really in the cache. After a failed download it shows the true number, and
+  "Remove downloaded audio" appears whenever anything of the course is stored. Remove deletes every
+  stored clip of the course, including files that are no longer listed.
 
 ## Adding a clip (later PRs)
 
@@ -90,3 +95,7 @@ Keep written consent outside the repository.
    `content/<course>/audio.json`.
 3. Add a row to the audio review table in `docs/CONTENT_REVIEW.md`.
 4. Never add clips in the same PR as a change to these rules.
+5. **To correct a clip, give the new file a new name** (for example `ph-01-v2.opus`) and update both
+   lists. A learner who already downloaded the old file keeps it under the old name, because a
+   download is never replaced in place; the new name makes the app fetch the corrected clip. The old
+   file is removed by "Remove downloaded audio".

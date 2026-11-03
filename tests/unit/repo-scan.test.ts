@@ -159,6 +159,9 @@ describe('repository scan', () => {
     expect(cfg).toMatch(/urlPattern: \(\{ url, sameOrigin \}\) => sameOrigin && /);
     expect(cfg).toContain("handler: 'CacheFirst'");
     expect(cfg).toContain('rangeRequests: true');
+    // Only "Download for offline" saves clips: the route reads the cache but never stores a response.
+    expect(cfg).toContain('plugins: [{ cacheWillUpdate: async () => null }]');
+    expect(cfg).not.toContain('cacheableResponse');
     const { AUDIO_CACHE } = await import('../../src/audio/offline');
     expect(cfg).toContain(`cacheName: '${AUDIO_CACHE}'`);
   });
