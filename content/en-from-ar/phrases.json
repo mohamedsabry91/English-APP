@@ -41,7 +41,7 @@
    "id": "ph-07",
    "en": "Sorry, I don't understand.",
    "ar": "عذرًا، لا أفهم.",
-   "noteAr": "don't = do not."
+   "noteAr": "don't اختصار do not."
   },
   {
    "id": "ph-08",
@@ -125,7 +125,7 @@
    "id": "ph-21",
    "en": "I'm working on it.",
    "ar": "أعمل عليه الآن.",
-   "noteAr": "I'm = I am."
+   "noteAr": "I'm اختصار I am."
   },
   {
    "id": "ph-22",
@@ -137,13 +137,13 @@
    "id": "ph-23",
    "en": "It's ready.",
    "ar": "إنه جاهز.",
-   "noteAr": "It's = It is."
+   "noteAr": "It's اختصار It is."
   },
   {
    "id": "ph-24",
    "en": "I'll send it today.",
    "ar": "سأرسله اليوم.",
-   "noteAr": "I'll = I will."
+   "noteAr": "I'll اختصار I will."
   },
   {
    "id": "ph-25",
@@ -203,7 +203,7 @@
    "id": "ph-34",
    "en": "That's a good idea.",
    "ar": "هذه فكرة جيدة.",
-   "noteAr": "That's = That is."
+   "noteAr": "That's اختصار That is."
   },
   {
    "id": "ph-35",

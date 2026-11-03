@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { LESSONS, PLACEMENT, TAGS, WRITING_TASKS, getTask, lessonsForTrack } from '../../src/core/content';
+import { ALL_PLANS, LESSONS, PHRASES, PLACEMENT, SAY_PROMPTS, STORIES, TAGS, WRITING_TASKS, getPhrase, getSayPrompt, getStory, getTask, lessonsForTrack } from '../../src/core/content';
+import { check } from '../../src/checker';
+import phraseFile from '../../content/en-from-ar/phrases.json';
+import storyFile from '../../content/en-from-ar/stories.json';
+import sayFile from '../../content/en-from-ar/say-aloud.json';
 import { normalizeAnswer } from '../../src/core/answers';
 import { LEVELS, type TagId } from '../../src/core/types';
 import ar from '../../src/i18n/ar.json';
@@ -136,6 +140,34 @@ function fields() {
     arabic.push([t.id, t.titleAr], [t.id, t.promptAr], ...t.selfCheckAr.map((s): [string, string] => [t.id, s]));
     english.push([t.id, t.titleEn], [t.id, t.promptEn], [t.id, t.modelAnswer]);
   }
+  for (const ph of PHRASES) {
+    english.push([ph.id, ph.en]);
+    arabic.push([ph.id, ph.ar], [ph.id, ph.noteAr]);
+  }
+  for (const st of STORIES) {
+    english.push([st.id, st.titleEn], [st.id, st.retell.promptEn], [st.id, st.retell.sample]);
+    arabic.push([st.id, st.titleAr], [st.id, st.retell.promptAr]);
+    for (const l of st.lines) {
+      english.push([st.id, l.en]);
+      arabic.push([st.id, l.ar]);
+    }
+    for (const q of st.questions) {
+      english.push([q.id, q.prompt], ...q.options.map((o): [string, string] => [q.id, o]));
+      arabic.push([q.id, q.explanationAr]);
+    }
+  }
+  for (const sa of SAY_PROMPTS) {
+    english.push([sa.id, sa.promptEn], [sa.id, sa.sample]);
+    arabic.push([sa.id, sa.promptAr]);
+  }
+  for (const pl of ALL_PLANS) {
+    english.push([pl.id, pl.titleEn], [pl.id, pl.summaryEn], [pl.id, pl.honestEn], [pl.id, pl.howItWorksEn], ...pl.canDoEn.map((x): [string, string] => [pl.id, x]), ...pl.cannotYetEn.map((x): [string, string] => [pl.id, x]));
+    arabic.push([pl.id, pl.titleAr], [pl.id, pl.summaryAr], [pl.id, pl.honestAr], [pl.id, pl.howItWorksAr], ...pl.canDoAr.map((x): [string, string] => [pl.id, x]), ...pl.cannotYetAr.map((x): [string, string] => [pl.id, x]));
+    for (const x of [...pl.routine, ...pl.goals, ...pl.selfCheck]) {
+      english.push([pl.id, x.en]);
+      arabic.push([pl.id, x.ar]);
+    }
+  }
   for (const [k, v] of Object.entries(ar)) arabic.push([`ar.json ${k}`, v]);
   for (const [k, v] of Object.entries(en)) english.push([`en.json ${k}`, v]);
   return { arabic, english };
@@ -205,6 +237,78 @@ describe('banned words', () => {
   it('no banned words in any content or interface text', () => {
     const { arabic, english } = fields();
     const bad = [...arabic, ...english].map(([k, v]) => [k, bannedHits(v)] as const).filter(([, h]) => h.length > 0);
+    expect(bad).toEqual([]);
+  });
+});
+
+describe('15-Day Start content', () => {
+  it('is all marked unreviewed', () => {
+    expect(phraseFile.reviewed).toBe(false);
+    expect(storyFile.reviewed).toBe(false);
+    expect(sayFile.reviewed).toBe(false);
+    for (const p of ALL_PLANS) expect(p.reviewed, p.id).toBe(false);
+  });
+
+  it('has 48 phrases, 12 stories and 15 say-aloud prompts, with unique ids', () => {
+    expect(PHRASES).toHaveLength(48);
+    expect(STORIES).toHaveLength(12);
+    expect(SAY_PROMPTS).toHaveLength(15);
+    const ids = [...PHRASES.map((p) => p.id), ...STORIES.map((s) => s.id), ...STORIES.flatMap((s) => s.questions.map((q) => q.id)), ...SAY_PROMPTS.map((s) => s.id), ...ALL_PLANS.map((p) => p.id)];
+    expect(ids.filter((id, i) => ids.indexOf(id) !== i)).toEqual([]);
+  });
+
+  it('every story has 4 lines and 3 questions with exactly one right, unique option', () => {
+    for (const st of STORIES) {
+      expect(st.lines, st.id).toHaveLength(4);
+      expect(st.questions, st.id).toHaveLength(3);
+      for (const q of st.questions) {
+        expect(q.answer >= 0 && q.answer < q.options.length, q.id).toBe(true);
+        expect(new Set(q.options.map((o) => normalizeAnswer(o))).size, q.id).toBe(q.options.length);
+      }
+    }
+  });
+
+  it('every plan day points to content that exists', () => {
+    for (const pl of ALL_PLANS) {
+      for (const d of pl.schedule) {
+        for (const id of d.phrases) expect(getPhrase(id), `${pl.id} day ${d.day} ${id}`).toBeDefined();
+        expect(getSayPrompt(d.sayId), `${pl.id} day ${d.day}`).toBeDefined();
+        if (d.type === 'learn') expect(getStory(d.storyId), `${pl.id} day ${d.day}`).toBeDefined();
+        else expect(getTask(d.writingTaskId), `${pl.id} day ${d.day}`).toBeDefined();
+      }
+      expect(pl.selfCheck.length).toBeGreaterThanOrEqual(3);
+      expect(pl.canDoEn.length).toBe(pl.canDoAr.length);
+      expect(pl.cannotYetEn.length).toBe(pl.cannotYetAr.length);
+      expect(pl.cannotYetEn.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('makes no false promises: no "learn in N days", no fluency promise, and it says it is below A1', () => {
+    for (const pl of ALL_PLANS) {
+      const all = JSON.stringify(pl);
+      expect(all).not.toMatch(/learn (english )?in \d+ days/i);
+      expect(all).not.toMatch(/fluent in/i);
+      expect(all).not.toMatch(/(تتعلم|تعلّم|تعلم) الإنجليزية في \d+/);
+      expect(pl.honestEn).toMatch(/will not make you fluent/i);
+      expect(pl.honestEn).toMatch(/below A1/);
+      expect(pl.honestAr).toMatch(/أقل من مستوى A1/);
+      expect(pl.honestEn).toMatch(/hundreds of hours/);
+    }
+  });
+
+  it('has no religious references', () => {
+    const texts = [JSON.stringify(phraseFile), JSON.stringify(storyFile), JSON.stringify(sayFile), ...ALL_PLANS.map((p) => JSON.stringify(p))].join(' ');
+    expect(texts).not.toMatch(/\b(quran|koran|hadith|prophet|zayd|zaid|sahaba|mosque|church|prayer|pray)\b/i);
+    for (const w of ['القرآن', 'حديث شريف', 'زيد بن ثابت', 'الصحابة', 'النبي', 'صلاة']) expect(texts.includes(w), w).toBe(false);
+  });
+
+  it('the writing checker finds nothing in our own correct English (phrases, stories, samples)', () => {
+    const own = [
+      ...PHRASES.map((p) => [p.id, p.en]),
+      ...STORIES.flatMap((s) => [...s.lines.map((l) => [s.id, l.en]), [s.id, s.retell.sample]]),
+      ...SAY_PROMPTS.map((s) => [s.id, s.sample]),
+    ];
+    const bad = own.flatMap(([id, text]) => check(text as string, 'A2').map((f) => `${id}: ${f.tag} "${(text as string).slice(f.start, f.end)}" in "${text}"`));
     expect(bad).toEqual([]);
   });
 });
