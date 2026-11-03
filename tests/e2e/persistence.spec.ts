@@ -160,6 +160,10 @@ test('an import with no usable course is refused, and good progress on the devic
     { ...shared, activeCourse: 'zh-from-ar', courses: { 'zh-from-ar': { completedLessons: ['x'] } } },
     { ...shared, activeCourse: 'en-from-ar' },
     { ...shared, activeCourse: 'en-from-ar', courses: { 'en-from-ar': 'x' } },
+    // Files with no real progress, which would otherwise wipe progress after the confirm dialog.
+    {},
+    { version: 2 },
+    { ...shared, activeCourse: 'en-from-ar', courses: { 'en-from-ar': {} } },
   ];
   for (const [i, progress] of bad.entries()) {
     const file = info.outputPath(`bad-${i}.json`);

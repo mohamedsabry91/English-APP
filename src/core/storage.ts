@@ -447,8 +447,22 @@ export function exportProgress(p: Progress, exportedOn: string): string {
   // Drafts of the learner's writing are not exported.
   const noDrafts: Record<string, CourseProgress> = {};
   for (const [id, c] of Object.entries(p.otherCourses)) noDrafts[id] = { ...c, writingDraft: null };
-  const file: ExportFile = { kind: EXPORT_KIND, exportedOn, progress: toStored({ ...p, writingDraft: null, otherCourses: noDrafts }) };
+  // Also in courses this app does not know, which are kept as they are on the device.
+  const unknownNoDrafts: Record<string, unknown> = {};
+  for (const [id, c] of Object.entries(p.unknownCourses)) unknownNoDrafts[id] = isObj(c) && 'writingDraft' in c ? { ...c, writingDraft: null } : c;
+  const file: ExportFile = {
+    kind: EXPORT_KIND,
+    exportedOn,
+    progress: toStored({ ...p, writingDraft: null, otherCourses: noDrafts, unknownCourses: unknownNoDrafts }),
+  };
   return JSON.stringify(file, null, 2);
+}
+
+/** True when at least one known course holds real progress (anything besides an unfinished draft). */
+function hasProgress(p: Progress): boolean {
+  const empty = JSON.stringify({ ...defaultCourseProgress(), writingDraft: null });
+  const courses = [toStored(p).courses[p.courseId], ...Object.values(p.otherCourses)];
+  return courses.some((c) => c !== undefined && JSON.stringify({ ...defaultCourseProgress(), ...c, writingDraft: null }) !== empty);
 }
 
 /** Something in an import file was damaged and left out, although the rest loaded. */
@@ -467,6 +481,9 @@ export function importProgress(text: string): ImportResult {
   if (!isObj(parsed) || parsed.kind !== EXPORT_KIND || !isObj(parsed.progress)) return { ok: false, reason: 'kind' };
   try {
     const progress = migrate(parsed.progress, { strict: true });
+    // A file whose courses hold no real progress (for example `{}` or `{ version: 2 }`) would only wipe
+    // the progress on this device, so it is refused like a file with no usable course.
+    if (!hasProgress(progress)) return { ok: false, reason: 'noCourse' };
     const warnings: ImportWarning[] = [];
     // Before version 3 the plan was at the top level; from version 3 it is inside each course.
     const raw = parsed.progress;
