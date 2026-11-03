@@ -54,6 +54,8 @@ These are listed first because they are the most likely to be wrong, unclear or 
     The first wrong option, "the a", was changed to "the" after a review, and then to "many", because
     "I eat the apple every morning" is correct English and a good learner would have been marked wrong.
     Check that "many" is clearly wrong here ("many apple") and that "an" is the only right answer.
+    **Placement question p-b1-8** ("He is ___ honest person") had the same problem with "the" and was
+    changed the same way: options a / many / an, answer an.
 12. **Arabic style.** The Arabic aims to be simple Modern Standard Arabic. Some phrases may read as
     translated. Please check the interface text in `src/i18n/ar.json` as well as the lessons.
 13. **The writing checker's catch rate** (98.8% on the fixture file) is much higher than it will be on

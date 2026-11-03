@@ -26,7 +26,7 @@
     { "id": "p-b1-5", "level": "B1", "tag": "PREPOSITION", "prompt": "Choose the correct sentence.", "options": ["Could you explain me how this pump works?", "Could you explain how me this pump works?", "Could you explain to me how this pump works?"], "answer": 2 },
     { "id": "p-b1-6", "level": "B1", "tag": "TENSE", "prompt": "If it rains tomorrow, we ___ the site visit.", "options": ["will postpone", "would postpone", "postponed"], "answer": 0 },
     { "id": "p-b1-7", "level": "B1", "tag": "UNCOUNTABLE", "prompt": "The new equipment ___ delivered last week.", "options": ["were", "was", "are"], "answer": 1 },
-    { "id": "p-b1-8", "level": "B1", "tag": "ARTICLE", "prompt": "He is ___ honest person.", "options": ["a", "the", "an"], "answer": 2 },
+    { "id": "p-b1-8", "level": "B1", "tag": "ARTICLE", "prompt": "He is ___ honest person.", "options": ["a", "many", "an"], "answer": 2 },
 
     { "id": "p-b2-1", "level": "B2", "tag": "TENSE", "prompt": "By the end of next month, we ___ the first phase of the project.", "options": ["will have completed", "will complete already", "have completed"], "answer": 0 },
     { "id": "p-b2-2", "level": "B2", "tag": "ORDER", "prompt": "Hardly ___ the test begun when the power failed.", "options": ["has", "did", "had"], "answer": 2 },
