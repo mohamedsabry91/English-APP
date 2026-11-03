@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { openApp } from './helpers';
 
 // Clips are saved for offline use only through "Download for offline". Playing a clip (or any other
 // request for one) must never store it. The clip bytes are generated here; no audio is in the repository.
@@ -22,7 +23,7 @@ test('the service worker reads downloaded clips from the cache, but never stores
     if (url.pathname.endsWith('review-test-bad.opus')) return route.fulfill({ status: 500, body: 'error' });
     return route.fulfill({ status: 200, contentType: 'audio/ogg', body: fakeClip() });
   });
-  await page.goto('./');
+  await openApp(page);
   await page.evaluate(async () => {
     await navigator.serviceWorker.ready;
   });
