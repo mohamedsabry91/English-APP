@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { readFileSync, writeFileSync } from 'node:fs';
-import { placementAllFirst, stored, storedRaw, welcome, STORAGE_KEY, loadApp } from './helpers';
+import { placementAllFirst, stored, storedRaw, welcome, STORAGE_KEY, loadApp, openApp } from './helpers';
 
 test('reload keeps progress; export then delete then import restores it', async ({ page }, info) => {
   await welcome(page, 'en');
@@ -108,7 +108,7 @@ test('import says so when the plan data in the file is damaged, and loads the re
 
 test('an existing English learner (version 2 record) sees no change, and the next save keeps everything, per course', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-11-03T09:00:00+03:00') });
-  await page.goto('./');
+  await openApp(page);
   const v2 = {
     version: 2,
     uiLang: 'en',
@@ -174,7 +174,7 @@ test('an import with no usable course is refused, and good progress on the devic
 });
 
 test('importing an older file keeps a course on this device that the file does not have', async ({ page }, info) => {
-  await page.goto('./');
+  await openApp(page);
   const device = {
     version: 3,
     uiLang: 'en',
