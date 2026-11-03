@@ -71,6 +71,25 @@ export interface PlacementProgress {
   answers: (number | null)[];
 }
 
+/** Self-rating after a "say it aloud" prompt: 1 = needed the sample, 2 = with pauses, 3 = clearly. */
+export type SelfRating = 1 | 2 | 3;
+
+/** Progress in a learning plan such as "15-Day Start". Kept on the device and included in exports. */
+export interface PlanRecord {
+  planId: string;
+  startedOn: LocalDate;
+  /** Plan days finished, with the local date each one was finished. */
+  completedDays: { day: number; date: LocalDate }[];
+  /** "Say it aloud" self-ratings, one per plan day at most. */
+  ratings: { day: number; rating: SelfRating }[];
+  /** The same short self-check on the first and last day (one answer of 1 to 3 per statement). */
+  selfCheckStart: SelfRating[] | null;
+  selfCheckEnd: SelfRating[] | null;
+  /** The plan day in progress and the step reached, so the learner can resume. */
+  current: { day: number; step: number } | null;
+  finishedOn: LocalDate | null;
+}
+
 export interface Progress {
   version: number;
   uiLang: UiLang;
@@ -86,4 +105,5 @@ export interface Progress {
   writingDraft: { taskId: string; text: string } | null;
   lastExport: LocalDate | null;
   createdOn: LocalDate | null;
+  plan: PlanRecord | null;
 }

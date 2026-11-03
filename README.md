@@ -4,6 +4,14 @@ A free, installable web app (PWA) for Arabic-speaking adults who are learning En
 "English for Engineers" track. It works offline after the first load. All progress stays in the
 browser on the device. There is no server, no account, no AI and no audio.
 
+## Plans
+
+The app has a data-driven plan picker. Plans are JSON files in `content/en-from-ar/plans/`; only
+files with `"available": true` are shown. The first plan is **15-Day Start**: work phrases first,
+15 minutes a day, 48 phrases on 12 learning days, with review days 6, 11 and 15. It is a small start
+(about 4 hours in total, below A1), not a fluency course. Plan progress stays on the device and is
+included in exported progress files.
+
 ## Privacy
 
 Nothing is sent anywhere. Progress is kept in the browser's `localStorage` on the device. While a

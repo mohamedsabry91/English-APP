@@ -88,3 +88,20 @@ test('import rejects a file over the limits with a clear message and keeps curre
   );
   expect(await stored(page)).toEqual(before);
 });
+
+test('import says so when the plan data in the file is damaged, and loads the rest', async ({ page }, info) => {
+  await welcome(page, 'en');
+  await page.getByTestId('placement-skip').click();
+  await page.goto('./#/settings');
+  const file = info.outputPath('bad-plan.json');
+  writeFileSync(
+    file,
+    JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { version: 2, onboarded: true, completedLessons: ['g-a1-01'], plan: { planId: '15-day-start', startedOn: 'yesterday' } } }),
+  );
+  await page.getByTestId('import-file').setInputFiles(file);
+  await page.getByTestId('confirm-yes').click();
+  await expect(page.getByTestId('settings-notice')).toHaveText('Progress loaded. The plan data in this file was damaged, so it was not loaded. Your other progress was loaded.');
+  const p = await stored(page);
+  expect(p?.plan).toBeNull();
+  expect(p?.completedLessons).toEqual(['g-a1-01']);
+});

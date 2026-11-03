@@ -17,7 +17,7 @@ export function Settings() {
   const { t, progress, update, replace, deleteAll, today } = useStore();
   const [notice, setNotice] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
-  const [pendingImport, setPendingImport] = useState<Progress | null>(null);
+  const [pendingImport, setPendingImport] = useState<{ progress: Progress; planDropped: boolean } | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const setLang = (l: UiLang) => update((p) => ({ ...p, uiLang: l }));
@@ -50,7 +50,7 @@ export function Settings() {
       setNotice(t(`settings.importError.${r.reason}`));
       return;
     }
-    setPendingImport(r.progress);
+    setPendingImport({ progress: r.progress, planDropped: r.warnings.includes('planDropped') });
   };
 
   const retake = () => {
@@ -128,9 +128,9 @@ export function Settings() {
           cancelLabel={t('common.cancel')}
           onCancel={() => setPendingImport(null)}
           onConfirm={() => {
-            replace({ ...pendingImport, onboarded: true });
+            replace({ ...pendingImport.progress, onboarded: true });
+            setNotice(pendingImport.planDropped ? `${t('settings.importOk')} ${t('settings.importPlanDropped')}` : t('settings.importOk'));
             setPendingImport(null);
-            setNotice(t('settings.importOk'));
           }}
         />
       )}

@@ -47,3 +47,17 @@ export function dueCards(cards: Record<string, ReviewCard> | ReviewCard[], today
 export function countDue(cards: Record<string, ReviewCard>, today: LocalDate): number {
   return dueCards(cards, today, Infinity).length;
 }
+
+/**
+ * A learn-card for something new, such as a work phrase: it starts in box 1 and is due tomorrow.
+ * It is not a mistake, so the mistake count stays 0. An existing card is left as it is.
+ */
+export function recordLearn(card: ReviewCard | undefined, id: string, tags: TagId[], today: LocalDate): ReviewCard {
+  if (card) return card;
+  return { id, tags: [...tags], box: 1, due: addDays(today, gap(1)), lastAnswered: today, mistakes: 0, learned: false, created: today };
+}
+
+/** Whether a card can be answered today with a real effect on its box (due, and not already answered today). */
+export function isDue(card: ReviewCard, today: LocalDate): boolean {
+  return !card.learned && card.due <= today && card.lastAnswered !== today;
+}

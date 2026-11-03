@@ -19,6 +19,11 @@ for (const f of readdirSync(LESSON_DIR)) {
   const l = JSON.parse(readFileSync(join(LESSON_DIR, f), 'utf8')) as { exercises: Ex[] };
   for (const e of l.exercises) EXERCISES.set(e.id, e);
 }
+// Story questions in the 15-Day Start plan are multiple choice too.
+const STORY_FILE = join(ROOT, 'content', 'en-from-ar', 'stories.json');
+for (const st of (JSON.parse(readFileSync(STORY_FILE, 'utf8')) as { stories: { questions: { id: string; options: string[]; answer: number }[] }[] }).stories) {
+  for (const q of st.questions) EXERCISES.set(q.id, { id: q.id, type: 'mc', options: q.options, answer: q.answer });
+}
 
 export const STORAGE_KEY = 'english-practice:progress';
 

@@ -1,0 +1,95 @@
+{
+ "reviewed": false,
+ "prompts": [
+  {
+   "id": "sa-01",
+   "promptEn": "Greet a new colleague. Say that you are new and which team you work in.",
+   "promptAr": "حيِّ زميلًا جديدًا. قل إنك جديد، وفي أي فريق تعمل.",
+   "sample": "Good morning. Nice to meet you. I am a new engineer here. I work in the design team."
+  },
+  {
+   "id": "sa-02",
+   "promptEn": "You did not understand something in a meeting. Ask politely.",
+   "promptAr": "لم تفهم شيئًا في اجتماع. اسأل بأدب.",
+   "sample": "Sorry, I don't understand. Could you say that again, please? What does this word mean?"
+  },
+  {
+   "id": "sa-03",
+   "promptEn": "A colleague helped you. Thank them.",
+   "promptAr": "ساعدك زميل. اشكره.",
+   "sample": "Thank you for your help. I really appreciate it."
+  },
+  {
+   "id": "sa-04",
+   "promptEn": "Ask about the time of a meeting, and say that you will come.",
+   "promptAr": "اسأل عن موعد اجتماع، وقل إنك ستحضر.",
+   "sample": "What time is the meeting? Thank you. I will be there."
+  },
+  {
+   "id": "sa-05",
+   "promptEn": "Ask a colleague to send you a file, and say when you need it.",
+   "promptAr": "اطلب من زميل أن يرسل لك ملفًا، وقل متى تحتاجه.",
+   "sample": "Could you send me the file, please? I need it by Thursday."
+  },
+  {
+   "id": "sa-06",
+   "promptEn": "Review: greet someone, ask for help, and thank them.",
+   "promptAr": "مراجعة: حيِّ شخصًا، واطلب المساعدة، ثم اشكره.",
+   "sample": "Good morning. Can you help me, please? Thank you for your help."
+  },
+  {
+   "id": "sa-07",
+   "promptEn": "Your manager asks about your report. Give a short update.",
+   "promptAr": "يسألك مديرك عن تقريرك. أعطِ تحديثًا قصيرًا.",
+   "sample": "I'm working on it. It's almost finished. I'll send it today."
+  },
+  {
+   "id": "sa-08",
+   "promptEn": "Tell your supervisor about a problem with a machine.",
+   "promptAr": "أخبر مشرفك بمشكلة في آلة.",
+   "sample": "There is a problem with the pump. I will check it now."
+  },
+  {
+   "id": "sa-09",
+   "promptEn": "A delivery is late. Say sorry and say when it will be ready.",
+   "promptAr": "التوريد متأخر. اعتذر، وقل متى سيكون جاهزًا.",
+   "sample": "Sorry for the delay. The delivery is late. It will be ready tomorrow."
+  },
+  {
+   "id": "sa-10",
+   "promptEn": "In a meeting, agree with one idea and say you are not sure about another.",
+   "promptAr": "في اجتماع، وافق على فكرة، وقل إنك لست متأكدًا من فكرة أخرى.",
+   "sample": "I agree. That's a good idea. But I'm not sure about the cost. Let's discuss it tomorrow."
+  },
+  {
+   "id": "sa-11",
+   "promptEn": "Review: give an update, and say that something is late.",
+   "promptAr": "مراجعة: أعطِ تحديثًا، وقل إن شيئًا ما متأخر.",
+   "sample": "I'm working on the report. Sorry for the delay. It will be ready tomorrow."
+  },
+  {
+   "id": "sa-12",
+   "promptEn": "Give two safety instructions to a new worker on site.",
+   "promptAr": "أعطِ عاملًا جديدًا في الموقع تعليمتين للسلامة.",
+   "sample": "Please wear your helmet. Be careful, the floor is wet."
+  },
+  {
+   "id": "sa-13",
+   "promptEn": "Call an office. Ask for a person, and leave a message.",
+   "promptAr": "اتصل بمكتب. اطلب شخصًا، واترك رسالة.",
+   "sample": "Can I speak to Mr. Hassan, please? Can I leave a message? Please tell him I'll call him back."
+  },
+  {
+   "id": "sa-14",
+   "promptEn": "Say goodbye to your colleagues at the end of the day.",
+   "promptAr": "ودّع زملاءك في آخر يوم العمل.",
+   "sample": "I'm leaving now. Thanks for today. See you tomorrow. Have a good evening."
+  },
+  {
+   "id": "sa-15",
+   "promptEn": "Introduce yourself for about 30 seconds: your name, your job, your team, and one thing you do at work.",
+   "promptAr": "عرّف بنفسك في نحو 30 ثانية: اسمك، ومهنتك، وفريقك، وشيئًا واحدًا تفعله في العمل.",
+   "sample": "Good morning. My name is Omar. I am a civil engineer, and I work in the design team. I check drawings and I visit the site every week. I am learning English for my work. I can ask for help, and I can write short messages. Nice to meet you."
+  }
+ ]
+}

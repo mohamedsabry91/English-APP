@@ -1,12 +1,16 @@
 // Loads course content. The course path is content/<target>-from-<learner>/.
-import type { Exercise, Lesson, PlacementQuestion, TagInfo, WritingTask } from './contentTypes';
+import type { Exercise, Lesson, Phrase, PlacementQuestion, Plan, SayPrompt, Story, TagInfo, WritingTask } from './contentTypes';
 import { LEVELS, type Level, type PlacementResult, type TagId, type TrackChoice, type TrackId } from './types';
 import { startLevel } from './placement';
 import placementData from '../../content/en-from-ar/placement.json';
 import tagData from '../../content/en-from-ar/tags.json';
+import phraseData from '../../content/en-from-ar/phrases.json';
+import storyData from '../../content/en-from-ar/stories.json';
+import sayData from '../../content/en-from-ar/say-aloud.json';
 
 const lessonFiles = import.meta.glob('../../content/en-from-ar/lessons/*.json', { eager: true, import: 'default' });
 const writingFiles = import.meta.glob('../../content/en-from-ar/writing/*.json', { eager: true, import: 'default' });
+const planFiles = import.meta.glob('../../content/en-from-ar/plans/*.json', { eager: true, import: 'default' });
 
 const levelIndex = (l: Level) => LEVELS.indexOf(l);
 
@@ -62,4 +66,27 @@ export function nextLesson(track: TrackChoice, result: PlacementResult | null, c
 
 export function exercisesWithTag(tag: TagId): { exercise: Exercise; lesson: Lesson }[] {
   return [...exerciseById.values()].filter(({ exercise }) => exercise.tags.includes(tag));
+}
+
+export const PHRASES: Phrase[] = (phraseData as { phrases: Phrase[] }).phrases;
+export const STORIES: Story[] = (storyData as { stories: Story[] }).stories;
+export const SAY_PROMPTS: SayPrompt[] = (sayData as { prompts: SayPrompt[] }).prompts;
+
+/** Every plan file, in order. The picker shows only the available ones. */
+export const ALL_PLANS: Plan[] = (Object.values(planFiles) as Plan[]).slice().sort((a, b) => a.order - b.order);
+export const PLANS: Plan[] = ALL_PLANS.filter((p) => p.available);
+
+const phraseById = new Map(PHRASES.map((p) => [p.id, p]));
+const storyById = new Map(STORIES.map((s) => [s.id, s]));
+const sayById = new Map(SAY_PROMPTS.map((s) => [s.id, s]));
+const planById = new Map(ALL_PLANS.map((p) => [p.id, p]));
+
+export const getPhrase = (id: string) => phraseById.get(id);
+export const getStory = (id: string) => storyById.get(id);
+export const getSayPrompt = (id: string) => sayById.get(id);
+export const getPlan = (id: string) => planById.get(id);
+
+/** A review card is either a lesson exercise or a work phrase. */
+export function reviewItemExists(id: string): boolean {
+  return getExercise(id) !== undefined || getPhrase(id) !== undefined;
 }

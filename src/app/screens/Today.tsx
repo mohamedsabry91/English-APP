@@ -6,6 +6,7 @@ import { daysBetween } from '../../core/dates';
 import { activeSession, plannedLessonId, startSession } from '../session';
 import { exportToFile } from '../exportFile';
 import { DAILY_REVIEW_LIMIT } from '../../core/scheduler';
+import { PlanCard } from '../PlanCard';
 
 export function Today() {
   const { t, lang, progress, update, today } = useStore();
@@ -89,6 +90,7 @@ export function Today() {
         </div>
       )}
       {main}
+      <PlanCard />
       {showExportReminder && (
         <div className="banner" data-testid="export-reminder">
           <p>{t('today.exportReminder')}</p>

@@ -90,6 +90,8 @@ button.link-back { border: none; background: none; color: var(--primary); text-d
 
 fieldset { border: none; padding: 0; margin: 12px 0; min-width: 0; }
 legend { font-weight: 700; margin-block-end: 8px; padding: 0; }
+fieldset.card > legend { float: inline-start; width: 100%; }
+fieldset.card > legend + * { clear: both; }
 
 .notice-list { padding-inline-start: 1.2em; }
 .notice-list li { margin-block: 4px; }

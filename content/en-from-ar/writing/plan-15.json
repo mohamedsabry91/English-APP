@@ -1,0 +1,53 @@
+[
+  {
+    "id": "w-p15-request",
+    "track": "general",
+    "level": "A1",
+    "titleEn": "A short request",
+    "titleAr": "طلب قصير",
+    "promptEn": "Write a short message to a colleague. Ask them to send you a file, and say when you need it.",
+    "promptAr": "اكتب رسالة قصيرة لزميل. اطلب منه أن يرسل لك ملفًا، وقل متى تحتاجه.",
+    "wordLimit": 40,
+    "modelAnswer": "Hello Ali,\nCould you send me the pump drawings, please? I need them by Thursday.\nThank you,\nOmar",
+    "selfCheckAr": [
+      "هل بدأت بتحية وانتهيت باسمك؟",
+      "هل استخدمت Could you ... please؟",
+      "هل ذكرت متى تحتاج الملف؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-p15-thanks",
+    "track": "general",
+    "level": "A1",
+    "titleEn": "A short thank-you",
+    "titleAr": "رسالة شكر قصيرة",
+    "promptEn": "Write a short message to thank a colleague for their help today.",
+    "promptAr": "اكتب رسالة قصيرة تشكر فيها زميلًا على مساعدته اليوم.",
+    "wordLimit": 40,
+    "modelAnswer": "Hello Khalid,\nThank you for your help with the printer today. I really appreciate it.\nBest regards,\nSami",
+    "selfCheckAr": [
+      "هل قلت Thank you for ...؟",
+      "هل ذكرت ما الذي ساعدك فيه؟",
+      "هل الرسالة قصيرة ومهذبة؟"
+    ],
+    "reviewed": false
+  },
+  {
+    "id": "w-p15-delay",
+    "track": "general",
+    "level": "A1",
+    "titleEn": "A short delay message",
+    "titleAr": "رسالة قصيرة عن تأخير",
+    "promptEn": "Write a short message to your manager. Say sorry that a task is late, and say when it will be ready.",
+    "promptAr": "اكتب رسالة قصيرة لمديرك. اعتذر عن تأخر مهمة، وقل متى ستكون جاهزة.",
+    "wordLimit": 40,
+    "modelAnswer": "Dear Mr. Fares,\nSorry for the delay. The report is almost finished. It will be ready tomorrow.\nBest regards,\nNabil",
+    "selfCheckAr": [
+      "هل بدأت بـ Sorry for the delay؟",
+      "هل قلت متى ستكون المهمة جاهزة؟",
+      "هل استخدمت will be؟"
+    ],
+    "reviewed": false
+  }
+]
