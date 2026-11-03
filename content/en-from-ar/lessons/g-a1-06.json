@@ -1,0 +1,33 @@
+{
+  "id": "g-a1-06",
+  "track": "general",
+  "level": "A1",
+  "order": 6,
+  "titleEn": "at, on, in for time and place",
+  "titleAr": "حروف الجر at و on و in للزمان والمكان",
+  "tags": ["PREPOSITION"],
+  "explanationAr": "للزمان: نستخدم at مع الساعة (at 7 o'clock)، و on مع الأيام والتواريخ (on Monday)، و in مع الشهور والسنوات وأجزاء اليوم (in May, in 2025, in the morning)، لكننا نقول at night. للمكان: نستخدم at لنقطة محددة (at the gate)، و in لداخل مكان (in the office)، و on لسطح شيء (on the table).",
+  "explanationEn": "For time, use at with clock times (at 7 o'clock), on with days and dates (on Monday), and in with months, years and parts of the day (in May, in 2025, in the morning), but we say at night. For place, use at for a point (at the gate), in for inside a place (in the office), and on for a surface (on the table).",
+  "comparison": [
+    { "ar": "في الساعة السابعة", "en": "at seven o'clock", "noteAr": "«في» العربية تقابل حروفًا مختلفة في الإنجليزية: at مع الساعة." },
+    { "ar": "يوم الاثنين", "en": "on Monday", "noteAr": "نستخدم on مع الأيام." },
+    { "ar": "في الصباح، في الليل", "en": "in the morning, at night", "noteAr": "نستخدم in مع أجزاء اليوم، لكن نقول at night." }
+  ],
+  "examples": [
+    { "en": "The meeting starts at nine o'clock.", "ar": "يبدأ الاجتماع في الساعة التاسعة." },
+    { "en": "We visit the site on Sunday.", "ar": "نزور الموقع يوم الأحد." },
+    { "en": "The bridge opened in 2020.", "ar": "افتُتح الجسر في عام 2020." },
+    { "en": "The files are on the desk.", "ar": "الملفات على المكتب." }
+  ],
+  "exercises": [
+    { "id": "g-a1-06-e1", "type": "mc", "tags": ["PREPOSITION"], "prompt": "The train leaves ___ 6:30.", "options": ["in", "on", "at"], "answer": 2, "explanationAr": "مع الساعة نستخدم at." },
+    { "id": "g-a1-06-e2", "type": "mc", "tags": ["PREPOSITION"], "prompt": "We have a meeting ___ Tuesday.", "options": ["on", "in", "at"], "answer": 0, "explanationAr": "مع الأيام نستخدم on." },
+    { "id": "g-a1-06-e3", "type": "fill", "tags": ["PREPOSITION"], "prompt": "I usually read ___ the evening.", "accepted": ["in"], "explanationAr": "مع أجزاء اليوم نستخدم in: in the evening." },
+    { "id": "g-a1-06-e4", "type": "fix", "tags": ["PREPOSITION"], "sentence": "The project ends on 2027.", "accepted": ["The project ends in 2027."], "explanationAr": "مع السنوات نستخدم in." },
+    { "id": "g-a1-06-e5", "type": "mc", "tags": ["PREPOSITION"], "prompt": "Your keys are ___ the table.", "options": ["on", "at", "in"], "answer": 0, "explanationAr": "المفاتيح فوق سطح الطاولة، فنستخدم on." },
+    { "id": "g-a1-06-e6", "type": "fill", "tags": ["PREPOSITION"], "prompt": "Wait for me ___ the main gate.", "accepted": ["at"], "explanationAr": "البوابة نقطة محددة، فنستخدم at." },
+    { "id": "g-a1-06-e7", "type": "fix", "tags": ["PREPOSITION"], "sentence": "I sleep early in night.", "accepted": ["I sleep early at night."], "explanationAr": "نقول at night، مع أننا نقول in the morning." }
+  ],
+  "writingTaskId": "w-g-a1-06",
+  "reviewed": false
+}

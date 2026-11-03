@@ -1,0 +1,54 @@
+# Runs the checks from BRIEF.md section 12. Tests only: this workflow never builds a release,
+# never deploys and never publishes anything.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    name: Lint, typecheck, unit tests, build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Windows too, because the repository scan once failed there (backslash paths).
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  e2e:
+    name: Browser tests (Chromium and WebKit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Installs the browser versions that match @playwright/test in package-lock.json.
+      - run: npx playwright install --with-deps chromium webkit
+      # E2E_WEBKIT=1 makes WebKit required, so a missing browser fails the job instead of being skipped.
+      - run: npm run test:e2e
+        env:
+          E2E_WEBKIT: '1'

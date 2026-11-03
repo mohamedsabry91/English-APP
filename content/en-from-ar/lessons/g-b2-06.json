@@ -1,0 +1,150 @@
+{
+  "id": "g-b2-06",
+  "track": "general",
+  "level": "B2",
+  "order": 6,
+  "titleEn": "Linking words: although, however, because of",
+  "titleAr": "أدوات الربط: although و however و because of",
+  "tags": [
+    "ORDER",
+    "PREPOSITION"
+  ],
+  "explanationAr": "أدوات الربط تجعل الكتابة واضحة. although تربط جملتين في جملة واحدة: Although it rained, we finished the work. أما however فتأتي غالبًا في أول جملة جديدة وبعدها فاصلة: It rained. However, we finished the work. ولا نجمع although و but في جملة واحدة، كما قد نفعل في العربية («مع أنه... لكن...»). وللسبب نستخدم because مع جملة، و because of مع اسم: because the road was closed، و because of the rain.",
+  "explanationEn": "Linking words make writing clear. Although joins two ideas in one sentence: Although it rained, we finished the work. However usually starts a new sentence and has a comma after it: It rained. However, we finished the work. Do not use although and but together. Use because with a clause and because of with a noun: because the road was closed, because of the rain.",
+  "comparison": [
+    {
+      "ar": "مع أن المضخة جديدة، إلا أنها مزعجة.",
+      "en": "Although the pump is new, it is noisy.",
+      "noteAr": "لا نضيف but بعد Although."
+    },
+    {
+      "ar": "توقفنا بسبب المطر.",
+      "en": "We stopped because of the rain.",
+      "noteAr": "because of + اسم."
+    }
+  ],
+  "examples": [
+    {
+      "en": "Although the test was long, it was useful.",
+      "ar": "مع أن الاختبار كان طويلًا، فقد كان مفيدًا."
+    },
+    {
+      "en": "The design is good. However, it is expensive.",
+      "ar": "التصميم جيد. لكنه مكلف."
+    },
+    {
+      "en": "We stopped because of the strong wind.",
+      "ar": "توقفنا بسبب الرياح القوية."
+    },
+    {
+      "en": "The team worked late, so the report was ready on time.",
+      "ar": "عمل الفريق حتى وقت متأخر، فكان التقرير جاهزًا في موعده."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b2-06-e1",
+      "type": "fix",
+      "tags": [
+        "ORDER"
+      ],
+      "sentence": "Although the pump is new, but it is noisy.",
+      "accepted": [
+        "Although the pump is new, it is noisy.",
+        "The pump is new, but it is noisy."
+      ],
+      "explanationAr": "لا نجمع Although و but في جملة واحدة."
+    },
+    {
+      "id": "g-b2-06-e2",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "We stopped the work ___ the rain.",
+      "options": [
+        "because",
+        "because of",
+        "although"
+      ],
+      "answer": 1,
+      "explanationAr": "the rain اسم، فنستخدم because of."
+    },
+    {
+      "id": "g-b2-06-e3",
+      "type": "mc",
+      "tags": [
+        "ORDER"
+      ],
+      "prompt": "The plan is good. ___, it needs more time.",
+      "options": [
+        "However",
+        "Although",
+        "Because"
+      ],
+      "answer": 0,
+      "explanationAr": "However في أول جملة جديدة وبعدها فاصلة."
+    },
+    {
+      "id": "g-b2-06-e4",
+      "type": "fill",
+      "tags": [
+        "ORDER"
+      ],
+      "prompt": "___ it was late, the team continued working.",
+      "accepted": [
+        "Although",
+        "Though",
+        "Even though"
+      ],
+      "explanationAr": "Although تربط فكرتين متعارضتين في جملة واحدة."
+    },
+    {
+      "id": "g-b2-06-e5",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "The",
+        "cost",
+        "is",
+        "high,",
+        "so",
+        "we",
+        "need",
+        "approval."
+      ],
+      "explanationAr": "الفكرة الأولى، ثم so والنتيجة."
+    },
+    {
+      "id": "g-b2-06-e6",
+      "type": "fix",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "sentence": "Because of the road was closed, we were late.",
+      "accepted": [
+        "Because the road was closed, we were late."
+      ],
+      "explanationAr": "بعد because of يأتي اسم، أما الجملة فتأتي بعد because."
+    },
+    {
+      "id": "g-b2-06-e7",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "I called him ___ I needed the file.",
+      "options": [
+        "because",
+        "because of",
+        "however"
+      ],
+      "answer": 0,
+      "explanationAr": "I needed the file جملة، فنستخدم because."
+    }
+  ],
+  "writingTaskId": "w-g-b2-06",
+  "reviewed": false
+}

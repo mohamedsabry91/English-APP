@@ -1,0 +1,146 @@
+{
+  "id": "e-07",
+  "track": "engineers",
+  "level": "B1",
+  "order": 7,
+  "titleEn": "Meeting phrases",
+  "titleAr": "عبارات الاجتماعات",
+  "tags": [
+    "WORD",
+    "PREPOSITION"
+  ],
+  "explanationAr": "نحتاج في الاجتماعات عبارات قصيرة ومهذبة: لبدء الاجتماع (Let's start. The aim of today's meeting is...)، ولإبداء الرأي (In my opinion, ... أو I think we should...)، وللموافقة أو الاعتراض بأدب (I agree. أو I see your point, but...)، ولطلب التوضيح (Could you explain that again, please?)، وللختام (To sum up, ... أو Let's agree on the next steps.).",
+  "explanationEn": "Meetings need short, polite phrases: to start (Let's start. The aim of today's meeting is...), to give an opinion (In my opinion, ... / I think we should...), to agree or disagree politely (I agree. / I see your point, but...), to ask for clarification (Could you explain that again, please?), and to close (To sum up, ... / Let's agree on the next steps.).",
+  "comparison": [
+    {
+      "ar": "في رأيي، نحتاج أسبوعًا آخر.",
+      "en": "In my opinion, we need one more week.",
+      "noteAr": "In my opinion في أول الجملة."
+    },
+    {
+      "ar": "أتفق معك.",
+      "en": "I agree with you.",
+      "noteAr": "لا نقول I am agree."
+    }
+  ],
+  "examples": [
+    {
+      "en": "The aim of today's meeting is to agree on the schedule.",
+      "ar": "هدف اجتماع اليوم هو الاتفاق على الجدول الزمني."
+    },
+    {
+      "en": "In my opinion, we should order the pumps now.",
+      "ar": "في رأيي، يجب أن نطلب المضخات الآن."
+    },
+    {
+      "en": "I see your point, but the cost is too high.",
+      "ar": "أفهم وجهة نظرك، لكن التكلفة مرتفعة جدًا."
+    },
+    {
+      "en": "Could you repeat the last number, please?",
+      "ar": "هل يمكنك أن تكرر الرقم الأخير من فضلك؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "e-07-e1",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "Choose a polite way to disagree.",
+      "options": [
+        "You are wrong.",
+        "I see your point, but I think the cost is too high.",
+        "No. Bad idea."
+      ],
+      "answer": 1,
+      "explanationAr": "نعترض بأدب: I see your point, but..."
+    },
+    {
+      "id": "e-07-e2",
+      "type": "fill",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "In my ___, we need one more week.",
+      "accepted": [
+        "opinion"
+      ],
+      "explanationAr": "العبارة: In my opinion."
+    },
+    {
+      "id": "e-07-e3",
+      "type": "fix",
+      "tags": [
+        "WORD"
+      ],
+      "sentence": "According to me, the design is good.",
+      "accepted": [
+        "In my opinion, the design is good.",
+        "I think the design is good."
+      ],
+      "explanationAr": "لا نقول According to me عن رأينا. نقول In my opinion أو I think."
+    },
+    {
+      "id": "e-07-e4",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "Could",
+        "you",
+        "explain",
+        "that",
+        "again,",
+        "please?"
+      ],
+      "explanationAr": "Could you + الفعل، ثم please في الآخر."
+    },
+    {
+      "id": "e-07-e5",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "The aim ___ this meeting is to review the budget.",
+      "options": [
+        "of",
+        "for",
+        "from"
+      ],
+      "answer": 0,
+      "explanationAr": "نقول the aim of."
+    },
+    {
+      "id": "e-07-e6",
+      "type": "fix",
+      "tags": [
+        "BE"
+      ],
+      "sentence": "I am agree with you.",
+      "accepted": [
+        "I agree with you."
+      ],
+      "explanationAr": "agree فعل، فلا نضع قبله am."
+    },
+    {
+      "id": "e-07-e7",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "Choose the best way to end a meeting.",
+      "options": [
+        "To sum up, we will order the steel on Monday.",
+        "Finish. Go.",
+        "That's all, bye."
+      ],
+      "answer": 0,
+      "explanationAr": "نختم بتلخيص الخطوات التالية: To sum up, ..."
+    }
+  ],
+  "writingTaskId": "w-e-07",
+  "reviewed": false
+}

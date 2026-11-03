@@ -1,0 +1,150 @@
+{
+  "id": "e-02",
+  "track": "engineers",
+  "level": "B1",
+  "order": 2,
+  "titleEn": "A short site report",
+  "titleAr": "تقرير موقع قصير",
+  "tags": [
+    "TENSE",
+    "UNCOUNTABLE",
+    "BE"
+  ],
+  "explanationAr": "يجيب تقرير الموقع القصير عن أسئلة بسيطة: ماذا أُنجز؟ ما المشكلة؟ ما الخطوة التالية؟ استخدم الماضي البسيط لما حدث (We poured the concrete)، والمضارع لما هو صحيح الآن (The pump is working)، و will للخطوات القادمة. وتذكّر أن equipment و concrete و information أسماء غير معدودة، فلا نقول equipments.",
+  "explanationEn": "A short site report answers simple questions: What was done? What is the problem? What is next? Use the past simple for what happened (We poured the concrete), the present for what is true now (The pump is working), and will for next steps. Equipment, concrete and information are uncountable, so do not say equipments.",
+  "comparison": [
+    {
+      "ar": "تمّ صبّ الخرسانة أمس.",
+      "en": "The concrete was poured yesterday.",
+      "noteAr": "عبارة «تمّ + مصدر» يقابلها غالبًا المبني للمجهول: was poured."
+    },
+    {
+      "ar": "وصلت المعدات.",
+      "en": "The equipment has arrived.",
+      "noteAr": "«المعدات» جمع في العربية، لكن equipment اسم غير معدود في الإنجليزية، فنستخدم معه فعل المفرد."
+    }
+  ],
+  "examples": [
+    {
+      "en": "Progress: 70% of the pipeline is complete.",
+      "ar": "التقدّم: اكتمل 70% من خط الأنابيب."
+    },
+    {
+      "en": "We installed two new valves on Monday.",
+      "ar": "ركّبنا صمامين جديدين يوم الاثنين."
+    },
+    {
+      "en": "The equipment arrived late.",
+      "ar": "وصلت المعدات متأخرة."
+    },
+    {
+      "en": "Next step: we will test the pressure on Thursday.",
+      "ar": "الخطوة التالية: سنختبر الضغط يوم الخميس."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "e-02-e1",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Yesterday the team ___ the trench.",
+      "options": [
+        "dig",
+        "digs",
+        "dug"
+      ],
+      "answer": 2,
+      "explanationAr": "Yesterday تدل على الماضي، والماضي من dig هو dug."
+    },
+    {
+      "id": "e-02-e2",
+      "type": "fix",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "sentence": "The equipments arrived this morning.",
+      "accepted": [
+        "The equipment arrived this morning."
+      ],
+      "explanationAr": "equipment اسم غير معدود، فلا نضيف إليه s."
+    },
+    {
+      "id": "e-02-e3",
+      "type": "mc",
+      "tags": [
+        "BE"
+      ],
+      "prompt": "The pump ___ working normally now.",
+      "options": [
+        "are",
+        "is",
+        "be"
+      ],
+      "answer": 1,
+      "explanationAr": "The pump مفرد، فنستخدم is."
+    },
+    {
+      "id": "e-02-e4",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Next week we ___ install the new tank.",
+      "accepted": [
+        "will"
+      ],
+      "explanationAr": "للخطوات القادمة نستخدم will مع الفعل الأساسي."
+    },
+    {
+      "id": "e-02-e5",
+      "type": "fix",
+      "tags": [
+        "TENSE",
+        "BE"
+      ],
+      "sentence": "The concrete poured yesterday.",
+      "accepted": [
+        "The concrete was poured yesterday."
+      ],
+      "explanationAr": "الخرسانة لا تصبّ نفسها، فنستخدم المبني للمجهول: was poured."
+    },
+    {
+      "id": "e-02-e6",
+      "type": "reorder",
+      "tags": [
+        "TENSE",
+        "ORDER"
+      ],
+      "words": [
+        "The",
+        "site",
+        "was",
+        "closed",
+        "because",
+        "of",
+        "heavy",
+        "rain."
+      ],
+      "explanationAr": "الجملة الأساسية (The site was closed) ثم السبب (because of heavy rain)."
+    },
+    {
+      "id": "e-02-e7",
+      "type": "mc",
+      "tags": [
+        "UNCOUNTABLE"
+      ],
+      "prompt": "We need more ___ about the soil.",
+      "options": [
+        "informations",
+        "information",
+        "an information"
+      ],
+      "answer": 1,
+      "explanationAr": "information اسم غير معدود: لا نضيف s ولا نضع an قبله."
+    }
+  ],
+  "writingTaskId": "w-e-02",
+  "reviewed": false
+}

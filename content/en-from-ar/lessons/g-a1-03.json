@@ -1,0 +1,33 @@
+{
+  "id": "g-a1-03",
+  "track": "general",
+  "level": "A1",
+  "order": 3,
+  "titleEn": "A big house: adjectives before nouns",
+  "titleAr": "الصفة قبل الاسم: a big house",
+  "tags": ["ORDER", "BE"],
+  "explanationAr": "في العربية تأتي الصفة بعد الاسم: «بيت كبير». أما في الإنجليزية فتأتي الصفة قبل الاسم: a big house. ولا تتغير الصفة في الجمع: نقول big houses، ولا نقول bigs houses. وبعد الفعل be يمكن أن تأتي الصفة وحدها: The house is big.",
+  "explanationEn": "In English, the adjective comes before the noun: a big house. Adjectives have no plural form: big houses, not bigs houses. After be, the adjective can stand alone: The house is big.",
+  "comparison": [
+    { "ar": "بيت كبير", "en": "a big house", "noteAr": "الترتيب معكوس: الصفة أولًا في الإنجليزية." },
+    { "ar": "سيارات جديدة", "en": "new cars", "noteAr": "الصفة لا تُجمع في الإنجليزية." },
+    { "ar": "البيت كبير.", "en": "The house is big.", "noteAr": "هنا تأتي الصفة بعد is." }
+  ],
+  "examples": [
+    { "en": "We live in a small apartment.", "ar": "نحن نسكن في شقة صغيرة." },
+    { "en": "This is a strong bridge.", "ar": "هذا جسر قوي." },
+    { "en": "They have new computers.", "ar": "لديهم حواسيب جديدة." },
+    { "en": "The water is cold.", "ar": "الماء بارد." }
+  ],
+  "exercises": [
+    { "id": "g-a1-03-e1", "type": "mc", "tags": ["ORDER"], "prompt": "Choose the correct sentence.", "options": ["I have a car new.", "I have a new car.", "I have new a car."], "answer": 1, "explanationAr": "الصفة new تأتي قبل الاسم car، وبعد a." },
+    { "id": "g-a1-03-e2", "type": "reorder", "tags": ["ORDER"], "words": ["We", "need", "a", "long", "pipe."], "explanationAr": "الترتيب: a ثم الصفة long ثم الاسم pipe." },
+    { "id": "g-a1-03-e3", "type": "fix", "tags": ["ORDER"], "sentence": "They bought a house big.", "accepted": ["They bought a big house."], "explanationAr": "الصفة big تأتي قبل الاسم house." },
+    { "id": "g-a1-03-e4", "type": "reorder", "tags": ["ORDER", "BE"], "words": ["The", "new", "office", "is", "clean."], "explanationAr": "new قبل office، ثم is، ثم الصفة clean." },
+    { "id": "g-a1-03-e5", "type": "mc", "tags": ["ORDER"], "prompt": "These are ___.", "options": ["reds apples", "red apples", "apples reds"], "answer": 1, "explanationAr": "الصفة قبل الاسم، ولا نضيف s إلى الصفة: red apples." },
+    { "id": "g-a1-03-e6", "type": "fix", "tags": ["BE"], "sentence": "The weather hot today.", "accepted": ["The weather is hot today."], "explanationAr": "نحتاج is بين The weather والصفة hot." },
+    { "id": "g-a1-03-e7", "type": "reorder", "tags": ["ORDER"], "words": ["It", "is", "a", "busy", "road."], "explanationAr": "a ثم الصفة busy ثم الاسم road." }
+  ],
+  "writingTaskId": "w-g-a1-03",
+  "reviewed": false
+}

@@ -1,0 +1,149 @@
+{
+  "id": "g-a2-01",
+  "track": "general",
+  "level": "A2",
+  "order": 1,
+  "titleEn": "The: when to use it",
+  "titleAr": "أداة التعريف the: متى نستخدمها",
+  "tags": [
+    "ARTICLE"
+  ],
+  "explanationAr": "نستخدم the عندما يعرف القارئ الشيء الذي نقصده: لأننا ذكرناه من قبل (I bought a pump. The pump is new.)، أو لأنه واحد فقط (the sun, the manager of our team). ولا نستخدم the مع الجمع أو الاسم غير المعدود عندما نتكلم بشكل عام: Engineers solve problems. Water is important. وهذا يختلف عن العربية، فنحن نقول «المهندسون يحلّون المشكلات» و«الماء مهم» مع «ال».",
+  "explanationEn": "Use the when the reader knows which thing you mean: because you mentioned it before (I bought a pump. The pump is new.) or because there is only one (the sun, the manager of our team). Do not use the with plural or uncountable nouns when you speak in general: Engineers solve problems. Water is important. Arabic uses \"al\" in these general sentences, but English does not.",
+  "comparison": [
+    {
+      "ar": "الماء مهم للحياة.",
+      "en": "Water is important for life.",
+      "noteAr": "في الكلام العام لا نضع the قبل water."
+    },
+    {
+      "ar": "المهندسون يعملون بجد.",
+      "en": "Engineers work hard.",
+      "noteAr": "الجمع في الكلام العام دون the."
+    },
+    {
+      "ar": "اشتريتُ مضخة. المضخة جديدة.",
+      "en": "I bought a pump. The pump is new.",
+      "noteAr": "أول مرة a، ثم the لأن القارئ يعرف أي مضخة نقصد."
+    }
+  ],
+  "examples": [
+    {
+      "en": "The meeting room is on the second floor.",
+      "ar": "غرفة الاجتماعات في الطابق الثاني."
+    },
+    {
+      "en": "Doctors work long hours.",
+      "ar": "يعمل الأطباء ساعات طويلة."
+    },
+    {
+      "en": "I read a report. The report was clear.",
+      "ar": "قرأتُ تقريرًا. كان التقرير واضحًا."
+    },
+    {
+      "en": "Please close the door.",
+      "ar": "من فضلك أغلق الباب."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-a2-01-e1",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "___ water in this tank is clean.",
+      "options": [
+        "The",
+        "A",
+        "An"
+      ],
+      "answer": 0,
+      "explanationAr": "نقصد ماءً محددًا، وهو الماء الذي في هذا الخزان، لذلك نستخدم The."
+    },
+    {
+      "id": "g-a2-01-e2",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "___ is important for life.",
+      "options": [
+        "The water",
+        "Water",
+        "A water"
+      ],
+      "answer": 1,
+      "explanationAr": "نتكلم عن الماء بشكل عام، فلا نستخدم the، و water اسم غير معدود فلا نستخدم a."
+    },
+    {
+      "id": "g-a2-01-e3",
+      "type": "fix",
+      "tags": [
+        "ARTICLE"
+      ],
+      "sentence": "The life is busy in big cities.",
+      "accepted": [
+        "Life is busy in big cities."
+      ],
+      "explanationAr": "نتكلم عن الحياة بشكل عام، فلا نضع The."
+    },
+    {
+      "id": "g-a2-01-e4",
+      "type": "fill",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "I bought a new phone. ___ phone has a large screen.",
+      "accepted": [
+        "The"
+      ],
+      "explanationAr": "ذكرنا الهاتف من قبل، فأصبح معروفًا، لذلك نستخدم The."
+    },
+    {
+      "id": "g-a2-01-e5",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "Can you open ___ window, please?",
+      "options": [
+        "a",
+        "the"
+      ],
+      "answer": 1,
+      "explanationAr": "نقصد نافذة محددة في الغرفة، لذلك نستخدم the."
+    },
+    {
+      "id": "g-a2-01-e6",
+      "type": "fix",
+      "tags": [
+        "ARTICLE"
+      ],
+      "sentence": "I saw a crack in the wall, and a crack was long.",
+      "accepted": [
+        "I saw a crack in the wall, and the crack was long."
+      ],
+      "explanationAr": "ذكرنا الشق أول مرة بـ a، ثم نستخدم the لأنه أصبح معروفًا."
+    },
+    {
+      "id": "g-a2-01-e7",
+      "type": "reorder",
+      "tags": [
+        "ARTICLE"
+      ],
+      "words": [
+        "The",
+        "manager",
+        "of",
+        "our",
+        "team",
+        "is",
+        "kind."
+      ],
+      "explanationAr": "نستخدم the لأن لفريقنا مديرًا واحدًا."
+    }
+  ],
+  "writingTaskId": "w-g-a2-01",
+  "reviewed": false
+}

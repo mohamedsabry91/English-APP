@@ -1,0 +1,147 @@
+{
+  "id": "e-06",
+  "track": "engineers",
+  "level": "B2",
+  "order": 6,
+  "titleEn": "Reading a simple technical specification",
+  "titleAr": "قراءة مواصفة فنية بسيطة",
+  "tags": [
+    "WORD",
+    "BE"
+  ],
+  "explanationAr": "تستخدم المواصفات الفنية كلمات بمعانٍ دقيقة: shall و must تعنيان أن الأمر إلزامي، و should تعني أنه مستحسن، و may تعني أنه مسموح. ومن العبارات الشائعة: unless otherwise specified (ما لم يُذكر خلاف ذلك)، و not less than (لا يقل عن)، و shall not exceed (يجب ألا يتجاوز). وكثيرًا ما نجد المبني للمجهول: All pipes shall be tested. اقرأ الأرقام والوحدات بعناية.",
+  "explanationEn": "Specifications use words with exact meanings: shall and must mean that something is required; should means it is recommended; may means it is allowed. Common phrases: unless otherwise specified, not less than, shall not exceed. The passive is common: All pipes shall be tested. Read numbers and units carefully.",
+  "comparison": [
+    {
+      "ar": "يجب اختبار جميع الأنابيب.",
+      "en": "All pipes shall be tested.",
+      "noteAr": "shall + be + التصريف الثالث."
+    },
+    {
+      "ar": "لا يقل عن 30 ميغاباسكال",
+      "en": "not less than 30 MPa",
+      "noteAr": "أي 30 أو أكثر."
+    }
+  ],
+  "examples": [
+    {
+      "en": "All pipes shall be tested before backfilling.",
+      "ar": "يجب اختبار جميع الأنابيب قبل الردم."
+    },
+    {
+      "en": "The concrete strength shall not be less than 30 MPa.",
+      "ar": "يجب ألا تقل مقاومة الخرسانة عن 30 ميغاباسكال."
+    },
+    {
+      "en": "The contractor should inform the engineer 24 hours before casting.",
+      "ar": "ينبغي أن يُبلغ المقاولُ المهندسَ قبل الصبّ بـ 24 ساعة."
+    },
+    {
+      "en": "Unless otherwise specified, all dimensions are in millimeters.",
+      "ar": "ما لم يُذكر خلاف ذلك، فجميع الأبعاد بالمليمتر."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "e-06-e1",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "In a specification, \"shall\" means the requirement is ___.",
+      "options": [
+        "optional",
+        "required",
+        "recommended"
+      ],
+      "answer": 1,
+      "explanationAr": "shall في المواصفات تعني أن الأمر إلزامي."
+    },
+    {
+      "id": "e-06-e2",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "The water temperature shall not ___ 40 degrees Celsius.",
+      "options": [
+        "exceed",
+        "exceeds",
+        "exceeding"
+      ],
+      "answer": 0,
+      "explanationAr": "بعد shall not يأتي الفعل في صورته الأساسية: exceed."
+    },
+    {
+      "id": "e-06-e3",
+      "type": "fill",
+      "tags": [
+        "BE"
+      ],
+      "prompt": "All welds shall ___ inspected before painting.",
+      "accepted": [
+        "be"
+      ],
+      "explanationAr": "المبني للمجهول: shall be inspected."
+    },
+    {
+      "id": "e-06-e4",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "\"Not less than 30 MPa\" means the value is ___.",
+      "options": [
+        "30 MPa or more",
+        "30 MPa or less",
+        "exactly 30 MPa"
+      ],
+      "answer": 0,
+      "explanationAr": "not less than تعني «لا يقل عن»، أي 30 أو أكثر."
+    },
+    {
+      "id": "e-06-e5",
+      "type": "fix",
+      "tags": [
+        "BE"
+      ],
+      "sentence": "All pipes shall tested before use.",
+      "accepted": [
+        "All pipes shall be tested before use."
+      ],
+      "explanationAr": "نحتاج be: shall be tested."
+    },
+    {
+      "id": "e-06-e6",
+      "type": "mc",
+      "tags": [
+        "WORD"
+      ],
+      "prompt": "\"Unless otherwise specified\" means ___.",
+      "options": [
+        "if the document does not say something different",
+        "only when the engineer agrees",
+        "never"
+      ],
+      "answer": 0,
+      "explanationAr": "العبارة تعني: ما لم تذكر الوثيقة شيئًا مختلفًا."
+    },
+    {
+      "id": "e-06-e7",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "All",
+        "dimensions",
+        "are",
+        "in",
+        "millimeters."
+      ],
+      "explanationAr": "الفاعل All dimensions ثم are ثم in millimeters."
+    }
+  ],
+  "writingTaskId": "w-e-06",
+  "reviewed": false
+}

@@ -1,0 +1,143 @@
+{
+  "id": "g-b1-02",
+  "track": "general",
+  "level": "B1",
+  "order": 2,
+  "titleEn": "discuss, explain, depend on: verbs and prepositions",
+  "titleAr": "الأفعال وحروف الجر: discuss و explain و depend on",
+  "tags": [
+    "PREPOSITION"
+  ],
+  "explanationAr": "بعض الأفعال تحتاج حرف جر في العربية، لكنها في الإنجليزية لا تحتاجه، أو تحتاج حرفًا مختلفًا. نقول في العربية «تحدّثنا عن الخطة»، فيضيف المتعلم about بعد discuss، لكن discuss لا يحتاج about: We discussed the plan. ونقول «اشرح لي»، لكن في الإنجليزية: explain it to me، ولا نقول explain me. ومن الأمثلة أيضًا: depend on (يعتمد على)، و arrive at the site (وصل إلى الموقع)، و interested in (مهتم بـ)، و call me (اتصل بي) دون حرف جر.",
+  "explanationEn": "Some verbs need a preposition in Arabic but not in English, or a different one. \"Discuss\" takes no \"about\": We discussed the plan. Say \"explain it to me\", not \"explain me\". Other examples: depend on, arrive at the site, interested in, and call me (no preposition).",
+  "comparison": [
+    {
+      "ar": "تحدّثنا عن الميزانية.",
+      "en": "We discussed the budget.",
+      "noteAr": "discuss دون about."
+    },
+    {
+      "ar": "اشرح لي الرسم.",
+      "en": "Explain the drawing to me.",
+      "noteAr": "to me تأتي بعد الشيء الذي نشرحه."
+    },
+    {
+      "ar": "اتصل بي غدًا.",
+      "en": "Call me tomorrow.",
+      "noteAr": "call دون حرف جر."
+    }
+  ],
+  "examples": [
+    {
+      "en": "We discussed the new schedule.",
+      "ar": "ناقشنا الجدول الزمني الجديد."
+    },
+    {
+      "en": "Can you explain the problem to me?",
+      "ar": "هل يمكنك أن تشرح لي المشكلة؟"
+    },
+    {
+      "en": "The cost depends on the size.",
+      "ar": "تعتمد التكلفة على الحجم."
+    },
+    {
+      "en": "We arrived at the site at seven.",
+      "ar": "وصلنا إلى الموقع في الساعة السابعة."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b1-02-e1",
+      "type": "fix",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "sentence": "Let's discuss about the results.",
+      "accepted": [
+        "Let's discuss the results.",
+        "Let us discuss the results."
+      ],
+      "explanationAr": "discuss لا يحتاج about."
+    },
+    {
+      "id": "g-b1-02-e2",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "Can you explain ___?",
+      "options": [
+        "me the plan",
+        "the plan to me",
+        "to me about the plan"
+      ],
+      "answer": 1,
+      "explanationAr": "نقول explain the plan to me."
+    },
+    {
+      "id": "g-b1-02-e3",
+      "type": "fill",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "The price depends ___ the quantity.",
+      "accepted": [
+        "on"
+      ],
+      "explanationAr": "نقول depend on."
+    },
+    {
+      "id": "g-b1-02-e4",
+      "type": "fix",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "sentence": "We arrived to the airport early.",
+      "accepted": [
+        "We arrived at the airport early."
+      ],
+      "explanationAr": "نقول arrive at لمكان محدد، ولا نقول arrive to."
+    },
+    {
+      "id": "g-b1-02-e5",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "Please call ___ when you are ready.",
+      "options": [
+        "to me",
+        "me",
+        "for me"
+      ],
+      "answer": 1,
+      "explanationAr": "call لا يحتاج حرف جر: call me."
+    },
+    {
+      "id": "g-b1-02-e6",
+      "type": "fill",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "She is interested ___ water treatment.",
+      "accepted": [
+        "in"
+      ],
+      "explanationAr": "نقول interested in."
+    },
+    {
+      "id": "g-b1-02-e7",
+      "type": "fix",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "sentence": "The team reached to the site at noon.",
+      "accepted": [
+        "The team reached the site at noon."
+      ],
+      "explanationAr": "reach لا يحتاج to: reached the site."
+    }
+  ],
+  "writingTaskId": "w-g-b1-02",
+  "reviewed": false
+}

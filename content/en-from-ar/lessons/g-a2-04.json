@@ -1,0 +1,149 @@
+{
+  "id": "g-a2-04",
+  "track": "general",
+  "level": "A2",
+  "order": 4,
+  "titleEn": "Questions with do and does",
+  "titleAr": "الأسئلة باستخدام do و does",
+  "tags": [
+    "ORDER",
+    "SVA"
+  ],
+  "explanationAr": "في العربية نسأل باستخدام «هل»، أو بنبرة الصوت فقط: «أنت تعمل هنا؟». أما في الإنجليزية فنضع do أو does أو did قبل الفاعل: Do you work here? Does she live near the office? ومع does يأتي الفعل دون s: Does he work? وليس Does he works? ومع الفعل be نقلب الترتيب فقط، دون do: Is he an engineer?",
+  "explanationEn": "Arabic can make a question with \"hal\" or with the voice only. English puts do, does or did before the subject: Do you work here? Does she live near the office? After does, the verb has no -s: Does he work? With be, just change the order, without do: Is he an engineer?",
+  "comparison": [
+    {
+      "ar": "هل تعمل هنا؟",
+      "en": "Do you work here?",
+      "noteAr": "نضع Do قبل الفاعل."
+    },
+    {
+      "ar": "هل يسكن قريبًا؟",
+      "en": "Does he live near here?",
+      "noteAr": "مع he نستخدم Does، والفعل live دون s."
+    },
+    {
+      "ar": "هل هو مهندس؟",
+      "en": "Is he an engineer?",
+      "noteAr": "مع be نقلب الترتيب فقط."
+    }
+  ],
+  "examples": [
+    {
+      "en": "Do you drive to work?",
+      "ar": "هل تقود سيارتك إلى العمل؟"
+    },
+    {
+      "en": "Does your team meet on Sunday?",
+      "ar": "هل يجتمع فريقك يوم الأحد؟"
+    },
+    {
+      "en": "Where do you live?",
+      "ar": "أين تسكن؟"
+    },
+    {
+      "en": "Is the site far from here?",
+      "ar": "هل الموقع بعيد من هنا؟"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-a2-04-e1",
+      "type": "mc",
+      "tags": [
+        "SVA"
+      ],
+      "prompt": "___ she work on Saturdays?",
+      "options": [
+        "Do",
+        "Does",
+        "Is"
+      ],
+      "answer": 1,
+      "explanationAr": "مع she نستخدم Does."
+    },
+    {
+      "id": "g-a2-04-e2",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "Do",
+        "you",
+        "like",
+        "your",
+        "job?"
+      ],
+      "explanationAr": "Do ثم الفاعل you ثم الفعل like."
+    },
+    {
+      "id": "g-a2-04-e3",
+      "type": "fix",
+      "tags": [
+        "SVA"
+      ],
+      "sentence": "Does he works in the design office?",
+      "accepted": [
+        "Does he work in the design office?"
+      ],
+      "explanationAr": "بعد Does يأتي الفعل دون s: work."
+    },
+    {
+      "id": "g-a2-04-e4",
+      "type": "fix",
+      "tags": [
+        "ORDER"
+      ],
+      "sentence": "Where you live?",
+      "accepted": [
+        "Where do you live?"
+      ],
+      "explanationAr": "بعد كلمة السؤال نضع do قبل الفاعل: Where do you live?"
+    },
+    {
+      "id": "g-a2-04-e5",
+      "type": "fill",
+      "tags": [
+        "SVA"
+      ],
+      "prompt": "What time ___ the meeting start?",
+      "accepted": [
+        "does"
+      ],
+      "explanationAr": "the meeting مفرد مثل it، فنستخدم does."
+    },
+    {
+      "id": "g-a2-04-e6",
+      "type": "mc",
+      "tags": [
+        "ORDER"
+      ],
+      "prompt": "Choose the correct question.",
+      "options": [
+        "Is he an engineer?",
+        "Does he an engineer?",
+        "He is an engineer?"
+      ],
+      "answer": 0,
+      "explanationAr": "مع be نقلب الترتيب: Is he...? ولا نستخدم does."
+    },
+    {
+      "id": "g-a2-04-e7",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "Where",
+        "does",
+        "your",
+        "brother",
+        "work?"
+      ],
+      "explanationAr": "كلمة السؤال Where ثم does ثم الفاعل ثم الفعل."
+    }
+  ],
+  "writingTaskId": "w-g-a2-04",
+  "reviewed": false
+}

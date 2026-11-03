@@ -1,0 +1,144 @@
+{
+  "id": "g-b2-04",
+  "track": "general",
+  "level": "B2",
+  "order": 4,
+  "titleEn": "Articles with general and specific nouns",
+  "titleAr": "أدوات التعريف مع الكلام العام والخاص",
+  "tags": [
+    "ARTICLE",
+    "UNCOUNTABLE"
+  ],
+  "explanationAr": "عندما نتحدث بشكل عام عن اسم غير معدود أو جمع، لا نستخدم the: Steel is stronger than wood. Engineers need good communication skills. وعندما نقصد شيئًا محددًا نستخدم the: The steel for this project arrived late. وانتبه إلى العبارات الثابتة: at work و at home و by car دون the، و the same و the first و the best مع the.",
+  "explanationEn": "When you speak in general about an uncountable or plural noun, do not use the: Steel is stronger than wood. Engineers need good communication skills. When you mean something specific, use the: The steel for this project arrived late. Learn fixed phrases: at work, at home, by car (no the), and the same, the first, the best (with the).",
+  "comparison": [
+    {
+      "ar": "الأمان مهم.",
+      "en": "Safety is important.",
+      "noteAr": "كلام عام عن اسم غير معدود: دون the."
+    },
+    {
+      "ar": "قواعد الأمان في هذا الموقع صارمة.",
+      "en": "The safety rules on this site are strict.",
+      "noteAr": "قواعد محددة: مع the."
+    }
+  ],
+  "examples": [
+    {
+      "en": "Safety is important on every site.",
+      "ar": "الأمان مهم في كل موقع."
+    },
+    {
+      "en": "The safety rules on this site are strict.",
+      "ar": "قواعد الأمان في هذا الموقع صارمة."
+    },
+    {
+      "en": "She goes to work by bus.",
+      "ar": "تذهب إلى العمل بالحافلة."
+    },
+    {
+      "en": "This is the best solution we have.",
+      "ar": "هذا أفضل حل لدينا."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b2-04-e1",
+      "type": "mc",
+      "tags": [
+        "ARTICLE",
+        "UNCOUNTABLE"
+      ],
+      "prompt": "___ is a strong material.",
+      "options": [
+        "The steel",
+        "Steel",
+        "A steel"
+      ],
+      "answer": 1,
+      "explanationAr": "كلام عام عن اسم غير معدود: Steel دون the ودون a."
+    },
+    {
+      "id": "g-b2-04-e2",
+      "type": "fix",
+      "tags": [
+        "ARTICLE"
+      ],
+      "sentence": "The education is very important for children.",
+      "accepted": [
+        "Education is very important for children."
+      ],
+      "explanationAr": "كلام عام عن التعليم: دون The."
+    },
+    {
+      "id": "g-b2-04-e3",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "She travels to work ___.",
+      "options": [
+        "by the car",
+        "by car",
+        "by a car"
+      ],
+      "answer": 1,
+      "explanationAr": "العبارة الثابتة: by car."
+    },
+    {
+      "id": "g-b2-04-e4",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "This is ___ best design we have seen.",
+      "options": [
+        "a",
+        "the"
+      ],
+      "answer": 1,
+      "explanationAr": "مع best نستخدم the."
+    },
+    {
+      "id": "g-b2-04-e5",
+      "type": "fix",
+      "tags": [
+        "ARTICLE",
+        "UNCOUNTABLE"
+      ],
+      "sentence": "Engineers need the patience when they test new systems.",
+      "accepted": [
+        "Engineers need patience when they test new systems."
+      ],
+      "explanationAr": "كلام عام عن الصبر: patience دون the."
+    },
+    {
+      "id": "g-b2-04-e6",
+      "type": "mc",
+      "tags": [
+        "ARTICLE"
+      ],
+      "prompt": "___ water in this pipe is very hot.",
+      "options": [
+        "The",
+        "A"
+      ],
+      "answer": 0,
+      "explanationAr": "نقصد الماء الذي في هذا الأنبوب، فنستخدم The."
+    },
+    {
+      "id": "g-b2-04-e7",
+      "type": "fix",
+      "tags": [
+        "ARTICLE"
+      ],
+      "sentence": "We use same method every time.",
+      "accepted": [
+        "We use the same method every time."
+      ],
+      "explanationAr": "نقول the same."
+    }
+  ],
+  "writingTaskId": "w-g-b2-04",
+  "reviewed": false
+}

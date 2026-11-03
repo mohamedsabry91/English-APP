@@ -1,0 +1,149 @@
+{
+  "id": "g-b1-06",
+  "track": "general",
+  "level": "B1",
+  "order": 6,
+  "titleEn": "The passive: is made, was built",
+  "titleAr": "المبني للمجهول: is made و was built",
+  "tags": [
+    "BE",
+    "TENSE"
+  ],
+  "explanationAr": "نستخدم المبني للمجهول عندما يكون الحدث أهم من فاعله، وهو شائع في الكتابة الهندسية: The bridge was built in 2010. The samples are tested every day. نكوّنه بالفعل be ثم التصريف الثالث للفعل. الخطأ الشائع أن يُحذف be، فيكتب المتعلم The bridge built in 2010. في العربية نقول «بُني الجسر» أو «تمّ بناء الجسر» دون فعل مساعد، أما الإنجليزية فتحتاج was.",
+  "explanationEn": "Use the passive when the action matters more than who did it. It is common in engineering writing: The bridge was built in 2010. The samples are tested every day. Form it with be + past participle. A common mistake is to leave out be: The bridge built in 2010. Arabic needs no helping verb here, but English needs was.",
+  "comparison": [
+    {
+      "ar": "بُني الجسر عام 2010.",
+      "en": "The bridge was built in 2010.",
+      "noteAr": "نحتاج was قبل built."
+    },
+    {
+      "ar": "تُختبر العينات يوميًا.",
+      "en": "The samples are tested every day.",
+      "noteAr": "نستخدم are ثم tested."
+    }
+  ],
+  "examples": [
+    {
+      "en": "The report was sent yesterday.",
+      "ar": "أُرسل التقرير أمس."
+    },
+    {
+      "en": "Concrete is made from cement, sand, gravel and water.",
+      "ar": "تُصنع الخرسانة من الإسمنت والرمل والحصى والماء."
+    },
+    {
+      "en": "The road will be closed on Friday.",
+      "ar": "سيُغلق الطريق يوم الجمعة."
+    },
+    {
+      "en": "These pipes were made in a local factory.",
+      "ar": "صُنعت هذه الأنابيب في مصنع محلي."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b1-06-e1",
+      "type": "mc",
+      "tags": [
+        "BE",
+        "TENSE"
+      ],
+      "prompt": "The new school ___ last year.",
+      "options": [
+        "built",
+        "was built",
+        "is build"
+      ],
+      "answer": 1,
+      "explanationAr": "المدرسة لا تبني نفسها، فنستخدم was built."
+    },
+    {
+      "id": "g-b1-06-e2",
+      "type": "fix",
+      "tags": [
+        "BE"
+      ],
+      "sentence": "The samples tested in the lab every week.",
+      "accepted": [
+        "The samples are tested in the lab every week."
+      ],
+      "explanationAr": "نحتاج are قبل tested."
+    },
+    {
+      "id": "g-b1-06-e3",
+      "type": "fill",
+      "tags": [
+        "BE",
+        "TENSE"
+      ],
+      "prompt": "The meeting ___ (cancel) yesterday.",
+      "accepted": [
+        "was canceled",
+        "was cancelled"
+      ],
+      "explanationAr": "المبني للمجهول في الماضي: was canceled."
+    },
+    {
+      "id": "g-b1-06-e4",
+      "type": "mc",
+      "tags": [
+        "BE",
+        "TENSE"
+      ],
+      "prompt": "English ___ in many countries.",
+      "options": [
+        "speaks",
+        "is spoken",
+        "is speak"
+      ],
+      "answer": 1,
+      "explanationAr": "اللغة لا تتكلم، فنستخدم is spoken."
+    },
+    {
+      "id": "g-b1-06-e5",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "The road was close for two days.",
+      "accepted": [
+        "The road was closed for two days."
+      ],
+      "explanationAr": "بعد was نستخدم التصريف الثالث: closed."
+    },
+    {
+      "id": "g-b1-06-e6",
+      "type": "reorder",
+      "tags": [
+        "BE",
+        "TENSE"
+      ],
+      "words": [
+        "The",
+        "drawings",
+        "were",
+        "checked",
+        "by",
+        "the",
+        "manager."
+      ],
+      "explanationAr": "were checked ثم by والفاعل."
+    },
+    {
+      "id": "g-b1-06-e7",
+      "type": "fill",
+      "tags": [
+        "BE",
+        "TENSE"
+      ],
+      "prompt": "The results ___ (send) to the client tomorrow.",
+      "accepted": [
+        "will be sent"
+      ],
+      "explanationAr": "المبني للمجهول في المستقبل: will be sent."
+    }
+  ],
+  "writingTaskId": "w-g-b1-06",
+  "reviewed": false
+}

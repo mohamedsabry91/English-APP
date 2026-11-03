@@ -1,0 +1,150 @@
+{
+  "id": "g-a2-06",
+  "track": "general",
+  "level": "A2",
+  "order": 6,
+  "titleEn": "Spelling traps",
+  "titleAr": "أخطاء إملائية شائعة",
+  "tags": [
+    "SPELLING",
+    "PB"
+  ],
+  "explanationAr": "بعض الكلمات الإنجليزية لا تُكتب كما تُنطق. من الأخطاء الشائعة: because (وليس becuase)، و receive (حرف e قبل i بعد c)، و tomorrow (حرف m واحد و r مزدوجة)، و necessary (حرف c واحد و s مزدوجة)، و Wednesday (فيها d لا تُنطق). وانتبه إلى p و b: الكلمات problem و people و please تُكتب بحرف p. نصيحة: اكتب الكلمة الصعبة ثلاث مرات، وتهجَّ حروفها وأنت تكتبها.",
+  "explanationEn": "Some English words are not written the way they sound. Common traps: because, receive (e before i after c), tomorrow (one m, double r), necessary (one c, double s), Wednesday (the d is silent). Watch p and b: problem, people and please all have p. Tip: write a difficult word three times and spell it as you write.",
+  "comparison": [
+    {
+      "ar": "غدًا",
+      "en": "tomorrow",
+      "noteAr": "حرف m واحد، و rr مزدوجة."
+    },
+    {
+      "ar": "ضروري",
+      "en": "necessary",
+      "noteAr": "حرف c واحد، و ss مزدوجة."
+    },
+    {
+      "ar": "مشكلة",
+      "en": "problem",
+      "noteAr": "تبدأ بحرف p."
+    }
+  ],
+  "examples": [
+    {
+      "en": "I will call you tomorrow.",
+      "ar": "سأتصل بك غدًا."
+    },
+    {
+      "en": "Is this step necessary?",
+      "ar": "هل هذه الخطوة ضرورية؟"
+    },
+    {
+      "en": "We have a problem with the pump.",
+      "ar": "لدينا مشكلة في المضخة."
+    },
+    {
+      "en": "I received your message.",
+      "ar": "وصلتني رسالتك."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-a2-06-e1",
+      "type": "mc",
+      "tags": [
+        "SPELLING"
+      ],
+      "prompt": "I will see you ___.",
+      "options": [
+        "tommorow",
+        "tomorrow",
+        "tomorow"
+      ],
+      "answer": 1,
+      "explanationAr": "الإملاء الصحيح: tomorrow، بحرف m واحد و rr مزدوجة."
+    },
+    {
+      "id": "g-a2-06-e2",
+      "type": "mc",
+      "tags": [
+        "SPELLING"
+      ],
+      "prompt": "I am late ___ of the traffic.",
+      "options": [
+        "becuase",
+        "because",
+        "becouse"
+      ],
+      "answer": 1,
+      "explanationAr": "الإملاء الصحيح: because."
+    },
+    {
+      "id": "g-a2-06-e3",
+      "type": "fix",
+      "tags": [
+        "SPELLING"
+      ],
+      "sentence": "Did you recieve my email?",
+      "accepted": [
+        "Did you receive my email?"
+      ],
+      "explanationAr": "بعد c نكتب ei: receive."
+    },
+    {
+      "id": "g-a2-06-e4",
+      "type": "fix",
+      "tags": [
+        "PB",
+        "SPELLING"
+      ],
+      "sentence": "There is a broblem with the printer.",
+      "accepted": [
+        "There is a problem with the printer."
+      ],
+      "explanationAr": "problem تبدأ بحرف p."
+    },
+    {
+      "id": "g-a2-06-e5",
+      "type": "mc",
+      "tags": [
+        "PB"
+      ],
+      "prompt": "Many ___ work in this building.",
+      "options": [
+        "beople",
+        "people",
+        "peoble"
+      ],
+      "answer": 1,
+      "explanationAr": "people فيها حرفان p."
+    },
+    {
+      "id": "g-a2-06-e6",
+      "type": "mc",
+      "tags": [
+        "SPELLING"
+      ],
+      "prompt": "Our meeting is on ___.",
+      "options": [
+        "Wensday",
+        "Wednesday",
+        "Wednsday"
+      ],
+      "answer": 1,
+      "explanationAr": "الإملاء الصحيح: Wednesday، وفيها d لا تُنطق."
+    },
+    {
+      "id": "g-a2-06-e7",
+      "type": "fix",
+      "tags": [
+        "SPELLING"
+      ],
+      "sentence": "Is it necesary to wear a helmet?",
+      "accepted": [
+        "Is it necessary to wear a helmet?"
+      ],
+      "explanationAr": "necessary فيها c واحد و ss مزدوجة."
+    }
+  ],
+  "writingTaskId": "w-g-a2-06",
+  "reviewed": false
+}

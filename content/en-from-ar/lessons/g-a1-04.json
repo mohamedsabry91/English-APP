@@ -1,0 +1,33 @@
+{
+  "id": "g-a1-04",
+  "track": "general",
+  "level": "A1",
+  "order": 4,
+  "titleEn": "p and b: pen, bill, park",
+  "titleAr": "الحرفان p و b: pen و bill و park",
+  "tags": ["PB", "SPELLING"],
+  "explanationAr": "لا يوجد صوت p في العربية الفصحى، لذلك يخلط كثير من المتعلمين بين p و b في الكتابة والنطق. تغيير حرف واحد يغيّر المعنى: pen (قلم) و Ben (اسم رجل)، و pill (حبة دواء) و bill (فاتورة)، و park (يركن السيارة، أو حديقة عامة) و bark (لحاء الشجرة). لنطق p: أغلق شفتيك كما في b، ثم افتحهما وأخرج دفعة هواء دون أن تهتز أحبالك الصوتية. ضع يدك أمام فمك: مع p تشعر بالهواء أكثر. هذا التطبيق لا يسمع صوتك، فهو يدرّبك على الكتابة والمعنى فقط.",
+  "explanationEn": "Arabic has no p sound, so many learners mix up p and b in writing and speaking. One letter can change the meaning: pen and Ben (a name), pill and bill, park and bark (the outside of a tree). To make p, close your lips as for b, then open them with a small push of air and no voice. Hold your hand in front of your mouth: you feel more air with p. This app cannot hear you, so it only practices spelling and meaning.",
+  "comparison": [
+    { "ar": "قلم", "en": "pen", "noteAr": "Ben اسم رجل، وليس قلمًا." },
+    { "ar": "فاتورة", "en": "bill", "noteAr": "pill معناها حبة دواء." },
+    { "ar": "يركن السيارة", "en": "park the car", "noteAr": "bark معناها لحاء الشجرة." }
+  ],
+  "examples": [
+    { "en": "Please park the car near the gate.", "ar": "من فضلك اركن السيارة قرب البوابة." },
+    { "en": "I need a pen to sign the form.", "ar": "أحتاج قلمًا لأوقّع النموذج." },
+    { "en": "The doctor gave me a pill.", "ar": "أعطاني الطبيب حبة دواء." },
+    { "en": "Did you pay the electricity bill?", "ar": "هل دفعت فاتورة الكهرباء؟" }
+  ],
+  "exercises": [
+    { "id": "g-a1-04-e1", "type": "mc", "tags": ["PB"], "prompt": "I need a ___ to write my name.", "options": ["pen", "Ben"], "answer": 0, "explanationAr": "pen معناها قلم. Ben اسم رجل." },
+    { "id": "g-a1-04-e2", "type": "mc", "tags": ["PB"], "prompt": "Did you pay the water ___?", "options": ["pill", "bill"], "answer": 1, "explanationAr": "bill معناها فاتورة. pill معناها حبة دواء." },
+    { "id": "g-a1-04-e3", "type": "mc", "tags": ["PB"], "prompt": "You can ___ your car behind the building.", "options": ["bark", "park"], "answer": 1, "explanationAr": "park معناها يركن السيارة." },
+    { "id": "g-a1-04-e4", "type": "fill", "tags": ["PB"], "prompt": "Take one ___ after lunch for your headache.", "accepted": ["pill"], "explanationAr": "نأخذ pill (حبة دواء) للصداع. أما bill فهي فاتورة." },
+    { "id": "g-a1-04-e5", "type": "fix", "tags": ["PB", "SPELLING"], "sentence": "The bipe is broken.", "accepted": ["The pipe is broken."], "explanationAr": "الكلمة الصحيحة pipe (أنبوب) بحرف p." },
+    { "id": "g-a1-04-e6", "type": "fix", "tags": ["PB", "SPELLING"], "sentence": "Blease send me the report.", "accepted": ["Please send me the report."], "explanationAr": "الكلمة الصحيحة please بحرف p." },
+    { "id": "g-a1-04-e7", "type": "mc", "tags": ["PB"], "prompt": "The ___ of this tree is very thick.", "options": ["park", "bark"], "answer": 1, "explanationAr": "bark هي الطبقة الخارجية للشجرة (اللحاء)." }
+  ],
+  "writingTaskId": "w-g-a1-04",
+  "reviewed": false
+}

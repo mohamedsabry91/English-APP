@@ -1,0 +1,597 @@
+{
+ "_note": "Hand-written sentences for the rule-based checker. 'expect' is the tag of the one known mistake, or null for a correct sentence. Correct sentences must get zero findings. Written before the checker rules; do not edit only to make a test pass.",
+ "items": [
+  {
+   "text": "I am engineer.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "She is teacher at a primary school.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "He works as engineer in a water company.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "We hired a engineer last month.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "Please send me an report by Friday.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "My brother is doctor.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "She studied at an university in the capital.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "It took a hour to fix the leak.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "He has a MSc in structural engineering.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "This is an big problem for the team.",
+   "expect": "ARTICLE"
+  },
+  {
+   "text": "He engineer at the new plant.",
+   "expect": "BE"
+  },
+  {
+   "text": "She tired after the long shift.",
+   "expect": "BE"
+  },
+  {
+   "text": "They in the office now.",
+   "expect": "BE"
+  },
+  {
+   "text": "I ready for the meeting.",
+   "expect": "BE"
+  },
+  {
+   "text": "We very busy this week.",
+   "expect": "BE"
+  },
+  {
+   "text": "My brother a doctor in the city hospital.",
+   "expect": "BE"
+  },
+  {
+   "text": "The weather hot today.",
+   "expect": "BE"
+  },
+  {
+   "text": "There a problem with the pump.",
+   "expect": "BE"
+  },
+  {
+   "text": "He from Egypt.",
+   "expect": "BE"
+  },
+  {
+   "text": "I yesterday went to the site.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "I very much like this job.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "He every day drinks tea.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "We bought a car new.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "She last week visited her parents.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "I very like engineering.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "They tomorrow will finish the report.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "It is a building old.",
+   "expect": "ORDER"
+  },
+  {
+   "text": "I will recieve the materials on Monday.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "The enviroment on site is safe.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "Please check the adress on the form.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "We need to seperate the two pipes.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "I will call you tommorow.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "The maintenence team arrived early.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "Measure the lenght of the beam.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "I am writing becuase the delivery is late.",
+   "expect": "SPELLING"
+  },
+  {
+   "text": "Blease call me after lunch.",
+   "expect": "PB"
+  },
+  {
+   "text": "We have a broblem with the main valve.",
+   "expect": "PB"
+  },
+  {
+   "text": "The bipe under the road is leaking.",
+   "expect": "PB"
+  },
+  {
+   "text": "Beople in our team work hard.",
+   "expect": "PB"
+  },
+  {
+   "text": "Can you send me a bicture of the crack?",
+   "expect": "PB"
+  },
+  {
+   "text": "He go to work by train.",
+   "expect": "SVA"
+  },
+  {
+   "text": "She have two children.",
+   "expect": "SVA"
+  },
+  {
+   "text": "The report show a big increase.",
+   "expect": "SVA"
+  },
+  {
+   "text": "My manager want the drawings today.",
+   "expect": "SVA"
+  },
+  {
+   "text": "It take two hours to drive there.",
+   "expect": "SVA"
+  },
+  {
+   "text": "He don't like long meetings.",
+   "expect": "SVA"
+  },
+  {
+   "text": "She doesn't works on Fridays.",
+   "expect": "SVA"
+  },
+  {
+   "text": "The pump need a new seal.",
+   "expect": "SVA"
+  },
+  {
+   "text": "They was at the site all day.",
+   "expect": "SVA"
+  },
+  {
+   "text": "My father work in a bank.",
+   "expect": "SVA"
+  },
+  {
+   "text": "My brother he works in a big city.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "My manager she wants the report today.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "Our teacher he explains the rules well.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "My parents they live near us.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "This is the engineer who I met him yesterday.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "This is the report which I wrote it last week.",
+   "expect": "PRONOUN"
+  },
+  {
+   "text": "I need more informations about the course.",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "He gave me some good advices.",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "The equipments are in the store.",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "We bought new furnitures for the office.",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "Can you give me an advice?",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "Thank you for your feedbacks.",
+   "expect": "UNCOUNTABLE"
+  },
+  {
+   "text": "We need to discuss about the budget.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "Can you explain me this drawing?",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "I have worked here since 3 years.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "She has lived here since two years.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "The meeting is in Monday.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "We arrived to the site at seven.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "The project depends of the weather.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "He is interested about civil engineering.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "I will mention about this in the report.",
+   "expect": "PREPOSITION"
+  },
+  {
+   "text": "Yesterday I go to the market.",
+   "expect": "TENSE"
+  },
+  {
+   "text": "We did not finished the test.",
+   "expect": "TENSE"
+  },
+  {
+   "text": "Last week they visit the new plant.",
+   "expect": "TENSE"
+  },
+  {
+   "text": "He didn't went to work.",
+   "expect": "TENSE"
+  },
+  {
+   "text": "I see him two days ago.",
+   "expect": "TENSE"
+  },
+  {
+   "text": "Yesterday i finished the report.",
+   "expect": "CAPITAL"
+  },
+  {
+   "text": "my office is on the second floor.",
+   "expect": "CAPITAL"
+  },
+  {
+   "text": "I think i can finish it today.",
+   "expect": "CAPITAL"
+  },
+  {
+   "text": "the pump is working now.",
+   "expect": "CAPITAL"
+  },
+  {
+   "text": "The meeting starts at nine",
+   "expect": "PUNCTUATION"
+  },
+  {
+   "text": "Please check the drawings",
+   "expect": "PUNCTUATION"
+  },
+  {
+   "text": "We will start the test tomorrow",
+   "expect": "PUNCTUATION"
+  },
+  {
+   "text": "She studies at a university.",
+   "expect": null
+  },
+  {
+   "text": "It took an hour to fix the leak.",
+   "expect": null
+  },
+  {
+   "text": "He is an engineer.",
+   "expect": null
+  },
+  {
+   "text": "They are in the office.",
+   "expect": null
+  },
+  {
+   "text": "The bars on the chart show flow.",
+   "expect": null
+  },
+  {
+   "text": "She has an MSc in water engineering.",
+   "expect": null
+  },
+  {
+   "text": "I am a civil engineer.",
+   "expect": null
+  },
+  {
+   "text": "We used a European standard for the design.",
+   "expect": null
+  },
+  {
+   "text": "This is a one-way street.",
+   "expect": null
+  },
+  {
+   "text": "He is an honest man.",
+   "expect": null
+  },
+  {
+   "text": "We need a uniform for the site.",
+   "expect": null
+  },
+  {
+   "text": "It is a useful tool.",
+   "expect": null
+  },
+  {
+   "text": "I work as an engineer.",
+   "expect": null
+  },
+  {
+   "text": "He works for a water company.",
+   "expect": null
+  },
+  {
+   "text": "The data show a clear trend.",
+   "expect": null
+  },
+  {
+   "text": "The team works hard every day.",
+   "expect": null
+  },
+  {
+   "text": "The engineers check the plans every week.",
+   "expect": null
+  },
+  {
+   "text": "She has two brothers.",
+   "expect": null
+  },
+  {
+   "text": "They were at the site all day.",
+   "expect": null
+  },
+  {
+   "text": "I liked the new design very much.",
+   "expect": null
+  },
+  {
+   "text": "Yesterday I went to the market.",
+   "expect": null
+  },
+  {
+   "text": "I went to the site yesterday.",
+   "expect": null
+  },
+  {
+   "text": "We discussed the budget.",
+   "expect": null
+  },
+  {
+   "text": "Can you explain this drawing to me?",
+   "expect": null
+  },
+  {
+   "text": "I have worked here for three years.",
+   "expect": null
+  },
+  {
+   "text": "I have worked here since 2019.",
+   "expect": null
+  },
+  {
+   "text": "The meeting is on Monday.",
+   "expect": null
+  },
+  {
+   "text": "We arrived at the site at seven.",
+   "expect": null
+  },
+  {
+   "text": "The project depends on the weather.",
+   "expect": null
+  },
+  {
+   "text": "He is interested in civil engineering.",
+   "expect": null
+  },
+  {
+   "text": "I need more information about the course.",
+   "expect": null
+  },
+  {
+   "text": "He gave me some good advice.",
+   "expect": null
+  },
+  {
+   "text": "The equipment is in the store.",
+   "expect": null
+  },
+  {
+   "text": "Thank you for your feedback.",
+   "expect": null
+  },
+  {
+   "text": "My brother works in a bank.",
+   "expect": null
+  },
+  {
+   "text": "This is the engineer who I met yesterday.",
+   "expect": null
+  },
+  {
+   "text": "The day he arrived, it rained.",
+   "expect": null
+  },
+  {
+   "text": "Please call me after lunch.",
+   "expect": null
+  },
+  {
+   "text": "We have a problem with the main valve.",
+   "expect": null
+  },
+  {
+   "text": "Did she have time to check it?",
+   "expect": null
+  },
+  {
+   "text": "Does he go to the site on Sunday?",
+   "expect": null
+  },
+  {
+   "text": "Let it cool for ten minutes.",
+   "expect": null
+  },
+  {
+   "text": "I suggest that he go home early.",
+   "expect": null
+  },
+  {
+   "text": "The site visit starts at eight.",
+   "expect": null
+  },
+  {
+   "text": "Is she ready for the meeting?",
+   "expect": null
+  },
+  {
+   "text": "I think I can finish it today.",
+   "expect": null
+  },
+  {
+   "text": "The report shows a big increase.",
+   "expect": null
+  },
+  {
+   "text": "There is a problem with the pump.",
+   "expect": null
+  },
+  {
+   "text": "The water is very hot today.",
+   "expect": null
+  },
+  {
+   "text": "We bought a new car.",
+   "expect": null
+  },
+  {
+   "text": "Block A is near the gate.",
+   "expect": null
+  },
+  {
+   "text": "We need an HVAC engineer for this building.",
+   "expect": null
+  },
+  {
+   "text": "The cold water tank is full.",
+   "expect": null
+  },
+  {
+   "text": "I read the report yesterday.",
+   "expect": null
+  },
+  {
+   "text": "He put the tools in the box yesterday.",
+   "expect": null
+  },
+  {
+   "text": "She is a teacher, and he is an engineer.",
+   "expect": null
+  },
+  {
+   "text": "They tested it, and it works now.",
+   "expect": null
+  },
+  {
+   "text": "Make it work before Friday.",
+   "expect": null
+  },
+  {
+   "text": "Our manager wants the report today.",
+   "expect": null
+  },
+  {
+   "text": "Please find the report attached.",
+   "expect": null
+  },
+  {
+   "text": "The test results were far better than we expected.",
+   "expect": null
+  },
+  {
+   "text": "Neither the manager nor the engineers were aware of the change.",
+   "expect": null
+  },
+  {
+   "text": "Dear Mr. Hassan, I am writing to ask about the delivery date.",
+   "expect": null
+  },
+  {
+   "text": "The pipe, which is old, needs to be replaced.",
+   "expect": null
+  },
+  {
+   "text": "We use a U-shaped pipe here.",
+   "expect": null
+  }
+ ]
+}

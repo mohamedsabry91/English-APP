@@ -1,0 +1,149 @@
+{
+  "id": "e-05",
+  "track": "engineers",
+  "level": "B1",
+  "order": 5,
+  "titleEn": "Asking for and giving a clear update",
+  "titleAr": "طلب تحديث وإعطاؤه بوضوح",
+  "tags": [
+    "TENSE",
+    "PREPOSITION"
+  ],
+  "explanationAr": "عندما تطلب آخر الأخبار في العمل، كن واضحًا: Could you give me an update on the tank work? وعندما تعطي تحديثًا، استخدم المضارع التام لما أُنجز (We have finished the foundation)، والمضارع المستمر لما يجري الآن (We are installing the pipes)، و will أو going to لما سيأتي. واذكر الأرقام والتواريخ.",
+  "explanationEn": "When you ask for news at work, be clear: Could you give me an update on the tank work? When you give an update, use the present perfect for what is done (We have finished the foundation), the present continuous for what is happening now (We are installing the pipes), and will or going to for what comes next. Give numbers and dates.",
+  "comparison": [
+    {
+      "ar": "أنهينا الأساسات.",
+      "en": "We have finished the foundation.",
+      "noteAr": "ما أُنجز حتى الآن: have finished."
+    },
+    {
+      "ar": "نركّب الأنابيب الآن.",
+      "en": "We are installing the pipes now.",
+      "noteAr": "ما يجري الآن: are installing."
+    }
+  ],
+  "examples": [
+    {
+      "en": "Could you give me a quick update on the project?",
+      "ar": "هل يمكنك أن تعطيني تحديثًا سريعًا عن المشروع؟"
+    },
+    {
+      "en": "We have finished 60% of the excavation.",
+      "ar": "أنهينا 60% من الحفر."
+    },
+    {
+      "en": "We are waiting for the steel delivery.",
+      "ar": "ننتظر توريد الحديد."
+    },
+    {
+      "en": "We will start the next phase on Sunday.",
+      "ar": "سنبدأ المرحلة التالية يوم الأحد."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "e-05-e1",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "Could you give me an update ___ the pump station?",
+      "options": [
+        "on",
+        "in",
+        "at"
+      ],
+      "answer": 0,
+      "explanationAr": "نقول an update on."
+    },
+    {
+      "id": "e-05-e2",
+      "type": "fill",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "We ___ (finish) the foundation. Now we are building the walls.",
+      "accepted": [
+        "have finished"
+      ],
+      "explanationAr": "ما أُنجز حتى الآن: have finished."
+    },
+    {
+      "id": "e-05-e3",
+      "type": "mc",
+      "tags": [
+        "TENSE"
+      ],
+      "prompt": "Right now, the team ___ the new valves.",
+      "options": [
+        "installs",
+        "is installing",
+        "installed"
+      ],
+      "answer": 1,
+      "explanationAr": "Right now تدل على ما يجري الآن: is installing."
+    },
+    {
+      "id": "e-05-e4",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "We are finish the report now.",
+      "accepted": [
+        "We are finishing the report now."
+      ],
+      "explanationAr": "بعد are نستخدم الفعل مع ing: finishing."
+    },
+    {
+      "id": "e-05-e5",
+      "type": "reorder",
+      "tags": [
+        "TENSE",
+        "ORDER"
+      ],
+      "words": [
+        "We",
+        "will",
+        "start",
+        "the",
+        "next",
+        "phase",
+        "on",
+        "Sunday."
+      ],
+      "explanationAr": "will + الفعل ثم المفعول ثم الوقت."
+    },
+    {
+      "id": "e-05-e6",
+      "type": "mc",
+      "tags": [
+        "PREPOSITION"
+      ],
+      "prompt": "What is the status ___ the electrical work?",
+      "options": [
+        "of",
+        "from",
+        "on"
+      ],
+      "answer": 0,
+      "explanationAr": "نقول the status of."
+    },
+    {
+      "id": "e-05-e7",
+      "type": "fix",
+      "tags": [
+        "TENSE"
+      ],
+      "sentence": "Until now we didn't receive the steel.",
+      "accepted": [
+        "We have not received the steel yet.",
+        "We haven't received the steel yet."
+      ],
+      "explanationAr": "لحدث لم يقع حتى الآن نستخدم المضارع التام مع yet."
+    }
+  ],
+  "writingTaskId": "w-e-05",
+  "reviewed": false
+}

@@ -1,0 +1,152 @@
+{
+  "id": "g-b1-04",
+  "track": "general",
+  "level": "B1",
+  "order": 4,
+  "titleEn": "Word order with adverbs",
+  "titleAr": "ترتيب الكلمات مع الظروف",
+  "tags": [
+    "ORDER"
+  ],
+  "explanationAr": "في الإنجليزية يأتي المفعول به بعد الفعل مباشرة، ولا نضع بينهما ظرفًا: I like this job very much (وليس I like very much this job). وظروف التكرار مثل always و usually و often و never تأتي قبل الفعل الأساسي، وبعد الفعل be: I always check the data. He is never late. أما عبارات الوقت مثل yesterday و every day فتأتي في أول الجملة أو في آخرها، لا بين الفاعل والفعل.",
+  "explanationEn": "In English the object comes straight after the verb, with no adverb between them: I like this job very much (not I like very much this job). Frequency adverbs such as always, usually, often and never go before the main verb and after be: I always check the data. He is never late. Time phrases such as yesterday and every day go at the start or the end of the sentence, not between the subject and the verb.",
+  "comparison": [
+    {
+      "ar": "أحب هذا العمل كثيرًا.",
+      "en": "I like this job very much.",
+      "noteAr": "very much في آخر الجملة، بعد المفعول."
+    },
+    {
+      "ar": "أتحقق دائمًا من البيانات.",
+      "en": "I always check the data.",
+      "noteAr": "always قبل الفعل الأساسي."
+    },
+    {
+      "ar": "زرتُ الموقع أمس.",
+      "en": "I visited the site yesterday.",
+      "noteAr": "yesterday في آخر الجملة أو في أولها."
+    }
+  ],
+  "examples": [
+    {
+      "en": "She usually arrives at eight.",
+      "ar": "تصل عادة في الساعة الثامنة."
+    },
+    {
+      "en": "We never use this road at night.",
+      "ar": "لا نستخدم هذا الطريق في الليل أبدًا."
+    },
+    {
+      "en": "I enjoyed the course very much.",
+      "ar": "استمتعتُ بالدورة كثيرًا."
+    },
+    {
+      "en": "Every day, he walks to work.",
+      "ar": "يمشي إلى العمل كل يوم."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-b1-04-e1",
+      "type": "mc",
+      "tags": [
+        "ORDER"
+      ],
+      "prompt": "Choose the correct sentence.",
+      "options": [
+        "I like very much my job.",
+        "I like my job very much.",
+        "I like my very much job."
+      ],
+      "answer": 1,
+      "explanationAr": "المفعول my job بعد الفعل مباشرة، ثم very much."
+    },
+    {
+      "id": "g-b1-04-e2",
+      "type": "fix",
+      "tags": [
+        "ORDER"
+      ],
+      "sentence": "He always is late for meetings.",
+      "accepted": [
+        "He is always late for meetings."
+      ],
+      "explanationAr": "always تأتي بعد الفعل be: is always."
+    },
+    {
+      "id": "g-b1-04-e3",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "We",
+        "usually",
+        "start",
+        "work",
+        "at",
+        "seven."
+      ],
+      "explanationAr": "usually بين الفاعل والفعل الأساسي."
+    },
+    {
+      "id": "g-b1-04-e4",
+      "type": "fix",
+      "tags": [
+        "ORDER"
+      ],
+      "sentence": "I yesterday called the supplier.",
+      "accepted": [
+        "I called the supplier yesterday.",
+        "Yesterday I called the supplier.",
+        "Yesterday, I called the supplier."
+      ],
+      "explanationAr": "yesterday في أول الجملة أو آخرها."
+    },
+    {
+      "id": "g-b1-04-e5",
+      "type": "mc",
+      "tags": [
+        "ORDER"
+      ],
+      "prompt": "She ___ the reports on Friday.",
+      "options": [
+        "checks always",
+        "always checks",
+        "always check"
+      ],
+      "answer": 1,
+      "explanationAr": "always قبل الفعل، والفعل مع she ينتهي بـ s."
+    },
+    {
+      "id": "g-b1-04-e6",
+      "type": "reorder",
+      "tags": [
+        "ORDER"
+      ],
+      "words": [
+        "I",
+        "enjoyed",
+        "the",
+        "training",
+        "very",
+        "much."
+      ],
+      "explanationAr": "very much في آخر الجملة."
+    },
+    {
+      "id": "g-b1-04-e7",
+      "type": "fix",
+      "tags": [
+        "ORDER"
+      ],
+      "sentence": "They speak very well English.",
+      "accepted": [
+        "They speak English very well."
+      ],
+      "explanationAr": "المفعول English بعد الفعل مباشرة، ثم very well."
+    }
+  ],
+  "writingTaskId": "w-g-b1-04",
+  "reviewed": false
+}

@@ -1,0 +1,146 @@
+{
+  "id": "g-a2-03",
+  "track": "general",
+  "level": "A2",
+  "order": 3,
+  "titleEn": "No extra pronoun: My brother works",
+  "titleAr": "لا ضمير زائد: My brother works",
+  "tags": [
+    "PRONOUN"
+  ],
+  "explanationAr": "في الكلام العامي قد نقول «أخي هو يشتغل في بنك». أما في الإنجليزية فلا نكرر الفاعل بضمير: نقول My brother works in a bank، ولا نقول My brother he works. وكذلك لا نكرر الضمير بعد who و which و that: في العربية الفصحى نقول «المهندس الذي قابلتُه» مع الضمير «ـه»، أما في الإنجليزية فنقول the engineer who I met، ولا نقول who I met him.",
+  "explanationEn": "Do not repeat the subject with a pronoun: My brother works in a bank, not My brother he works. Also, after who, which and that, do not repeat the object: the engineer who I met, not who I met him. In Arabic the extra pronoun is normal in these sentences, but in English it is a mistake.",
+  "comparison": [
+    {
+      "ar": "المهندس الذي قابلتُه",
+      "en": "the engineer who I met",
+      "noteAr": "في العربية نضع الضمير «ـه»، وفي الإنجليزية لا نضعه."
+    },
+    {
+      "ar": "أخي يعمل في بنك.",
+      "en": "My brother works in a bank.",
+      "noteAr": "لا نضيف he بعد My brother."
+    }
+  ],
+  "examples": [
+    {
+      "en": "My manager wants the report today.",
+      "ar": "يريد مديري التقرير اليوم."
+    },
+    {
+      "en": "The pump that we installed is working.",
+      "ar": "المضخة التي ركّبناها تعمل."
+    },
+    {
+      "en": "Our neighbors live on the third floor.",
+      "ar": "جيراننا يسكنون في الطابق الثالث."
+    },
+    {
+      "en": "This is the book which I bought.",
+      "ar": "هذا هو الكتاب الذي اشتريته."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "g-a2-03-e1",
+      "type": "mc",
+      "tags": [
+        "PRONOUN"
+      ],
+      "prompt": "Choose the correct sentence.",
+      "options": [
+        "My sister she is a nurse.",
+        "My sister is a nurse.",
+        "My sister, she a nurse."
+      ],
+      "answer": 1,
+      "explanationAr": "لا نكرر الفاعل: My sister is a nurse."
+    },
+    {
+      "id": "g-a2-03-e2",
+      "type": "fix",
+      "tags": [
+        "PRONOUN"
+      ],
+      "sentence": "The manager he is in a meeting.",
+      "accepted": [
+        "The manager is in a meeting."
+      ],
+      "explanationAr": "The manager هو الفاعل، فلا نضيف he بعده."
+    },
+    {
+      "id": "g-a2-03-e3",
+      "type": "fix",
+      "tags": [
+        "PRONOUN"
+      ],
+      "sentence": "This is the report which I wrote it.",
+      "accepted": [
+        "This is the report which I wrote.",
+        "This is the report that I wrote.",
+        "This is the report I wrote."
+      ],
+      "explanationAr": "بعد which لا نكرر الضمير it."
+    },
+    {
+      "id": "g-a2-03-e4",
+      "type": "mc",
+      "tags": [
+        "PRONOUN"
+      ],
+      "prompt": "Choose the correct sentence.",
+      "options": [
+        "The workers arrived early.",
+        "The workers they arrived early."
+      ],
+      "answer": 0,
+      "explanationAr": "The workers هو الفاعل، فلا نضيف they."
+    },
+    {
+      "id": "g-a2-03-e5",
+      "type": "reorder",
+      "tags": [
+        "PRONOUN",
+        "ORDER"
+      ],
+      "words": [
+        "My",
+        "father",
+        "works",
+        "in",
+        "a",
+        "hospital."
+      ],
+      "explanationAr": "الفاعل My father ثم الفعل works مباشرة، دون he."
+    },
+    {
+      "id": "g-a2-03-e6",
+      "type": "fix",
+      "tags": [
+        "PRONOUN"
+      ],
+      "sentence": "Our new colleague she speaks three languages.",
+      "accepted": [
+        "Our new colleague speaks three languages."
+      ],
+      "explanationAr": "لا نضيف she بعد Our new colleague."
+    },
+    {
+      "id": "g-a2-03-e7",
+      "type": "mc",
+      "tags": [
+        "PRONOUN"
+      ],
+      "prompt": "This is the engineer ___ I met yesterday.",
+      "options": [
+        "who",
+        "which",
+        "who he"
+      ],
+      "answer": 0,
+      "explanationAr": "نستخدم who للأشخاص، ولا نضيف ضميرًا بعده."
+    }
+  ],
+  "writingTaskId": "w-g-a2-03",
+  "reviewed": false
+}
