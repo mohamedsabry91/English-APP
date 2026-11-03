@@ -20,6 +20,7 @@ async function checkScreen(page: Page, label: string, shot: string | null) {
 async function doPlanDay(page: Page, opts: { rating: 1 | 2 | 3; knew: boolean }) {
   for (let i = 0; i < 80; i++) {
     if (await page.getByTestId('plan-done-today').isVisible()) return;
+    if (await page.getByTestId('plan-finished').isVisible()) return;
     if (await page.getByTestId('plan-start-day').isVisible()) {
       await page.getByTestId('plan-start-day').click();
       continue;
@@ -156,4 +157,63 @@ test('a review day has the goal message, and the end shows what you can and cann
   await expect(page.getByTestId('progress-self-check')).toContainText('A little');
   if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'en-24-plan-end.png'), fullPage: true });
   await expectNoOverflow(page, 'plan end');
+});
+
+test('day 15: the real last day finishes the plan, and the end screen shows what you can and cannot do yet', async ({ page }, info) => {
+  await page.clock.install({ time: new Date('2026-11-15T09:00:00+03:00') });
+  await page.goto('./');
+  const days = Array.from({ length: 14 }, (_, i) => ({ day: i + 1, date: `2026-11-${String(i + 1).padStart(2, '0')}` }));
+  await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [
+    STORAGE_KEY,
+    JSON.stringify({
+      version: 2,
+      uiLang: 'en',
+      onboarded: true,
+      placement: { result: 'START_A1', date: '2026-11-01', correctByLevel: [], mistakeTags: [] },
+      plan: { planId: '15-day-start', startedOn: '2026-11-01', completedDays: days, ratings: [], selfCheckStart: [1, 1, 1, 1, 1], selfCheckEnd: null, current: null, finishedOn: null },
+    }),
+  ]);
+  await page.goto('about:blank');
+  await page.goto('./#/plan-day');
+  await expect(page.getByTestId('plan-day-title')).toHaveText('Day 15 of 15');
+  await expect(page.getByTestId('review-day-note')).toBeVisible();
+  await page.getByTestId('plan-start-day').click();
+  await doPlanDay(page, { rating: 3, knew: true });
+  await expect(page.getByTestId('plan-finished')).toBeVisible();
+
+  const p = await stored(page);
+  const plan = p?.plan as { finishedOn: string; selfCheckEnd: number[]; ratings: { day: number; rating: number }[]; completedDays: unknown[] };
+  expect(plan.finishedOn).toBe('2026-11-15');
+  expect(plan.completedDays).toHaveLength(15);
+  expect(plan.selfCheckEnd).toEqual([1, 1, 1, 1, 1]);
+  expect(plan.ratings).toEqual([{ day: 15, rating: 3 }]);
+
+  await page.getByTestId('plan-progress-link').click();
+  await expect(page.getByTestId('progress-end')).toContainText('You can now:');
+  await expect(page.getByTestId('progress-end')).toContainText('You cannot yet:');
+  await expect(page.getByTestId('goal-intro')).toHaveAttribute('data-reached', 'yes');
+  await expect(page.getByTestId('goal-days')).toHaveAttribute('data-reached', 'yes');
+  await expect(page.getByTestId('goal-messages')).toHaveAttribute('data-reached', 'no');
+  await expectNoOverflow(page, 'day 15 end');
+  if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'en-25-plan-day15-end.png'), fullPage: true });
+});
+
+test('the self-check fits at 320 px', async ({ page }, info) => {
+  await page.setViewportSize({ width: 320, height: 640 });
+  await welcome(page, 'ar');
+  await page.getByTestId('placement-skip').click();
+  await page.goto('./#/plans');
+  await page.getByTestId('plan-start').click();
+  await page.getByTestId('plan-start-day').click();
+  await expect(page.getByTestId('self-check-step')).toBeVisible();
+  await expectNoOverflow(page, '320 self-check');
+  // The statement (legend) sits inside its card, below the top border.
+  const inside = await page.evaluate(() =>
+    Array.from(document.querySelectorAll('fieldset.card')).every((f) => {
+      const legend = f.querySelector('legend');
+      return !!legend && legend.getBoundingClientRect().top >= f.getBoundingClientRect().top + 1;
+    }),
+  );
+  expect(inside).toBe(true);
+  if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'ar-26-self-check-320.png'), fullPage: true });
 });
