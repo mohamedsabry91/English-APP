@@ -11,6 +11,7 @@ import {
   loadProgress,
   migrate,
   saveProgress,
+  toStored,
   type StorageLike,
 } from '../../src/core/storage';
 
@@ -60,6 +61,14 @@ function sample() {
   return p;
 }
 
+/** The same progress as a flat version 2 record, as saved before progress was stored per course. */
+function v2Record(): Record<string, unknown> {
+  const rec: Record<string, unknown> = { ...sample(), version: 2 };
+  delete rec.courseId;
+  delete rec.otherCourses;
+  return rec;
+}
+
 describe('migration', () => {
   it('migrates an unversioned (v0) record and fills defaults', () => {
     const p = migrate({ lang: 'en', onboarded: true });
@@ -72,7 +81,7 @@ describe('migration', () => {
 
   it('keeps a valid current record unchanged', () => {
     const p = sample();
-    expect(migrate(JSON.parse(JSON.stringify(p)))).toEqual(p);
+    expect(migrate(JSON.parse(JSON.stringify(toStored(p))))).toEqual(p);
   });
 
   it('drops invalid cards and log entries but keeps the rest', () => {
@@ -190,6 +199,7 @@ describe('import limits', () => {
   it('imports data exactly at every limit', () => {
     const p = {
       ...defaultProgress(),
+      version: 2,
       mistakeLog: log(LIMITS.mistakeLog),
       cards: cards(LIMITS.cards),
       completedLessons: ids(LIMITS.completedLessons),
@@ -218,12 +228,12 @@ describe('import limits', () => {
     ['completedWriting', { completedWriting: ids(LIMITS.completedWriting + 1) }],
     ['placementInProgress.answers', { placementInProgress: { index: 0, answers: Array.from({ length: LIMITS.placementAnswers + 1 }, () => 0) } }],
   ])('rejects a file with too many %s', (_name, extra) => {
-    expect(importProgress(wrap({ ...defaultProgress(), ...extra }))).toEqual({ ok: false, reason: 'tooMany' });
+    expect(importProgress(wrap({ ...defaultProgress(), version: 2, ...extra }))).toEqual({ ok: false, reason: 'tooMany' });
   });
 
   it('does not throw away this device\'s own data that is over a limit; it keeps the newest log entries', () => {
     const s = new MemoryStorage();
-    s.setItem(STORAGE_KEY, JSON.stringify({ ...sample(), mistakeLog: log(LIMITS.mistakeLog + 10), completedLessons: ids(LIMITS.completedLessons + 5) }));
+    s.setItem(STORAGE_KEY, JSON.stringify({ ...v2Record(), mistakeLog: log(LIMITS.mistakeLog + 10), completedLessons: ids(LIMITS.completedLessons + 5) }));
     const r = loadProgress(s);
     expect(r.status).toBe('ok');
     expect(r.progress.mistakeLog).toHaveLength(LIMITS.mistakeLog);
@@ -238,7 +248,7 @@ describe('import limits', () => {
   });
 });
 
-describe('version 2: learning plans', () => {
+describe('learning plans (added in version 2)', () => {
   const plan = {
     planId: '15-day-start',
     startedOn: '2026-11-01',
@@ -251,28 +261,28 @@ describe('version 2: learning plans', () => {
   };
 
   it('migrates a version 1 record to version 2 with no plan, keeping everything else', () => {
-    const v1 = { ...sample(), version: 1 } as Record<string, unknown>;
+    const v1 = { ...v2Record(), version: 1 } as Record<string, unknown>;
     delete v1.plan;
     const p = migrate(v1);
-    expect(p.version).toBe(2);
+    expect(p.version).toBe(CURRENT_VERSION);
     expect(p.plan).toBeNull();
     expect(p.cards).toEqual(sample().cards);
     expect(p.mistakeLog).toEqual(sample().mistakeLog);
   });
 
   it('migrates an unversioned record all the way to version 2', () => {
-    expect(migrate({ lang: 'en' })).toMatchObject({ version: 2, uiLang: 'en', plan: null });
+    expect(migrate({ lang: 'en' })).toMatchObject({ version: CURRENT_VERSION, uiLang: 'en', plan: null });
   });
 
   it('keeps a valid plan record', () => {
-    const p = migrate({ ...sample(), plan });
+    const p = migrate({ ...v2Record(), plan });
     expect(p.plan).toEqual(plan);
   });
 
   it('drops a damaged plan, and invalid entries inside a plan', () => {
-    expect(migrate({ ...sample(), plan: { planId: '', startedOn: 'x' } }).plan).toBeNull();
+    expect(migrate({ ...v2Record(), plan: { planId: '', startedOn: 'x' } }).plan).toBeNull();
     const p = migrate({
-      ...sample(),
+      ...v2Record(),
       plan: { ...plan, completedDays: [{ day: 0, date: '2026-11-01' }, { day: 1, date: 'bad' }, { day: 2, date: '2026-11-02' }], ratings: [{ day: 1, rating: 5 }], selfCheckStart: [1, 4], current: { day: -1, step: 0 } },
     }).plan;
     expect(p?.completedDays).toEqual([{ day: 2, date: '2026-11-02' }]);
@@ -282,18 +292,18 @@ describe('version 2: learning plans', () => {
   });
 
   it('exports and imports the plan, and a version 1 export still imports', () => {
-    const withPlan = { ...sample(), plan };
+    const withPlan = { ...v2Record(), plan };
     const r = importProgress(exportProgress(migrate(withPlan), '2026-11-03'));
     expect(r.ok && r.progress.plan).toEqual(plan);
-    const v1File = JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-01', progress: { ...sample(), version: 1, plan: undefined } });
+    const v1File = JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-01', progress: { ...v2Record(), version: 1, plan: undefined } });
     const r1 = importProgress(v1File);
     expect(r1.ok).toBe(true);
-    if (r1.ok) expect(r1.progress).toMatchObject({ version: 2, plan: null, completedLessons: ['g-a1-01'] });
+    if (r1.ok) expect(r1.progress).toMatchObject({ version: CURRENT_VERSION, plan: null, completedLessons: ['g-a1-01'] });
   });
 
   it('rejects an import with too many plan entries', () => {
     const many = { ...plan, completedDays: Array.from({ length: LIMITS.planDays + 1 }, (_, i) => ({ day: i + 1, date: '2026-11-01' })) };
-    const text = JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { ...sample(), plan: many } });
+    const text = JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { ...v2Record(), plan: many } });
     expect(importProgress(text)).toEqual({ ok: false, reason: 'tooMany' });
   });
 });
@@ -302,26 +312,26 @@ describe('damaged plan data', () => {
   const base = { planId: '15-day-start', startedOn: '2026-11-01', completedDays: [{ day: 1, date: '2026-11-01' }], ratings: [], selfCheckStart: null, selfCheckEnd: null, finishedOn: null };
 
   it('drops a day in progress that is outside the plan, and keeps the rest', () => {
-    const p = migrate({ ...sample(), plan: { ...base, current: { day: 99, step: 3 } } });
+    const p = migrate({ ...v2Record(), plan: { ...base, current: { day: 99, step: 3 } } });
     expect(p.plan?.current).toBeNull();
     expect(p.plan?.completedDays).toEqual([{ day: 1, date: '2026-11-01' }]);
     expect(p.completedLessons).toEqual(['g-a1-01']);
   });
 
   it('drops days and ratings outside the plan', () => {
-    const p = migrate({ ...sample(), plan: { ...base, completedDays: [{ day: 16, date: '2026-11-02' }, { day: 1, date: '2026-11-01' }], ratings: [{ day: 40, rating: 2 }], current: { day: 15, step: 0 } } });
+    const p = migrate({ ...v2Record(), plan: { ...base, completedDays: [{ day: 16, date: '2026-11-02' }, { day: 1, date: '2026-11-01' }], ratings: [{ day: 40, rating: 2 }], current: { day: 15, step: 0 } } });
     expect(p.plan?.completedDays).toEqual([{ day: 1, date: '2026-11-01' }]);
     expect(p.plan?.ratings).toEqual([]);
     expect(p.plan?.current).toEqual({ day: 15, step: 0 });
   });
 
   it('drops a plan this app does not know', () => {
-    expect(migrate({ ...sample(), plan: { ...base, planId: 'no-such-plan', current: null } }).plan).toBeNull();
+    expect(migrate({ ...v2Record(), plan: { ...base, planId: 'no-such-plan', current: null } }).plan).toBeNull();
   });
 });
 
 describe('import warns when plan data is dropped', () => {
-  const file = (plan: unknown) => JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { ...sample(), plan } });
+  const file = (plan: unknown) => JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { ...v2Record(), plan } });
 
   it('loads the rest and warns when the plan has an invalid start date', () => {
     const r = importProgress(file({ planId: '15-day-start', startedOn: 'not a date', completedDays: [] }));
@@ -338,5 +348,115 @@ describe('import warns when plan data is dropped', () => {
     expect(none.ok && none.warnings).toEqual([]);
     const ok = importProgress(file({ planId: '15-day-start', startedOn: '2026-11-01', completedDays: [], ratings: [], selfCheckStart: null, selfCheckEnd: null, current: null, finishedOn: null }));
     expect(ok.ok && ok.warnings).toEqual([]);
+  });
+});
+
+describe('version 3: progress stored per course', () => {
+  const plan = { planId: '15-day-start', startedOn: '2026-11-01', completedDays: [{ day: 1, date: '2026-11-01' }], ratings: [{ day: 1, rating: 2 }], selfCheckStart: [1, 2, 1, 1, 2], selfCheckEnd: null, current: null, finishedOn: null };
+
+  it('migrates a version 2 record into the English course, losing nothing', () => {
+    const v2 = { ...v2Record(), plan, lastExport: '2026-11-02', createdOn: '2026-10-30' };
+    const p = migrate(JSON.parse(JSON.stringify(v2)));
+    expect(p.version).toBe(3);
+    expect(p.courseId).toBe('en-from-ar');
+    expect(p.otherCourses).toEqual({});
+    const before = sample();
+    expect(p).toMatchObject({
+      uiLang: before.uiLang,
+      onboarded: true,
+      track: before.track,
+      placement: before.placement,
+      cards: before.cards,
+      mistakeLog: before.mistakeLog,
+      completedLessons: before.completedLessons,
+      writingDraft: before.writingDraft,
+      lastExport: '2026-11-02',
+      createdOn: '2026-10-30',
+      plan,
+    });
+    const stored = toStored(p);
+    expect(stored).toMatchObject({ version: 3, activeCourse: 'en-from-ar', uiLang: 'en', onboarded: true });
+    expect(Object.keys(stored.courses)).toEqual(['en-from-ar']);
+    expect(stored.courses['en-from-ar']).toMatchObject({ cards: before.cards, plan, completedLessons: ['g-a1-01'] });
+    // Shared settings are not repeated inside the course.
+    expect(stored.courses['en-from-ar']).not.toHaveProperty('uiLang');
+  });
+
+  it('migrates version 0 and version 1 records to version 3', () => {
+    expect(migrate({ lang: 'en', onboarded: true, completedLessons: ['g-a1-01'] })).toMatchObject({ version: 3, courseId: 'en-from-ar', uiLang: 'en', completedLessons: ['g-a1-01'] });
+    const v1: Record<string, unknown> = { ...v2Record(), version: 1 };
+    delete v1.plan;
+    expect(migrate(v1)).toMatchObject({ version: 3, cards: sample().cards, plan: null });
+  });
+
+  it('saves per course, and loads back exactly what was saved', () => {
+    const s = new MemoryStorage();
+    const p = { ...sample(), plan } as ReturnType<typeof sample>;
+    saveProgress(s, p);
+    const raw = JSON.parse(s.getItem(STORAGE_KEY) as string);
+    expect(raw.version).toBe(3);
+    expect(raw.activeCourse).toBe('en-from-ar');
+    expect(raw.courses['en-from-ar'].completedLessons).toEqual(['g-a1-01']);
+    expect(raw).not.toHaveProperty('cards');
+    expect(loadProgress(s).progress).toEqual(p);
+  });
+
+  it('loads a version 2 record saved on this device, and saves it back as version 3', () => {
+    const s = new MemoryStorage();
+    s.setItem(STORAGE_KEY, JSON.stringify({ ...v2Record(), plan }));
+    const r = loadProgress(s);
+    expect(r.status).toBe('ok');
+    expect(r.progress.plan).toEqual(plan);
+    expect(r.progress.cards).toEqual(sample().cards);
+    saveProgress(s, r.progress);
+    expect(JSON.parse(s.getItem(STORAGE_KEY) as string).version).toBe(3);
+    expect(loadProgress(s).progress).toEqual(r.progress);
+  });
+
+  it('exports version 3 without drafts, and old exports (v1, v2) still import', () => {
+    const p = { ...sample(), plan } as ReturnType<typeof sample>;
+    const file = JSON.parse(exportProgress(p, '2026-11-03'));
+    expect(file.progress.version).toBe(3);
+    expect(file.progress.courses['en-from-ar'].writingDraft).toBeNull();
+    const back = importProgress(JSON.stringify(file));
+    expect(back.ok && back.progress).toEqual({ ...p, writingDraft: null });
+    for (const version of [1, 2]) {
+      const old = JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-01', progress: { ...v2Record(), version, writingDraft: null } });
+      const r = importProgress(old);
+      expect(r.ok, `v${version}`).toBe(true);
+      if (r.ok) expect(r.progress).toMatchObject({ version: 3, cards: sample().cards, completedLessons: ['g-a1-01'], track: 'both' });
+    }
+  });
+
+  it('falls back to the English course for an unknown active course, and leaves out unknown courses with a warning', () => {
+    const stored = toStored({ ...sample(), plan } as ReturnType<typeof sample>);
+    const raw = { ...stored, activeCourse: 'zz-from-ar', courses: { ...stored.courses, 'zz-from-ar': { completedLessons: ['x'] } } };
+    const p = migrate(JSON.parse(JSON.stringify(raw)));
+    expect(p.courseId).toBe('en-from-ar');
+    expect(p.otherCourses).toEqual({});
+    expect(p.completedLessons).toEqual(['g-a1-01']);
+    const r = importProgress(JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: raw }));
+    expect(r.ok && r.warnings).toEqual(['courseDropped']);
+  });
+
+  it('warns when the plan inside a version 3 course is damaged', () => {
+    const stored = toStored(sample());
+    const raw = { ...stored, courses: { 'en-from-ar': { ...stored.courses['en-from-ar'], plan: { planId: '15-day-start', startedOn: 'bad' } } } };
+    const r = importProgress(JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: raw }));
+    expect(r.ok && r.warnings).toEqual(['planDropped']);
+  });
+
+  it('applies the limits to each course in an import', () => {
+    const stored = toStored(sample());
+    const tooMany = { ...stored, courses: { 'en-from-ar': { ...stored.courses['en-from-ar'], completedLessons: Array.from({ length: LIMITS.completedLessons + 1 }, (_, i) => `l${i}`) } } };
+    expect(importProgress(JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: tooMany }))).toEqual({ ok: false, reason: 'tooMany' });
+    const courses = Object.fromEntries(Array.from({ length: LIMITS.courses + 1 }, (_, i) => [`c${i}-from-ar`, {}]));
+    expect(importProgress(JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { ...stored, courses } }))).toEqual({ ok: false, reason: 'tooMany' });
+  });
+
+  it('never keeps progress for a course id the app does not know', () => {
+    const p = { ...sample(), otherCourses: { 'en-from-ar-x': {} } } as unknown as ReturnType<typeof sample>;
+    const loaded = migrate(JSON.parse(JSON.stringify(toStored(p))));
+    expect(loaded.otherCourses).toEqual({});
   });
 });

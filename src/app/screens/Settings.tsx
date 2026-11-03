@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useStore } from '../store';
 import { go } from '../router';
-import { importProgress, LIMITS } from '../../core/storage';
+import { importProgress, LIMITS, type ImportWarning } from '../../core/storage';
 import type { Progress, TrackChoice, UiLang } from '../../core/types';
 import { exportToFile } from '../exportFile';
 import { ConfirmDialog } from '../ConfirmDialog';
@@ -17,7 +17,7 @@ export function Settings() {
   const { t, progress, update, replace, deleteAll, today } = useStore();
   const [notice, setNotice] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
-  const [pendingImport, setPendingImport] = useState<{ progress: Progress; planDropped: boolean } | null>(null);
+  const [pendingImport, setPendingImport] = useState<{ progress: Progress; warnings: ImportWarning[] } | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const setLang = (l: UiLang) => update((p) => ({ ...p, uiLang: l }));
@@ -50,7 +50,7 @@ export function Settings() {
       setNotice(t(`settings.importError.${r.reason}`));
       return;
     }
-    setPendingImport({ progress: r.progress, planDropped: r.warnings.includes('planDropped') });
+    setPendingImport({ progress: r.progress, warnings: r.warnings });
   };
 
   const retake = () => {
@@ -129,7 +129,13 @@ export function Settings() {
           onCancel={() => setPendingImport(null)}
           onConfirm={() => {
             replace({ ...pendingImport.progress, onboarded: true });
-            setNotice(pendingImport.planDropped ? `${t('settings.importOk')} ${t('settings.importPlanDropped')}` : t('settings.importOk'));
+            setNotice(
+              [
+                t('settings.importOk'),
+                ...(pendingImport.warnings.includes('planDropped') ? [t('settings.importPlanDropped')] : []),
+                ...(pendingImport.warnings.includes('courseDropped') ? [t('settings.importCourseDropped')] : []),
+              ].join(' '),
+            );
             setPendingImport(null);
           }}
         />

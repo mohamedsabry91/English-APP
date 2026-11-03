@@ -22,6 +22,11 @@ starts writing another task. It is
 never included in an exported progress file. After a task is finished, only mistake types, counts and
 dates are kept.
 
+Progress is stored per course (record version 3): the interface language and other shared settings
+once, and each course's progress under `courses["<course id>"]`. Older records (version 1 and 2) and
+older export files are moved into the English course `en-from-ar` when they are loaded, with nothing
+lost. Content is loaded by course id (`loadCourse` in `src/core/content.ts`).
+
 The app name is not final. Change `APP_NAME` in `src/app/config.ts` (and the `name` fields in
 `vite.config.ts` and `index.html`).
 
@@ -79,7 +84,8 @@ src/app/        screens and navigation (React)
 src/core/       scheduler, placement scoring, storage (no React)
 src/checker/    rule-based writing checker
 src/i18n/       ar.json, en.json (all interface text)
-content/en-from-ar/   placement, lessons, writing tasks, mistake tags
+content/<course>/     one folder per course, named <language taught>-from-<learner's language>;
+                      today only content/en-from-ar/ (placement, lessons, writing tasks, tags, plans)
 tests/unit/     Vitest tests (logic, checker fixtures, content rules, repo scan)
 tests/e2e/      Playwright browser tests
 docs/           content review file and screenshots

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { readFileSync, writeFileSync } from 'node:fs';
-import { placementAllFirst, stored, welcome, STORAGE_KEY } from './helpers';
+import { placementAllFirst, stored, storedRaw, welcome, STORAGE_KEY } from './helpers';
 
 test('reload keeps progress; export then delete then import restores it', async ({ page }, info) => {
   await welcome(page, 'en');
@@ -104,4 +104,46 @@ test('import says so when the plan data in the file is damaged, and loads the re
   const p = await stored(page);
   expect(p?.plan).toBeNull();
   expect(p?.completedLessons).toEqual(['g-a1-01']);
+});
+
+test('an existing English learner (version 2 record) sees no change, and the next save keeps everything, per course', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-11-03T09:00:00+03:00') });
+  await page.goto('./');
+  const v2 = {
+    version: 2,
+    uiLang: 'en',
+    onboarded: true,
+    track: 'both',
+    placement: { result: 'A2', date: '2026-11-01', correctByLevel: [8, 6, 2, 0], mistakeTags: ['ARTICLE'] },
+    placementInProgress: null,
+    completedLessons: ['g-a2-01'],
+    completedWriting: [],
+    cards: { 'ph-01': { id: 'ph-01', tags: [], box: 2, due: '2026-11-06', lastAnswered: '2026-11-02', mistakes: 0, learned: false, created: '2026-11-01' } },
+    mistakeLog: [{ date: '2026-11-01', tag: 'ARTICLE', source: 'placement', count: 1 }],
+    session: null,
+    writingDraft: null,
+    lastExport: null,
+    createdOn: '2026-11-01',
+    plan: { planId: '15-day-start', startedOn: '2026-11-01', completedDays: [{ day: 1, date: '2026-11-01' }, { day: 2, date: '2026-11-02' }], ratings: [{ day: 1, rating: 2 }], selfCheckStart: [1, 1, 2, 1, 1], selfCheckEnd: null, current: null, finishedOn: null },
+  };
+  await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [STORAGE_KEY, JSON.stringify(v2)]);
+  await page.goto('about:blank');
+  await page.goto('./#/today');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page.getByTestId('plan-card-line')).toContainText('Day 3 of 15');
+  await page.getByTestId('nav-settings').click();
+  await expect(page.getByTestId('track-both')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByText('Current result: A2')).toBeVisible();
+
+  // Any change saves the record; it is now stored per course, with everything kept.
+  await page.getByTestId('settings-lang-ar').click();
+  await page.getByTestId('settings-lang-en').click();
+  const raw = await storedRaw(page);
+  expect(raw).toMatchObject({ version: 3, activeCourse: 'en-from-ar', uiLang: 'en', onboarded: true, createdOn: '2026-11-01' });
+  const course = (raw?.courses as Record<string, Record<string, unknown>>)['en-from-ar'];
+  const { version: _v, uiLang: _u, onboarded: _o, lastExport: _l, createdOn: _c, ...perCourse } = v2;
+  void [_v, _u, _o, _l, _c];
+  expect(course).toEqual(perCourse);
+  await page.reload();
+  await expect(page.getByTestId('track-both')).toHaveAttribute('aria-pressed', 'true');
 });
