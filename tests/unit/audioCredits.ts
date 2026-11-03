@@ -14,8 +14,11 @@ export const AUDIO_LIMITS = {
 export const AUDIO_SOURCES = ['own-recording', 'kokoro', 'open-licence'] as const;
 export type AudioSource = (typeof AUDIO_SOURCES)[number];
 
-/** Licences that allow commercial use and changes. Non-commercial (NC) and no-derivatives (ND) are not allowed. */
-export const AUDIO_LICENCES = ['own', 'Apache-2.0', 'CC0-1.0', 'CC-BY-4.0', 'CC-BY-SA-4.0'] as const;
+/**
+ * Licences that allow commercial use and changes. Non-commercial (NC) and no-derivatives (ND) are not
+ * allowed. Share-alike (CC-BY-SA) was removed by the owner's decision; it can return later if needed.
+ */
+export const AUDIO_LICENCES = ['own', 'Apache-2.0', 'CC0-1.0', 'CC-BY-4.0'] as const;
 
 export interface AudioClipCredit {
   /** Repository path, for example "public/audio/en-from-ar/ph-01.opus". */
@@ -84,9 +87,9 @@ export function validateAudioCredits(raw: unknown, courses: string[]): string[] 
     if (e.source === 'kokoro') {
       if (e.licence !== 'Apache-2.0') errs.push(`${at}: Kokoro clips use licence Apache-2.0`);
       if (e.synthetic !== true) errs.push(`${at}: Kokoro clips must be marked synthetic`);
-      // A generated voice is used only after a teacher's check.
-      if (e.reviewed !== true) errs.push(`${at}: a synthetic clip must be checked by a teacher before it is added`);
     }
+    // A generated voice, from any source, is added only after a teacher's check.
+    if (e.synthetic === true && e.reviewed !== true) errs.push(`${at}: a synthetic clip must be checked by a teacher before it is added`);
     if (e.source === 'open-licence' && e.licence === 'own') errs.push(`${at}: open-licence clips need their real licence`);
     // Generated voices are for English only: tone and sound accuracy in other languages needs a teacher's own recording.
     if (e.synthetic === true && m && !/^en-/.test(m[1] ?? "")) errs.push(`${at}: no synthetic voice for course ${m[1]}`);
