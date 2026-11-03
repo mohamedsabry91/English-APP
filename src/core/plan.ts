@@ -1,5 +1,6 @@
 // Learning plans such as "15-Day Start". Pure functions: the date is always passed in.
 import type { Plan, PlanDay } from './contentTypes';
+import { addDays } from './dates';
 import { isDue, recordLearn } from './scheduler';
 import type { LocalDate, PlanRecord, Progress, ReviewCard, SelfRating } from './types';
 
@@ -54,6 +55,15 @@ export function practiceDays(rec: PlanRecord): number {
   return new Set(rec.completedDays.map((d) => d.date)).size;
 }
 
+/**
+ * Practice dates within the first `windowDays` calendar days from the start (the start day counts as day 1).
+ * This is what the "at least 12 of 15 days" goal measures, so it can honestly be missed.
+ */
+export function practiceDaysInWindow(rec: PlanRecord, windowDays: number): number {
+  const last = addDays(rec.startedOn, windowDays - 1);
+  return new Set(rec.completedDays.map((d) => d.date).filter((date) => date >= rec.startedOn && date <= last)).size;
+}
+
 /** Create learn-cards for new phrases. Existing cards keep their box. */
 export function learnPhrases(cards: Record<string, ReviewCard>, ids: readonly string[], today: LocalDate): Record<string, ReviewCard> {
   const next = { ...cards };
@@ -94,7 +104,7 @@ export function goalStatus(plan: Plan, p: Progress): GoalStatus[] {
   const messageTasks = plan.schedule.flatMap((d) => (d.type === 'review' ? [d.writingTaskId] : []));
   const messagesDone = messageTasks.filter((id) => p.completedWriting.includes(id)).length;
   const introDone = !!rec && rec.ratings.some((r) => r.day === plan.days);
-  const days = rec ? practiceDays(rec) : 0;
+  const days = rec ? practiceDaysInWindow(rec, plan.days) : 0;
   const atBox = phrasesAtBox(p.cards, ids);
   return plan.goals.map((g) => {
     switch (g.id) {

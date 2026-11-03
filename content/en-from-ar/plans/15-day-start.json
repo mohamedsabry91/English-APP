@@ -58,8 +58,8 @@
   },
   {
    "id": "days",
-   "ar": "أن تتدرّب في 12 يومًا على الأقل من الأيام الـ 15",
-   "en": "Practise on at least 12 of the 15 days"
+   "ar": "أن تتدرّب في 12 يومًا على الأقل من أول 15 يومًا",
+   "en": "Practise on at least 12 of your first 15 days"
   }
  ],
  "selfCheck": [

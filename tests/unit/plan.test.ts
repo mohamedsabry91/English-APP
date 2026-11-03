@@ -10,6 +10,7 @@ import {
   phrasesAtBox,
   planPhraseIds,
   practiceDays,
+  practiceDaysInWindow,
   recallCountsForBox,
   setRating,
   startPlan,
@@ -18,6 +19,7 @@ import {
 } from '../../src/core/plan';
 import { recordLearn, recordRight, dueCards } from '../../src/core/scheduler';
 import { defaultProgress } from '../../src/core/storage';
+import { addDays as addDaysLocal } from '../../src/core/dates';
 import type { Plan } from '../../src/core/contentTypes';
 
 const plan = getPlan('15-day-start') as Plan;
@@ -137,5 +139,24 @@ describe('validCurrent', () => {
     expect(validCurrent(plan, { ...rec, current: { day: 99, step: 1 } })).toBeNull();
     expect(validCurrent(plan, { ...rec, current: { day: 1, step: 1 } })).toBeNull();
     expect(validCurrent(plan, rec)).toBeNull();
+  });
+});
+
+describe('the days goal is measured honestly', () => {
+  it('counts practice dates in the first 15 calendar days only, so it can be missed', () => {
+    let rec = startPlan(plan.id, '2026-11-01');
+    // Every second day: by day 15 of the calendar only 8 practice days, then the rest later.
+    for (let d = 1; d <= 15; d++) rec = completeDay(plan, rec, d, addDaysLocal('2026-11-01', (d - 1) * 2));
+    expect(rec.finishedOn).not.toBeNull();
+    expect(practiceDaysInWindow(rec, 15)).toBe(8);
+    const goal = goalStatus(plan, { ...defaultProgress(), plan: rec }).find((g) => g.id === 'days');
+    expect(goal).toMatchObject({ value: 8, target: 12, reached: false });
+  });
+
+  it('is reached with 12 practice days inside the first 15 calendar days', () => {
+    let rec = startPlan(plan.id, '2026-11-01');
+    for (let d = 1; d <= 12; d++) rec = completeDay(plan, rec, d, addDaysLocal('2026-11-01', d - 1 + (d > 6 ? 2 : 0)));
+    expect(practiceDaysInWindow(rec, 15)).toBe(12);
+    expect(goalStatus(plan, { ...defaultProgress(), plan: rec }).find((g) => g.id === 'days')?.reached).toBe(true);
   });
 });
