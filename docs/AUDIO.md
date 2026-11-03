@@ -61,7 +61,7 @@ outside the scanned app folders because it holds `https://` source links. The te
 | `link` | `https://` link to the source or licence | Required, `https://`, except for own recordings |
 | `speaker` | A first name or role (never a full name or contact details), or the Kokoro voice name | Not empty |
 | `consent` | The speaker agreed in writing to publish the clip | Must be `true` for own recordings |
-| `synthetic` | Generated voice | `true` exactly for Kokoro; never for a non-English course |
+| `synthetic` | Generated voice | Must be `true` for every Kokoro clip; may be `true` for an open-licence clip; must be `false` for our own recordings; never `true` for a course that is not English. A synthetic clip needs `reviewed: true` |
 | `reviewed` | A teacher listened and checked it against the text | Must be `true` before any synthetic clip (Kokoro or other) is added |
 
 The repository is public: do not put full names, contact details or any personal notes in this file.

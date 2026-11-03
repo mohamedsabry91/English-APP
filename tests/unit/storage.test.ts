@@ -539,3 +539,38 @@ describe('review fixes: a bad import or a damaged record never wipes good progre
     expect(r.ok && r.progress.unknownCourses).toEqual({});
   });
 });
+
+describe('review round 2: exports never include writing, and empty imports never wipe progress', () => {
+  const fileOf = (progress: unknown) => JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress });
+
+  it('leaves unfinished writing out of the export, also in a course this app does not know', () => {
+    const p = { ...sample(), unknownCourses: { 'zh-from-ar': { completedLessons: ['zh-1'], writingDraft: { taskId: 'w-zh', text: 'my private zh draft' } } } } as ReturnType<typeof sample>;
+    const text = exportProgress(p, '2026-11-03');
+    expect(text).not.toContain('my private draft');
+    expect(text).not.toContain('my private zh draft');
+    const file = JSON.parse(text);
+    expect(file.progress.courses['zh-from-ar']).toEqual({ completedLessons: ['zh-1'], writingDraft: null });
+    // The draft stays on the device itself.
+    expect(p.unknownCourses['zh-from-ar']).toMatchObject({ writingDraft: { text: 'my private zh draft' } });
+  });
+
+  it.each([
+    ['an empty progress object', {}],
+    ['only a version', { version: 2 }],
+    ['only shared settings', { version: 1, uiLang: 'en', onboarded: true }],
+    ['an empty English course', { version: 3, uiLang: 'en', onboarded: true, activeCourse: 'en-from-ar', courses: { 'en-from-ar': {} } }],
+    ['an English course with only damaged data', { version: 3, uiLang: 'en', onboarded: true, activeCourse: 'en-from-ar', courses: { 'en-from-ar': { cards: { a: 'x' }, completedLessons: [3] } } }],
+  ])('refuses an import with no real progress: %s', (_name, progress) => {
+    expect(importProgress(fileOf(progress))).toEqual({ ok: false, reason: 'noCourse' });
+  });
+
+  it.each([
+    ['v0 with a lesson', { lang: 'en', onboarded: true, completedLessons: ['g-a1-01'] }],
+    ['v1 with a placement result', { version: 1, placement: { result: 'A2', date: '2026-11-01', correctByLevel: [], mistakeTags: [] } }],
+    ['v2 with a card', { version: 2, cards: { a: { id: 'a', tags: ['BE'], box: 1, due: '2026-11-04', lastAnswered: null, mistakes: 1, learned: false, created: '2026-11-01' } } }],
+    ['v2 with only a track choice', { version: 2, track: 'engineers' }],
+    ['v3 with a mistake in the log', { version: 3, activeCourse: 'en-from-ar', courses: { 'en-from-ar': { mistakeLog: [{ date: '2026-11-01', tag: 'BE', source: 'lesson', count: 1 }] } } }],
+  ])('still imports an older or newer file that has real progress: %s', (_name, progress) => {
+    expect(importProgress(fileOf(progress)).ok).toBe(true);
+  });
+});
