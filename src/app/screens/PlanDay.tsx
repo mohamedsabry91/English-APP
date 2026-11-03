@@ -10,6 +10,7 @@ import {
   learnPhrases,
   nextDayNumber,
   recallCountsForBox,
+  validCurrent,
   setRating,
   stepsForDay,
   type PlanStep,
@@ -53,7 +54,8 @@ export function PlanDayScreen() {
     );
   }
 
-  const dayNum = rec.current?.day ?? nextDayNumber(plan, rec);
+  const current = validCurrent(plan, rec);
+  const dayNum = current?.day ?? nextDayNumber(plan, rec);
   const title = lang === 'ar' ? plan.titleAr : plan.titleEn;
   const progressLink = (
     <button type="button" className="secondary" onClick={() => go('plan-progress')} data-testid="plan-progress-link">{t('plan.whatYouDid')}</button>
@@ -68,7 +70,7 @@ export function PlanDayScreen() {
       </main>
     );
   }
-  if (!rec.current && !canStartDayToday(rec, date)) {
+  if (!current && !canStartDayToday(rec, date)) {
     const last = rec.completedDays[rec.completedDays.length - 1];
     return (
       <main className="screen" id="main" tabIndex={-1}>
@@ -83,7 +85,7 @@ export function PlanDayScreen() {
   const day = plan.schedule.find((d) => d.day === dayNum) as PlanDayData;
   const steps = stepsForDay(plan, day);
 
-  if (!rec.current) {
+  if (!current) {
     return (
       <main className="screen" id="main" tabIndex={-1}>
         <h1><bdi>{title}</bdi></h1>
@@ -107,7 +109,7 @@ export function PlanDayScreen() {
     );
   }
 
-  const stepIdx = Math.min(rec.current.step, steps.length - 1);
+  const stepIdx = Math.min(current.step, steps.length - 1);
   const step = steps[stepIdx] as PlanStep;
 
   /** Finish this step, apply its changes, and move on (or finish the day). */

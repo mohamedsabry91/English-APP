@@ -2,6 +2,7 @@
 // around a Storage-like backend, so tests can inject fakes.
 
 import { isLocalDate } from './dates';
+import { getPlan } from './content';
 import type {
   DailySession,
   MistakeLogEntry,
@@ -121,22 +122,26 @@ const isRating = (v: unknown): v is SelfRating => v === 1 || v === 2 || v === 3;
 
 function sanitizePlan(v: unknown): PlanRecord | null {
   if (!isObj(v) || typeof v.planId !== 'string' || !v.planId || !isLocalDate(v.startedOn)) return null;
+  // A plan this app does not know cannot be shown, so it is dropped. Days outside the plan are dropped too.
+  const known = getPlan(v.planId);
+  if (!known) return null;
+  const inPlan = (day: unknown) => Number.isInteger(day) && (day as number) >= 1 && (day as number) <= known.days;
   const completedDays = Array.isArray(v.completedDays)
     ? v.completedDays
         .slice(0, LIMITS.planDays)
-        .filter((d): d is { day: number; date: string } => isObj(d) && Number.isInteger(d.day) && (d.day as number) >= 1 && isLocalDate(d.date))
+        .filter((d): d is { day: number; date: string } => isObj(d) && inPlan(d.day) && isLocalDate(d.date))
         .map((d) => ({ day: d.day, date: d.date }))
     : [];
   const ratings = Array.isArray(v.ratings)
     ? v.ratings
         .slice(0, LIMITS.planRatings)
-        .filter((r): r is { day: number; rating: SelfRating } => isObj(r) && Number.isInteger(r.day) && (r.day as number) >= 1 && isRating(r.rating))
+        .filter((r): r is { day: number; rating: SelfRating } => isObj(r) && inPlan(r.day) && isRating(r.rating))
         .map((r) => ({ day: r.day, rating: r.rating }))
     : [];
   const checks = (x: unknown): SelfRating[] | null =>
     Array.isArray(x) && x.length > 0 && x.length <= LIMITS.selfCheckItems && x.every(isRating) ? (x as SelfRating[]) : null;
   const current =
-    isObj(v.current) && Number.isInteger(v.current.day) && (v.current.day as number) >= 1 && Number.isInteger(v.current.step) && (v.current.step as number) >= 0
+    isObj(v.current) && inPlan(v.current.day) && Number.isInteger(v.current.step) && (v.current.step as number) >= 0
       ? { day: v.current.day as number, step: v.current.step as number }
       : null;
   return {

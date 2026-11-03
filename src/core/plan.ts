@@ -30,6 +30,13 @@ export function startPlan(planId: string, today: LocalDate): PlanRecord {
   return { planId, startedOn: today, completedDays: [], ratings: [], selfCheckStart: null, selfCheckEnd: null, current: null, finishedOn: null };
 }
 
+/** The day in progress, if it is a real day of this plan and not already done. Anything else counts as none. */
+export function validCurrent(plan: Plan, rec: PlanRecord): { day: number; step: number } | null {
+  const c = rec.current;
+  if (!c || !plan.schedule.some((d) => d.day === c.day) || rec.completedDays.some((d) => d.day === c.day)) return null;
+  return c;
+}
+
 /** The next plan day to do (1-based), or null when every day is done. */
 export function nextDayNumber(plan: Plan, rec: PlanRecord): number | null {
   const done = new Set(rec.completedDays.map((d) => d.day));

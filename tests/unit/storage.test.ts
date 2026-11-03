@@ -297,3 +297,25 @@ describe('version 2: learning plans', () => {
     expect(importProgress(text)).toEqual({ ok: false, reason: 'tooMany' });
   });
 });
+
+describe('damaged plan data', () => {
+  const base = { planId: '15-day-start', startedOn: '2026-11-01', completedDays: [{ day: 1, date: '2026-11-01' }], ratings: [], selfCheckStart: null, selfCheckEnd: null, finishedOn: null };
+
+  it('drops a day in progress that is outside the plan, and keeps the rest', () => {
+    const p = migrate({ ...sample(), plan: { ...base, current: { day: 99, step: 3 } } });
+    expect(p.plan?.current).toBeNull();
+    expect(p.plan?.completedDays).toEqual([{ day: 1, date: '2026-11-01' }]);
+    expect(p.completedLessons).toEqual(['g-a1-01']);
+  });
+
+  it('drops days and ratings outside the plan', () => {
+    const p = migrate({ ...sample(), plan: { ...base, completedDays: [{ day: 16, date: '2026-11-02' }, { day: 1, date: '2026-11-01' }], ratings: [{ day: 40, rating: 2 }], current: { day: 15, step: 0 } } });
+    expect(p.plan?.completedDays).toEqual([{ day: 1, date: '2026-11-01' }]);
+    expect(p.plan?.ratings).toEqual([]);
+    expect(p.plan?.current).toEqual({ day: 15, step: 0 });
+  });
+
+  it('drops a plan this app does not know', () => {
+    expect(migrate({ ...sample(), plan: { ...base, planId: 'no-such-plan', current: null } }).plan).toBeNull();
+  });
+});

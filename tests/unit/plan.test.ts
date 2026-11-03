@@ -14,6 +14,7 @@ import {
   setRating,
   startPlan,
   stepsForDay,
+  validCurrent,
 } from '../../src/core/plan';
 import { recordLearn, recordRight, dueCards } from '../../src/core/scheduler';
 import { defaultProgress } from '../../src/core/storage';
@@ -126,5 +127,15 @@ describe('15-Day Start plan', () => {
     rec = setRating(rec, 1, 1);
     rec = setRating(rec, 1, 3);
     expect(rec.ratings).toEqual([{ day: 1, rating: 3 }]);
+  });
+});
+
+describe('validCurrent', () => {
+  it('ignores a day in progress that is not in the plan or is already done', () => {
+    const rec = { ...startPlan(plan.id, '2026-11-01'), completedDays: [{ day: 1, date: '2026-11-01' }] };
+    expect(validCurrent(plan, { ...rec, current: { day: 2, step: 1 } })).toEqual({ day: 2, step: 1 });
+    expect(validCurrent(plan, { ...rec, current: { day: 99, step: 1 } })).toBeNull();
+    expect(validCurrent(plan, { ...rec, current: { day: 1, step: 1 } })).toBeNull();
+    expect(validCurrent(plan, rec)).toBeNull();
   });
 });

@@ -1,7 +1,7 @@
 import { useStore } from './store';
 import { go } from './router';
 import { PLANS, getPlan } from '../core/content';
-import { canStartDayToday, nextDayNumber } from '../core/plan';
+import { canStartDayToday, nextDayNumber, validCurrent } from '../core/plan';
 
 /** The plan on the Today screen: a short invitation, or today's plan day. */
 export function PlanCard() {
@@ -17,15 +17,16 @@ export function PlanCard() {
       </section>
     );
   }
-  const next = rec.current?.day ?? nextDayNumber(plan, rec);
+  const current = validCurrent(plan, rec);
+  const next = current?.day ?? nextDayNumber(plan, rec);
   const title = lang === 'ar' ? plan.titleAr : plan.titleEn;
   let line: string;
   let action: string | null = null;
   if (next === null) line = t('plan.finished');
-  else if (!rec.current && !canStartDayToday(rec, today())) line = t('plan.doneToday');
+  else if (!current && !canStartDayToday(rec, today())) line = t('plan.doneToday');
   else {
     line = t('plan.dayOf', { n: next, total: plan.days });
-    action = rec.current ? t('plan.continueDay', { n: next }) : t('plan.startDay', { n: next });
+    action = current ? t('plan.continueDay', { n: next }) : t('plan.startDay', { n: next });
   }
   return (
     <section className="card" data-testid="plan-card">
