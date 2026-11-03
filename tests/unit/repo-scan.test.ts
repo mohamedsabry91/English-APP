@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import { AUDIO_LIMITS, validateAudioCredits, type AudioCredits } from './audioCredits';
 
 const ROOT = join(__dirname, '..', '..');
 const SKIP = new Set(['node_modules', '.git', 'dist', 'dev-dist', 'playwright-report', 'test-results', 'coverage']);
@@ -20,6 +21,15 @@ const files = walk(ROOT).map((p) => relative(ROOT, p).split(sep).join('/').repla
 const sourceFiles = files.filter((f) => /^(src|content|public)\//.test(f) || f === 'index.html' || f === 'vite.config.ts');
 const read = (f: string) => readFileSync(join(ROOT, f), 'utf8');
 
+// Audio rule: only Opus clips under public/audio/<course>/, each listed in AUDIO_CREDITS.json
+// (repository root, outside the scanned folders, because it holds https:// source links).
+const AUDIO_EXT = /\.(mp3|wav|ogg|oga|m4a|aac|flac|opus|mid|midi|weba|webm|amr|caf|aiff?|wma|mp4)$/i;
+const ALLOWED_AUDIO = /^public\/audio\/([a-z0-9-]+)\/[a-z0-9][a-z0-9-]*\.opus$/;
+const COURSES = readdirSync(join(ROOT, 'content')).filter((n) => statSync(join(ROOT, 'content', n)).isDirectory());
+// The only file allowed to create an audio element.
+const PLAYER_FILE = 'src/audio/player.ts';
+const credits = JSON.parse(read('AUDIO_CREDITS.json')) as AudioCredits;
+
 describe('repository scan', () => {
   it('finds the files it is meant to scan', () => {
     expect(files.every((f) => !f.includes('\\'))).toBe(true);
@@ -30,14 +40,36 @@ describe('repository scan', () => {
     expect(sourceFiles.filter((f) => /\.(ts|tsx)$/.test(f)).length).toBeGreaterThan(20);
   });
 
-  it('has no audio files', () => {
-    expect(files.filter((f) => /\.(mp3|wav|ogg|oga|m4a|aac|flac|opus|mid|midi|weba|amr|caf)$/i.test(f))).toEqual([]);
+  it('has no audio files except Opus clips under public/audio/<course>/', () => {
+    const audio = files.filter((f) => AUDIO_EXT.test(f));
+    const misplaced = audio.filter((f) => {
+      const m = ALLOWED_AUDIO.exec(f);
+      return !m || !COURSES.includes(m[1] ?? '');
+    });
+    expect(misplaced).toEqual([]);
+    // Nothing else may live in public/audio (no music, no other formats, no stray files).
+    const others = files.filter((f) => f.startsWith('public/audio/') && !ALLOWED_AUDIO.test(f));
+    expect(others).toEqual([]);
   });
 
-  it('uses no audio or speech APIs in the app source', () => {
+  it('keeps every audio clip small, within the total budget, and listed in AUDIO_CREDITS.json', () => {
+    const clips = files.filter((f) => ALLOWED_AUDIO.test(f));
+    const tooBig = clips.filter((f) => statSync(join(ROOT, f)).size > AUDIO_LIMITS.maxFileBytes);
+    expect(tooBig).toEqual([]);
+    const total = clips.reduce((n, f) => n + statSync(join(ROOT, f)).size, 0);
+    expect(total).toBeLessThanOrEqual(AUDIO_LIMITS.maxTotalBytes);
+    const listed = new Set(credits.clips.map((c) => c.file));
+    expect(clips.filter((f) => !listed.has(f))).toEqual([]);
+    // And every listed clip exists.
+    expect(credits.clips.map((c) => c.file).filter((f) => !clips.includes(f))).toEqual([]);
+  });
+
+  it('uses no audio or speech APIs in the app source, except an audio element in the player', () => {
+    const banned = /AudioContext|webkitAudioContext|speechSynthesis|SpeechSynthesisUtterance|SpeechRecognition|webkitSpeechRecognition|getUserMedia|MediaRecorder/;
+    const element = /<audio|new Audio\(|createElement\(\s*['"]audio['"]/;
     const bad = sourceFiles
       .filter((f) => /\.(ts|tsx|js|html|json)$/.test(f))
-      .filter((f) => /<audio|AudioContext|webkitAudioContext|speechSynthesis|SpeechSynthesisUtterance|new Audio\(|SpeechRecognition|getUserMedia/.test(read(f)));
+      .filter((f) => banned.test(read(f)) || (f !== PLAYER_FILE && element.test(read(f))));
     expect(bad).toEqual([]);
   });
 
@@ -59,12 +91,36 @@ describe('repository scan', () => {
     expect(bad).toEqual([]);
   });
 
+  it('refers to audio only by relative paths', () => {
+    const bad: string[] = [];
+    for (const f of sourceFiles.filter((x) => /\.(ts|tsx|js|html|json)$/.test(x))) {
+      for (const m of read(f).matchAll(/["'`]([^"'`\s]*\.opus)["'`]/g)) {
+        if (/^(\/|[a-z][a-z0-9+.-]*:)/i.test(m[1] ?? '')) bad.push(`${f}: ${m[1]}`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('keeps AUDIO_CREDITS.json valid, at the repository root, outside the scanned folders', () => {
+    expect(files).toContain('AUDIO_CREDITS.json');
+    expect(sourceFiles).not.toContain('AUDIO_CREDITS.json');
+    expect(files.filter((f) => /AUDIO_CREDITS/i.test(f) && f !== 'AUDIO_CREDITS.json')).toEqual([]);
+    expect(validateAudioCredits(credits, COURSES)).toEqual([]);
+  });
+
   it('has a strict Content Security Policy for the built page', () => {
     const cfg = read('vite.config.ts');
     expect(cfg).toContain("connect-src 'self'");
     expect(cfg).toContain("script-src 'self'");
     expect(cfg).toContain("default-src 'self'");
     expect(cfg).not.toMatch(/unsafe-inline|unsafe-eval/);
+  });
+
+  it("allows media only from the app itself (media-src 'self')", async () => {
+    const { CSP } = await import('../../vite.config');
+    const media = CSP.split(';').map((d) => d.trim()).filter((d) => d.startsWith('media-src'));
+    expect(media).toEqual(["media-src 'self'"]);
+    expect(CSP).not.toMatch(/\*|http:|https:|blob:|data:|mediastream:/);
   });
 
   it('defines the app name in one constant', () => {

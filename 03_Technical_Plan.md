@@ -80,7 +80,7 @@ I found no speech-to-text in the Claude pricing page, so we need another provide
 |---|---|---|---|
 | Speech to text | [OpenAI gpt-4o-mini-transcribe](https://developers.openai.com/api/docs/pricing) | $0.003/minute | Official |
 | p/b read-aloud scoring | [Azure Pronunciation Assessment](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment), which scores individual sounds | [About $1.32/hour reported](https://learn.microsoft.com/en-us/answers/questions/5608069/pricing-and-usage-of-pronunciation-assessment-feat) in late 2025. [Official page](https://azure.microsoft.com/en-us/pricing/details/speech/) did not show amounts when I checked, but lists 5 free audio hours/month. | **Check the price.** Does the free tier include this feature? Unconfirmed. |
-| AI voice | Browser's built-in voice (free) at first. Record lesson audio once if needed. | Free | Quality varies by phone |
+| Lesson audio | **Decided after PR 2:** no browser voice. English: pre-generated Kokoro clips (Apache-2.0), labelled synthetic, after a teacher's check, or our own recordings. Chinese and Urdu: own teacher recordings only. Stored as Opus files in the app, played from the device. Rules: `docs/AUDIO.md` | Free (Apache-2.0 / own work) | No clips yet |
 
 **Risks to test before relying on speech:**
 
