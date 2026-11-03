@@ -2,13 +2,27 @@ import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { AUDIO_LIMITS, validateAudioCredits, type AudioCredits } from './audioCredits';
+import {
+  ALLOWED_AUDIO,
+  AUDIO_ELEMENT,
+  BANNED_MEDIA_API,
+  isAbsoluteMediaPath,
+  isOggOpus,
+  MEDIA_EXT,
+  MEDIA_PATH,
+  PROTOCOL_RELATIVE_URL,
+  PUBLIC_FILES,
+  ROOT_SKIP,
+  sniffMedia,
+  SOURCE_EXT,
+} from './repoScanRules';
 
 const ROOT = join(__dirname, '..', '..');
-const SKIP = new Set(['node_modules', '.git', 'dist', 'dev-dist', 'playwright-report', 'test-results', 'coverage']);
 
 function walk(dir: string, out: string[] = []): string[] {
   for (const name of readdirSync(dir)) {
-    if (SKIP.has(name)) continue;
+    // Build and tool folders are skipped only at the repository root, never deeper down.
+    if (dir === ROOT && ROOT_SKIP.has(name)) continue;
     const p = join(dir, name);
     if (statSync(p).isDirectory()) walk(p, out);
     else out.push(p);
@@ -20,11 +34,13 @@ function walk(dir: string, out: string[] = []): string[] {
 const files = walk(ROOT).map((p) => relative(ROOT, p).split(sep).join('/').replace(/\\/g, '/'));
 const sourceFiles = files.filter((f) => /^(src|content|public)\//.test(f) || f === 'index.html' || f === 'vite.config.ts');
 const read = (f: string) => readFileSync(join(ROOT, f), 'utf8');
+const head = (f: string, n = 192) => {
+  const buf = readFileSync(join(ROOT, f));
+  return new Uint8Array(buf.buffer, buf.byteOffset, Math.min(n, buf.length));
+};
 
 // Audio rule: only Opus clips under public/audio/<course>/, each listed in AUDIO_CREDITS.json
 // (repository root, outside the scanned folders, because it holds https:// source links).
-const AUDIO_EXT = /\.(mp3|wav|ogg|oga|m4a|aac|flac|opus|mid|midi|weba|webm|amr|caf|aiff?|wma|mp4)$/i;
-const ALLOWED_AUDIO = /^public\/audio\/([a-z0-9-]+)\/[a-z0-9][a-z0-9-]*\.opus$/;
 const COURSES = readdirSync(join(ROOT, 'content')).filter((n) => statSync(join(ROOT, 'content', n)).isDirectory());
 // The only file allowed to create an audio element.
 const PLAYER_FILE = 'src/audio/player.ts';
@@ -40,16 +56,31 @@ describe('repository scan', () => {
     expect(sourceFiles.filter((f) => /\.(ts|tsx)$/.test(f)).length).toBeGreaterThan(20);
   });
 
-  it('has no audio files except Opus clips under public/audio/<course>/', () => {
-    const audio = files.filter((f) => AUDIO_EXT.test(f));
-    const misplaced = audio.filter((f) => {
+  it('scans folders named like build folders when they are not at the root', () => {
+    // dist, dev-dist, node_modules and the like are skipped only at the repository root.
+    expect(files.some((f) => f.startsWith('src/') && f.includes('/node_modules/'))).toBe(false);
+    expect(files.some((f) => /^(node_modules|dist|dev-dist|\.git)\//.test(f))).toBe(false);
+  });
+
+  it('has only the known icons and listed Opus clips in public/', () => {
+    const isClip = (f: string) => {
       const m = ALLOWED_AUDIO.exec(f);
-      return !m || !COURSES.includes(m[1] ?? '');
-    });
-    expect(misplaced).toEqual([]);
-    // Nothing else may live in public/audio (no music, no other formats, no stray files).
-    const others = files.filter((f) => f.startsWith('public/audio/') && !ALLOWED_AUDIO.test(f));
+      return !!m && COURSES.includes(m[1] ?? '');
+    };
+    const others = files.filter((f) => f.startsWith('public/') && !PUBLIC_FILES.includes(f) && !isClip(f));
     expect(others).toEqual([]);
+  });
+
+  it('has no audio or video files anywhere, by name, except Opus clips under public/audio/<course>/', () => {
+    expect(files.filter((f) => MEDIA_EXT.test(f) && !ALLOWED_AUDIO.test(f))).toEqual([]);
+  });
+
+  it('has no audio or video data in any file, whatever its name, except real Opus clips', () => {
+    const bad = files.filter((f) => !ALLOWED_AUDIO.test(f)).filter((f) => sniffMedia(head(f)) !== null);
+    expect(bad).toEqual([]);
+    // Every clip really is Ogg Opus (not, for example, MP3 data with an .opus name).
+    const fake = files.filter((f) => ALLOWED_AUDIO.test(f)).filter((f) => !isOggOpus(head(f)));
+    expect(fake).toEqual([]);
   });
 
   it('keeps every audio clip small, within the total budget, and listed in AUDIO_CREDITS.json', () => {
@@ -65,11 +96,9 @@ describe('repository scan', () => {
   });
 
   it('uses no audio or speech APIs in the app source, except an audio element in the player', () => {
-    const banned = /AudioContext|webkitAudioContext|speechSynthesis|SpeechSynthesisUtterance|SpeechRecognition|webkitSpeechRecognition|getUserMedia|MediaRecorder/;
-    const element = /<audio|new Audio\(|createElement\(\s*['"]audio['"]/;
     const bad = sourceFiles
-      .filter((f) => /\.(ts|tsx|js|html|json)$/.test(f))
-      .filter((f) => banned.test(read(f)) || (f !== PLAYER_FILE && element.test(read(f))));
+      .filter((f) => SOURCE_EXT.test(f))
+      .filter((f) => BANNED_MEDIA_API.test(read(f)) || (f !== PLAYER_FILE && AUDIO_ELEMENT.test(read(f))));
     expect(bad).toEqual([]);
   });
 
@@ -83,19 +112,20 @@ describe('repository scan', () => {
 
   it('makes no requests to other hosts', () => {
     const bad: string[] = [];
-    for (const f of sourceFiles.filter((x) => /\.(ts|tsx|js|html)$/.test(x))) {
+    for (const f of sourceFiles.filter((x) => SOURCE_EXT.test(x))) {
       const text = read(f);
       if (/\bfetch\s*\(|XMLHttpRequest|WebSocket|EventSource|navigator\.sendBeacon|importScripts/.test(text)) bad.push(`${f}: network API`);
       if (/https?:\/\//.test(text)) bad.push(`${f}: URL`);
+      if (PROTOCOL_RELATIVE_URL.test(text)) bad.push(`${f}: protocol-relative URL`);
     }
     expect(bad).toEqual([]);
   });
 
   it('refers to audio only by relative paths', () => {
     const bad: string[] = [];
-    for (const f of sourceFiles.filter((x) => /\.(ts|tsx|js|html|json)$/.test(x))) {
-      for (const m of read(f).matchAll(/["'`]([^"'`\s]*\.opus)["'`]/g)) {
-        if (/^(\/|[a-z][a-z0-9+.-]*:)/i.test(m[1] ?? '')) bad.push(`${f}: ${m[1]}`);
+    for (const f of sourceFiles.filter((x) => SOURCE_EXT.test(x))) {
+      for (const m of read(f).matchAll(MEDIA_PATH)) {
+        if (isAbsoluteMediaPath(m[1] ?? '')) bad.push(`${f}: ${m[1]}`);
       }
     }
     expect(bad).toEqual([]);

@@ -78,6 +78,16 @@ describe('AUDIO_CREDITS.json schema', () => {
     expect(check([{ ...own, synthetic: true }])).not.toEqual([]);
   });
 
+  it('needs a teacher\'s check (reviewed: true) for every synthetic clip, whatever the source', () => {
+    const openSynthetic = { ...own, source: 'open-licence', licence: 'CC0-1.0', link: 'https://example.org/a', consent: false, synthetic: true };
+    expect(check([{ ...openSynthetic, reviewed: false }])).not.toEqual([]);
+    expect(check([{ ...openSynthetic, reviewed: true }])).toEqual([]);
+  });
+
+  it('does not allow share-alike (CC-BY-SA) licences', () => {
+    expect(check([{ ...own, source: 'open-licence', licence: 'CC-BY-SA-4.0', link: 'https://example.org/a' }])).not.toEqual([]);
+  });
+
   it('allows no synthetic voice outside English courses', () => {
     const courses = ['en-from-ar', 'zh-from-ar'];
     const zh = { ...kokoro, file: 'public/audio/zh-from-ar/a.opus' };
