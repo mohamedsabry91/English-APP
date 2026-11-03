@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useStore } from '../store';
 import { go } from '../router';
-import { getExercise, getLesson, getTask } from '../../core/content';
-import type { Exercise } from '../../core/contentTypes';
-import { ExerciseView } from '../ExerciseView';
+import { getLesson, getTask, reviewItemExists } from '../../core/content';
+import { ReviewItemView, getReviewTarget, targetTags, type ReviewTarget } from '../ReviewItem';
 import { LessonContent } from '../LessonContent';
 import { WritingTaskView } from '../WritingTaskView';
 import { activeSession, advanceStep, afterExercise, afterReviewItem, recordLessonAnswer, recordReviewAnswer } from '../session';
@@ -17,7 +16,7 @@ const STEPS: { step: 'review' | 'lesson' | 'exercises' | 'writing'; key: MsgKey 
 ];
 
 interface Pinned {
-  exercise: Exercise;
+  item: ReviewTarget;
   counter: string;
   part: number;
 }
@@ -27,7 +26,7 @@ export function Session() {
   const session = activeSession(progress, today());
   const [pinned, setPinned] = useState<Pinned | null>(null);
 
-  const missingReview = !pinned && session?.step === 'review' && !getExercise(session.reviewIds[session.reviewIndex] ?? '');
+  const missingReview = !pinned && session?.step === 'review' && !reviewItemExists(session.reviewIds[session.reviewIndex] ?? '');
   useEffect(() => {
     if (!session && !pinned) go('today');
   }, [session, pinned]);
@@ -56,7 +55,7 @@ export function Session() {
   let body: React.JSX.Element | null = null;
   // The exercise on screen. It stays "pinned" after checking, so its feedback stays visible
   // even though the saved session has already moved on (a reload then continues with the next item).
-  let current: { exercise: Exercise; counter: string; part: number; onAnswer: (ok: boolean) => void } | null = null;
+  let current: { item: ReviewTarget; counter: string; part: number; onAnswer: (ok: boolean) => void } | null = null;
   let banner: React.JSX.Element | null = null;
 
   if (pinned) {
@@ -64,17 +63,17 @@ export function Session() {
   } else if (session && lesson) {
     if (session.step === 'review') {
       const id = session.reviewIds[session.reviewIndex];
-      const found = id ? getExercise(id) : undefined;
+      const found = id ? getReviewTarget(id) : undefined;
       if (found) {
         const counter = t('session.reviewCount', { n: session.reviewIndex + 1, total: session.reviewIds.length });
         if (session.reviewIndex === 0) banner = <p className="banner info">{t('session.reviewIntro')}</p>;
         current = {
-          exercise: found.exercise,
+          item: found,
           counter,
           part: 0,
           onAnswer: (ok) => {
-            setPinned({ exercise: found.exercise, counter, part: 0 });
-            update((p) => afterReviewItem(recordReviewAnswer(p, found.exercise.id, found.exercise.tags, ok, today())));
+            setPinned({ item: found, counter, part: 0 });
+            update((p) => afterReviewItem(recordReviewAnswer(p, found.id, targetTags(found), ok, today())));
           },
         };
       }
@@ -91,12 +90,13 @@ export function Session() {
       const ex = lesson.exercises[session.exerciseIndex];
       if (ex) {
         const counter = t('session.exerciseCount', { n: session.exerciseIndex + 1, total: lesson.exercises.length });
+        const item: ReviewTarget = { kind: 'exercise', id: ex.id, exercise: ex };
         current = {
-          exercise: ex,
+          item,
           counter,
           part: 2,
           onAnswer: (ok) => {
-            setPinned({ exercise: ex, counter, part: 2 });
+            setPinned({ item, counter, part: 2 });
             update((p) => afterExercise(recordLessonAnswer(p, ex.id, ex.tags, ok, today())));
           },
         };
@@ -128,9 +128,9 @@ export function Session() {
     body = (
       <>
         {banner}
-        <ExerciseView
-          key={`${current.part}-${current.exercise.id}`}
-          exercise={current.exercise}
+        <ReviewItemView
+          key={`${current.part}-${current.item.id}`}
+          target={current.item}
           counter={current.counter}
           onAnswer={current.onAnswer}
           onNext={() => setPinned(null)}

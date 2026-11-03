@@ -15,9 +15,12 @@ import { LessonPractice } from './screens/LessonPractice';
 import { Mistakes } from './screens/Mistakes';
 import { TagPractice } from './screens/TagPractice';
 import { WritingList, WritingScreen } from './screens/Writing';
+import { Plans } from './screens/Plans';
+import { PlanDayScreen } from './screens/PlanDay';
+import { PlanProgress } from './screens/PlanProgress';
 import type { TagId } from '../core/types';
 
-const NAV_SCREENS = ['today', 'lessons', 'lesson', 'mistakes', 'writing', 'settings', 'about', 'session', 'practice'];
+const NAV_SCREENS = ['plans', 'plan-day', 'plan-progress', 'today', 'lessons', 'lesson', 'mistakes', 'writing', 'settings', 'about', 'session', 'practice'];
 
 export function App() {
   const { progress } = useStore();
@@ -60,6 +63,15 @@ export function App() {
       case 'writing':
         body = arg ? <WritingScreen key={arg} id={arg} /> : <WritingList />;
         break;
+      case 'plans':
+        body = <Plans />;
+        break;
+      case 'plan-day':
+        body = <PlanDayScreen />;
+        break;
+      case 'plan-progress':
+        body = <PlanProgress />;
+        break;
       case 'about':
         body = <About />;
         break;
@@ -68,7 +80,7 @@ export function App() {
     }
   }
 
-  const navCurrent = screen === 'lesson' ? 'lessons' : screen === 'about' ? 'settings' : screen === 'practice' ? 'mistakes' : screen === 'session' ? 'today' : screen;
+  const navCurrent = screen === 'lesson' ? 'lessons' : screen === 'about' ? 'settings' : screen === 'practice' ? 'mistakes' : screen === 'session' || screen.startsWith('plan') ? 'today' : screen;
   return (
     <div className="app">
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>

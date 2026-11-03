@@ -1,5 +1,5 @@
 // Daily session state changes. Pure functions over Progress; the date is passed in.
-import { getExercise, getLesson, getTask, nextLesson, lessonPath } from '../core/content';
+import { getLesson, getTask, nextLesson, lessonPath, reviewItemExists } from '../core/content';
 import { dueCards, recordRight, recordWrong } from '../core/scheduler';
 import type { DailySession, LocalDate, Progress, TagId } from '../core/types';
 import { logMistakes } from './mistakes';
@@ -22,7 +22,7 @@ export function startSession(p: Progress, today: LocalDate, lessonId?: string): 
   const id = lessonId ?? plannedLessonId(p) ?? lessonPath(p.track, p.placement?.result ?? null)[0]?.id;
   if (!id) return p;
   const reviewIds = dueCards(p.cards, today)
-    .filter((c) => getExercise(c.id))
+    .filter((c) => reviewItemExists(c.id))
     .map((c) => c.id);
   const session: DailySession = {
     date: today,
