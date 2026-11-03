@@ -1,0 +1,761 @@
+{
+ "reviewed": false,
+ "stories": [
+  {
+   "id": "st-01",
+   "titleEn": "A new engineer",
+   "titleAr": "مهندس جديد",
+   "lines": [
+    {
+     "en": "Omar starts a new job today.",
+     "ar": "يبدأ عمر عملًا جديدًا اليوم."
+    },
+    {
+     "en": "He meets Khalid at the office door.",
+     "ar": "يقابل خالدًا عند باب المكتب."
+    },
+    {
+     "en": "\"Good morning. Nice to meet you,\" Omar says.",
+     "ar": "يقول عمر: «صباح الخير. سعيد بلقائك.»"
+    },
+    {
+     "en": "\"I am a new engineer here. I work in the design team.\"",
+     "ar": "«أنا مهندس جديد هنا. أعمل في فريق التصميم.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-01-q1",
+     "prompt": "Who starts a new job?",
+     "options": [
+      "Khalid",
+      "Omar",
+      "The manager"
+     ],
+     "answer": 1,
+     "explanationAr": "عمر هو الذي يبدأ عملًا جديدًا."
+    },
+    {
+     "id": "st-01-q2",
+     "prompt": "Where does Omar meet Khalid?",
+     "options": [
+      "At the office door",
+      "At the site",
+      "On the phone"
+     ],
+     "answer": 0,
+     "explanationAr": "يقابله عند باب المكتب."
+    },
+    {
+     "id": "st-01-q3",
+     "prompt": "Which team does Omar work in?",
+     "options": [
+      "The sales team",
+      "The site team",
+      "The design team"
+     ],
+     "answer": 2,
+     "explanationAr": "يعمل في فريق التصميم."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as Khalid. Start with: \"Today I met ...\"",
+    "promptAr": "احكِ القصة على لسان خالد. ابدأ بـ: «Today I met ...»",
+    "sample": "Today I met a new engineer at the office door. His name is Omar. He said good morning. He works in the design team."
+   }
+  },
+  {
+   "id": "st-02",
+   "titleEn": "A word in the report",
+   "titleAr": "كلمة في التقرير",
+   "lines": [
+    {
+     "en": "Huda reads a report at her desk.",
+     "ar": "تقرأ هدى تقريرًا على مكتبها."
+    },
+    {
+     "en": "She sees a new word: \"backfill\".",
+     "ar": "ترى كلمة جديدة: «backfill»."
+    },
+    {
+     "en": "She asks her colleague Mona, \"What does this word mean?\"",
+     "ar": "تسأل زميلتها منى: «ماذا تعني هذه الكلمة؟»"
+    },
+    {
+     "en": "Mona explains it to her, and Huda writes it in her notebook.",
+     "ar": "تشرحها منى لها، فتكتبها هدى في دفترها."
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-02-q1",
+     "prompt": "What does Huda read?",
+     "options": [
+      "A report",
+      "A book",
+      "An email"
+     ],
+     "answer": 0,
+     "explanationAr": "تقرأ هدى تقريرًا."
+    },
+    {
+     "id": "st-02-q2",
+     "prompt": "Who explains the word?",
+     "options": [
+      "Huda",
+      "The manager",
+      "Mona"
+     ],
+     "answer": 2,
+     "explanationAr": "منى هي التي تشرح الكلمة."
+    },
+    {
+     "id": "st-02-q3",
+     "prompt": "Where does Huda write the word?",
+     "options": [
+      "On the board",
+      "In her notebook",
+      "In an email"
+     ],
+     "answer": 1,
+     "explanationAr": "تكتبها في دفترها."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as Mona. Start with: \"Huda asked me ...\"",
+    "promptAr": "احكِ القصة على لسان منى. ابدأ بـ: «Huda asked me ...»",
+    "sample": "Huda asked me about a new word in a report. The word was \"backfill\". I explained it to her. She wrote it in her notebook."
+   }
+  },
+  {
+   "id": "st-03",
+   "titleEn": "Help with the printer",
+   "titleAr": "مساعدة في الطابعة",
+   "lines": [
+    {
+     "en": "Sami cannot print the drawings.",
+     "ar": "لا يستطيع سامي طباعة المخططات."
+    },
+    {
+     "en": "Ali shows him the right printer.",
+     "ar": "يريه علي الطابعة الصحيحة."
+    },
+    {
+     "en": "\"Thank you for your help,\" says Sami.",
+     "ar": "يقول سامي: «شكرًا لمساعدتك.»"
+    },
+    {
+     "en": "\"You're welcome. No problem,\" Ali answers.",
+     "ar": "يجيب علي: «على الرحب والسعة. لا مشكلة.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-03-q1",
+     "prompt": "What can't Sami do?",
+     "options": [
+      "Print the drawings",
+      "Find his desk",
+      "Send an email"
+     ],
+     "answer": 0,
+     "explanationAr": "لا يستطيع طباعة المخططات."
+    },
+    {
+     "id": "st-03-q2",
+     "prompt": "Who helps Sami?",
+     "options": [
+      "Omar",
+      "Ali",
+      "Mona"
+     ],
+     "answer": 1,
+     "explanationAr": "علي هو الذي يساعده."
+    },
+    {
+     "id": "st-03-q3",
+     "prompt": "What does Ali say?",
+     "options": [
+      "\"I'm not sure.\"",
+      "\"See you tomorrow.\"",
+      "\"You're welcome.\""
+     ],
+     "answer": 2,
+     "explanationAr": "يقول علي: You're welcome."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as Ali. Start with: \"Sami needed ...\"",
+    "promptAr": "احكِ القصة على لسان علي. ابدأ بـ: «Sami needed ...»",
+    "sample": "Sami needed help with the printer. I showed him the right printer. He said thank you. I said, \"You're welcome.\""
+   }
+  },
+  {
+   "id": "st-04",
+   "titleEn": "The meeting time",
+   "titleAr": "موعد الاجتماع",
+   "lines": [
+    {
+     "en": "Yousef has a meeting today.",
+     "ar": "لدى يوسف اجتماع اليوم."
+    },
+    {
+     "en": "He asks his manager, \"What time is the meeting?\"",
+     "ar": "يسأل مديره: «متى موعد الاجتماع؟»"
+    },
+    {
+     "en": "\"The meeting starts at ten,\" the manager says.",
+     "ar": "يقول المدير: «يبدأ الاجتماع في الساعة العاشرة.»"
+    },
+    {
+     "en": "\"Thank you. I will be there,\" Yousef answers.",
+     "ar": "يجيب يوسف: «شكرًا. سأكون هناك.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-04-q1",
+     "prompt": "Who asks about the time?",
+     "options": [
+      "The manager",
+      "Yousef",
+      "Ali"
+     ],
+     "answer": 1,
+     "explanationAr": "يوسف هو الذي يسأل."
+    },
+    {
+     "id": "st-04-q2",
+     "prompt": "When does the meeting start?",
+     "options": [
+      "At nine",
+      "At eleven",
+      "At ten"
+     ],
+     "answer": 2,
+     "explanationAr": "يبدأ في الساعة العاشرة."
+    },
+    {
+     "id": "st-04-q3",
+     "prompt": "What does Yousef say at the end?",
+     "options": [
+      "\"I will be there.\"",
+      "\"I'm not sure.\"",
+      "\"Sorry for the delay.\""
+     ],
+     "answer": 0,
+     "explanationAr": "يقول: I will be there."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as the manager. Start with: \"Yousef asked me ...\"",
+    "promptAr": "احكِ القصة على لسان المدير. ابدأ بـ: «Yousef asked me ...»",
+    "sample": "Yousef asked me about the meeting time. I said it starts at ten. He thanked me. He will be there."
+   }
+  },
+  {
+   "id": "st-05",
+   "titleEn": "A file for Thursday",
+   "titleAr": "ملف ليوم الخميس",
+   "lines": [
+    {
+     "en": "Mr. Fares needs the pump drawings.",
+     "ar": "يحتاج السيد فارس مخططات المضخة."
+    },
+    {
+     "en": "He writes to Nabil, \"Could you send me the file?\"",
+     "ar": "يكتب إلى نبيل: «هل يمكنك أن ترسل لي الملف؟»"
+    },
+    {
+     "en": "Nabil asks, \"When do you need it?\"",
+     "ar": "يسأل نبيل: «متى تحتاجه؟»"
+    },
+    {
+     "en": "\"I need it by Thursday,\" Mr. Fares answers.",
+     "ar": "يجيب السيد فارس: «أحتاجه في موعد أقصاه يوم الخميس.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-05-q1",
+     "prompt": "What does Mr. Fares need?",
+     "options": [
+      "The pump drawings",
+      "A new helmet",
+      "The site key"
+     ],
+     "answer": 0,
+     "explanationAr": "يحتاج مخططات المضخة."
+    },
+    {
+     "id": "st-05-q2",
+     "prompt": "Who will send the file?",
+     "options": [
+      "Mr. Fares",
+      "Nabil",
+      "Huda"
+     ],
+     "answer": 1,
+     "explanationAr": "نبيل هو الذي سيرسل الملف."
+    },
+    {
+     "id": "st-05-q3",
+     "prompt": "When does Mr. Fares need it?",
+     "options": [
+      "By Sunday",
+      "By Monday",
+      "By Thursday"
+     ],
+     "answer": 2,
+     "explanationAr": "يحتاجه في موعد أقصاه الخميس."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as Nabil. Start with: \"Mr. Fares asked me ...\"",
+    "promptAr": "احكِ القصة على لسان نبيل. ابدأ بـ: «Mr. Fares asked me ...»",
+    "sample": "Mr. Fares asked me for the pump drawings. I asked when he needed them. He needs them by Thursday. I will send the file."
+   }
+  },
+  {
+   "id": "st-06",
+   "titleEn": "Almost ready",
+   "titleAr": "جاهز تقريبًا",
+   "lines": [
+    {
+     "en": "Sara is writing the weekly report.",
+     "ar": "تكتب سارة التقرير الأسبوعي."
+    },
+    {
+     "en": "Her manager asks, \"Is the report ready?\"",
+     "ar": "تسألها مديرتها: «هل التقرير جاهز؟»"
+    },
+    {
+     "en": "\"I'm working on it. It's almost finished,\" Sara says.",
+     "ar": "تقول سارة: «أعمل عليه الآن. أوشك على الانتهاء.»"
+    },
+    {
+     "en": "At four o'clock she says, \"It's ready. I'll send it today.\"",
+     "ar": "في الساعة الرابعة تقول: «إنه جاهز. سأرسله اليوم.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-06-q1",
+     "prompt": "What is Sara writing?",
+     "options": [
+      "An email",
+      "The weekly report",
+      "A drawing"
+     ],
+     "answer": 1,
+     "explanationAr": "تكتب التقرير الأسبوعي."
+    },
+    {
+     "id": "st-06-q2",
+     "prompt": "When is the report ready?",
+     "options": [
+      "At four o'clock",
+      "At ten o'clock",
+      "Tomorrow"
+     ],
+     "answer": 0,
+     "explanationAr": "يصبح جاهزًا في الساعة الرابعة."
+    },
+    {
+     "id": "st-06-q3",
+     "prompt": "When will Sara send it?",
+     "options": [
+      "Next week",
+      "Tomorrow",
+      "Today"
+     ],
+     "answer": 2,
+     "explanationAr": "سترسله اليوم."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as Sara's manager. Start with: \"I asked Sara ...\"",
+    "promptAr": "احكِ القصة على لسان مديرة سارة. ابدأ بـ: «I asked Sara ...»",
+    "sample": "I asked Sara about the weekly report. She was working on it. At four o'clock it was ready. She will send it today."
+   }
+  },
+  {
+   "id": "st-07",
+   "titleEn": "A problem with the pump",
+   "titleAr": "مشكلة في المضخة",
+   "lines": [
+    {
+     "en": "Tariq hears a strange noise in the pump room.",
+     "ar": "يسمع طارق صوتًا غريبًا في غرفة المضخات."
+    },
+    {
+     "en": "He calls his supervisor: \"There is a problem with the pump.\"",
+     "ar": "يتصل بمشرفه: «توجد مشكلة في المضخة.»"
+    },
+    {
+     "en": "The supervisor says, \"I will check it now.\"",
+     "ar": "يقول المشرف: «سأتحقق منها الآن.»"
+    },
+    {
+     "en": "Then he says, \"Let me call the technician.\"",
+     "ar": "ثم يقول: «دعني أتصل بالفني.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-07-q1",
+     "prompt": "Where is the problem?",
+     "options": [
+      "In the office",
+      "In the pump room",
+      "At the gate"
+     ],
+     "answer": 1,
+     "explanationAr": "المشكلة في غرفة المضخات."
+    },
+    {
+     "id": "st-07-q2",
+     "prompt": "Who does Tariq call?",
+     "options": [
+      "His supervisor",
+      "The client",
+      "The driver"
+     ],
+     "answer": 0,
+     "explanationAr": "يتصل بمشرفه."
+    },
+    {
+     "id": "st-07-q3",
+     "prompt": "Who will the supervisor call?",
+     "options": [
+      "The manager",
+      "The client",
+      "The technician"
+     ],
+     "answer": 2,
+     "explanationAr": "سيتصل بالفني."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as the supervisor. Start with: \"Tariq called me ...\"",
+    "promptAr": "احكِ القصة على لسان المشرف. ابدأ بـ: «Tariq called me ...»",
+    "sample": "Tariq called me about a problem with the pump. I checked it. Then I called the technician."
+   }
+  },
+  {
+   "id": "st-08",
+   "titleEn": "The late delivery",
+   "titleAr": "التوريد المتأخر",
+   "lines": [
+    {
+     "en": "The steel for the new tank is late.",
+     "ar": "الحديد الخاص بالخزان الجديد متأخر."
+    },
+    {
+     "en": "Hani writes to the client: \"Sorry for the delay.\"",
+     "ar": "يكتب هاني إلى العميل: «آسف على التأخير.»"
+    },
+    {
+     "en": "\"The delivery is late. We need one more day.\"",
+     "ar": "«التوريد متأخر. نحتاج يومًا آخر.»"
+    },
+    {
+     "en": "\"The steel will be on site tomorrow.\"",
+     "ar": "«سيكون الحديد في الموقع غدًا.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-08-q1",
+     "prompt": "What is late?",
+     "options": [
+      "The steel",
+      "The report",
+      "The meeting"
+     ],
+     "answer": 0,
+     "explanationAr": "الحديد هو المتأخر."
+    },
+    {
+     "id": "st-08-q2",
+     "prompt": "How many more days do they need?",
+     "options": [
+      "Two",
+      "One",
+      "Three"
+     ],
+     "answer": 1,
+     "explanationAr": "يحتاجون يومًا واحدًا."
+    },
+    {
+     "id": "st-08-q3",
+     "prompt": "Who does Hani write to?",
+     "options": [
+      "His brother",
+      "The technician",
+      "The client"
+     ],
+     "answer": 2,
+     "explanationAr": "يكتب إلى العميل."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as the client. Start with: \"Hani wrote to me ...\"",
+    "promptAr": "احكِ القصة على لسان العميل. ابدأ بـ: «Hani wrote to me ...»",
+    "sample": "Hani wrote to me about the steel. The delivery is late. They need one more day. The steel will be on site tomorrow."
+   }
+  },
+  {
+   "id": "st-09",
+   "titleEn": "A new idea",
+   "titleAr": "فكرة جديدة",
+   "lines": [
+    {
+     "en": "In the meeting, Mona has an idea for the schedule.",
+     "ar": "في الاجتماع، لدى منى فكرة للجدول الزمني."
+    },
+    {
+     "en": "Ahmed says, \"I agree. That's a good idea.\"",
+     "ar": "يقول أحمد: «أوافق. هذه فكرة جيدة.»"
+    },
+    {
+     "en": "Sami says, \"I'm not sure. It is expensive.\"",
+     "ar": "يقول سامي: «لست متأكدًا. إنها مكلفة.»"
+    },
+    {
+     "en": "The manager says, \"Let's discuss it tomorrow.\"",
+     "ar": "يقول المدير: «لنناقش ذلك غدًا.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-09-q1",
+     "prompt": "Who has the idea?",
+     "options": [
+      "Sami",
+      "Mona",
+      "Ahmed"
+     ],
+     "answer": 1,
+     "explanationAr": "منى صاحبة الفكرة."
+    },
+    {
+     "id": "st-09-q2",
+     "prompt": "Who is not sure?",
+     "options": [
+      "Sami",
+      "Ahmed",
+      "The manager"
+     ],
+     "answer": 0,
+     "explanationAr": "سامي غير متأكد."
+    },
+    {
+     "id": "st-09-q3",
+     "prompt": "When will they discuss it?",
+     "options": [
+      "Today",
+      "Next week",
+      "Tomorrow"
+     ],
+     "answer": 2,
+     "explanationAr": "سيناقشونها غدًا."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as Ahmed. Start with: \"In the meeting, Mona ...\"",
+    "promptAr": "احكِ القصة على لسان أحمد. ابدأ بـ: «In the meeting, Mona ...»",
+    "sample": "In the meeting, Mona had an idea for the schedule. I agreed with her. Sami was not sure. We will discuss it tomorrow."
+   }
+  },
+  {
+   "id": "st-10",
+   "titleEn": "Safety on site",
+   "titleAr": "السلامة في الموقع",
+   "lines": [
+    {
+     "en": "A new worker arrives at the site.",
+     "ar": "يصل عامل جديد إلى الموقع."
+    },
+    {
+     "en": "The safety officer says, \"Please wear your helmet.\"",
+     "ar": "يقول مسؤول السلامة: «من فضلك ارتدِ خوذتك.»"
+    },
+    {
+     "en": "\"Be careful, the floor is wet near the tank.\"",
+     "ar": "«انتبه، الأرض مبتلة قرب الخزان.»"
+    },
+    {
+     "en": "The worker asks, \"Where is the site office?\"",
+     "ar": "يسأل العامل: «أين مكتب الموقع؟»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-10-q1",
+     "prompt": "Who arrives at the site?",
+     "options": [
+      "A new worker",
+      "The client",
+      "A driver"
+     ],
+     "answer": 0,
+     "explanationAr": "يصل عامل جديد."
+    },
+    {
+     "id": "st-10-q2",
+     "prompt": "What must the worker wear?",
+     "options": [
+      "Gloves",
+      "A helmet",
+      "Boots"
+     ],
+     "answer": 1,
+     "explanationAr": "يجب أن يرتدي خوذة."
+    },
+    {
+     "id": "st-10-q3",
+     "prompt": "Where is the floor wet?",
+     "options": [
+      "In the office",
+      "At the gate",
+      "Near the tank"
+     ],
+     "answer": 2,
+     "explanationAr": "الأرض مبتلة قرب الخزان."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as the safety officer. Start with: \"A new worker arrived ...\"",
+    "promptAr": "احكِ القصة على لسان مسؤول السلامة. ابدأ بـ: «A new worker arrived ...»",
+    "sample": "A new worker arrived at the site. I told him to wear his helmet. I said the floor near the tank was wet. He asked about the site office."
+   }
+  },
+  {
+   "id": "st-11",
+   "titleEn": "A phone call",
+   "titleAr": "مكالمة هاتفية",
+   "lines": [
+    {
+     "en": "Nabil calls the main office.",
+     "ar": "يتصل نبيل بالمكتب الرئيسي."
+    },
+    {
+     "en": "\"Can I speak to Mr. Hassan, please?\"",
+     "ar": "«هل يمكنني التحدث مع السيد حسن من فضلك؟»"
+    },
+    {
+     "en": "The secretary says, \"He is in a meeting now.\"",
+     "ar": "يقول السكرتير: «هو في اجتماع الآن.»"
+    },
+    {
+     "en": "\"Can I leave a message? Please tell him I'll call him back.\"",
+     "ar": "«هل يمكنني ترك رسالة؟ أخبره من فضلك أنني سأعاود الاتصال به.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-11-q1",
+     "prompt": "Who does Nabil want to speak to?",
+     "options": [
+      "Mr. Fares",
+      "The secretary",
+      "Mr. Hassan"
+     ],
+     "answer": 2,
+     "explanationAr": "يريد التحدث مع السيد حسن."
+    },
+    {
+     "id": "st-11-q2",
+     "prompt": "Where is Mr. Hassan?",
+     "options": [
+      "In a meeting",
+      "On the site",
+      "At home"
+     ],
+     "answer": 0,
+     "explanationAr": "السيد حسن في اجتماع."
+    },
+    {
+     "id": "st-11-q3",
+     "prompt": "What does Nabil leave?",
+     "options": [
+      "A file",
+      "A message",
+      "A drawing"
+     ],
+     "answer": 1,
+     "explanationAr": "يترك رسالة."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as the secretary. Start with: \"Nabil called ...\"",
+    "promptAr": "احكِ القصة على لسان السكرتير. ابدأ بـ: «Nabil called ...»",
+    "sample": "Nabil called the office. He wanted to speak to Mr. Hassan. Mr. Hassan was in a meeting. Nabil left a message."
+   }
+  },
+  {
+   "id": "st-12",
+   "titleEn": "The end of the day",
+   "titleAr": "نهاية اليوم",
+   "lines": [
+    {
+     "en": "It is five o'clock, and Omar's work is finished.",
+     "ar": "الساعة الخامسة، وقد انتهى عمل عمر."
+    },
+    {
+     "en": "He says to Khalid, \"I'm leaving now. Thanks for today.\"",
+     "ar": "يقول لخالد: «سأغادر الآن. شكرًا على اليوم.»"
+    },
+    {
+     "en": "Khalid answers, \"See you tomorrow.\"",
+     "ar": "يجيب خالد: «أراك غدًا.»"
+    },
+    {
+     "en": "\"Have a good evening,\" Omar says at the door.",
+     "ar": "يقول عمر عند الباب: «أتمنى لك مساءً طيبًا.»"
+    }
+   ],
+   "questions": [
+    {
+     "id": "st-12-q1",
+     "prompt": "What time is it?",
+     "options": [
+      "Four o'clock",
+      "Five o'clock",
+      "Six o'clock"
+     ],
+     "answer": 1,
+     "explanationAr": "الساعة الخامسة."
+    },
+    {
+     "id": "st-12-q2",
+     "prompt": "Who is leaving?",
+     "options": [
+      "Omar",
+      "Khalid",
+      "The manager"
+     ],
+     "answer": 0,
+     "explanationAr": "عمر هو الذي يغادر."
+    },
+    {
+     "id": "st-12-q3",
+     "prompt": "What does Khalid say?",
+     "options": [
+      "\"Good morning.\"",
+      "\"Sorry for the delay.\"",
+      "\"See you tomorrow.\""
+     ],
+     "answer": 2,
+     "explanationAr": "يقول خالد: See you tomorrow."
+    }
+   ],
+   "retell": {
+    "promptEn": "Tell the story as Khalid. Start with: \"At five o'clock, Omar ...\"",
+    "promptAr": "احكِ القصة على لسان خالد. ابدأ بـ: «At five o'clock, Omar ...»",
+    "sample": "At five o'clock, Omar finished his work. He thanked me for the day. I said, \"See you tomorrow.\" He wished me a good evening."
+   }
+  }
+ ]
+}

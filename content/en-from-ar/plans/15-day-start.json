@@ -1,0 +1,331 @@
+{
+ "id": "15-day-start",
+ "reviewed": false,
+ "available": true,
+ "order": 1,
+ "days": 15,
+ "minutesPerDay": 15,
+ "titleEn": "15-Day Start",
+ "titleAr": "بداية الخمسة عشر يومًا",
+ "summaryEn": "Work phrases first, 15 minutes a day, for 15 days.",
+ "summaryAr": "عبارات العمل أولًا، 15 دقيقة يوميًا، لمدة 15 يومًا.",
+ "honestAr": "هذه الخطة تبني عادة يومية وأساسًا صغيرًا ومفيدًا من عبارات العمل. مجموع وقتها نحو 4 ساعات، وهذا أقل من مستوى A1. لن تجعلك تتكلم الإنجليزية بطلاقة؛ فالوصول إلى مستوى يكفي للعمل يحتاج مئات الساعات من التدريب.",
+ "honestEn": "This plan builds a daily habit and a small, useful base of work phrases. It takes about 4 hours in total, which is below A1. It will not make you fluent: a working level takes hundreds of hours of practice.",
+ "howItWorksAr": "في 12 يومًا تتعلم 4 عبارات عمل جديدة كل يوم، أي 48 عبارة. الأيام 6 و 11 و 15 أيام مراجعة. تعود العبارات إليك في المراجعة بعد 1 ثم 3 ثم 7 ثم 14 ثم 30 يومًا. إذا فاتك يوم، تابع من حيث توقفت، دون عقوبة.",
+ "howItWorksEn": "On 12 days you learn 4 new work phrases each day: 48 phrases. Days 6, 11 and 15 are review days. Phrases come back for review after 1, 3, 7, 14 and 30 days. If you miss a day, just continue where you stopped. There is no penalty.",
+ "routine": [
+  {
+   "minutes": 2,
+   "ar": "مراجعة العبارات والأخطاء المستحقة اليوم",
+   "en": "Review phrases and mistakes that are due today"
+  },
+  {
+   "minutes": 4,
+   "ar": "عبارات جديدة (أو مراجعة عبارات الأيام السابقة في أيام المراجعة)",
+   "en": "New phrases (or, on review days, phrases from earlier days)"
+  },
+  {
+   "minutes": 4,
+   "ar": "قصة عمل من 4 أسطر و3 أسئلة (أو رسالة عمل قصيرة في أيام المراجعة)",
+   "en": "A 4-line work story and 3 questions (or, on review days, a short work message)"
+  },
+  {
+   "minutes": 3,
+   "ar": "قلها بصوت عالٍ: الطلب، ثم الإجابة النموذجية، ثم تقييمك لنفسك",
+   "en": "Say it aloud: the prompt, then the sample answer, then your self-rating"
+  },
+  {
+   "minutes": 2,
+   "ar": "نظرة على «أخطائي»",
+   "en": "A look at My Mistakes"
+  }
+ ],
+ "goals": [
+  {
+   "id": "phrases",
+   "ar": "أن تصل معظم العبارات الـ 48 إلى الصندوق 3 أو أعلى في المراجعة",
+   "en": "Most of the 48 phrases reach box 3 or higher in review"
+  },
+  {
+   "id": "messages",
+   "ar": "أن تكتب 3 رسائل عمل قصيرة: طلبًا، وشكرًا، واعتذارًا عن تأخير",
+   "en": "Write 3 short work messages: a request, a thank-you and a delay"
+  },
+  {
+   "id": "intro",
+   "ar": "أن تقدّم نفسك في نحو 30 ثانية",
+   "en": "Introduce yourself in about 30 seconds"
+  },
+  {
+   "id": "days",
+   "ar": "أن تتدرّب في 12 يومًا على الأقل من الأيام الـ 15",
+   "en": "Practise on at least 12 of the 15 days"
+  }
+ ],
+ "selfCheck": [
+  {
+   "ar": "أستطيع أن أحيّي زميلًا وأعرّف بنفسي.",
+   "en": "I can greet a colleague and say who I am."
+  },
+  {
+   "ar": "أستطيع أن أطلب من شخص شيئًا بأدب.",
+   "en": "I can ask someone politely to do something."
+  },
+  {
+   "ar": "أستطيع أن أشكر شخصًا في العمل.",
+   "en": "I can thank someone at work."
+  },
+  {
+   "ar": "أستطيع أن أقول إن شيئًا ما متأخر، ومتى سيكون جاهزًا.",
+   "en": "I can say that something is late, and when it will be ready."
+  },
+  {
+   "ar": "أستطيع أن أفهم رسالة عمل قصيرة وبسيطة.",
+   "en": "I can understand a short, simple work message."
+  }
+ ],
+ "canDoAr": [
+  "أن تحيّي زملاءك وتعرّف بنفسك وبعملك",
+  "أن تطلب المساعدة وتطلب إعادة الكلام",
+  "أن تكتب طلبًا قصيرًا ورسالة شكر قصيرة",
+  "أن تقول إن شيئًا ما متأخر ومتى سيكون جاهزًا",
+  "أن تفهم قصص عمل ورسائل قصيرة جدًا"
+ ],
+ "canDoEn": [
+  "Greet colleagues and say who you are and what you do",
+  "Ask for help and ask someone to say something again",
+  "Write a short request and a short thank-you",
+  "Say that something is late and when it will be ready",
+  "Understand very short work stories and messages"
+ ],
+ "cannotYetAr": [
+  "أن تتابع اجتماعًا بسرعة الكلام العادية",
+  "أن تكتب تقريرًا كاملًا أو بريدًا إلكترونيًا طويلًا",
+  "أن تشرح مشكلة فنية معقدة",
+  "أن تفهم معظم المكالمات الهاتفية دون مساعدة"
+ ],
+ "cannotYetEn": [
+  "Follow a meeting at normal speed",
+  "Write a full report or a long email",
+  "Explain a complex technical problem",
+  "Understand most phone calls without help"
+ ],
+ "schedule": [
+  {
+   "day": 1,
+   "type": "learn",
+   "phrases": [
+    "ph-01",
+    "ph-02",
+    "ph-03",
+    "ph-04"
+   ],
+   "storyId": "st-01",
+   "sayId": "sa-01"
+  },
+  {
+   "day": 2,
+   "type": "learn",
+   "phrases": [
+    "ph-05",
+    "ph-06",
+    "ph-07",
+    "ph-08"
+   ],
+   "storyId": "st-02",
+   "sayId": "sa-02"
+  },
+  {
+   "day": 3,
+   "type": "learn",
+   "phrases": [
+    "ph-09",
+    "ph-10",
+    "ph-11",
+    "ph-12"
+   ],
+   "storyId": "st-03",
+   "sayId": "sa-03"
+  },
+  {
+   "day": 4,
+   "type": "learn",
+   "phrases": [
+    "ph-13",
+    "ph-14",
+    "ph-15",
+    "ph-16"
+   ],
+   "storyId": "st-04",
+   "sayId": "sa-04"
+  },
+  {
+   "day": 5,
+   "type": "learn",
+   "phrases": [
+    "ph-17",
+    "ph-18",
+    "ph-19",
+    "ph-20"
+   ],
+   "storyId": "st-05",
+   "sayId": "sa-05"
+  },
+  {
+   "day": 6,
+   "type": "review",
+   "phrases": [
+    "ph-01",
+    "ph-02",
+    "ph-03",
+    "ph-04",
+    "ph-05",
+    "ph-06",
+    "ph-07",
+    "ph-08",
+    "ph-09",
+    "ph-10",
+    "ph-11",
+    "ph-12",
+    "ph-13",
+    "ph-14",
+    "ph-15",
+    "ph-16",
+    "ph-17",
+    "ph-18",
+    "ph-19",
+    "ph-20"
+   ],
+   "writingTaskId": "w-p15-request",
+   "sayId": "sa-06"
+  },
+  {
+   "day": 7,
+   "type": "learn",
+   "phrases": [
+    "ph-21",
+    "ph-22",
+    "ph-23",
+    "ph-24"
+   ],
+   "storyId": "st-06",
+   "sayId": "sa-07"
+  },
+  {
+   "day": 8,
+   "type": "learn",
+   "phrases": [
+    "ph-25",
+    "ph-26",
+    "ph-27",
+    "ph-28"
+   ],
+   "storyId": "st-07",
+   "sayId": "sa-08"
+  },
+  {
+   "day": 9,
+   "type": "learn",
+   "phrases": [
+    "ph-29",
+    "ph-30",
+    "ph-31",
+    "ph-32"
+   ],
+   "storyId": "st-08",
+   "sayId": "sa-09"
+  },
+  {
+   "day": 10,
+   "type": "learn",
+   "phrases": [
+    "ph-33",
+    "ph-34",
+    "ph-35",
+    "ph-36"
+   ],
+   "storyId": "st-09",
+   "sayId": "sa-10"
+  },
+  {
+   "day": 11,
+   "type": "review",
+   "phrases": [
+    "ph-21",
+    "ph-22",
+    "ph-23",
+    "ph-24",
+    "ph-25",
+    "ph-26",
+    "ph-27",
+    "ph-28",
+    "ph-29",
+    "ph-30",
+    "ph-31",
+    "ph-32",
+    "ph-33",
+    "ph-34",
+    "ph-35",
+    "ph-36"
+   ],
+   "writingTaskId": "w-p15-thanks",
+   "sayId": "sa-11"
+  },
+  {
+   "day": 12,
+   "type": "learn",
+   "phrases": [
+    "ph-37",
+    "ph-38",
+    "ph-39",
+    "ph-40"
+   ],
+   "storyId": "st-10",
+   "sayId": "sa-12"
+  },
+  {
+   "day": 13,
+   "type": "learn",
+   "phrases": [
+    "ph-41",
+    "ph-42",
+    "ph-43",
+    "ph-44"
+   ],
+   "storyId": "st-11",
+   "sayId": "sa-13"
+  },
+  {
+   "day": 14,
+   "type": "learn",
+   "phrases": [
+    "ph-45",
+    "ph-46",
+    "ph-47",
+    "ph-48"
+   ],
+   "storyId": "st-12",
+   "sayId": "sa-14"
+  },
+  {
+   "day": 15,
+   "type": "review",
+   "phrases": [
+    "ph-37",
+    "ph-38",
+    "ph-39",
+    "ph-40",
+    "ph-41",
+    "ph-42",
+    "ph-43",
+    "ph-44",
+    "ph-45",
+    "ph-46",
+    "ph-47",
+    "ph-48"
+   ],
+   "writingTaskId": "w-p15-delay",
+   "sayId": "sa-15"
+  }
+ ]
+}

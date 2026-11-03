@@ -95,3 +95,68 @@ export interface WritingTask {
   lessonId?: string;
   reviewed: boolean;
 }
+
+/** A whole work phrase, learned as a card in spaced review. */
+export interface Phrase {
+  id: string;
+  en: string;
+  ar: string;
+  noteAr: string;
+}
+
+export interface StoryQuestion {
+  id: string;
+  prompt: string;
+  options: string[];
+  answer: number;
+  explanationAr: string;
+}
+
+/** A short work story: 4 lines, 3 quick questions, and a retelling from another person's view. */
+export interface Story {
+  id: string;
+  titleEn: string;
+  titleAr: string;
+  lines: { en: string; ar: string }[];
+  questions: StoryQuestion[];
+  retell: { promptEn: string; promptAr: string; sample: string };
+}
+
+/** "Say it aloud": the app shows a prompt and a sample. It cannot hear or check speech. */
+export interface SayPrompt {
+  id: string;
+  promptEn: string;
+  promptAr: string;
+  sample: string;
+}
+
+export type PlanDay =
+  | { day: number; type: 'learn'; phrases: string[]; storyId: string; sayId: string }
+  | { day: number; type: 'review'; phrases: string[]; writingTaskId: string; sayId: string };
+
+/** A learning plan, loaded from content/<course>/plans/*.json. */
+export interface Plan {
+  id: string;
+  reviewed: boolean;
+  /** Only available plans are shown in the picker. */
+  available: boolean;
+  order: number;
+  days: number;
+  minutesPerDay: number;
+  titleEn: string;
+  titleAr: string;
+  summaryEn: string;
+  summaryAr: string;
+  honestAr: string;
+  honestEn: string;
+  howItWorksAr: string;
+  howItWorksEn: string;
+  routine: { minutes: number; ar: string; en: string }[];
+  goals: { id: 'phrases' | 'messages' | 'intro' | 'days'; ar: string; en: string }[];
+  selfCheck: { ar: string; en: string }[];
+  canDoAr: string[];
+  canDoEn: string[];
+  cannotYetAr: string[];
+  cannotYetEn: string[];
+  schedule: PlanDay[];
+}

@@ -1,0 +1,293 @@
+{
+ "reviewed": false,
+ "phrases": [
+  {
+   "id": "ph-01",
+   "en": "Good morning.",
+   "ar": "صباح الخير.",
+   "noteAr": "تحية مناسبة حتى الظهر تقريبًا."
+  },
+  {
+   "id": "ph-02",
+   "en": "Nice to meet you.",
+   "ar": "سعيد بلقائك.",
+   "noteAr": "نقولها عند أول لقاء مع شخص."
+  },
+  {
+   "id": "ph-03",
+   "en": "I am a new engineer here.",
+   "ar": "أنا مهندس جديد هنا.",
+   "noteAr": "لا تنسَ am و a."
+  },
+  {
+   "id": "ph-04",
+   "en": "I work in the design team.",
+   "ar": "أعمل في فريق التصميم.",
+   "noteAr": "in the ... team = في فريق ..."
+  },
+  {
+   "id": "ph-05",
+   "en": "Can you help me, please?",
+   "ar": "هل يمكنك مساعدتي من فضلك؟",
+   "noteAr": "please تجعل الطلب مهذبًا."
+  },
+  {
+   "id": "ph-06",
+   "en": "Could you say that again, please?",
+   "ar": "هل يمكنك أن تقول ذلك مرة أخرى من فضلك؟",
+   "noteAr": "مفيدة جدًا عندما لا تسمع جيدًا."
+  },
+  {
+   "id": "ph-07",
+   "en": "Sorry, I don't understand.",
+   "ar": "عذرًا، لا أفهم.",
+   "noteAr": "don't = do not."
+  },
+  {
+   "id": "ph-08",
+   "en": "What does this word mean?",
+   "ar": "ماذا تعني هذه الكلمة؟",
+   "noteAr": "does مع this word، والفعل mean دون s."
+  },
+  {
+   "id": "ph-09",
+   "en": "Thank you for your help.",
+   "ar": "شكرًا لمساعدتك.",
+   "noteAr": "Thank you for + اسم."
+  },
+  {
+   "id": "ph-10",
+   "en": "You're welcome.",
+   "ar": "على الرحب والسعة.",
+   "noteAr": "ردّ على Thank you."
+  },
+  {
+   "id": "ph-11",
+   "en": "No problem.",
+   "ar": "لا مشكلة.",
+   "noteAr": "ردّ قصير وودّي."
+  },
+  {
+   "id": "ph-12",
+   "en": "I really appreciate it.",
+   "ar": "أقدّر ذلك حقًا.",
+   "noteAr": "شكر أقوى قليلًا."
+  },
+  {
+   "id": "ph-13",
+   "en": "What time is the meeting?",
+   "ar": "متى موعد الاجتماع؟",
+   "noteAr": "What time ...? = في أي ساعة ...؟"
+  },
+  {
+   "id": "ph-14",
+   "en": "The meeting starts at ten.",
+   "ar": "يبدأ الاجتماع في الساعة العاشرة.",
+   "noteAr": "at + الساعة."
+  },
+  {
+   "id": "ph-15",
+   "en": "I will be there.",
+   "ar": "سأكون هناك.",
+   "noteAr": "will للمستقبل."
+  },
+  {
+   "id": "ph-16",
+   "en": "See you at the meeting.",
+   "ar": "أراك في الاجتماع.",
+   "noteAr": "وداع قصير قبل الاجتماع."
+  },
+  {
+   "id": "ph-17",
+   "en": "Could you send me the file?",
+   "ar": "هل يمكنك أن ترسل لي الملف؟",
+   "noteAr": "Could you ...? طلب مهذب."
+  },
+  {
+   "id": "ph-18",
+   "en": "Please check this drawing.",
+   "ar": "من فضلك راجع هذا المخطط.",
+   "noteAr": "Please + الفعل."
+  },
+  {
+   "id": "ph-19",
+   "en": "When do you need it?",
+   "ar": "متى تحتاجه؟",
+   "noteAr": "سؤال عن الموعد."
+  },
+  {
+   "id": "ph-20",
+   "en": "I need it by Thursday.",
+   "ar": "أحتاجه في موعد أقصاه يوم الخميس.",
+   "noteAr": "by Thursday = في موعد أقصاه الخميس."
+  },
+  {
+   "id": "ph-21",
+   "en": "I'm working on it.",
+   "ar": "أعمل عليه الآن.",
+   "noteAr": "I'm = I am."
+  },
+  {
+   "id": "ph-22",
+   "en": "It's almost finished.",
+   "ar": "أوشك على الانتهاء.",
+   "noteAr": "almost = تقريبًا."
+  },
+  {
+   "id": "ph-23",
+   "en": "It's ready.",
+   "ar": "إنه جاهز.",
+   "noteAr": "It's = It is."
+  },
+  {
+   "id": "ph-24",
+   "en": "I'll send it today.",
+   "ar": "سأرسله اليوم.",
+   "noteAr": "I'll = I will."
+  },
+  {
+   "id": "ph-25",
+   "en": "There is a problem with the pump.",
+   "ar": "توجد مشكلة في المضخة.",
+   "noteAr": "There is + a + المشكلة."
+  },
+  {
+   "id": "ph-26",
+   "en": "The printer is not working.",
+   "ar": "الطابعة لا تعمل.",
+   "noteAr": "is not working = لا تعمل الآن."
+  },
+  {
+   "id": "ph-27",
+   "en": "I will check it now.",
+   "ar": "سأتحقق منه الآن.",
+   "noteAr": "check = يفحص أو يتحقق."
+  },
+  {
+   "id": "ph-28",
+   "en": "Let me call the technician.",
+   "ar": "دعني أتصل بالفني.",
+   "noteAr": "Let me + الفعل = دعني ..."
+  },
+  {
+   "id": "ph-29",
+   "en": "Sorry for the delay.",
+   "ar": "آسف على التأخير.",
+   "noteAr": "Sorry for + اسم."
+  },
+  {
+   "id": "ph-30",
+   "en": "The delivery is late.",
+   "ar": "التوريد متأخر.",
+   "noteAr": "late = متأخر."
+  },
+  {
+   "id": "ph-31",
+   "en": "We need one more day.",
+   "ar": "نحتاج يومًا آخر.",
+   "noteAr": "one more = واحد إضافي."
+  },
+  {
+   "id": "ph-32",
+   "en": "It will be ready tomorrow.",
+   "ar": "سيكون جاهزًا غدًا.",
+   "noteAr": "will be + صفة."
+  },
+  {
+   "id": "ph-33",
+   "en": "I agree.",
+   "ar": "أوافق.",
+   "noteAr": "لا نقول I am agree."
+  },
+  {
+   "id": "ph-34",
+   "en": "That's a good idea.",
+   "ar": "هذه فكرة جيدة.",
+   "noteAr": "That's = That is."
+  },
+  {
+   "id": "ph-35",
+   "en": "I'm not sure.",
+   "ar": "لست متأكدًا.",
+   "noteAr": "طريقة مهذبة لإظهار الشك."
+  },
+  {
+   "id": "ph-36",
+   "en": "Let's discuss it tomorrow.",
+   "ar": "لنناقش ذلك غدًا.",
+   "noteAr": "discuss دون about."
+  },
+  {
+   "id": "ph-37",
+   "en": "Please wear your helmet.",
+   "ar": "من فضلك ارتدِ خوذتك.",
+   "noteAr": "تعليمات السلامة تبدأ غالبًا بـ Please."
+  },
+  {
+   "id": "ph-38",
+   "en": "Be careful, the floor is wet.",
+   "ar": "انتبه، الأرض مبتلة.",
+   "noteAr": "Be careful = انتبه."
+  },
+  {
+   "id": "ph-39",
+   "en": "Where is the site office?",
+   "ar": "أين مكتب الموقع؟",
+   "noteAr": "Where is ...? سؤال عن مكان."
+  },
+  {
+   "id": "ph-40",
+   "en": "The site is closed today.",
+   "ar": "الموقع مغلق اليوم.",
+   "noteAr": "closed = مغلق."
+  },
+  {
+   "id": "ph-41",
+   "en": "Can I speak to Mr. Hassan, please?",
+   "ar": "هل يمكنني التحدث مع السيد حسن من فضلك؟",
+   "noteAr": "Can I speak to ...? في الهاتف."
+  },
+  {
+   "id": "ph-42",
+   "en": "He is in a meeting now.",
+   "ar": "هو في اجتماع الآن.",
+   "noteAr": "in a meeting = في اجتماع."
+  },
+  {
+   "id": "ph-43",
+   "en": "Can I leave a message?",
+   "ar": "هل يمكنني ترك رسالة؟",
+   "noteAr": "leave a message = يترك رسالة."
+  },
+  {
+   "id": "ph-44",
+   "en": "I'll call you back.",
+   "ar": "سأعاود الاتصال بك.",
+   "noteAr": "call back = يعاود الاتصال."
+  },
+  {
+   "id": "ph-45",
+   "en": "I'm leaving now.",
+   "ar": "سأغادر الآن.",
+   "noteAr": "المضارع المستمر لشيء يحدث الآن."
+  },
+  {
+   "id": "ph-46",
+   "en": "See you tomorrow.",
+   "ar": "أراك غدًا.",
+   "noteAr": "وداع في آخر اليوم."
+  },
+  {
+   "id": "ph-47",
+   "en": "Have a good evening.",
+   "ar": "أتمنى لك مساءً طيبًا.",
+   "noteAr": "وداع مهذب في المساء."
+  },
+  {
+   "id": "ph-48",
+   "en": "Thanks for today.",
+   "ar": "شكرًا على اليوم.",
+   "noteAr": "شكر قصير في آخر يوم العمل."
+  }
+ ]
+}
