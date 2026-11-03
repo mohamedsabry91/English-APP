@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useStore } from '../store';
 import { go } from '../router';
-import { importProgress, LIMITS, type ImportWarning } from '../../core/storage';
+import { importProgress, LIMITS, mergeImport, type ImportWarning } from '../../core/storage';
 import type { Progress, TrackChoice, UiLang } from '../../core/types';
 import { exportToFile } from '../exportFile';
 import { ConfirmDialog } from '../ConfirmDialog';
@@ -131,7 +131,8 @@ export function Settings() {
           cancelLabel={t('common.cancel')}
           onCancel={() => setPendingImport(null)}
           onConfirm={() => {
-            replace({ ...pendingImport.progress, onboarded: true });
+            // Courses on this device that the file does not have are kept.
+            replace({ ...mergeImport(progress, pendingImport.progress), onboarded: true });
             setNotice(
               [
                 t('settings.importOk'),

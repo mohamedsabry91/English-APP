@@ -8,12 +8,15 @@ generated or reviewed. This file explains what audio is allowed and how a clip g
 - **Speech clips only.** No music, jingles, tones or sound effects, ever.
 - **Format and place:** Opus files (`.opus`) under `public/audio/<course>/`, where `<course>` is a
   folder that exists in `content/` (today only `en-from-ar`). Every other audio format, and any audio
-  file anywhere else, fails the tests.
+  file anywhere else, fails the tests. The scan also reads the first bytes of every file: audio or video
+  data under any name fails, and a clip must really be Ogg Opus (an `OggS` page with `OpusHead`).
+  `public/` may hold only the app icons and these clips.
 - **Size:** at most 200 KB per clip, and at most 30 MB for all clips together.
 - **Sources:**
   - **Our own recordings**, made by a speaker who agreed in writing to publish them.
-  - **Openly licensed clips** whose licence allows commercial use and changes: CC0-1.0, CC-BY-4.0,
-    CC-BY-SA-4.0 or Apache-2.0. Non-commercial (NC) or no-derivatives (ND) licences count as **no**.
+  - **Openly licensed clips** whose licence allows commercial use and changes: CC0-1.0, CC-BY-4.0 or
+    Apache-2.0. Non-commercial (NC) or no-derivatives (ND) licences count as **no**. Share-alike
+    (CC-BY-SA) is not allowed for now, by the owner's decision.
   - **English only:** clips pre-generated with **Kokoro** (Apache-2.0). These are labelled synthetic in
     the app, and are added **only after a teacher has listened to and checked** each clip.
 - **Chinese and Urdu (later):** our own teacher recordings only. No AI voice, because tones and sounds
@@ -54,12 +57,12 @@ outside the scanned app folders because it holds `https://` source links. The te
 | `file` | Path of the clip | `public/audio/<known course>/<name>.opus`, listed once |
 | `text` | The exact words spoken | Not empty, at most 300 characters |
 | `source` | `own-recording`, `kokoro` or `open-licence` | One of these three |
-| `licence` | `own`, `Apache-2.0`, `CC0-1.0`, `CC-BY-4.0` or `CC-BY-SA-4.0` | `own` for own recordings, `Apache-2.0` for Kokoro, a real open licence otherwise |
+| `licence` | `own`, `Apache-2.0`, `CC0-1.0` or `CC-BY-4.0` | `own` for own recordings, `Apache-2.0` for Kokoro, a real open licence otherwise |
 | `link` | `https://` link to the source or licence | Required, `https://`, except for own recordings |
 | `speaker` | A first name or role (never a full name or contact details), or the Kokoro voice name | Not empty |
 | `consent` | The speaker agreed in writing to publish the clip | Must be `true` for own recordings |
 | `synthetic` | Generated voice | `true` exactly for Kokoro; never for a non-English course |
-| `reviewed` | A teacher listened and checked it against the text | Must be `true` before a Kokoro clip is added |
+| `reviewed` | A teacher listened and checked it against the text | Must be `true` before any synthetic clip (Kokoro or other) is added |
 
 The repository is public: do not put full names, contact details or any personal notes in this file.
 Keep written consent outside the repository.
