@@ -58,6 +58,19 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,json,webmanifest}'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
+        // Speech clips are not precached. They are kept after "Download for offline" (src/audio/offline.ts)
+        // in the same cache, and served from it first. Range requests are answered from the full cached file.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url, sameOrigin }) => sameOrigin && /\/audio\/[a-z]{2,3}-from-[a-z]{2,3}\/[a-z0-9][a-z0-9-]*\.opus$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'english-practice-audio',
+              rangeRequests: true,
+              cacheableResponse: { statuses: [200] },
+            },
+          },
+        ],
       },
     }),
   ],

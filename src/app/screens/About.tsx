@@ -1,6 +1,7 @@
 import { useStore } from '../store';
 import { APP_NAME } from '../config';
 import { go } from '../router';
+import { AUDIO } from '../../core/content';
 
 export function About() {
   const { t } = useStore();
@@ -19,7 +20,7 @@ export function About() {
       <h2>{t('about.contentTitle')}</h2>
       <p>{t('about.content')}</p>
       <p>{t('about.notCert')}</p>
-      <p>{t('about.noSound')}</p>
+      <p data-testid="about-audio">{AUDIO.clips.length > 0 ? t('about.audio') : t('about.noSound')}</p>
       <p className="muted">{t('about.version', { v: '0.1.0' })}</p>
     </main>
   );

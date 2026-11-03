@@ -64,9 +64,26 @@ outside the scanned app folders because it holds `https://` source links. The te
 The repository is public: do not put full names, contact details or any personal notes in this file.
 Keep written consent outside the repository.
 
+## How the app plays audio
+
+- `src/audio/player.ts` is the only file that creates an audio element. It plays one clip at a time,
+  from a relative path `audio/<course>/<file>.opus`, and never records.
+- `content/<course>/audio.json` lists the course's clips: `{ "id": "<content item id>", "file": "<name>.opus",
+  "synthetic": true|false }`. The tests check that it matches the files in `public/audio/<course>/` and
+  that `synthetic` matches `AUDIO_CREDITS.json`. **When the list is empty, the app shows no audio
+  controls at all**, and About still says the app has no sound.
+- A "Listen" button appears next to a phrase only when that phrase has a clip. Synthetic clips show a
+  "synthetic voice" label.
+- **Offline:** clips are not part of the app's precache. Settings shows "Download audio for offline use"
+  (only when the course has clips). It stores the clips in the `english-practice-audio` cache
+  (`src/audio/offline.ts`, the only file allowed to use the Cache API), and asks the browser to keep the
+  app's data (persistent storage). The service worker serves `audio/*.opus` from that cache first
+  (CacheFirst), answers range requests from the full cached file, and stores only full (200) responses.
+
 ## Adding a clip (later PRs)
 
 1. Record or generate the clip, and encode it as Opus (mono, speech quality).
-2. Add the file under `public/audio/<course>/` and its entry in `AUDIO_CREDITS.json`.
+2. Add the file under `public/audio/<course>/`, its entry in `AUDIO_CREDITS.json`, and its entry in
+   `content/<course>/audio.json`.
 3. Add a row to the audio review table in `docs/CONTENT_REVIEW.md`.
 4. Never add clips in the same PR as a change to these rules.

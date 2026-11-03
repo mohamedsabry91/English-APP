@@ -5,6 +5,7 @@ import { importProgress, LIMITS, type ImportWarning } from '../../core/storage';
 import type { Progress, TrackChoice, UiLang } from '../../core/types';
 import { exportToFile } from '../exportFile';
 import { ConfirmDialog } from '../ConfirmDialog';
+import { AudioOffline } from '../AudioOffline';
 import type { MsgKey } from '../../i18n';
 
 const TRACKS: { id: TrackChoice; key: MsgKey }[] = [
@@ -100,6 +101,8 @@ export function Settings() {
         <input ref={fileRef} type="file" accept="application/json,.json" className="sr-only" tabIndex={-1} aria-hidden="true" onChange={onFile} data-testid="import-file" />
         <button type="button" className="danger" onClick={() => setConfirmDelete(true)} data-testid="delete-all">{t('settings.delete')}</button>
       </section>
+
+      <AudioOffline />
 
       <section className="card">
         <h2>{t('about.privacyTitle')}</h2>

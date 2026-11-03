@@ -39,6 +39,9 @@ async function doPlanDay(page: Page, opts: { rating: 1 | 2 | 3; knew: boolean })
       await page.getByTestId('plan-skip-message').click();
     } else if (await page.getByTestId('recall-show').isVisible()) {
       await page.getByTestId('recall-show').click();
+      // The course has no audio yet, so there is no "Listen" control.
+      await expect(page.getByTestId('recall-phrase')).toBeVisible();
+      await expect(page.getByTestId('audio-play')).toHaveCount(0);
       await page.getByTestId(opts.knew ? 'recall-knew' : 'recall-not-yet').click();
       await page.getByTestId('next').click();
     } else if (await page.getByTestId('check').isVisible()) {
@@ -47,6 +50,7 @@ async function doPlanDay(page: Page, opts: { rating: 1 | 2 | 3; knew: boolean })
     } else if (await page.getByTestId('show-sample').isVisible()) {
       await page.getByTestId('show-sample').click();
     } else {
+      if (await page.getByTestId('learn-step').isVisible()) await expect(page.getByTestId('audio-play')).toHaveCount(0);
       await page.getByTestId('plan-next').click();
     }
   }

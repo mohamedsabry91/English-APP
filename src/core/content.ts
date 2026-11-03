@@ -3,6 +3,7 @@
 import type { Exercise, Lesson, Phrase, PlacementQuestion, Plan, SayPrompt, Story, TagInfo, WritingTask } from './contentTypes';
 import { LEVELS, type Level, type PlacementResult, type TagId, type TrackChoice, type TrackId } from './types';
 import { startLevel } from './placement';
+import { cleanManifest, type AudioManifest } from '../audio/player';
 
 const placementFiles = import.meta.glob('../../content/*/placement.json', { eager: true, import: 'default' });
 const tagFiles = import.meta.glob('../../content/*/tags.json', { eager: true, import: 'default' });
@@ -12,6 +13,7 @@ const sayFiles = import.meta.glob('../../content/*/say-aloud.json', { eager: tru
 const lessonFiles = import.meta.glob('../../content/*/lessons/*.json', { eager: true, import: 'default' });
 const writingFiles = import.meta.glob('../../content/*/writing/*.json', { eager: true, import: 'default' });
 const planFiles = import.meta.glob('../../content/*/plans/*.json', { eager: true, import: 'default' });
+const audioFiles = import.meta.glob('../../content/*/audio.json', { eager: true, import: 'default' });
 
 /** A course id names the language taught and the learner's language, for example "en-from-ar". */
 export const COURSE_ID_PATTERN = /^[a-z]{2,3}-from-[a-z]{2,3}$/;
@@ -45,6 +47,8 @@ export interface CourseContent {
   sayPrompts: SayPrompt[];
   /** Every plan file, in order, including ones not available yet. */
   allPlans: Plan[];
+  /** Speech clips for this course. Empty when the course has no audio: the app then shows no audio controls. */
+  audio: AudioManifest;
 }
 
 const levelIndex = (l: Level) => LEVELS.indexOf(l);
@@ -74,6 +78,7 @@ function buildCourse(id: string): CourseContent {
     stories: first<Story>(storyFiles, 'stories'),
     sayPrompts: first<SayPrompt>(sayFiles, 'prompts'),
     allPlans: byCourse<Plan>(planFiles, id).sort((a, b) => a.order - b.order),
+    audio: cleanManifest(byCourse<unknown>(audioFiles, id)[0]),
   };
 }
 
@@ -165,3 +170,6 @@ export const getPlan = (id: string) => planById.get(id);
 export function reviewItemExists(id: string): boolean {
   return getExercise(id) !== undefined || getPhrase(id) !== undefined;
 }
+
+/** The default course's speech clips (empty today). */
+export const AUDIO: AudioManifest = COURSE.audio;

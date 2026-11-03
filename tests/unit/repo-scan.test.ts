@@ -28,6 +28,8 @@ const ALLOWED_AUDIO = /^public\/audio\/([a-z0-9-]+)\/[a-z0-9][a-z0-9-]*\.opus$/;
 const COURSES = readdirSync(join(ROOT, 'content')).filter((n) => statSync(join(ROOT, 'content', n)).isDirectory());
 // The only file allowed to create an audio element.
 const PLAYER_FILE = 'src/audio/player.ts';
+// The only file allowed to write to the Cache API ("Download for offline"), from the app's own site only.
+const OFFLINE_FILE = 'src/audio/offline.ts';
 const credits = JSON.parse(read('AUDIO_CREDITS.json')) as AudioCredits;
 
 describe('repository scan', () => {
@@ -89,6 +91,46 @@ describe('repository scan', () => {
       if (/https?:\/\//.test(text)) bad.push(`${f}: URL`);
     }
     expect(bad).toEqual([]);
+  });
+
+  it('uses the Cache API in one file only, for downloading audio', () => {
+    const bad = sourceFiles
+      .filter((f) => /\.(ts|tsx|js|html)$/.test(f) && f !== OFFLINE_FILE)
+      .filter((f) => /\bcaches\b|\.addAll\(|\bcache\.add\(|\bcache\.put\(/.test(read(f)));
+    expect(bad).toEqual([]);
+    // That file uses no network API of its own, and only relative clip paths.
+    const offline = read(OFFLINE_FILE);
+    expect(offline).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|https?:/);
+    expect(offline).toContain("RELATIVE_CLIP = /^audio\\/");
+  });
+
+  it('lists every clip of each course in content/<course>/audio.json, matching the files and AUDIO_CREDITS.json', () => {
+    for (const course of COURSES) {
+      const path = `content/${course}/audio.json`;
+      expect(files, path).toContain(path);
+      const manifest = JSON.parse(read(path)) as { clips: { id: string; file: string; synthetic: boolean }[] };
+      const listed = manifest.clips.map((c) => `public/audio/${course}/${c.file}`).sort();
+      const onDisk = files.filter((f) => f.startsWith(`public/audio/${course}/`)).sort();
+      expect(listed, course).toEqual(onDisk);
+      for (const c of manifest.clips) {
+        const credit = credits.clips.find((x) => x.file === `public/audio/${course}/${c.file}`);
+        expect(credit, c.file).toBeDefined();
+        // The app's "synthetic voice" label must match the credit.
+        expect(c.synthetic, c.file).toBe(credit?.synthetic);
+      }
+    }
+  });
+
+  it('caches audio only at run time, same-origin, cache first with range requests, and never precaches it', async () => {
+    const cfg = read('vite.config.ts');
+    const glob = /globPatterns:\s*\[([^\]]*)\]/.exec(cfg)?.[1] ?? '';
+    expect(glob).not.toMatch(/\b(opus|mp3|wav|ogg|oga|m4a|aac|flac|webm|weba)\b/);
+    expect(glob).toContain("webmanifest");
+    expect(cfg).toMatch(/urlPattern: \(\{ url, sameOrigin \}\) => sameOrigin && /);
+    expect(cfg).toContain("handler: 'CacheFirst'");
+    expect(cfg).toContain('rangeRequests: true');
+    const { AUDIO_CACHE } = await import('../../src/audio/offline');
+    expect(cfg).toContain(`cacheName: '${AUDIO_CACHE}'`);
   });
 
   it('refers to audio only by relative paths', () => {
