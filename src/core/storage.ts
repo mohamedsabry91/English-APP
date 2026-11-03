@@ -52,6 +52,7 @@ export function defaultProgress(): Progress {
     onboarded: false,
     courseId: DEFAULT_COURSE_ID,
     otherCourses: {},
+    unknownCourses: {},
     track: 'general',
     placement: null,
     placementInProgress: null,
@@ -278,12 +279,23 @@ export function migrate(raw: unknown, options: MigrateOptions = {}): Progress {
   const over = overLimit(rec);
   if (over && options.strict) throw new InvalidProgressError(`limits: ${over}`);
 
-  // Courses this app knows. Progress for a course it does not know cannot be checked, so it is left out.
-  const stored = isObj(rec.courses) ? rec.courses : {};
+  // A version 3 record must hold its progress in `courses`. Without it (or with a known course that is
+  // not an object) the record is damaged: it is never read as empty progress, which would wipe good data.
+  if (!isObj(rec.courses)) throw new InvalidProgressError(options.strict ? 'noCourse' : 'damaged: no courses');
+  const stored = rec.courses;
+  const ids = Object.keys(stored).slice(0, LIMITS.courses);
+  const knownIds = ids.filter((id) => COURSE_IDS.includes(id));
+  if (knownIds.some((id) => !isObj(stored[id]))) throw new InvalidProgressError(options.strict ? 'noCourse' : 'damaged: course');
+  // An import must contain at least one course this app can use; otherwise it is refused and nothing changes.
+  if (options.strict && knownIds.length === 0) throw new InvalidProgressError('noCourse');
+  // On this device, a record with no course at all is damaged.
+  if (ids.length === 0) throw new InvalidProgressError('damaged: empty courses');
+
   const courses: Record<string, CourseProgress> = {};
-  for (const id of Object.keys(stored).slice(0, LIMITS.courses)) {
-    if (COURSE_IDS.includes(id)) courses[id] = sanitizeCourse(stored[id], id);
-  }
+  for (const id of knownIds) courses[id] = sanitizeCourse(stored[id], id);
+  // Courses this app does not know: kept as they are on this device; left out of an import (with a notice).
+  const unknownCourses: Record<string, unknown> = {};
+  if (!options.strict) for (const id of ids) if (!COURSE_IDS.includes(id)) unknownCourses[id] = stored[id];
   const courseId = typeof rec.activeCourse === 'string' && COURSE_IDS.includes(rec.activeCourse) ? rec.activeCourse : DEFAULT_COURSE_ID;
   const { [courseId]: active = defaultCourseProgress(), ...otherCourses } = courses;
   const uiLang: UiLang = rec.uiLang === 'en' ? 'en' : 'ar';
@@ -297,6 +309,7 @@ export function migrate(raw: unknown, options: MigrateOptions = {}): Progress {
     createdOn: isLocalDate(rec.createdOn) ? rec.createdOn : null,
     courseId,
     otherCourses,
+    unknownCourses,
     ...active,
   };
 }
@@ -348,7 +361,7 @@ export function toStored(p: Progress): StoredProgress {
     lastExport: p.lastExport,
     createdOn: p.createdOn,
     activeCourse: p.courseId,
-    courses: { ...p.otherCourses, [p.courseId]: active as unknown as CourseProgress },
+    courses: { ...(p.unknownCourses as Record<string, CourseProgress>), ...p.otherCourses, [p.courseId]: active as unknown as CourseProgress },
   };
 }
 
@@ -441,7 +454,7 @@ export function exportProgress(p: Progress, exportedOn: string): string {
 /** Something in an import file was damaged and left out, although the rest loaded. */
 export type ImportWarning = 'planDropped' | 'courseDropped';
 
-export type ImportResult = { ok: true; progress: Progress; warnings: ImportWarning[] } | { ok: false; reason: 'json' | 'kind' | 'invalid' | 'newer' | 'tooLarge' | 'tooMany' };
+export type ImportResult = { ok: true; progress: Progress; warnings: ImportWarning[] } | { ok: false; reason: 'json' | 'kind' | 'invalid' | 'newer' | 'tooLarge' | 'tooMany' | 'noCourse' };
 
 export function importProgress(text: string): ImportResult {
   if (text.length > LIMITS.importChars) return { ok: false, reason: 'tooLarge' };
@@ -466,8 +479,23 @@ export function importProgress(text: string): ImportResult {
   } catch (e) {
     if (e instanceof InvalidProgressError && e.message === 'newer version') return { ok: false, reason: 'newer' };
     if (e instanceof InvalidProgressError && e.message.startsWith('limits')) return { ok: false, reason: 'tooMany' };
+    if (e instanceof InvalidProgressError && e.message === 'noCourse') return { ok: false, reason: 'noCourse' };
     return { ok: false, reason: 'invalid' };
   }
+}
+
+/**
+ * Combine an imported record with the progress on this device. The file replaces the courses it
+ * contains; courses on this device that the file does not have (including unknown ones) are kept.
+ */
+export function mergeImport(device: Progress, imported: Progress): Progress {
+  const inFile = new Set([imported.courseId, ...Object.keys(imported.otherCourses)]);
+  const deviceCourses: Record<string, CourseProgress> = { ...device.otherCourses, [device.courseId]: toStored(device).courses[device.courseId] as CourseProgress };
+  const keptKnown: Record<string, CourseProgress> = {};
+  for (const [id, c] of Object.entries(deviceCourses)) if (!inFile.has(id)) keptKnown[id] = c;
+  const keptUnknown: Record<string, unknown> = {};
+  for (const [id, c] of Object.entries(device.unknownCourses)) if (!inFile.has(id)) keptUnknown[id] = c;
+  return { ...imported, otherCourses: { ...keptKnown, ...imported.otherCourses }, unknownCourses: { ...keptUnknown, ...imported.unknownCourses } };
 }
 
 /** Ask the browser to keep our data. Safe to call anywhere. */

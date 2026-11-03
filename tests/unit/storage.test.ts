@@ -10,6 +10,7 @@ import {
   LIMITS,
   loadProgress,
   migrate,
+  mergeImport,
   saveProgress,
   toStored,
   type StorageLike,
@@ -458,5 +459,83 @@ describe('version 3: progress stored per course', () => {
     const p = { ...sample(), otherCourses: { 'en-from-ar-x': {} } } as unknown as ReturnType<typeof sample>;
     const loaded = migrate(JSON.parse(JSON.stringify(toStored(p))));
     expect(loaded.otherCourses).toEqual({});
+  });
+});
+
+describe('review fixes: a bad import or a damaged record never wipes good progress', () => {
+  const fileOf = (progress: unknown) => JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress });
+  const good = () => toStored(sample());
+
+  it.each([
+    ['only a course this app does not have', { ...good(), activeCourse: 'zh-from-ar', courses: { 'zh-from-ar': { completedLessons: ['x'] } } }],
+    ['version 3 with no courses', { version: 3, uiLang: 'en', onboarded: true }],
+    ['version 3 written flat, with no courses', { ...v2Record(), version: 3 }],
+    ['the English course is not an object', { ...good(), courses: { 'en-from-ar': 'x' } }],
+    ['courses is not an object', { ...good(), courses: ['en-from-ar'] }],
+    ['an empty courses object', { ...good(), courses: {} }],
+  ])('rejects an import with no usable course: %s', (_name, progress) => {
+    expect(importProgress(fileOf(progress))).toEqual({ ok: false, reason: 'noCourse' });
+  });
+
+  it('still imports a file with a usable course next to an unknown one, with a notice', () => {
+    const progress = { ...good(), courses: { ...good().courses, 'zh-from-ar': { completedLessons: ['x'] } } };
+    const r = importProgress(fileOf(progress));
+    expect(r.ok && r.warnings).toEqual(['courseDropped']);
+    expect(r.ok && r.progress.completedLessons).toEqual(['g-a1-01']);
+  });
+
+  it.each([
+    ['version 3 with no courses', { version: 3, uiLang: 'en', onboarded: true }],
+    ['version 3 written flat', { ...v2Record(), version: 3 }],
+    ['the English course is not an object', { ...good(), courses: { 'en-from-ar': 'x' } }],
+  ])('treats a damaged version 3 record on the device as damaged: backup kept, nothing overwritten silently (%s)', (_name, rec) => {
+    const s = new MemoryStorage();
+    const raw = JSON.stringify(rec);
+    s.setItem(STORAGE_KEY, raw);
+    const r = loadProgress(s);
+    expect(r.status).toBe('recovered');
+    expect(s.getItem(BACKUP_KEY)).toBe(raw);
+  });
+
+  it('keeps progress for a course this app does not know on the device, through load and save', () => {
+    const s = new MemoryStorage();
+    const zh = { completedLessons: ['zh-1'], someFutureField: { a: 1 } };
+    s.setItem(STORAGE_KEY, JSON.stringify({ ...good(), courses: { ...good().courses, 'zh-from-ar': zh } }));
+    const r = loadProgress(s);
+    expect(r.status).toBe('ok');
+    expect(r.progress.completedLessons).toEqual(['g-a1-01']);
+    saveProgress(s, r.progress);
+    const after = JSON.parse(s.getItem(STORAGE_KEY) as string);
+    expect(after.courses['zh-from-ar']).toEqual(zh);
+    expect(after.courses['en-from-ar'].completedLessons).toEqual(['g-a1-01']);
+  });
+
+  it('keeps a device whose only course is unknown, without losing it', () => {
+    const s = new MemoryStorage();
+    const zh = { completedLessons: ['zh-1'] };
+    s.setItem(STORAGE_KEY, JSON.stringify({ ...good(), activeCourse: 'zh-from-ar', courses: { 'zh-from-ar': zh } }));
+    const r = loadProgress(s);
+    expect(r.status).toBe('ok');
+    expect(r.progress.courseId).toBe('en-from-ar');
+    expect(r.progress.completedLessons).toEqual([]);
+    saveProgress(s, r.progress);
+    expect(JSON.parse(s.getItem(STORAGE_KEY) as string).courses['zh-from-ar']).toEqual(zh);
+  });
+
+  it('an import keeps the courses on this device that the file does not have', () => {
+    const device = { ...sample(), unknownCourses: { 'zh-from-ar': { completedLessons: ['zh-1'] } } } as ReturnType<typeof sample>;
+    const r = importProgress(fileOf({ ...v2Record(), completedLessons: ['g-a2-01'] }));
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const merged = mergeImport(device, r.progress);
+    expect(merged.completedLessons).toEqual(['g-a2-01']);
+    expect(merged.unknownCourses).toEqual({ 'zh-from-ar': { completedLessons: ['zh-1'] } });
+    expect(toStored(merged).courses['zh-from-ar']).toEqual({ completedLessons: ['zh-1'] });
+  });
+
+  it('an import does not bring in courses this app does not know', () => {
+    const progress = { ...good(), courses: { ...good().courses, 'zh-from-ar': { completedLessons: ['x'] } } };
+    const r = importProgress(fileOf(progress));
+    expect(r.ok && r.progress.unknownCourses).toEqual({});
   });
 });

@@ -118,6 +118,12 @@ export interface Progress extends CourseProgress {
   /** The active course, for example "en-from-ar". */
   courseId: string;
   otherCourses: Record<string, CourseProgress>;
+  /**
+   * Progress saved on this device for courses this version of the app does not have (for example
+   * from a newer version). It cannot be checked or used, so it is kept exactly as it was and written
+   * back on save, never lost. Imports never bring such courses in.
+   */
+  unknownCourses: Record<string, unknown>;
 }
 
 /** The record as stored on the device and in exports, from version 3. */

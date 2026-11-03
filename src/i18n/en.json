@@ -185,6 +185,7 @@
   "error.resetYes": "Yes, delete everything",
   "error.resetFailed": "The progress could not be deleted, because this browser does not allow it.",
   "settings.importError.tooLarge": "This file is too large to be a progress file from this app, so it was not loaded.",
+  "settings.importError.noCourse": "This file has no progress for a course in this app, so it was not loaded. Your current progress has not changed.",
   "settings.importError.tooMany": "This file has more data than a progress file from this app can have, so it was not loaded. Your current progress has not changed.",
   "recall.think": "Think of the English phrase, or say it aloud. Then check.",
   "recall.show": "Show the English phrase",
@@ -267,6 +268,6 @@
   "plan.stepOf": "Step {n} of {total}",
   "step.recallAllDone": "All of these phrases were already reviewed today. Nothing more to do here.",
   "plan.reviewDayLonger": "Review days can take longer than 15 minutes, because they bring back many phrases at once. You can stop at any time and continue later.",
-  "settings.importCourseDropped": "This file also has progress for a course this version of the app does not have. That part was not loaded.",
+  "settings.importCourseDropped": "This file has progress for a course this version of the app does not have. That part was not loaded; the rest was.",
   "settings.importPlanDropped": "The plan data in this file was damaged, so it was not loaded. Your other progress was loaded."
 }

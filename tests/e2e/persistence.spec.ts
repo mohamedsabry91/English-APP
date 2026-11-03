@@ -146,3 +146,53 @@ test('an existing English learner (version 2 record) sees no change, and the nex
   await page.reload();
   await expect(page.getByTestId('track-both')).toHaveAttribute('aria-pressed', 'true');
 });
+
+test('an import with no usable course is refused, and good progress on the device stays', async ({ page }, info) => {
+  await welcome(page, 'en');
+  await placementAllFirst(page);
+  await page.getByTestId('result-continue').click();
+  await page.getByTestId('nav-settings').click();
+  await page.getByTestId('track-both').click();
+  const before = await storedRaw(page);
+  expect(before?.version).toBe(3);
+  const shared = { version: 3, uiLang: 'en', onboarded: true, lastExport: null, createdOn: null };
+  const bad = [
+    { ...shared, activeCourse: 'zh-from-ar', courses: { 'zh-from-ar': { completedLessons: ['x'] } } },
+    { ...shared, activeCourse: 'en-from-ar' },
+    { ...shared, activeCourse: 'en-from-ar', courses: { 'en-from-ar': 'x' } },
+  ];
+  for (const [i, progress] of bad.entries()) {
+    const file = info.outputPath(`bad-${i}.json`);
+    writeFileSync(file, JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress }));
+    await page.getByTestId('import-file').setInputFiles(file);
+    await expect(page.getByTestId('settings-notice')).toHaveText('This file has no progress for a course in this app, so it was not loaded. Your current progress has not changed.');
+    await expect(page.getByTestId('confirm-dialog')).toHaveCount(0);
+    expect(await storedRaw(page)).toEqual(before);
+  }
+  await expect(page.getByTestId('track-both')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByText('Current result: Starting A1')).toBeVisible();
+});
+
+test('importing an older file keeps a course on this device that the file does not have', async ({ page }, info) => {
+  await page.goto('./');
+  const device = {
+    version: 3,
+    uiLang: 'en',
+    onboarded: true,
+    lastExport: null,
+    createdOn: null,
+    activeCourse: 'en-from-ar',
+    courses: { 'en-from-ar': { completedLessons: ['g-a1-01'] }, 'zh-from-ar': { completedLessons: ['zh-1'] } },
+  };
+  await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [STORAGE_KEY, JSON.stringify(device)]);
+  await loadApp(page, 'settings');
+  const file = info.outputPath('v2.json');
+  writeFileSync(file, JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-02', progress: { version: 2, onboarded: true, completedLessons: ['g-a2-01'] } }));
+  await page.getByTestId('import-file').setInputFiles(file);
+  await page.getByTestId('confirm-yes').click();
+  await expect(page.getByTestId('settings-notice')).toHaveText('Progress loaded.');
+  const raw = await storedRaw(page);
+  const courses = raw?.courses as Record<string, { completedLessons: string[] }>;
+  expect(courses['en-from-ar']?.completedLessons).toEqual(['g-a2-01']);
+  expect(courses['zh-from-ar']).toEqual({ completedLessons: ['zh-1'] });
+});
