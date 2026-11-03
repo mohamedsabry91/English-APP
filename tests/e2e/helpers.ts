@@ -95,6 +95,20 @@ export async function stored(page: Page): Promise<Record<string, unknown> | null
   return { ...shared, activeCourse, ...(courses[activeCourse as string] ?? {}) };
 }
 
+let loads = 0;
+
+/**
+ * Load the app again, fully, at a route: for example after changing localStorage.
+ * A new query string each time forces a full page load without leaving the app's own site.
+ * Before, tests went to about:blank and back; in WebKit that navigation to about:blank once
+ * hung until the test timed out (CI run 41644830316), so it is not used any more.
+ * page.reload() right after a hash change is not used either: WebKit sometimes cancels it.
+ */
+export async function loadApp(page: Page, route: string) {
+  loads += 1;
+  await page.goto(`./?load=${loads}#/${route}`);
+}
+
 /** Fail if the page scrolls sideways. */
 export async function expectNoOverflow(page: Page, label: string) {
   const { sw, cw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));

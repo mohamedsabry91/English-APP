@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { readFileSync, writeFileSync } from 'node:fs';
-import { placementAllFirst, stored, storedRaw, welcome, STORAGE_KEY } from './helpers';
+import { placementAllFirst, stored, storedRaw, welcome, STORAGE_KEY, loadApp } from './helpers';
 
 test('reload keeps progress; export then delete then import restores it', async ({ page }, info) => {
   await welcome(page, 'en');
@@ -127,8 +127,7 @@ test('an existing English learner (version 2 record) sees no change, and the nex
     plan: { planId: '15-day-start', startedOn: '2026-11-01', completedDays: [{ day: 1, date: '2026-11-01' }, { day: 2, date: '2026-11-02' }], ratings: [{ day: 1, rating: 2 }], selfCheckStart: [1, 1, 2, 1, 1], selfCheckEnd: null, current: null, finishedOn: null },
   };
   await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [STORAGE_KEY, JSON.stringify(v2)]);
-  await page.goto('about:blank');
-  await page.goto('./#/today');
+  await loadApp(page, 'today');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.getByTestId('plan-card-line')).toContainText('Day 3 of 15');
   await page.getByTestId('nav-settings').click();

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { STORAGE_KEY, expectNoOverflow, stored } from './helpers';
+import { STORAGE_KEY, expectNoOverflow, stored, loadApp } from './helpers';
 
 const progress = (lang: 'ar' | 'en') => ({ version: 1, uiLang: lang, onboarded: true, track: 'general', completedLessons: ['g-a1-01'] });
 
@@ -19,9 +19,7 @@ for (const lang of ['ar', 'en'] as const) {
       localStorage.setItem(k as string, v as string);
       sessionStorage.setItem('test-crash', '1');
     }, [STORAGE_KEY, JSON.stringify(progress(lang))]);
-    // Load the page again (not reload after a hash change, which WebKit sometimes cancels).
-    await page.goto('about:blank');
-    await page.goto('./#/today');
+    await loadApp(page, 'today');
 
     const screen = page.getByTestId('error-screen');
     await expect(screen).toBeVisible();
