@@ -266,5 +266,6 @@
   "progress.dayLabel": "Day {n}",
   "plan.stepOf": "Step {n} of {total}",
   "step.recallAllDone": "All of these phrases were already reviewed today. Nothing more to do here.",
-  "plan.reviewDayLonger": "Review days can take longer than 15 minutes, because they bring back many phrases at once. You can stop at any time and continue later."
+  "plan.reviewDayLonger": "Review days can take longer than 15 minutes, because they bring back many phrases at once. You can stop at any time and continue later.",
+  "settings.importPlanDropped": "The plan data in this file was damaged, so it was not loaded. Your other progress was loaded."
 }

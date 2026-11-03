@@ -357,7 +357,10 @@ export function exportProgress(p: Progress, exportedOn: string): string {
   return JSON.stringify(file, null, 2);
 }
 
-export type ImportResult = { ok: true; progress: Progress } | { ok: false; reason: 'json' | 'kind' | 'invalid' | 'newer' | 'tooLarge' | 'tooMany' };
+/** Something in an import file was damaged and left out, although the rest loaded. */
+export type ImportWarning = 'planDropped';
+
+export type ImportResult = { ok: true; progress: Progress; warnings: ImportWarning[] } | { ok: false; reason: 'json' | 'kind' | 'invalid' | 'newer' | 'tooLarge' | 'tooMany' };
 
 export function importProgress(text: string): ImportResult {
   if (text.length > LIMITS.importChars) return { ok: false, reason: 'tooLarge' };
@@ -369,7 +372,11 @@ export function importProgress(text: string): ImportResult {
   }
   if (!isObj(parsed) || parsed.kind !== EXPORT_KIND || !isObj(parsed.progress)) return { ok: false, reason: 'kind' };
   try {
-    return { ok: true, progress: migrate(parsed.progress, { strict: true }) };
+    const progress = migrate(parsed.progress, { strict: true });
+    const warnings: ImportWarning[] = [];
+    const rawPlan = parsed.progress.plan;
+    if (rawPlan !== undefined && rawPlan !== null && progress.plan === null) warnings.push('planDropped');
+    return { ok: true, progress, warnings };
   } catch (e) {
     if (e instanceof InvalidProgressError && e.message === 'newer version') return { ok: false, reason: 'newer' };
     if (e instanceof InvalidProgressError && e.message.startsWith('limits')) return { ok: false, reason: 'tooMany' };

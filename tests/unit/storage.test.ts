@@ -319,3 +319,24 @@ describe('damaged plan data', () => {
     expect(migrate({ ...sample(), plan: { ...base, planId: 'no-such-plan', current: null } }).plan).toBeNull();
   });
 });
+
+describe('import warns when plan data is dropped', () => {
+  const file = (plan: unknown) => JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { ...sample(), plan } });
+
+  it('loads the rest and warns when the plan has an invalid start date', () => {
+    const r = importProgress(file({ planId: '15-day-start', startedOn: 'not a date', completedDays: [] }));
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      expect(r.progress.plan).toBeNull();
+      expect(r.progress.completedLessons).toEqual(['g-a1-01']);
+      expect(r.warnings).toEqual(['planDropped']);
+    }
+  });
+
+  it('gives no warning when there is no plan or the plan is valid', () => {
+    const none = importProgress(file(null));
+    expect(none.ok && none.warnings).toEqual([]);
+    const ok = importProgress(file({ planId: '15-day-start', startedOn: '2026-11-01', completedDays: [], ratings: [], selfCheckStart: null, selfCheckEnd: null, current: null, finishedOn: null }));
+    expect(ok.ok && ok.warnings).toEqual([]);
+  });
+});
