@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { TagHints } from './TagHint';
 import { ArText } from './ArText';
 import type { Exercise } from '../core/contentTypes';
 import { isCorrect, rightAnswerText, shuffleWords, type Response } from '../core/answers';
@@ -171,6 +172,7 @@ export function ExerciseView({ exercise, onAnswer, onNext, counter }: Props) {
               </p>
             )}
             <p lang="ar" dir="rtl" className="explanation"><ArText>{exercise.explanationAr}</ArText></p>
+            {!result && <TagHints ids={exercise.tags} />}
           </div>
           <button type="button" className="primary big" onClick={onNext} data-testid="next" autoFocus>
             {t('session.next')}

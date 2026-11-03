@@ -4,6 +4,11 @@ export interface TagInfo {
   id: TagId;
   nameEn: string;
   nameAr: string;
+  /**
+   * Optional note for speakers of the learner's language: why this mistake may happen
+   * ("you may say X because Arabic does Y"). Each course has its own, or none.
+   */
+  hint?: { ar: string; reviewed: boolean };
 }
 
 export interface PlacementQuestion {

@@ -283,5 +283,15 @@
   "settings.audioUnavailable": "لا يستطيع هذا المتصفح حفظ الصوت للاستخدام دون اتصال.",
   "settings.audioHave": "المنزَّل: {n} من {total}.",
   "settings.audioRemoved": "حُذف الصوت المنزَّل.",
-  "settings.audioFull": "تعذّر تنزيل الصوت لأن المساحة على هذا الجهاز ممتلئة. أفرغ بعض المساحة وحاول مرة أخرى."
+  "settings.audioFull": "تعذّر تنزيل الصوت لأن المساحة على هذا الجهاز ممتلئة. أفرغ بعض المساحة وحاول مرة أخرى.",
+  "hint.title": "لماذا قد يحدث هذا",
+  "writing.revise": "حاول مرة أخرى",
+  "writing.reviseNote": "يمكنك تصحيح الكلمات المعلَّمة والتحقق مرة أخرى مرة واحدة. ويمكنك أيضًا تخطّي ذلك وإنهاء المهمة.",
+  "writing.reviseLabel": "صحّح نصّك",
+  "writing.recheck": "تحقّق مرة أخرى",
+  "writing.reviseTitle": "بعد محاولتك الثانية",
+  "writing.fixed": "لم تعد معلَّمة",
+  "writing.remaining": "ما زالت معلَّمة",
+  "writing.added": "معلَّمة جديدة",
+  "writing.noneFixed": "لم تختفِ أي علامة."
 }
