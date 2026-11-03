@@ -6,6 +6,8 @@ import type {
   DailySession,
   MistakeLogEntry,
   PlacementRecord,
+  PlanRecord,
+  SelfRating,
   Progress,
   ReviewCard,
   TagId,
@@ -15,7 +17,7 @@ import type {
 
 export const STORAGE_KEY = 'english-practice:progress';
 export const BACKUP_KEY = 'english-practice:corrupt-backup';
-export const CURRENT_VERSION = 1;
+export const CURRENT_VERSION = 2;
 export const EXPORT_KIND = 'english-practice-progress';
 
 const TAGS: readonly TagId[] = [
@@ -38,6 +40,7 @@ export function defaultProgress(): Progress {
     writingDraft: null,
     lastExport: null,
     createdOn: null,
+    plan: null,
   };
 }
 
@@ -60,6 +63,9 @@ export const LIMITS = {
   completedLessons: 1_000,
   completedWriting: 1_000,
   placementAnswers: 64,
+  planDays: 400,
+  planRatings: 400,
+  selfCheckItems: 20,
   reviewIds: 50,
   draftChars: 2_000,
 } as const;
@@ -82,6 +88,11 @@ function overLimit(rec: Obj): string | null {
   if (isObj(rec.placementInProgress) && len(rec.placementInProgress.answers) > LIMITS.placementAnswers) return 'placementInProgress.answers';
   if (isObj(rec.session) && len(rec.session.reviewIds) > LIMITS.reviewIds) return 'session.reviewIds';
   if (isObj(rec.writingDraft) && typeof rec.writingDraft.text === 'string' && rec.writingDraft.text.length > LIMITS.draftChars) return 'writingDraft';
+  if (isObj(rec.plan)) {
+    if (len(rec.plan.completedDays) > LIMITS.planDays) return 'plan.completedDays';
+    if (len(rec.plan.ratings) > LIMITS.planRatings) return 'plan.ratings';
+    if (len(rec.plan.selfCheckStart) > LIMITS.selfCheckItems || len(rec.plan.selfCheckEnd) > LIMITS.selfCheckItems) return 'plan.selfCheck';
+  }
   return null;
 }
 
@@ -102,7 +113,43 @@ const MIGRATIONS: Record<number, (old: Obj) => Obj> = {
     delete next.lang;
     return next;
   },
+  // Version 2 adds learning plans. Older records simply have no plan yet.
+  1: (old) => ({ ...old, version: 2, plan: null }),
 };
+
+const isRating = (v: unknown): v is SelfRating => v === 1 || v === 2 || v === 3;
+
+function sanitizePlan(v: unknown): PlanRecord | null {
+  if (!isObj(v) || typeof v.planId !== 'string' || !v.planId || !isLocalDate(v.startedOn)) return null;
+  const completedDays = Array.isArray(v.completedDays)
+    ? v.completedDays
+        .slice(0, LIMITS.planDays)
+        .filter((d): d is { day: number; date: string } => isObj(d) && Number.isInteger(d.day) && (d.day as number) >= 1 && isLocalDate(d.date))
+        .map((d) => ({ day: d.day, date: d.date }))
+    : [];
+  const ratings = Array.isArray(v.ratings)
+    ? v.ratings
+        .slice(0, LIMITS.planRatings)
+        .filter((r): r is { day: number; rating: SelfRating } => isObj(r) && Number.isInteger(r.day) && (r.day as number) >= 1 && isRating(r.rating))
+        .map((r) => ({ day: r.day, rating: r.rating }))
+    : [];
+  const checks = (x: unknown): SelfRating[] | null =>
+    Array.isArray(x) && x.length > 0 && x.length <= LIMITS.selfCheckItems && x.every(isRating) ? (x as SelfRating[]) : null;
+  const current =
+    isObj(v.current) && Number.isInteger(v.current.day) && (v.current.day as number) >= 1 && Number.isInteger(v.current.step) && (v.current.step as number) >= 0
+      ? { day: v.current.day as number, step: v.current.step as number }
+      : null;
+  return {
+    planId: v.planId,
+    startedOn: v.startedOn,
+    completedDays,
+    ratings,
+    selfCheckStart: checks(v.selfCheckStart),
+    selfCheckEnd: checks(v.selfCheckEnd),
+    current,
+    finishedOn: isLocalDate(v.finishedOn) ? v.finishedOn : null,
+  };
+}
 
 function sanitizeCard(v: unknown): ReviewCard | null {
   if (!isObj(v)) return null;
@@ -217,6 +264,7 @@ export function migrate(raw: unknown, options: MigrateOptions = {}): Progress {
     writingDraft: draft,
     lastExport: isLocalDate(rec.lastExport) ? rec.lastExport : null,
     createdOn: isLocalDate(rec.createdOn) ? rec.createdOn : null,
+    plan: sanitizePlan(rec.plan),
   };
 }
 

@@ -237,3 +237,63 @@ describe('import limits', () => {
     expect(p.writingDraft?.text).toHaveLength(LIMITS.draftChars);
   });
 });
+
+describe('version 2: learning plans', () => {
+  const plan = {
+    planId: '15-day-start',
+    startedOn: '2026-11-01',
+    completedDays: [{ day: 1, date: '2026-11-01' }, { day: 2, date: '2026-11-02' }],
+    ratings: [{ day: 1, rating: 2 }, { day: 2, rating: 3 }],
+    selfCheckStart: [1, 1, 2, 1, 2],
+    selfCheckEnd: null,
+    current: { day: 3, step: 1 },
+    finishedOn: null,
+  };
+
+  it('migrates a version 1 record to version 2 with no plan, keeping everything else', () => {
+    const v1 = { ...sample(), version: 1 } as Record<string, unknown>;
+    delete v1.plan;
+    const p = migrate(v1);
+    expect(p.version).toBe(2);
+    expect(p.plan).toBeNull();
+    expect(p.cards).toEqual(sample().cards);
+    expect(p.mistakeLog).toEqual(sample().mistakeLog);
+  });
+
+  it('migrates an unversioned record all the way to version 2', () => {
+    expect(migrate({ lang: 'en' })).toMatchObject({ version: 2, uiLang: 'en', plan: null });
+  });
+
+  it('keeps a valid plan record', () => {
+    const p = migrate({ ...sample(), plan });
+    expect(p.plan).toEqual(plan);
+  });
+
+  it('drops a damaged plan, and invalid entries inside a plan', () => {
+    expect(migrate({ ...sample(), plan: { planId: '', startedOn: 'x' } }).plan).toBeNull();
+    const p = migrate({
+      ...sample(),
+      plan: { ...plan, completedDays: [{ day: 0, date: '2026-11-01' }, { day: 1, date: 'bad' }, { day: 2, date: '2026-11-02' }], ratings: [{ day: 1, rating: 5 }], selfCheckStart: [1, 4], current: { day: -1, step: 0 } },
+    }).plan;
+    expect(p?.completedDays).toEqual([{ day: 2, date: '2026-11-02' }]);
+    expect(p?.ratings).toEqual([]);
+    expect(p?.selfCheckStart).toBeNull();
+    expect(p?.current).toBeNull();
+  });
+
+  it('exports and imports the plan, and a version 1 export still imports', () => {
+    const withPlan = { ...sample(), plan };
+    const r = importProgress(exportProgress(migrate(withPlan), '2026-11-03'));
+    expect(r.ok && r.progress.plan).toEqual(plan);
+    const v1File = JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-01', progress: { ...sample(), version: 1, plan: undefined } });
+    const r1 = importProgress(v1File);
+    expect(r1.ok).toBe(true);
+    if (r1.ok) expect(r1.progress).toMatchObject({ version: 2, plan: null, completedLessons: ['g-a1-01'] });
+  });
+
+  it('rejects an import with too many plan entries', () => {
+    const many = { ...plan, completedDays: Array.from({ length: LIMITS.planDays + 1 }, (_, i) => ({ day: i + 1, date: '2026-11-01' })) };
+    const text = JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress: { ...sample(), plan: many } });
+    expect(importProgress(text)).toEqual({ ok: false, reason: 'tooMany' });
+  });
+});
