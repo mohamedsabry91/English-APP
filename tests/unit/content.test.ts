@@ -3,6 +3,7 @@ import { readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { ALL_PLANS, COURSE_IDS, COURSE_ID_PATTERN, DEFAULT_COURSE_ID, LESSONS, PHRASES, PLACEMENT, SAY_PROMPTS, STORIES, TAGS, WRITING_TASKS, getPhrase, getPlanIn, getSayPrompt, getStory, getTask, lessonsForTrack, loadCourse } from '../../src/core/content';
 import { check } from '../../src/checker';
+import { tagHints } from '../../src/app/tagHints';
 import phraseFile from '../../content/en-from-ar/phrases.json';
 import storyFile from '../../content/en-from-ar/stories.json';
 import sayFile from '../../content/en-from-ar/say-aloud.json';
@@ -114,6 +115,7 @@ function fields() {
   for (const t of TAGS) {
     arabic.push([`tag ${t.id}`, t.nameAr]);
     english.push([`tag ${t.id}`, t.nameEn]);
+    if (t.hint) arabic.push([`tag hint ${t.id}`, t.hint.ar]);
   }
   for (const q of PLACEMENT) {
     english.push([q.id, q.prompt]);
@@ -349,5 +351,32 @@ describe('course loader', () => {
     expect(loadCourse('')).toBeUndefined();
     expect(loadCourse('../en-from-ar')).toBeUndefined();
     expect(getPlanIn('zh-from-ar', '15-day-start')).toBeUndefined();
+  });
+});
+
+describe('Arabic-speaker hints for mistake tags', () => {
+  it('has a hint for every tag in the English course, not reviewed yet, worded with "may"', () => {
+    for (const t of TAGS) {
+      expect(t.hint, t.id).toBeDefined();
+      if (!t.hint) continue;
+      expect(t.hint.reviewed, t.id).toBe(false);
+      expect(t.hint.ar, t.id).toMatch(/[\u0600-\u06FF]/);
+      // "you may say X because Arabic does Y": a possibility, never a fact about learners.
+      expect(t.hint.ar.startsWith('قد '), t.id).toBe(true);
+      expect(t.hint.ar, t.id).toMatch(/لأن/);
+      expect(t.hint.ar.length, t.id).toBeLessThanOrEqual(220);
+      expect(bannedHits(t.hint.ar), t.id).toEqual([]);
+    }
+  });
+
+  it('shows hints only for tags that have one, once each, so a course without hints shows nothing', () => {
+    const withHint = TAGS.filter((t) => t.hint);
+    const first = withHint[0];
+    expect(first).toBeDefined();
+    if (!first) return;
+    expect(tagHints([first.id, first.id], TAGS)).toEqual([{ id: first.id, ar: first.hint?.ar }]);
+    const noHints = TAGS.map((t) => ({ id: t.id, nameEn: t.nameEn, nameAr: t.nameAr }));
+    expect(tagHints(TAGS.map((t) => t.id), noHints)).toEqual([]);
+    expect(tagHints([], TAGS)).toEqual([]);
   });
 });

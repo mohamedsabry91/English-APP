@@ -8,6 +8,7 @@ import type { Progress, TagId } from '../core/types';
 import { logMistakes } from './mistakes';
 import { useStore } from './store';
 import { TagName } from './TagName';
+import { compareChecks, type MarkedFlag, type Revision } from './revise';
 
 /** Longest text the writing box accepts. Tasks ask for 100 words or fewer. */
 export const MAX_WRITING_CHARS = 2000;
@@ -68,6 +69,11 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
   const draft = progress.writingDraft?.taskId === task.id ? progress.writingDraft.text : '';
   const [text, setText] = useState(draft);
   const [findings, setFindings] = useState<Finding[] | null>(null);
+  // Revise once: the first check's text and flags, the second try's text, and the comparison.
+  const [first, setFirst] = useState<{ text: string; findings: Finding[] } | null>(null);
+  const [revising, setRevising] = useState(false);
+  const [revised, setRevised] = useState('');
+  const [revision, setRevision] = useState<Revision | null>(null);
   const words = countWords(text);
   const id = `writing-${task.id}`;
 
@@ -77,11 +83,37 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
     update((p) => ({ ...p, writingDraft: { taskId: task.id, text: v } }));
   };
 
+  const runCheck = () => {
+    const f = check(text, task.level);
+    setFindings(f);
+    setFirst({ text, findings: f });
+    setRevision(null);
+    setRevising(false);
+  };
+
+  const startRevise = () => {
+    setRevised(text);
+    setRevising(true);
+  };
+
+  const recheck = () => {
+    if (!first) return;
+    const f = check(revised, task.level);
+    setRevision(compareChecks(first.text, first.findings, revised, f));
+    setText(revised);
+    setFindings(f);
+    setRevising(false);
+  };
+
   const finish = () => {
-    const f = findings ?? check(text, task.level);
+    // The mistakes of the first check count, plus any new ones from the second try.
+    // As before, only tags and dates are kept, never the text.
+    const f = first ? [...first.findings, ...(revision?.added.map((m) => m.finding) ?? [])] : (findings ?? check(text, task.level));
     update((p) => recordWriting(p, task, f, today()));
     setText('');
     setFindings(null);
+    setFirst(null);
+    setRevision(null);
     onDone();
   };
 
@@ -104,13 +136,43 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
           {words > task.wordLimit && <p className="banner">{t('writing.tooLong')}</p>}
           <p className="muted small" id={`${id}-draft`} data-testid="draft-note">{t('writing.draftNote')}</p>
           <p className="honesty">{t('writing.honesty')}</p>
-          <button type="button" className="primary big" disabled={words === 0} onClick={() => setFindings(check(text, task.level))} data-testid="writing-check">
+          <button type="button" className="primary big" disabled={words === 0} onClick={runCheck} data-testid="writing-check">
             {t('writing.check')}
           </button>
         </>
       ) : (
         <div data-testid="writing-result">
           <p className="honesty" data-testid="honesty">{t('writing.honesty')}</p>
+          {revision && <RevisionView revision={revision} />}
+          {revising ? (
+            <section className="card" data-testid="revise-box">
+              <label htmlFor={`${id}-revise`}>{t('writing.reviseLabel')}</label>
+              <textarea
+                id={`${id}-revise`}
+                dir="ltr"
+                lang="en"
+                spellCheck={false}
+                maxLength={MAX_WRITING_CHARS}
+                value={revised}
+                onChange={(e) => {
+                  const v = e.target.value.slice(0, MAX_WRITING_CHARS);
+                  setRevised(v);
+                  update((p) => ({ ...p, writingDraft: { taskId: task.id, text: v } }));
+                }}
+                data-testid="revise-input"
+              />
+              <button type="button" className="primary" disabled={countWords(revised) === 0} onClick={recheck} data-testid="writing-recheck">{t('writing.recheck')}</button>
+              <button type="button" className="secondary" onClick={() => setRevising(false)} data-testid="writing-revise-cancel">{t('common.cancel')}</button>
+            </section>
+          ) : (
+            findings.length > 0 &&
+            revision === null && (
+              <section className="card" data-testid="revise-offer">
+                <p>{t('writing.reviseNote')}</p>
+                <button type="button" className="secondary" onClick={startRevise} data-testid="writing-revise">{t('writing.revise')}</button>
+              </section>
+            )
+          )}
           <h3>{t('writing.yourText')}</h3>
           <Marked text={text} findings={findings} />
           <h3>{t('writing.found')}</h3>
@@ -152,9 +214,45 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
             ))}
           </ul>
           <p className="muted small">{t('writing.privacy')}</p>
-          <button type="button" className="secondary" onClick={() => setFindings(null)} data-testid="writing-edit">{t('writing.edit')}</button>
+          <button type="button" className="secondary" onClick={() => { setFindings(null); setFirst(null); setRevision(null); setRevising(false); }} data-testid="writing-edit">{t('writing.edit')}</button>
           <button type="button" className="primary big" onClick={finish} data-testid="writing-done">{t('writing.done')}</button>
         </div>
+      )}
+    </section>
+  );
+}
+
+/** What changed between the first check and the second try. Lists only: no score or count of right answers. */
+function RevisionView({ revision }: { revision: Revision }) {
+  const { t } = useStore();
+  const list = (items: MarkedFlag[], testid: string) => (
+    <ul className="list" data-testid={testid}>
+      {items.map((m, i) => (
+        <li key={i} data-tag={m.finding.tag}>
+          <span className="tag-pill">
+            <TagName id={m.finding.tag} />
+          </span>{' '}
+          <bdi className="en" lang="en" dir="ltr">“{m.words}”</bdi>
+        </li>
+      ))}
+    </ul>
+  );
+  return (
+    <section className="card" data-testid="revise-result">
+      <h3>{t('writing.reviseTitle')}</h3>
+      <h4>{t('writing.fixed')}</h4>
+      {revision.fixed.length ? list(revision.fixed, 'revise-fixed') : <p className="muted" data-testid="revise-fixed-none">{t('writing.noneFixed')}</p>}
+      {revision.remaining.length > 0 && (
+        <>
+          <h4>{t('writing.remaining')}</h4>
+          {list(revision.remaining, 'revise-remaining')}
+        </>
+      )}
+      {revision.added.length > 0 && (
+        <>
+          <h4>{t('writing.added')}</h4>
+          {list(revision.added, 'revise-added')}
+        </>
       )}
     </section>
   );

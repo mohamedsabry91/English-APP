@@ -3,6 +3,7 @@ import { go } from '../router';
 import { hasEnoughForTrend, topTags, weeklyCounts } from '../../core/stats';
 import { exercisesWithTag } from '../../core/content';
 import { TagName } from '../TagName';
+import { TagHints } from '../TagHint';
 
 export function Mistakes() {
   const { t, progress, today } = useStore();
@@ -28,6 +29,7 @@ export function Mistakes() {
                       <TagName id={c.tag} />
                     </strong>
                   </p>
+                  <TagHints ids={[c.tag]} />
                   <p className="muted">
                     {t('mistakes.times', { n: c.count })}
                     {c.fromPlacement > 0 && <> · {t('mistakes.placementOnly')}</>}

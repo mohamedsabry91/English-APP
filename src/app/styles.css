@@ -222,3 +222,5 @@ mark.finding { background: var(--mark); border-bottom: 2px solid var(--bad); pad
 .week-table .bar-cell { width: 100%; padding: 4px 8px; }
 .week-table .num { width: 2.5em; text-align: end; font-variant-numeric: tabular-nums; }
 .audio-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }
+.tag-hint { border-inline-start: 3px solid var(--border); padding-inline-start: 8px; margin: 8px 0; }
+.strong { font-weight: 700; }

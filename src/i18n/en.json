@@ -283,5 +283,15 @@
   "settings.audioUnavailable": "This browser cannot keep audio for offline use.",
   "settings.audioHave": "Downloaded: {n} of {total}.",
   "settings.audioRemoved": "The downloaded audio was removed.",
-  "settings.audioFull": "The audio could not be downloaded because this device is out of space. Free some space and try again."
+  "settings.audioFull": "The audio could not be downloaded because this device is out of space. Free some space and try again.",
+  "hint.title": "Why this may happen",
+  "writing.revise": "Try again",
+  "writing.reviseNote": "You can correct the marked words and check once more. You can also skip this and finish.",
+  "writing.reviseLabel": "Correct your text",
+  "writing.recheck": "Check again",
+  "writing.reviseTitle": "After your second try",
+  "writing.fixed": "No longer marked",
+  "writing.remaining": "Still marked",
+  "writing.added": "Newly marked",
+  "writing.noneFixed": "None of the marks went away."
 }

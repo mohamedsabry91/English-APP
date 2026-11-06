@@ -331,3 +331,27 @@ teacher for the course language has listened to it and checked it against the te
 | File | Text (exact words) | Source | Licence | Synthetic | Reviewer (role) | Date checked |
 |---|---|---|---|---|---|---|
 | (none yet) | | | | | | |
+
+
+## Arabic-speaker hints for mistake tags (added after PR 5)
+
+Each mistake tag in `content/en-from-ar/tags.json` has a short Arabic note, `hint.ar`, in the form
+"you may say X because Arabic does Y". It is shown in My Mistakes and after a wrong answer. All have
+`"reviewed": false`. They describe a possible cause ("قد", may), never a fact about a learner. Please
+check the Arabic and the claim about Arabic in each one. **Least certain first.**
+
+| # | Tag | Hint (Arabic) | Why it is uncertain or what to check | Teacher checked |
+|---|---|---|---|---|
+| 1 | WORD | قد تختار كلمة بترجمة حرفية، فتقول open the light بدل turn on the light، لأن كثيرًا من الناس يقولون بالعربية «افتح الضوء». | "open the light": many people say «افتح الضوء», but this is closer to everyday speech than to standard Arabic, and how common the mistake is was not checked. |  |
+| 2 | PUNCTUATION | قد تصل جملًا كثيرة بفواصل دون نقطة، لأن الكتابة العربية تقبل جملًا طويلة مربوطة بالواو والفواصل، أما الإنجليزية فتفضّل جملًا أقصر تنتهي بنقطة. | A general statement about Arabic writing style (long sentences joined with و and commas). True of much writing, not all. |  |
+| 3 | SPELLING | قد تحذف بعض حروف العلة عند الكتابة، لأن العربية لا تكتب الحركات القصيرة عادة، أما الإنجليزية فتكتبها حروفًا (مثل study و meeting). | Leaving out vowel letters is a known pattern, but the link to Arabic short vowels (not usually written) is a simplification. |  |
+| 4 | SVA | قد تنسى s في he goes، لأن الفعل في العربية يتغيّر مع الفاعل في أوله (يذهب، تذهب)، أما الإنجليزية فتضيف s في آخره مع he و she و it فقط. | The explanation (Arabic marks the subject at the start of the verb, يذهب / تذهب; English adds -s at the end) is simplified: Arabic verbs also change at the end in other forms. |  |
+| 5 | PRONOUN | قد تضيف ضميرًا زائدًا فتقول the report that I sent it، لأن العربية تعيد الضمير في جملة الصلة: «التقرير الذي أرسلتُه». | The tag name says "my brother he..."; the hint uses another extra-pronoun case (a pronoun repeated in a relative clause, «التقرير الذي أرسلتُه»). Check that the two fit together. |  |
+| 6 | TENSE | قد تقول I work here since 2020 بدل I have worked here since 2020، لأن العربية تستعمل المضارع مع «منذ»: «أعمل هنا منذ 2020». | Present tense with «منذ» against English "have worked ... since". Check the example sentence. |  |
+| 7 | PREPOSITION | قد تختار حرف الجر بترجمة حرفية، فتقول in Monday بدل on Monday، لأن العربية تقول «في يوم الاثنين». | "in Monday" from «في يوم الاثنين». Check that the example is natural. |  |
+| 8 | ARTICLE | قد تحذف a أو an فتقول He is engineer، لأن العربية لا تضع كلمة مستقلة قبل الاسم النكرة: «هو مهندس». | No separate word before an indefinite noun in Arabic («هو مهندس»). Check the wording. |  |
+| 9 | BE | قد تحذف is أو are فتقول She happy، لأن الجملة الاسمية في العربية لا تحتاج فعلًا في الزمن الحاضر: «هي سعيدة». | No verb "to be" needed in the present in an Arabic nominal sentence («هي سعيدة»). |  |
+| 10 | ORDER | قد تضع الصفة بعد الاسم فتقول a car red، لأن الصفة في العربية تأتي بعد الموصوف: «سيارة حمراء». | The adjective comes after the noun in Arabic («سيارة حمراء»). |  |
+| 11 | UNCOUNTABLE | قد تقول informations أو advices، لأن الكلمة المقابلة في العربية تُجمع: «معلومات»، «نصائح». | «معلومات» and «نصائح» are plural in Arabic, unlike information and advice. |  |
+| 12 | CAPITAL | قد تكتب أسماء الأيام واللغات بحرف صغير (monday, arabic)، لأن العربية ليس فيها حروف كبيرة وصغيرة. | Arabic has no capital letters. |  |
+| 13 | PB | قد تقول bark وأنت تقصد park، لأن العربية الفصحى ليس فيها صوت p، فيقترب نطقه من b. | Standard Arabic has no p sound. |  |
