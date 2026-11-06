@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { readFileSync, writeFileSync } from 'node:fs';
-import { placementAllFirst, stored, welcome, STORAGE_KEY } from './helpers';
+import { placementAllFirst, stored, storedRaw, welcome, STORAGE_KEY, loadApp, openApp } from './helpers';
 
 test('reload keeps progress; export then delete then import restores it', async ({ page }, info) => {
   await welcome(page, 'en');
@@ -104,4 +104,99 @@ test('import says so when the plan data in the file is damaged, and loads the re
   const p = await stored(page);
   expect(p?.plan).toBeNull();
   expect(p?.completedLessons).toEqual(['g-a1-01']);
+});
+
+test('an existing English learner (version 2 record) sees no change, and the next save keeps everything, per course', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-11-03T09:00:00+03:00') });
+  await openApp(page);
+  const v2 = {
+    version: 2,
+    uiLang: 'en',
+    onboarded: true,
+    track: 'both',
+    placement: { result: 'A2', date: '2026-11-01', correctByLevel: [8, 6, 2, 0], mistakeTags: ['ARTICLE'] },
+    placementInProgress: null,
+    completedLessons: ['g-a2-01'],
+    completedWriting: [],
+    cards: { 'ph-01': { id: 'ph-01', tags: [], box: 2, due: '2026-11-06', lastAnswered: '2026-11-02', mistakes: 0, learned: false, created: '2026-11-01' } },
+    mistakeLog: [{ date: '2026-11-01', tag: 'ARTICLE', source: 'placement', count: 1 }],
+    session: null,
+    writingDraft: null,
+    lastExport: null,
+    createdOn: '2026-11-01',
+    plan: { planId: '15-day-start', startedOn: '2026-11-01', completedDays: [{ day: 1, date: '2026-11-01' }, { day: 2, date: '2026-11-02' }], ratings: [{ day: 1, rating: 2 }], selfCheckStart: [1, 1, 2, 1, 1], selfCheckEnd: null, current: null, finishedOn: null },
+  };
+  await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [STORAGE_KEY, JSON.stringify(v2)]);
+  await loadApp(page, 'today');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page.getByTestId('plan-card-line')).toContainText('Day 3 of 15');
+  await page.getByTestId('nav-settings').click();
+  await expect(page.getByTestId('track-both')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByText('Current result: A2')).toBeVisible();
+
+  // Any change saves the record; it is now stored per course, with everything kept.
+  await page.getByTestId('settings-lang-ar').click();
+  await page.getByTestId('settings-lang-en').click();
+  const raw = await storedRaw(page);
+  expect(raw).toMatchObject({ version: 3, activeCourse: 'en-from-ar', uiLang: 'en', onboarded: true, createdOn: '2026-11-01' });
+  const course = (raw?.courses as Record<string, Record<string, unknown>>)['en-from-ar'];
+  const { version: _v, uiLang: _u, onboarded: _o, lastExport: _l, createdOn: _c, ...perCourse } = v2;
+  void [_v, _u, _o, _l, _c];
+  expect(course).toEqual(perCourse);
+  await page.reload();
+  await expect(page.getByTestId('track-both')).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('an import with no usable course is refused, and good progress on the device stays', async ({ page }, info) => {
+  await welcome(page, 'en');
+  await placementAllFirst(page);
+  await page.getByTestId('result-continue').click();
+  await page.getByTestId('nav-settings').click();
+  await page.getByTestId('track-both').click();
+  const before = await storedRaw(page);
+  expect(before?.version).toBe(3);
+  const shared = { version: 3, uiLang: 'en', onboarded: true, lastExport: null, createdOn: null };
+  const bad = [
+    { ...shared, activeCourse: 'zh-from-ar', courses: { 'zh-from-ar': { completedLessons: ['x'] } } },
+    { ...shared, activeCourse: 'en-from-ar' },
+    { ...shared, activeCourse: 'en-from-ar', courses: { 'en-from-ar': 'x' } },
+    // Files with no real progress, which would otherwise wipe progress after the confirm dialog.
+    {},
+    { version: 2 },
+    { ...shared, activeCourse: 'en-from-ar', courses: { 'en-from-ar': {} } },
+  ];
+  for (const [i, progress] of bad.entries()) {
+    const file = info.outputPath(`bad-${i}.json`);
+    writeFileSync(file, JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-03', progress }));
+    await page.getByTestId('import-file').setInputFiles(file);
+    await expect(page.getByTestId('settings-notice')).toHaveText('This file has no progress for a course in this app, so it was not loaded. Your current progress has not changed.');
+    await expect(page.getByTestId('confirm-dialog')).toHaveCount(0);
+    expect(await storedRaw(page)).toEqual(before);
+  }
+  await expect(page.getByTestId('track-both')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByText('Current result: Starting A1')).toBeVisible();
+});
+
+test('importing an older file keeps a course on this device that the file does not have', async ({ page }, info) => {
+  await openApp(page);
+  const device = {
+    version: 3,
+    uiLang: 'en',
+    onboarded: true,
+    lastExport: null,
+    createdOn: null,
+    activeCourse: 'en-from-ar',
+    courses: { 'en-from-ar': { completedLessons: ['g-a1-01'] }, 'zh-from-ar': { completedLessons: ['zh-1'] } },
+  };
+  await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [STORAGE_KEY, JSON.stringify(device)]);
+  await loadApp(page, 'settings');
+  const file = info.outputPath('v2.json');
+  writeFileSync(file, JSON.stringify({ kind: 'english-practice-progress', exportedOn: '2026-11-02', progress: { version: 2, onboarded: true, completedLessons: ['g-a2-01'] } }));
+  await page.getByTestId('import-file').setInputFiles(file);
+  await page.getByTestId('confirm-yes').click();
+  await expect(page.getByTestId('settings-notice')).toHaveText('Progress loaded.');
+  const raw = await storedRaw(page);
+  const courses = raw?.courses as Record<string, { completedLessons: string[] }>;
+  expect(courses['en-from-ar']?.completedLessons).toEqual(['g-a2-01']);
+  expect(courses['zh-from-ar']).toEqual({ completedLessons: ['zh-1'] });
 });

@@ -90,10 +90,8 @@ export interface PlanRecord {
   finishedOn: LocalDate | null;
 }
 
-export interface Progress {
-  version: number;
-  uiLang: UiLang;
-  onboarded: boolean;
+/** Progress that belongs to one course. Stored per course from version 3. */
+export interface CourseProgress {
   track: TrackChoice;
   placement: PlacementRecord | null;
   placementInProgress: PlacementProgress | null;
@@ -103,7 +101,38 @@ export interface Progress {
   mistakeLog: MistakeLogEntry[];
   session: DailySession | null;
   writingDraft: { taskId: string; text: string } | null;
+  plan: PlanRecord | null;
+}
+
+/**
+ * The working record the app uses: the settings shared by all courses, plus the progress of the
+ * active course (courseId) at the top level. Progress in other courses is kept, untouched, in
+ * otherCourses. On the device and in exports it is stored per course (see toStored in storage.ts).
+ */
+export interface Progress extends CourseProgress {
+  version: number;
+  uiLang: UiLang;
+  onboarded: boolean;
   lastExport: LocalDate | null;
   createdOn: LocalDate | null;
-  plan: PlanRecord | null;
+  /** The active course, for example "en-from-ar". */
+  courseId: string;
+  otherCourses: Record<string, CourseProgress>;
+  /**
+   * Progress saved on this device for courses this version of the app does not have (for example
+   * from a newer version). It cannot be checked or used, so it is kept exactly as it was and written
+   * back on save, never lost. Imports never bring such courses in.
+   */
+  unknownCourses: Record<string, unknown>;
+}
+
+/** The record as stored on the device and in exports, from version 3. */
+export interface StoredProgress {
+  version: number;
+  uiLang: UiLang;
+  onboarded: boolean;
+  lastExport: LocalDate | null;
+  createdOn: LocalDate | null;
+  activeCourse: string;
+  courses: Record<string, CourseProgress>;
 }

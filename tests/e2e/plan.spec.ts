@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { answer, expectNoOverflow, stored, welcome, STORAGE_KEY, loadApp, openApp } from './helpers';
+import { answer, expectNoOverflow, stored, storedRaw, welcome, STORAGE_KEY, loadApp, openApp } from './helpers';
 
 const SHOTS = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs', 'screenshots');
 
@@ -123,7 +123,11 @@ for (const lang of ['ar', 'en'] as const) {
     const file = info.outputPath('progress.json');
     await (await download).saveAs(file);
     const exported = JSON.parse(readFileSync(file, 'utf8'));
-    expect(exported.progress.plan.completedDays).toHaveLength(2);
+    // Exports are stored per course (version 3), like the device record.
+    expect(exported.progress.version).toBe(3);
+    expect(exported.progress.activeCourse).toBe('en-from-ar');
+    expect(exported.progress.courses['en-from-ar'].plan.completedDays).toHaveLength(2);
+    expect((await storedRaw(page))?.version).toBe(3);
     expect([...hosts]).toEqual(['localhost:4173']);
   });
 }

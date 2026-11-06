@@ -75,10 +75,24 @@ export async function answer(page: Page, correct: boolean): Promise<string> {
   return ex.id;
 }
 
-/** Read the saved progress record. */
-export async function stored(page: Page): Promise<Record<string, unknown> | null> {
+/** Read the saved progress record exactly as stored (version 3: shared settings plus courses[id]). */
+export async function storedRaw(page: Page): Promise<Record<string, unknown> | null> {
   const raw = await page.evaluate((k) => localStorage.getItem(k), STORAGE_KEY);
   return raw ? (JSON.parse(raw) as Record<string, unknown>) : null;
+}
+
+/**
+ * Read the saved progress of the active course, together with the shared settings, in one flat object.
+ * A record seeded in an older version (1 or 2) stays as it is until the app next saves, so it is returned as stored.
+ */
+export async function stored(page: Page): Promise<Record<string, unknown> | null> {
+  const raw = await storedRaw(page);
+  if (!raw) return null;
+  if (raw.version !== 3) return raw;
+  const courses = raw.courses as Record<string, Record<string, unknown>>;
+  const { courses: _courses, activeCourse, ...shared } = raw;
+  void _courses;
+  return { ...shared, activeCourse, ...(courses[activeCourse as string] ?? {}) };
 }
 
 /**

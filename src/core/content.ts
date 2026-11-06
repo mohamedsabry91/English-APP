@@ -1,30 +1,105 @@
-// Loads course content. The course path is content/<target>-from-<learner>/.
+// Loads course content by course id. Each course lives in content/<target>-from-<learner>/.
+// Today there is one course, en-from-ar; the exports below the loader are that course's content.
 import type { Exercise, Lesson, Phrase, PlacementQuestion, Plan, SayPrompt, Story, TagInfo, WritingTask } from './contentTypes';
 import { LEVELS, type Level, type PlacementResult, type TagId, type TrackChoice, type TrackId } from './types';
 import { startLevel } from './placement';
-import placementData from '../../content/en-from-ar/placement.json';
-import tagData from '../../content/en-from-ar/tags.json';
-import phraseData from '../../content/en-from-ar/phrases.json';
-import storyData from '../../content/en-from-ar/stories.json';
-import sayData from '../../content/en-from-ar/say-aloud.json';
 
-const lessonFiles = import.meta.glob('../../content/en-from-ar/lessons/*.json', { eager: true, import: 'default' });
-const writingFiles = import.meta.glob('../../content/en-from-ar/writing/*.json', { eager: true, import: 'default' });
-const planFiles = import.meta.glob('../../content/en-from-ar/plans/*.json', { eager: true, import: 'default' });
+const placementFiles = import.meta.glob('../../content/*/placement.json', { eager: true, import: 'default' });
+const tagFiles = import.meta.glob('../../content/*/tags.json', { eager: true, import: 'default' });
+const phraseFiles = import.meta.glob('../../content/*/phrases.json', { eager: true, import: 'default' });
+const storyFiles = import.meta.glob('../../content/*/stories.json', { eager: true, import: 'default' });
+const sayFiles = import.meta.glob('../../content/*/say-aloud.json', { eager: true, import: 'default' });
+const lessonFiles = import.meta.glob('../../content/*/lessons/*.json', { eager: true, import: 'default' });
+const writingFiles = import.meta.glob('../../content/*/writing/*.json', { eager: true, import: 'default' });
+const planFiles = import.meta.glob('../../content/*/plans/*.json', { eager: true, import: 'default' });
+
+/** A course id names the language taught and the learner's language, for example "en-from-ar". */
+export const COURSE_ID_PATTERN = /^[a-z]{2,3}-from-[a-z]{2,3}$/;
+export const DEFAULT_COURSE_ID = 'en-from-ar';
+
+const courseOf = (path: string) => /\/content\/([^/]+)\//.exec(path)?.[1] ?? '';
+function byCourse<T>(files: Record<string, unknown>, id: string): T[] {
+  return Object.entries(files)
+    .filter(([path]) => courseOf(path) === id)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, v]) => v as T);
+}
+
+/** Every course that has a placement test and tags, which every course needs. */
+export const COURSE_IDS: string[] = [...new Set(Object.keys(placementFiles).map(courseOf))]
+  .filter((id) => COURSE_ID_PATTERN.test(id) && byCourse(tagFiles, id).length === 1)
+  .sort();
+
+export interface CourseContent {
+  id: string;
+  /** Language taught, from the id. */
+  target: string;
+  /** The learner's language, from the id. */
+  learner: string;
+  tags: TagInfo[];
+  placement: PlacementQuestion[];
+  lessons: Lesson[];
+  writingTasks: WritingTask[];
+  phrases: Phrase[];
+  stories: Story[];
+  sayPrompts: SayPrompt[];
+  /** Every plan file, in order, including ones not available yet. */
+  allPlans: Plan[];
+}
 
 const levelIndex = (l: Level) => LEVELS.indexOf(l);
 
-export const TAGS: TagInfo[] = tagData as TagInfo[];
-export const PLACEMENT: PlacementQuestion[] = (placementData as { questions: PlacementQuestion[] }).questions;
+function buildCourse(id: string): CourseContent {
+  const [target = '', learner = ''] = id.split('-from-');
+  const first = <T>(files: Record<string, unknown>, key: string): T[] => {
+    const data = byCourse<Record<string, T[]>>(files, id)[0];
+    return data ? (data[key] ?? []) : [];
+  };
+  const lessons = byCourse<Lesson>(lessonFiles, id).sort((a, b) => {
+    if (a.track !== b.track) return a.track === 'general' ? -1 : 1;
+    return levelIndex(a.level) - levelIndex(b.level) || a.order - b.order;
+  });
+  const writingTasks = byCourse<WritingTask[]>(writingFiles, id)
+    .flat()
+    .sort((a, b) => (a.track !== b.track ? (a.track === 'general' ? -1 : 1) : levelIndex(a.level) - levelIndex(b.level) || a.id.localeCompare(b.id)));
+  return {
+    id,
+    target,
+    learner,
+    tags: byCourse<TagInfo[]>(tagFiles, id)[0] ?? [],
+    placement: first<PlacementQuestion>(placementFiles, 'questions'),
+    lessons,
+    writingTasks,
+    phrases: first<Phrase>(phraseFiles, 'phrases'),
+    stories: first<Story>(storyFiles, 'stories'),
+    sayPrompts: first<SayPrompt>(sayFiles, 'prompts'),
+    allPlans: byCourse<Plan>(planFiles, id).sort((a, b) => a.order - b.order),
+  };
+}
 
-export const LESSONS: Lesson[] = (Object.values(lessonFiles) as Lesson[]).slice().sort((a, b) => {
-  if (a.track !== b.track) return a.track === 'general' ? -1 : 1;
-  return levelIndex(a.level) - levelIndex(b.level) || a.order - b.order;
-});
+const courseCache = new Map<string, CourseContent>();
 
-export const WRITING_TASKS: WritingTask[] = (Object.values(writingFiles) as WritingTask[][])
-  .flat()
-  .sort((a, b) => (a.track !== b.track ? (a.track === 'general' ? -1 : 1) : levelIndex(a.level) - levelIndex(b.level) || a.id.localeCompare(b.id)));
+/** The content of one course, or undefined for an unknown course id. */
+export function loadCourse(id: string): CourseContent | undefined {
+  if (!COURSE_IDS.includes(id)) return undefined;
+  let c = courseCache.get(id);
+  if (!c) {
+    c = buildCourse(id);
+    courseCache.set(id, c);
+  }
+  return c;
+}
+
+/** A plan in a given course (used when checking stored progress for that course). */
+export const getPlanIn = (courseId: string, planId: string) => loadCourse(courseId)?.allPlans.find((p) => p.id === planId);
+
+const COURSE = loadCourse(DEFAULT_COURSE_ID) as CourseContent;
+
+export const TAGS: TagInfo[] = COURSE.tags;
+export const PLACEMENT: PlacementQuestion[] = COURSE.placement;
+
+export const LESSONS: Lesson[] = COURSE.lessons;
+export const WRITING_TASKS: WritingTask[] = COURSE.writingTasks;
 
 const lessonById = new Map(LESSONS.map((l) => [l.id, l]));
 const taskById = new Map(WRITING_TASKS.map((w) => [w.id, w]));
@@ -68,12 +143,12 @@ export function exercisesWithTag(tag: TagId): { exercise: Exercise; lesson: Less
   return [...exerciseById.values()].filter(({ exercise }) => exercise.tags.includes(tag));
 }
 
-export const PHRASES: Phrase[] = (phraseData as { phrases: Phrase[] }).phrases;
-export const STORIES: Story[] = (storyData as { stories: Story[] }).stories;
-export const SAY_PROMPTS: SayPrompt[] = (sayData as { prompts: SayPrompt[] }).prompts;
+export const PHRASES: Phrase[] = COURSE.phrases;
+export const STORIES: Story[] = COURSE.stories;
+export const SAY_PROMPTS: SayPrompt[] = COURSE.sayPrompts;
 
 /** Every plan file, in order. The picker shows only the available ones. */
-export const ALL_PLANS: Plan[] = (Object.values(planFiles) as Plan[]).slice().sort((a, b) => a.order - b.order);
+export const ALL_PLANS: Plan[] = COURSE.allPlans;
 export const PLANS: Plan[] = ALL_PLANS.filter((p) => p.available);
 
 const phraseById = new Map(PHRASES.map((p) => [p.id, p]));

@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { ALL_PLANS, LESSONS, PHRASES, PLACEMENT, SAY_PROMPTS, STORIES, TAGS, WRITING_TASKS, getPhrase, getSayPrompt, getStory, getTask, lessonsForTrack } from '../../src/core/content';
+import { readdirSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import { ALL_PLANS, COURSE_IDS, COURSE_ID_PATTERN, DEFAULT_COURSE_ID, LESSONS, PHRASES, PLACEMENT, SAY_PROMPTS, STORIES, TAGS, WRITING_TASKS, getPhrase, getPlanIn, getSayPrompt, getStory, getTask, lessonsForTrack, loadCourse } from '../../src/core/content';
 import { check } from '../../src/checker';
 import phraseFile from '../../content/en-from-ar/phrases.json';
 import storyFile from '../../content/en-from-ar/stories.json';
@@ -310,5 +312,42 @@ describe('15-Day Start content', () => {
     ];
     const bad = own.flatMap(([id, text]) => check(text as string, 'A2').map((f) => `${id}: ${f.tag} "${(text as string).slice(f.start, f.end)}" in "${text}"`));
     expect(bad).toEqual([]);
+  });
+});
+
+describe('course loader', () => {
+  it('finds exactly one course, en-from-ar, from the content folders', () => {
+    expect(COURSE_IDS).toEqual(['en-from-ar']);
+    expect(DEFAULT_COURSE_ID).toBe('en-from-ar');
+    const dirs = readdirSync(join(__dirname, '..', '..', 'content')).filter((n) => statSync(join(__dirname, '..', '..', 'content', n)).isDirectory());
+    expect(dirs).toEqual(COURSE_IDS);
+    for (const id of COURSE_IDS) expect(id).toMatch(COURSE_ID_PATTERN);
+  });
+
+  it('loads a course by id, and the app content is that course', () => {
+    const c = loadCourse('en-from-ar');
+    expect(c).toBeDefined();
+    if (!c) return;
+    expect(c).toMatchObject({ id: 'en-from-ar', target: 'en', learner: 'ar' });
+    expect(c.lessons).toBe(LESSONS);
+    expect(c.writingTasks).toBe(WRITING_TASKS);
+    expect(c.placement).toBe(PLACEMENT);
+    expect(c.tags).toBe(TAGS);
+    expect(c.phrases).toBe(PHRASES);
+    expect(c.stories).toBe(STORIES);
+    expect(c.sayPrompts).toBe(SAY_PROMPTS);
+    expect(c.allPlans).toBe(ALL_PLANS);
+    expect(loadCourse('en-from-ar')).toBe(c);
+    expect(c.lessons).toHaveLength(32);
+    expect(c.placement.length).toBeGreaterThan(0);
+    expect(c.phrases).toHaveLength(48);
+    expect(getPlanIn('en-from-ar', '15-day-start')?.days).toBe(15);
+  });
+
+  it('returns nothing for an unknown course id', () => {
+    expect(loadCourse('zh-from-ar')).toBeUndefined();
+    expect(loadCourse('')).toBeUndefined();
+    expect(loadCourse('../en-from-ar')).toBeUndefined();
+    expect(getPlanIn('zh-from-ar', '15-day-start')).toBeUndefined();
   });
 });
