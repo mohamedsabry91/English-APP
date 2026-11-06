@@ -162,7 +162,22 @@ test('a review day has the goal message, and the end shows what you can and cann
   await expect(page.getByTestId('progress-self-check')).toContainText('A little');
   if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'en-24-plan-end.png'), fullPage: true });
   await expectNoOverflow(page, 'plan end');
+
+  await showInArabic(page, 'plan-progress');
+  await expect(page.getByTestId('progress-end')).toBeVisible();
+  await expectNoOverflow(page, 'plan end (ar)');
+  if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'ar-24-plan-end.png'), fullPage: true });
 });
+
+/** Switch the stored interface language to Arabic and reload on a route. */
+async function showInArabic(page: Page, route: string) {
+  await page.evaluate((k) => {
+    const rec = JSON.parse(localStorage.getItem(k) ?? '{}');
+    localStorage.setItem(k, JSON.stringify({ ...rec, uiLang: 'ar' }));
+  }, STORAGE_KEY);
+  await loadApp(page, route);
+  await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+}
 
 test('day 15: the real last day finishes the plan, and the end screen shows what you can and cannot do yet', async ({ page }, info) => {
   await page.clock.install({ time: new Date('2026-11-15T09:00:00+03:00') });
@@ -200,11 +215,16 @@ test('day 15: the real last day finishes the plan, and the end screen shows what
   await expect(page.getByTestId('goal-messages')).toHaveAttribute('data-reached', 'no');
   await expectNoOverflow(page, 'day 15 end');
   if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'en-25-plan-day15-end.png'), fullPage: true });
+
+  await showInArabic(page, 'plan-progress');
+  await expect(page.getByTestId('goal-messages')).toHaveAttribute('data-reached', 'no');
+  await expectNoOverflow(page, 'day 15 end (ar)');
+  if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'ar-25-plan-day15-end.png'), fullPage: true });
 });
 
-test('the self-check fits at 320 px', async ({ page }, info) => {
+for (const lang of ['ar', 'en'] as const) test(`the self-check fits at 320 px (${lang})`, async ({ page }, info) => {
   await page.setViewportSize({ width: 320, height: 640 });
-  await welcome(page, 'ar');
+  await welcome(page, lang);
   await page.getByTestId('placement-skip').click();
   await page.goto('./#/plans');
   await page.getByTestId('plan-start').click();
@@ -219,5 +239,5 @@ test('the self-check fits at 320 px', async ({ page }, info) => {
     }),
   );
   expect(inside).toBe(true);
-  if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, 'ar-26-self-check-320.png'), fullPage: true });
+  if (info.project.name === 'chromium') await page.screenshot({ path: join(SHOTS, `${lang}-26-self-check-320.png`), fullPage: true });
 });
