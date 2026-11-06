@@ -1,0 +1,5 @@
+{
+  "$comment": "One entry per audio clip in public/audio/<course>/. Schema and rules: docs/AUDIO.md. Empty until the first reviewed clip is added.",
+  "version": 1,
+  "clips": []
+}

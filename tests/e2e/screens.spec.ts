@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { answer, expectNoOverflow, STORAGE_KEY } from './helpers';
+import { answer, expectNoOverflow, STORAGE_KEY, loadApp, openApp } from './helpers';
 
 const SHOTS = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs', 'screenshots');
 mkdirSync(SHOTS, { recursive: true });
@@ -125,13 +125,12 @@ test('also fits at 320 px and on a desktop', async ({ page }) => {
   for (const size of [{ width: 320, height: 640 }, { width: 1280, height: 800 }]) {
     await page.setViewportSize(size);
     for (const lang of ['ar', 'en'] as const) {
-      await page.goto('./');
+      await openApp(page);
       await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [STORAGE_KEY, JSON.stringify(seed(lang))]);
       for (const route of ['today', 'lessons', 'mistakes', 'writing', 'writing/w-e-01', 'settings', 'about', 'lesson/e-06']) {
         // One full, fresh load per screen. (A hash change followed at once by reload() can be
         // cancelled by WebKit: "Navigation canceled by policy check".)
-        await page.goto('about:blank');
-        await page.goto(`./#/${route}`);
+        await loadApp(page, route);
         await expect(page.locator('#main')).toBeVisible();
         await expect(page.locator('html')).toHaveAttribute('lang', lang);
         await expectNoOverflow(page, `${size.width}px ${lang} ${route}`);

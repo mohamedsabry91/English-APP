@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { answer, expectNoOverflow, stored, welcome, STORAGE_KEY } from './helpers';
+import { answer, expectNoOverflow, stored, welcome, STORAGE_KEY, loadApp, openApp } from './helpers';
 
 const SHOTS = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs', 'screenshots');
 
@@ -97,8 +97,7 @@ for (const lang of ['ar', 'en'] as const) {
 
     // Day 2: the phrases come back as review cards.
     await page.clock.setFixedTime(new Date('2026-11-05T09:00:00+03:00'));
-    await page.goto('about:blank');
-    await page.goto('./#/today');
+    await loadApp(page, 'today');
     await page.getByTestId('plan-card-start').click();
     await page.getByTestId('plan-start-day').click();
     await expect(page.getByTestId('phrase-recall')).toBeVisible();
@@ -131,15 +130,14 @@ for (const lang of ['ar', 'en'] as const) {
 
 test('a review day has the goal message, and the end shows what you can and cannot do yet', async ({ page }, info) => {
   await page.clock.install({ time: new Date('2026-11-20T09:00:00+03:00') });
-  await page.goto('./');
+  await openApp(page);
   const days = (n: number) => Array.from({ length: n }, (_, i) => ({ day: i + 1, date: `2026-11-${String(i + 1).padStart(2, '0')}` }));
   const base = { version: 2, uiLang: 'en', onboarded: true, placement: { result: 'START_A1', date: '2026-11-01', correctByLevel: [], mistakeTags: [] } };
   await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [
     STORAGE_KEY,
     JSON.stringify({ ...base, plan: { planId: '15-day-start', startedOn: '2026-11-01', completedDays: days(5), ratings: [], selfCheckStart: [1, 1, 1, 1, 1], selfCheckEnd: null, current: { day: 6, step: 2 }, finishedOn: null } }),
   ]);
-  await page.goto('about:blank');
-  await page.goto('./#/plan-day');
+  await loadApp(page, 'plan-day');
   await expect(page.getByTestId('plan-step-body')).toHaveAttribute('data-step', 'message');
   await expect(page.getByTestId('writing-task')).toHaveAttribute('data-task-id', 'w-p15-request');
   await expectNoOverflow(page, 'review day message');
@@ -148,8 +146,7 @@ test('a review day has the goal message, and the end shows what you can and cann
     STORAGE_KEY,
     JSON.stringify({ ...base, plan: { planId: '15-day-start', startedOn: '2026-11-01', completedDays: days(15), ratings: [{ day: 15, rating: 2 }], selfCheckStart: [1, 1, 1, 1, 1], selfCheckEnd: [2, 3, 3, 2, 2], current: null, finishedOn: '2026-11-15' } }),
   ]);
-  await page.goto('about:blank');
-  await page.goto('./#/plan-progress');
+  await loadApp(page, 'plan-progress');
   await expect(page.getByTestId('progress-end')).toContainText('You can now:');
   await expect(page.getByTestId('progress-end')).toContainText('You cannot yet:');
   await expect(page.getByTestId('goal-intro')).toHaveAttribute('data-reached', 'yes');
@@ -161,7 +158,7 @@ test('a review day has the goal message, and the end shows what you can and cann
 
 test('day 15: the real last day finishes the plan, and the end screen shows what you can and cannot do yet', async ({ page }, info) => {
   await page.clock.install({ time: new Date('2026-11-15T09:00:00+03:00') });
-  await page.goto('./');
+  await openApp(page);
   const days = Array.from({ length: 14 }, (_, i) => ({ day: i + 1, date: `2026-11-${String(i + 1).padStart(2, '0')}` }));
   await page.evaluate(([k, v]) => localStorage.setItem(k as string, v as string), [
     STORAGE_KEY,
@@ -173,8 +170,7 @@ test('day 15: the real last day finishes the plan, and the end screen shows what
       plan: { planId: '15-day-start', startedOn: '2026-11-01', completedDays: days, ratings: [], selfCheckStart: [1, 1, 1, 1, 1], selfCheckEnd: null, current: null, finishedOn: null },
     }),
   ]);
-  await page.goto('about:blank');
-  await page.goto('./#/plan-day');
+  await loadApp(page, 'plan-day');
   await expect(page.getByTestId('plan-day-title')).toHaveText('Day 15 of 15');
   await expect(page.getByTestId('review-day-note')).toBeVisible();
   await page.getByTestId('plan-start-day').click();

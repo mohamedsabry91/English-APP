@@ -92,7 +92,8 @@ Use this list when reviewing any item.
 - [ ] Arabic is correct, simple Modern Standard Arabic.
 - [ ] Every rule explanation is true. Simplifications are still correct.
 - [ ] Every exercise has exactly one right option (multiple choice), or a complete list of accepted answers.
-- [ ] No sound of any kind: no music, jingles, tones, audio files or speech synthesis.
+- [ ] No music, jingles, tones or sound effects. Speech audio only under the rules in `docs/AUDIO.md`,
+      with every clip in `AUDIO_CREDITS.json` and the audio review table below.
 - [ ] No images of people or animals. Only abstract icons.
 - [ ] Topics: work, study, engineering, travel, health, food (halal, ordinary meals), weather, shopping,
       home, daily family life, good character.
@@ -109,7 +110,8 @@ Use this list when reviewing any item.
 
 Automatic checks that already run (`npm test`): banned-word scan (English and Arabic), Arabic letters in
 every Arabic field, no Arabic in English fields, schema and counts, one right option per question, and a
-repository scan for audio files, audio APIs, images and network calls. These checks do not replace a
+repository scan for audio files (only listed Opus clips under `public/audio/<course>/`), audio APIs,
+images and network calls, and the `AUDIO_CREDITS.json` schema. These checks do not replace a
 human reading.
 
 ## Lessons
@@ -319,3 +321,13 @@ All of this was written by AI and has **not been reviewed by a person**. Every f
 | w-p15-request | A short request |  |  |
 | w-p15-thanks | A short thank-you |  |  |
 | w-p15-delay | A short delay message |  |  |
+
+## Audio clips
+
+**No audio clips yet.** The rules are in `docs/AUDIO.md`. When a clip is added, add a row here in the
+same PR, and keep its credit entry in `AUDIO_CREDITS.json` in step. A clip is ready only when a
+teacher for the course language has listened to it and checked it against the text.
+
+| File | Text (exact words) | Source | Licence | Synthetic | Reviewer (role) | Date checked |
+|---|---|---|---|---|---|---|
+| (none yet) | | | | | | |

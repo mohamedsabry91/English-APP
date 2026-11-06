@@ -13,7 +13,7 @@ export const CSP = [
   "connect-src 'self'",
   "manifest-src 'self'",
   "worker-src 'self'",
-  "media-src 'none'",
+  "media-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'none'",

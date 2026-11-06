@@ -46,7 +46,7 @@ A free, installable web app (PWA) for **Arabic-speaking adults learning English*
 6. Track: "General English" and "English for Engineers"
 7. Arabic and English interface, with correct RTL at 375 px
 
-**Not in this version:** kids' content or kids' mode, other course languages, AI, speech recording, audio of any kind, certificates, accounts, sync, leaderboards, streak pressure, push notifications.
+**Not in this version:** kids' content or kids' mode, other course languages, AI, speech recording, certificates, accounts, sync, leaderboards, streak pressure, push notifications.
 
 ## 3. Stack
 
@@ -118,7 +118,7 @@ Each lesson JSON file has: `id`, `track`, `level`, `titleEn`, `titleAr`, `tags`,
 
 **Coverage:** across the General track, each of the first five tags must appear in at least 3 lessons.
 
-**p and b:** there is no audio in this version, so teach this in writing: spelling pairs (park/bark, pen/Ben, pill/bill), meaning in context, and a short Arabic tip on how to make the sound. Do not claim that the app can hear or check pronunciation.
+**p and b:** the first version has no audio, so teach this in writing: spelling pairs (park/bark, pen/Ben, pill/bill), meaning in context, and a short Arabic tip on how to make the sound. Do not claim that the app can hear or check pronunciation.
 
 **Lesson order:** use the placement result as the start point, in order after that. Learners can open any lesson from a simple list.
 
@@ -170,7 +170,8 @@ Findings add to My Mistakes. Store only tags, counts and dates by default, not t
 - The rule explanations must be true. If a statement about Arabic grammar is a simplification, make sure it is still correct.
 
 **Inside Islamic limits, with no exceptions**
-- **No sound at all:** no music, jingles, tones, or audio files, and no `speechSynthesis`.
+- **No music, ever:** no music, jingles, tones or sound effects.
+- **Speech audio only, under the audio rules** (updated after PR 2, see `docs/AUDIO.md`): Opus clips under `public/audio/<course>/`, each listed in `AUDIO_CREDITS.json`. Sources: our own recordings with the speaker's consent, or openly licensed clips that allow commercial use (non-commercial licences count as no). English may also use pre-generated Kokoro clips (Apache-2.0), labelled synthetic, only after a teacher's check. Chinese and Urdu: own teacher recordings only, no AI voice. No `speechSynthesis`, no speech recognition, and no microphone.
 - **No images of people or animals.** Use only text and simple, abstract inline SVG icons (book, pencil, check). No mascots, avatars, or characters with faces.
 - **Topics:** work, study, engineering, travel, health, food (halal, ordinary meals), weather, shopping, home, daily family life, and good character.
 - **Exclude:** romance and dating, sexual content, revealing descriptions, alcohol, pork, drugs, gambling and lotteries, interest-based loans, magic, nightclubs, music and concerts, festivals of other religions, insults to any faith or group, and politics.
@@ -238,7 +239,7 @@ The PR is ready only when all of these pass, or a failure is stated plainly.
 - Every exercise has an accepted answer and an Arabic explanation. In multiple choice, exactly one option is right and options are not duplicated.
 - All Arabic fields contain Arabic letters. All English fields contain no Arabic.
 - **Banned-word scan** using word boundaries across all content and interface text: for example music, song, sing, dance, concert, wine, beer, alcohol, pork, bacon, ham, casino, lottery, gamble, bet, girlfriend, boyfriend, date (when it means romance), kiss, sexy, and Arabic equivalents. Keep a short, explained allow-list for real engineering uses.
-- **Repo scan:** no audio files; no `<audio>`, `AudioContext` or `speechSynthesis` in source; no images of people or animals in assets; no `fetch` to external URLs.
+- **Repo scan:** no audio files except Opus clips under `public/audio/<course>/`, within the size limits and listed in `AUDIO_CREDITS.json`; an audio element only in `src/audio/player.ts`; no `AudioContext`, `speechSynthesis`, speech recognition or `getUserMedia` in source; `media-src 'self'` in the CSP; no images of people or animals in assets; no `fetch` to external URLs.
 
 **Browser tests (Playwright, phone size 375 x 812, on Chromium and WebKit)**
 - Full path in Arabic: first open, placement, result, daily session, a wrong answer, then the card is due on a later date (with a fake clock), My Mistakes updates.

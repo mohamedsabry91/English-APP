@@ -2,7 +2,8 @@
 
 A free, installable web app (PWA) for Arabic-speaking adults who are learning English, with an
 "English for Engineers" track. It works offline after the first load. All progress stays in the
-browser on the device. There is no server, no account, no AI and no audio.
+browser on the device. There is no server, no account and no AI. The app has no audio yet; the rules for adding speech
+clips later are in [docs/AUDIO.md](docs/AUDIO.md).
 
 ## Plans
 

@@ -81,6 +81,32 @@ export async function stored(page: Page): Promise<Record<string, unknown> | null
   return raw ? (JSON.parse(raw) as Record<string, unknown>) : null;
 }
 
+/**
+ * Open the app and wait until it has settled. On a fresh start the app moves to #/welcome right after
+ * the first render (App.tsx). Navigating again while that hash change is still happening made WebKit
+ * cancel or stall the navigation in CI ("Navigation canceled by policy check", a page.goto timeout on
+ * about:blank, and "Load request cancelled"). So tests wait for it before they seed storage and reload.
+ */
+export async function openApp(page: Page) {
+  await page.goto('./');
+  await page.waitForFunction((k) => window.location.hash === '#/welcome' || localStorage.getItem(k) !== null, STORAGE_KEY);
+  await expect(page.locator('#main')).toBeVisible();
+}
+
+let loads = 0;
+
+/**
+ * Load the app again, fully, at a route: for example after changing localStorage.
+ * A new query string each time forces a full page load without leaving the app's own site.
+ * Before, tests went to about:blank and back; in WebKit that navigation to about:blank once
+ * hung until the test timed out (CI run 41644830316), so it is not used any more.
+ * page.reload() right after a hash change is not used either: WebKit sometimes cancels it.
+ */
+export async function loadApp(page: Page, route: string) {
+  loads += 1;
+  await page.goto(`./?load=${loads}#/${route}`);
+}
+
 /** Fail if the page scrolls sideways. */
 export async function expectNoOverflow(page: Page, label: string) {
   const { sw, cw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));

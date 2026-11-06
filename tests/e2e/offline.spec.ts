@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { openApp } from './helpers';
 
 test.use({ serviceWorkers: 'allow' });
 
@@ -12,7 +13,7 @@ test('works offline after the first load, including reload', async ({ page, cont
     browserName === 'webkit',
     'Playwright WebKit offline emulation breaks reload; offline on WebKit is covered by offline-server.spec.ts; target platform is Android (Chrome).',
   );
-  await page.goto('./');
+  await openApp(page);
   await expect(page.getByTestId('lang-en')).toBeVisible();
   // Wait until the service worker controls the page and has cached the app.
   await page.evaluate(async () => {

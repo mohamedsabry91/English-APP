@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { STORAGE_KEY, expectNoOverflow, stored } from './helpers';
+import { STORAGE_KEY, expectNoOverflow, stored, loadApp, openApp } from './helpers';
 
 const progress = (lang: 'ar' | 'en') => ({ version: 1, uiLang: lang, onboarded: true, track: 'general', completedLessons: ['g-a1-01'] });
 
@@ -14,13 +14,12 @@ for (const lang of ['ar', 'en'] as const) {
         return real.call(this);
       };
     });
-    await page.goto('./');
+    await openApp(page);
     await page.evaluate(([k, v]) => {
       localStorage.setItem(k as string, v as string);
       sessionStorage.setItem('test-crash', '1');
     }, [STORAGE_KEY, JSON.stringify(progress(lang))]);
-    await page.goto('./#/today');
-    await page.reload();
+    await loadApp(page, 'today');
 
     const screen = page.getByTestId('error-screen');
     await expect(screen).toBeVisible();
