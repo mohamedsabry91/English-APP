@@ -1,0 +1,4 @@
+{
+  "$comment": "Speech clips for this course: id = the content item (for example a phrase id), file = name in public/audio/en-from-ar/. Every clip must also be in AUDIO_CREDITS.json. Empty: no clip has been recorded or checked yet.",
+  "clips": []
+}

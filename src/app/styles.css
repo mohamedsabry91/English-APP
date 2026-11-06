@@ -221,3 +221,4 @@ mark.finding { background: var(--mark); border-bottom: 2px solid var(--bad); pad
 .week-table th { font-weight: 400; color: var(--muted); width: 4.5em; text-align: start; padding: 4px 0; white-space: nowrap; }
 .week-table .bar-cell { width: 100%; padding: 4px 8px; }
 .week-table .num { width: 2.5em; text-align: end; font-variant-numeric: tabular-nums; }
+.audio-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }

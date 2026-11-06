@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AudioButton } from '../AudioButton';
 import { useStore } from '../store';
 import { go } from '../router';
 import { getPhrase, getPlan, getSayPrompt, getStory, getTask, reviewItemExists } from '../../core/content';
@@ -283,6 +284,7 @@ function LearnStep({ phrases, onDone }: { phrases: Phrase[]; onDone: () => void 
       <p className="muted">{t('recall.counter', { n: index + 1, total: phrases.length })}</p>
       <p className="muted small">{t('step.learnNote')}</p>
       <p className="written en-block question" lang="en" dir="ltr" data-testid="learn-phrase">{ph.en}</p>
+      <AudioButton key={ph.id} clipId={ph.id} />
       <p lang="ar" dir="rtl"><ArText>{ph.ar}</ArText></p>
       <p className="muted" lang="ar" dir="rtl"><ArText>{ph.noteAr}</ArText></p>
       <button type="button" className="primary big" onClick={() => (index + 1 >= phrases.length ? onDone() : setIndex(index + 1))} data-testid="plan-next">

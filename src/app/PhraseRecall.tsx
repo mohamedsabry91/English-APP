@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Phrase } from '../core/contentTypes';
 import { useStore } from './store';
 import { ArText } from './ArText';
+import { AudioButton } from './AudioButton';
 
 interface Props {
   phrase: Phrase;
@@ -30,6 +31,7 @@ export function PhraseRecall({ phrase, counter, onAnswer, onNext }: Props) {
       ) : (
         <>
           <p className="written en-block question" lang="en" dir="ltr" data-testid="recall-phrase">{phrase.en}</p>
+          <AudioButton clipId={phrase.id} />
           <p className="muted" lang="ar" dir="rtl">
             <ArText>{phrase.noteAr}</ArText>
           </p>
