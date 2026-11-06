@@ -76,7 +76,7 @@
     "nameEn": "Extra pronoun (my brother he...)",
     "nameAr": "ضمير زائد (my brother he...)",
     "hint": {
-      "ar": "قد تضيف ضميرًا زائدًا فتقول the report that I sent it، لأن العربية تعيد الضمير في جملة الصلة: «التقرير الذي أرسلتُه».",
+      "ar": "قد تضيف ضميرًا زائدًا فتقول My brother he works أو the report that I sent it، لأن العربية قد تعيد الاسم بضمير: «أخي هو يعمل هنا»، «التقرير الذي أرسلتُه».",
       "reviewed": false
     }
   },
