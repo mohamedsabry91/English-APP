@@ -96,6 +96,12 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
     setRevising(true);
   };
 
+  const cancelRevise = () => {
+    setRevising(false);
+    // The second try is dropped, so the saved draft goes back to the first text.
+    update((p) => ({ ...p, writingDraft: { taskId: task.id, text } }));
+  };
+
   const recheck = () => {
     if (!first) return;
     const f = check(revised, task.level);
@@ -162,7 +168,7 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
                 data-testid="revise-input"
               />
               <button type="button" className="primary" disabled={countWords(revised) === 0} onClick={recheck} data-testid="writing-recheck">{t('writing.recheck')}</button>
-              <button type="button" className="secondary" onClick={() => setRevising(false)} data-testid="writing-revise-cancel">{t('common.cancel')}</button>
+              <button type="button" className="secondary" onClick={cancelRevise} data-testid="writing-revise-cancel">{t('common.cancel')}</button>
             </section>
           ) : (
             findings.length > 0 &&

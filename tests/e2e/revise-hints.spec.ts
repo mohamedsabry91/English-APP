@@ -75,6 +75,20 @@ test('revise once can be skipped, and is not offered when nothing is marked', as
   expect(tags).toEqual(['SVA']);
 });
 
+test('cancelling the second try keeps the first text as the saved draft', async ({ page }) => {
+  await welcome(page, 'en');
+  await page.getByTestId('placement-skip').click();
+  await page.goto('./#/writing/w-g-a1-01');
+  await page.getByTestId('writing-input').fill('He go to work.');
+  await page.getByTestId('writing-check').click();
+  await page.getByTestId('writing-revise').click();
+  await page.getByTestId('revise-input').fill('He goes to work every day.');
+  await page.getByTestId('writing-revise-cancel').click();
+  await expect.poll(async () => (await stored(page))?.writingDraft).toEqual({ taskId: 'w-g-a1-01', text: 'He go to work.' });
+  await page.reload();
+  await expect(page.getByTestId('writing-input')).toHaveValue('He go to work.');
+});
+
 test('a new mistake made in the second try is shown and counted', async ({ page }) => {
   await welcome(page, 'en');
   await page.getByTestId('placement-skip').click();
