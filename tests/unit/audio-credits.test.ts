@@ -71,16 +71,16 @@ describe('AUDIO_CREDITS.json schema', () => {
     expect(check([{ ...kokoro, link: 'http://example.org/kokoro' }])).not.toEqual([]);
   });
 
-  it('marks every Kokoro clip as synthetic, and adds one only after a teacher checked it', () => {
+  it('marks every Kokoro clip as synthetic', () => {
     expect(check([{ ...kokoro, synthetic: false }])).not.toEqual([]);
-    expect(check([{ ...kokoro, reviewed: false }])).not.toEqual([]);
     expect(check([{ ...kokoro, licence: 'own' }])).not.toEqual([]);
     expect(check([{ ...own, synthetic: true }])).not.toEqual([]);
   });
 
-  it('needs a teacher\'s check (reviewed: true) for every synthetic clip, whatever the source', () => {
+  it('allows a synthetic clip that no teacher has checked yet (owner decision, 7 Nov 2026); the app labels it so', () => {
+    expect(check([{ ...kokoro, reviewed: false }])).toEqual([]);
     const openSynthetic = { ...own, source: 'open-licence', licence: 'CC0-1.0', link: 'https://example.org/a', consent: false, synthetic: true };
-    expect(check([{ ...openSynthetic, reviewed: false }])).not.toEqual([]);
+    expect(check([{ ...openSynthetic, reviewed: false }])).toEqual([]);
     expect(check([{ ...openSynthetic, reviewed: true }])).toEqual([]);
   });
 

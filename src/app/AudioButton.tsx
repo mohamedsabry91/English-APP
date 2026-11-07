@@ -24,7 +24,7 @@ export function AudioButton({ clipId }: { clipId: string }) {
       >
         {t('audio.listen')}
       </button>
-      {clip.synthetic && <span className="muted small" data-testid="audio-synthetic">{t('audio.synthetic')}</span>}
+      {clip.synthetic && <span className="muted small" data-testid="audio-synthetic">{t(clip.reviewed ? 'audio.synthetic' : 'audio.syntheticUnchecked')}</span>}
       {failed && <p className="muted small" role="status">{t('audio.failed')}</p>}
     </div>
   );

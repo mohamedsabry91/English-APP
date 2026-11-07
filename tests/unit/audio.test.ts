@@ -72,7 +72,10 @@ describe('audio clips', () => {
         'x',
       ],
     });
-    expect(m.clips).toEqual([{ id: 'ph-01', file: 'ph-01.opus', synthetic: false }]);
+    expect(m.clips).toEqual([{ id: 'ph-01', file: 'ph-01.opus', synthetic: false, reviewed: false }]);
+    // "reviewed" is true only when the manifest says exactly true; anything else counts as not checked.
+    expect(cleanManifest({ clips: [{ id: 'a', file: 'a.opus', synthetic: true, reviewed: true }] }).clips[0]?.reviewed).toBe(true);
+    expect(cleanManifest({ clips: [{ id: 'a', file: 'a.opus', synthetic: true, reviewed: 'yes' }] }).clips[0]?.reviewed).toBe(false);
     expect(findClip(m, 'ph-01')?.file).toBe('ph-01.opus');
     expect(findClip(m, 'ph-09')).toBeUndefined();
     expect(cleanManifest(null)).toEqual({ clips: [] });

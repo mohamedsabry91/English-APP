@@ -138,7 +138,7 @@ describe('repository scan', () => {
     for (const course of COURSES) {
       const path = `content/${course}/audio.json`;
       expect(files, path).toContain(path);
-      const manifest = JSON.parse(read(path)) as { clips: { id: string; file: string; synthetic: boolean }[] };
+      const manifest = JSON.parse(read(path)) as { clips: { id: string; file: string; synthetic: boolean; reviewed?: boolean }[] };
       const listed = manifest.clips.map((c) => `public/audio/${course}/${c.file}`).sort();
       const onDisk = files.filter((f) => f.startsWith(`public/audio/${course}/`)).sort();
       expect(listed, course).toEqual(onDisk);
@@ -147,6 +147,8 @@ describe('repository scan', () => {
         expect(credit, c.file).toBeDefined();
         // The app's "synthetic voice" label must match the credit.
         expect(c.synthetic, c.file).toBe(credit?.synthetic);
+        // "Checked by a teacher" may be shown only when the credit says so.
+        expect(c.reviewed === true, c.file).toBe(credit?.reviewed === true);
       }
     }
   });
