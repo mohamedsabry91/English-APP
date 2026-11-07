@@ -1,4 +1,287 @@
 {
-  "$comment": "Speech clips for this course: id = the content item (for example a phrase id), file = name in public/audio/en-from-ar/. Every clip must also be in AUDIO_CREDITS.json. Empty: no clip has been recorded or checked yet.",
-  "clips": []
+  "$comment": "Speech clips for this course: id = the content item (for example a phrase id), file = name in public/audio/en-from-ar/. Every clip must also be in AUDIO_CREDITS.json, with the same synthetic and reviewed values.",
+  "clips": [
+    {
+      "id": "ph-01",
+      "file": "ph-01.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-02",
+      "file": "ph-02.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-03",
+      "file": "ph-03.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-04",
+      "file": "ph-04.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-05",
+      "file": "ph-05.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-06",
+      "file": "ph-06.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-07",
+      "file": "ph-07.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-08",
+      "file": "ph-08.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-09",
+      "file": "ph-09.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-10",
+      "file": "ph-10.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-11",
+      "file": "ph-11.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-12",
+      "file": "ph-12.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-13",
+      "file": "ph-13.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-14",
+      "file": "ph-14.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-15",
+      "file": "ph-15.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-16",
+      "file": "ph-16.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-17",
+      "file": "ph-17.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-18",
+      "file": "ph-18.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-19",
+      "file": "ph-19.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-20",
+      "file": "ph-20.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-21",
+      "file": "ph-21.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-22",
+      "file": "ph-22.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-23",
+      "file": "ph-23.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-24",
+      "file": "ph-24.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-25",
+      "file": "ph-25.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-26",
+      "file": "ph-26.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-27",
+      "file": "ph-27.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-28",
+      "file": "ph-28.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-29",
+      "file": "ph-29.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-30",
+      "file": "ph-30.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-31",
+      "file": "ph-31.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-32",
+      "file": "ph-32.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-33",
+      "file": "ph-33.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-34",
+      "file": "ph-34.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-35",
+      "file": "ph-35.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-36",
+      "file": "ph-36.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-37",
+      "file": "ph-37.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-38",
+      "file": "ph-38.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-39",
+      "file": "ph-39.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-40",
+      "file": "ph-40.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-42",
+      "file": "ph-42.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-43",
+      "file": "ph-43.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-44",
+      "file": "ph-44.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-45",
+      "file": "ph-45.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-46",
+      "file": "ph-46.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-47",
+      "file": "ph-47.opus",
+      "synthetic": true,
+      "reviewed": false
+    },
+    {
+      "id": "ph-48",
+      "file": "ph-48.opus",
+      "synthetic": true,
+      "reviewed": false
+    }
+  ]
 }
