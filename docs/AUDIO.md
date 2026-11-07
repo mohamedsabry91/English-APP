@@ -17,8 +17,10 @@ generated or reviewed. This file explains what audio is allowed and how a clip g
   - **Openly licensed clips** whose licence allows commercial use and changes: CC0-1.0, CC-BY-4.0 or
     Apache-2.0. Non-commercial (NC) or no-derivatives (ND) licences count as **no**. Share-alike
     (CC-BY-SA) is not allowed for now, by the owner's decision.
-  - **English only:** clips pre-generated with **Kokoro** (Apache-2.0). These are labelled synthetic in
-    the app, and are added **only after a teacher has listened to and checked** each clip.
+  - **English only:** clips pre-generated with **Kokoro** (Apache-2.0). These are labelled as a computer
+    voice in the app. **Owner decision, 7 Nov 2026:** they may be added before a teacher has checked
+    them (`reviewed: false`). The label then says **"Computer voice, not yet checked by a teacher"**,
+    and changes to "Computer voice, checked by a teacher" only when `reviewed` is `true`.
 - **Chinese and Urdu (later):** our own teacher recordings only. No AI voice, because tones and sounds
   must be right. No release without a named teacher. Neither language is in the app yet.
 - **No recording, ever, in the app:** no microphone (`getUserMedia`, `MediaRecorder`), no speech
@@ -61,8 +63,8 @@ outside the scanned app folders because it holds `https://` source links. The te
 | `link` | `https://` link to the source or licence | Required, `https://`, except for own recordings |
 | `speaker` | A first name or role (never a full name or contact details), or the Kokoro voice name | Not empty |
 | `consent` | The speaker agreed in writing to publish the clip | Must be `true` for own recordings |
-| `synthetic` | Generated voice | Must be `true` for every Kokoro clip; may be `true` for an open-licence clip; must be `false` for our own recordings; never `true` for a course that is not English. A synthetic clip needs `reviewed: true` |
-| `reviewed` | A teacher listened and checked it against the text | Must be `true` before any synthetic clip (Kokoro or other) is added |
+| `synthetic` | Generated voice | Must be `true` for every Kokoro clip; may be `true` for an open-licence clip; must be `false` for our own recordings; never `true` for a course that is not English |
+| `reviewed` | A teacher listened and checked it against the text | `false` until a teacher has checked it. Must match `reviewed` in `content/<course>/audio.json`, which sets the label |
 
 The repository is public: do not put full names, contact details or any personal notes in this file.
 Keep written consent outside the repository.
@@ -72,11 +74,11 @@ Keep written consent outside the repository.
 - `src/audio/player.ts` is the only file that creates an audio element. It plays one clip at a time,
   from a relative path `audio/<course>/<file>.opus`, and never records.
 - `content/<course>/audio.json` lists the course's clips: `{ "id": "<content item id>", "file": "<name>.opus",
-  "synthetic": true|false }`. The tests check that it matches the files in `public/audio/<course>/` and
-  that `synthetic` matches `AUDIO_CREDITS.json`. **When the list is empty, the app shows no audio
+  "synthetic": true|false, "reviewed": true|false }`. The tests check that it matches the files in `public/audio/<course>/` and
+  that `synthetic` and `reviewed` match `AUDIO_CREDITS.json`. **When the list is empty, the app shows no audio
   controls at all**, and About still says the app has no sound.
 - A "Listen" button appears next to a phrase only when that phrase has a clip. Synthetic clips show a
-  "synthetic voice" label.
+  "computer voice" label that says whether a teacher has checked the clip.
 - **Offline:** clips are not part of the app's precache, and **they are saved for offline use only by
   "Download audio for offline use"** in Settings (shown only when the course has clips). That button
   stores the clips in the `english-practice-audio` cache (`src/audio/offline.ts`, the only file allowed

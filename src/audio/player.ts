@@ -8,8 +8,10 @@ export interface AudioClip {
   id: string;
   /** File name inside public/audio/<course>/, for example "ph-01.opus". */
   file: string;
-  /** A generated (AI) voice. The app shows a "synthetic voice" label for these. */
+  /** A generated (AI) voice. The app shows a "computer voice" label for these. */
   synthetic: boolean;
+  /** A teacher listened and checked the clip. The label says so, or says that no teacher has yet. */
+  reviewed: boolean;
 }
 
 export interface AudioManifest {
@@ -32,10 +34,10 @@ export function cleanManifest(raw: unknown): AudioManifest {
   const clips: AudioClip[] = [];
   for (const c of list) {
     if (!c || typeof c !== 'object') continue;
-    const { id, file, synthetic } = c as Record<string, unknown>;
+    const { id, file, synthetic, reviewed } = c as Record<string, unknown>;
     if (typeof id !== 'string' || !id || typeof file !== 'string' || !FILE.test(file) || typeof synthetic !== 'boolean' || seen.has(id)) continue;
     seen.add(id);
-    clips.push({ id, file, synthetic });
+    clips.push({ id, file, synthetic, reviewed: reviewed === true });
   }
   return { clips };
 }

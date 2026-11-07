@@ -88,8 +88,7 @@ export function validateAudioCredits(raw: unknown, courses: string[]): string[] 
       if (e.licence !== 'Apache-2.0') errs.push(`${at}: Kokoro clips use licence Apache-2.0`);
       if (e.synthetic !== true) errs.push(`${at}: Kokoro clips must be marked synthetic`);
     }
-    // A generated voice, from any source, is added only after a teacher's check.
-    if (e.synthetic === true && e.reviewed !== true) errs.push(`${at}: a synthetic clip must be checked by a teacher before it is added`);
+    // A generated voice may ship before a teacher's check (reviewed: false); the app's label then says so.
     if (e.source === 'open-licence' && e.licence === 'own') errs.push(`${at}: open-licence clips need their real licence`);
     // Generated voices are for English only: tone and sound accuracy in other languages needs a teacher's own recording.
     if (e.synthetic === true && m && !/^en-/.test(m[1] ?? "")) errs.push(`${at}: no synthetic voice for course ${m[1]}`);
