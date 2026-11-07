@@ -67,6 +67,14 @@ on your machine, run only Chromium with `E2E_WEBKIT=0 npm run test:e2e`.
 the browser tests on Chromium and WebKit, for every push to `main` and every pull
 request. It only runs tests. It does not deploy or publish anything.
 
+### Hosting
+
+`.github/workflows/pages.yml` builds the app and publishes `dist/` to GitHub Pages on every push to
+`main` (and when run by hand). The app is served under the `/English-APP/` subpath, over HTTPS.
+`tests/e2e/subpath.spec.ts` checks that the build works there: the files, the manifest, the service
+worker scope and an offline reload. The app still sends nothing to any server: progress stays on the
+device.
+
 ## Build and preview
 
 ```bash
