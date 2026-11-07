@@ -42,9 +42,13 @@ class FakeCaches implements CachesLike {
 }
 
 describe('audio clips', () => {
-  it('has no audio in the English course yet, so the app shows no audio controls', () => {
-    expect(AUDIO.clips).toEqual([]);
-    expect(loadCourse('en-from-ar')?.audio).toEqual({ clips: [] });
+  it('has computer-voice clips for the English phrase cards, none checked by a teacher yet, and none for ph-41', () => {
+    const ids = AUDIO.clips.map((c) => c.id);
+    expect(ids).toHaveLength(47);
+    expect(ids).not.toContain('ph-41');
+    expect(AUDIO.clips.every((c) => c.synthetic && !c.reviewed && c.file === `${c.id}.opus`)).toBe(true);
+    const phraseIds = new Set(loadCourse('en-from-ar')?.phrases.map((p) => p.id));
+    for (const id of ids) expect(phraseIds.has(id), id).toBe(true);
   });
 
   it('builds only relative clip URLs inside audio/<course>/', () => {

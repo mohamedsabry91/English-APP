@@ -324,13 +324,64 @@ All of this was written by AI and has **not been reviewed by a person**. Every f
 
 ## Audio clips
 
-**No audio clips yet.** The rules are in `docs/AUDIO.md`. When a clip is added, add a row here in the
-same PR, and keep its credit entry in `AUDIO_CREDITS.json` in step. A clip is ready only when a
-teacher for the course language has listened to it and checked it against the text.
+**47 phrase clips, all made by a computer voice (Kokoro-82M, voice am_michael), none checked by a
+teacher yet.** The app labels each one "Computer voice, not yet checked by a teacher". The rules are in
+`docs/AUDIO.md`. When a teacher has listened to a clip and checked it against the text, fill in the last
+two columns, and set `reviewed: true` for that clip in both `AUDIO_CREDITS.json` and
+`content/en-from-ar/audio.json`.
+
+**Left out:** `ph-41` ("Can I speak to Mr. Hassan, please?"). "Hassan" is not in the voice's
+pronunciation dictionary, and the script does not guess a pronunciation. That phrase has no Listen button.
 
 | File | Text (exact words) | Source | Licence | Synthetic | Reviewer (role) | Date checked |
 |---|---|---|---|---|---|---|
-| (none yet) | | | | | | |
+| public/audio/en-from-ar/ph-01.opus | Good morning. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-02.opus | Nice to meet you. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-03.opus | I am a new engineer here. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-04.opus | I work in the design team. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-05.opus | Can you help me, please? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-06.opus | Could you say that again, please? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-07.opus | Sorry, I don't understand. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-08.opus | What does this word mean? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-09.opus | Thank you for your help. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-10.opus | You're welcome. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-11.opus | No problem. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-12.opus | I really appreciate it. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-13.opus | What time is the meeting? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-14.opus | The meeting starts at ten. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-15.opus | I will be there. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-16.opus | See you at the meeting. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-17.opus | Could you send me the file? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-18.opus | Please check this drawing. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-19.opus | When do you need it? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-20.opus | I need it by Thursday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-21.opus | I'm working on it. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-22.opus | It's almost finished. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-23.opus | It's ready. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-24.opus | I'll send it today. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-25.opus | There is a problem with the pump. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-26.opus | The printer is not working. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-27.opus | I will check it now. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-28.opus | Let me call the technician. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-29.opus | Sorry for the delay. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-30.opus | The delivery is late. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-31.opus | We need one more day. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-32.opus | It will be ready tomorrow. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-33.opus | I agree. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-34.opus | That's a good idea. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-35.opus | I'm not sure. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-36.opus | Let's discuss it tomorrow. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-37.opus | Please wear your helmet. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-38.opus | Be careful, the floor is wet. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-39.opus | Where is the site office? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-40.opus | The site is closed today. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-42.opus | He is in a meeting now. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-43.opus | Can I leave a message? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-44.opus | I'll call you back. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-45.opus | I'm leaving now. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-46.opus | See you tomorrow. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-47.opus | Have a good evening. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/ph-48.opus | Thanks for today. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
 
 
 ## Arabic-speaker hints for mistake tags (added after PR 5)
