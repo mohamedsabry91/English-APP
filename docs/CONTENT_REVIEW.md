@@ -324,14 +324,16 @@ All of this was written by AI and has **not been reviewed by a person**. Every f
 
 ## Audio clips
 
-**47 phrase clips, all made by a computer voice (Kokoro-82M, voice am_michael), none checked by a
-teacher yet.** The app labels each one "Computer voice, not yet checked by a teacher". The rules are in
+**47 phrase clips and 126 lesson-example clips, all made by a computer voice (Kokoro-82M, voice
+am_michael), none checked by a teacher yet.** Lesson-example clips are named `<lesson id>-ex-<n>`, counting the
+lesson's examples from 1. The app labels each one "Computer voice, not yet checked by a teacher". The rules are in
 `docs/AUDIO.md`. When a teacher has listened to a clip and checked it against the text, fill in the last
 two columns, and set `reviewed: true` for that clip in both `AUDIO_CREDITS.json` and
 `content/en-from-ar/audio.json`.
 
 **Left out:** `ph-41` ("Can I speak to Mr. Hassan, please?"). "Hassan" is not in the voice's
-pronunciation dictionary, and the script does not guess a pronunciation. That phrase has no Listen button.
+pronunciation dictionary, and the script does not guess a pronunciation. That phrase has no Listen button. Also left out: `e-06-ex-4` ("Unless otherwise specified, all dimensions are in
+millimeters."), because "specified" is not in the dictionary. That example has no Listen button.
 
 | File | Text (exact words) | Source | Licence | Synthetic | Reviewer (role) | Date checked |
 |---|---|---|---|---|---|---|
@@ -382,6 +384,132 @@ pronunciation dictionary, and the script does not guess a pronunciation. That ph
 | public/audio/en-from-ar/ph-46.opus | See you tomorrow. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
 | public/audio/en-from-ar/ph-47.opus | Have a good evening. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
 | public/audio/en-from-ar/ph-48.opus | Thanks for today. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-01-ex-1.opus | I am writing to ask about the delivery date. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-01-ex-2.opus | Please find the drawings attached. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-01-ex-3.opus | Could you please confirm the meeting time? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-01-ex-4.opus | Thank you for your quick reply. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-02-ex-1.opus | Progress: 70% of the pipeline is complete. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-02-ex-2.opus | We installed two new valves on Monday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-02-ex-3.opus | The equipment arrived late. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-02-ex-4.opus | Next step: we will test the pressure on Thursday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-03-ex-1.opus | There is a leak in the main pipe near valve 3. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-03-ex-2.opus | The problem started on Monday morning. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-03-ex-3.opus | This is probably caused by high pressure. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-03-ex-4.opus | As a result, the pump stopped twice. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-04-ex-1.opus | The pipe is 2.5 meters long. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-04-ex-2.opus | The tank holds 12,000 liters. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-04-ex-3.opus | We need a 10-meter ladder. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-04-ex-4.opus | The temperature reached 45 degrees Celsius. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-05-ex-1.opus | Could you give me a quick update on the project? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-05-ex-2.opus | We have finished 60% of the excavation. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-05-ex-3.opus | We are waiting for the steel delivery. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-05-ex-4.opus | We will start the next phase on Sunday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-06-ex-1.opus | All pipes shall be tested before backfilling. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-06-ex-2.opus | The concrete strength shall not be less than 30 MPa. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-06-ex-3.opus | The contractor should inform the engineer 24 hours before casting. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-07-ex-1.opus | The aim of today's meeting is to agree on the schedule. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-07-ex-2.opus | In my opinion, we should order the pumps now. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-07-ex-3.opus | I see your point, but the cost is too high. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-07-ex-4.opus | Could you repeat the last number, please? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-08-ex-1.opus | I have worked as a site engineer for four years. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-08-ex-2.opus | In my last project, I was responsible for the pipe network. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-08-ex-3.opus | I suggested a new schedule, and we saved two weeks. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/e-08-ex-4.opus | I am looking for a role where I can learn and grow. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-01-ex-1.opus | She is a teacher. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-01-ex-2.opus | We are at work. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-01-ex-3.opus | The tea is hot. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-02-ex-1.opus | He is a teacher. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-02-ex-2.opus | This is an old bridge. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-02-ex-3.opus | She studies at a university. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-02-ex-4.opus | The meeting takes an hour. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-03-ex-1.opus | We live in a small apartment. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-03-ex-2.opus | This is a strong bridge. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-03-ex-3.opus | They have new computers. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-03-ex-4.opus | The water is cold. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-04-ex-1.opus | Please park the car near the gate. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-04-ex-2.opus | I need a pen to sign the form. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-04-ex-3.opus | The doctor gave me a pill. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-04-ex-4.opus | Did you pay the electricity bill? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-05-ex-1.opus | He works for a water company. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-05-ex-2.opus | She teaches mathematics. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-05-ex-3.opus | It rains a lot in winter. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-05-ex-4.opus | My manager has two meetings today. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-06-ex-1.opus | The meeting starts at nine o'clock. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-06-ex-2.opus | We visit the site on Sunday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-06-ex-3.opus | The bridge opened in 2020. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a1-06-ex-4.opus | The files are on the desk. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-01-ex-1.opus | The meeting room is on the second floor. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-01-ex-2.opus | Doctors work long hours. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-01-ex-3.opus | I read a report. The report was clear. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-01-ex-4.opus | Please close the door. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-02-ex-1.opus | We started the test at nine. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-02-ex-2.opus | She studied engineering at a university in the capital. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-02-ex-3.opus | They bought new tools last week. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-02-ex-4.opus | Did you send the email? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-03-ex-1.opus | My manager wants the report today. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-03-ex-2.opus | The pump that we installed is working. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-03-ex-3.opus | Our neighbors live on the third floor. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-03-ex-4.opus | This is the book which I bought. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-04-ex-1.opus | Do you drive to work? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-04-ex-2.opus | Does your team meet on Sunday? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-04-ex-3.opus | Where do you live? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-04-ex-4.opus | Is the site far from here? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-05-ex-1.opus | Can you give me some information about the course? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-05-ex-2.opus | He gave me a good piece of advice. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-05-ex-3.opus | We need new equipment for the lab. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-05-ex-4.opus | How much money do we need? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-06-ex-1.opus | I will call you tomorrow. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-06-ex-2.opus | Is this step necessary? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-06-ex-3.opus | We have a problem with the pump. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-a2-06-ex-4.opus | I received your message. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-01-ex-1.opus | She has lived in this city since 2015. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-01-ex-2.opus | We have known each other for ten years. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-01-ex-3.opus | The pump has worked well since March. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-01-ex-4.opus | How long have you been an engineer? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-02-ex-1.opus | We discussed the new schedule. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-02-ex-2.opus | Can you explain the problem to me? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-02-ex-3.opus | The cost depends on the size. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-02-ex-4.opus | We arrived at the site at seven. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-03-ex-1.opus | There is a meeting at ten. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-03-ex-2.opus | There are three engineers on site. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-03-ex-3.opus | Is there a parking area near the office? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-03-ex-4.opus | There isn't any water in the tank. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-04-ex-1.opus | She usually arrives at eight. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-04-ex-2.opus | We never use this road at night. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-04-ex-3.opus | I enjoyed the course very much. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-04-ex-4.opus | Every day, he walks to work. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-05-ex-1.opus | I will send you the file after lunch. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-05-ex-2.opus | We are going to visit the site on Sunday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-05-ex-3.opus | The new road will reduce traffic. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-05-ex-4.opus | Are you going to attend the meeting? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-06-ex-1.opus | The report was sent yesterday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-06-ex-2.opus | Concrete is made from cement, sand, gravel and water. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-06-ex-3.opus | The road will be closed on Friday. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b1-06-ex-4.opus | These pipes were made in a local factory. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-01-ex-1.opus | By the time the crew arrived, the rain had stopped. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-01-ex-2.opus | She had worked in two companies before she joined us. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-01-ex-3.opus | We realized that we had used the wrong drawing. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-01-ex-4.opus | Had you seen the site before the visit? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-02-ex-1.opus | If the pressure drops, the system will stop the pump. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-02-ex-2.opus | If I were you, I would ask the supervisor. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-02-ex-3.opus | If we had ordered earlier, the steel would have arrived on time. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-02-ex-4.opus | Unless you save the file, you will lose your changes. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-03-ex-1.opus | The contractor who built the tank is very experienced. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-03-ex-2.opus | This is the software that we use for design. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-03-ex-3.opus | The site, which is near the river, floods in winter. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-03-ex-4.opus | The client whose project we finished sent a thank-you letter. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-04-ex-1.opus | Safety is important on every site. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-04-ex-2.opus | The safety rules on this site are strict. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-04-ex-3.opus | She goes to work by bus. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-04-ex-4.opus | This is the best solution we have. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-05-ex-1.opus | Do you know where the meeting room is? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-05-ex-2.opus | She asked if the drawings were ready. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-05-ex-3.opus | He said that the delivery would be late. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-05-ex-4.opus | Could you tell me how much it costs? | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-06-ex-1.opus | Although the test was long, it was useful. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-06-ex-2.opus | The design is good. However, it is expensive. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-06-ex-3.opus | We stopped because of the strong wind. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
+| public/audio/en-from-ar/g-b2-06-ex-4.opus | The team worked late, so the report was ready on time. | Kokoro-82M, am_michael | Apache-2.0 | yes |  |  |
 
 
 ## Arabic-speaker hints for mistake tags (added after PR 5)

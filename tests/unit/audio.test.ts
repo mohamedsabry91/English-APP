@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cleanManifest, clipUrl, findClip, playClip, stopAudio, type AudioLike } from '../../src/audio/player';
+import { cleanManifest, clipUrl, exampleClipId, findClip, playClip, stopAudio, type AudioLike } from '../../src/audio/player';
 import { AUDIO_CACHE, countDownloaded, downloadClips, removeCourseAudio, type CachesLike } from '../../src/audio/offline';
 import { AUDIO, loadCourse } from '../../src/core/content';
 
@@ -42,13 +42,19 @@ class FakeCaches implements CachesLike {
 }
 
 describe('audio clips', () => {
-  it('has computer-voice clips for the English phrase cards, none checked by a teacher yet, and none for ph-41', () => {
+  it('has computer-voice clips for the phrase cards and lesson examples, none checked by a teacher yet', () => {
+    const course = loadCourse('en-from-ar');
+    const phraseIds = new Set(course?.phrases.map((p) => p.id));
+    const exampleIds = new Set(course?.lessons.flatMap((l) => l.examples.map((_, i) => exampleClipId(l.id, i))));
     const ids = AUDIO.clips.map((c) => c.id);
-    expect(ids).toHaveLength(47);
-    expect(ids).not.toContain('ph-41');
     expect(AUDIO.clips.every((c) => c.synthetic && !c.reviewed && c.file === `${c.id}.opus`)).toBe(true);
-    const phraseIds = new Set(loadCourse('en-from-ar')?.phrases.map((p) => p.id));
-    for (const id of ids) expect(phraseIds.has(id), id).toBe(true);
+    // Every clip belongs to a real phrase or lesson example.
+    for (const id of ids) expect(phraseIds.has(id) || exampleIds.has(id), id).toBe(true);
+    // Left out because a word is not in the voice's pronunciation dictionary (see docs/CONTENT_REVIEW.md).
+    expect(ids.filter((id) => phraseIds.has(id))).toHaveLength(47);
+    expect(ids).not.toContain('ph-41');
+    expect(ids.filter((id) => exampleIds.has(id))).toHaveLength(126);
+    expect(ids).not.toContain('e-06-ex-4');
   });
 
   it('builds only relative clip URLs inside audio/<course>/', () => {

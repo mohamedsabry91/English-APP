@@ -42,6 +42,11 @@ export function cleanManifest(raw: unknown): AudioManifest {
   return { clips };
 }
 
+/** The clip id of a lesson example: "<lesson id>-ex-<n>", counting from 1 (scripts/make-clips.py uses the same). */
+export function exampleClipId(lessonId: string, index: number): string {
+  return `${lessonId}-ex-${index + 1}`;
+}
+
 export function findClip(manifest: AudioManifest, id: string): AudioClip | undefined {
   return manifest.clips.find((c) => c.id === id);
 }

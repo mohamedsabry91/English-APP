@@ -1,9 +1,13 @@
-"""Make Opus speech clips for the phrase cards with Kokoro-82M (Apache-2.0), voice am_michael.
+"""Make Opus speech clips with Kokoro-82M (Apache-2.0), voice am_michael.
 
 Not part of the app or the tests. Run it by hand, locally, with no API key:
 
     pip install kokoro soundfile   (plus a CPU build of torch)
-    python -I scripts/make-clips.py content/en-from-ar/phrases.json public/audio/en-from-ar
+    python -I scripts/make-clips.py content/en-from-ar public/audio/en-from-ar phrases
+    python -I scripts/make-clips.py content/en-from-ar public/audio/en-from-ar lessons
+
+"phrases" makes one clip per phrase card (id = phrase id). "lessons" makes one clip per lesson
+example (id = "<lesson id>-ex-<n>", counting from 1, as exampleClipId in src/audio/player.ts).
 
 Needs ffmpeg with libopus on PATH. See docs/AUDIO.md for the rules.
 
@@ -26,9 +30,17 @@ VOICE = "am_michael"
 SPEED = 0.9  # a little slower than normal, for learners
 RATE = 24000
 
-phrases_path, out_dir = Path(sys.argv[1]), Path(sys.argv[2])
+course_dir, out_dir, kind = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3]
 out_dir.mkdir(parents=True, exist_ok=True)
-phrases = json.loads(phrases_path.read_text(encoding="utf-8"))["phrases"]
+if kind == "phrases":
+    items = [{"id": p["id"], "en": p["en"]} for p in json.loads((course_dir / "phrases.json").read_text(encoding="utf-8"))["phrases"]]
+elif kind == "lessons":
+    items = []
+    for f in sorted((course_dir / "lessons").glob("*.json")):
+        lesson = json.loads(f.read_text(encoding="utf-8"))
+        items += [{"id": f"{lesson['id']}-ex-{i + 1}", "en": e["en"]} for i, e in enumerate(lesson["examples"])]
+else:
+    sys.exit("the third argument must be phrases or lessons")
 
 g2p = en.G2P(trf=False, british=False, fallback=None)
 pipe = KPipeline(lang_code="a", repo_id="hexgrad/Kokoro-82M")
@@ -36,7 +48,7 @@ pipe.g2p.fallback = None  # no espeak-ng
 
 made, skipped = [], []
 with tempfile.TemporaryDirectory() as tmp:
-    for ph in phrases:
+    for ph in items:
         text = ph["en"]
         _, tokens = g2p(text)
         unknown = [t.text for t in tokens if t.phonemes is None or "❓" in t.phonemes]

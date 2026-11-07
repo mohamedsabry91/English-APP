@@ -1,5 +1,7 @@
 import type { Lesson } from '../core/contentTypes';
+import { exampleClipId } from '../audio/player';
 import { ArText } from './ArText';
+import { AudioButton } from './AudioButton';
 import { useStore } from './store';
 
 /** The lesson point: rule, Arabic and English comparison, examples. */
@@ -42,8 +44,9 @@ export function LessonContent({ lesson }: { lesson: Lesson }) {
         <h2>{t('lesson.examples')}</h2>
         <ul className="list">
           {lesson.examples.map((e, i) => (
-            <li key={i} className="example">
+            <li key={i} className="example" data-testid="lesson-example">
               <p className="en-block" lang="en" dir="ltr">{e.en}</p>
+              <AudioButton clipId={exampleClipId(lesson.id, i)} />
               <p className="ar" lang="ar" dir="rtl"><ArText>{e.ar}</ArText></p>
             </li>
           ))}
