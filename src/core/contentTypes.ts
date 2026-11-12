@@ -8,7 +8,7 @@ export interface TagInfo {
    * Optional note for speakers of the learner's language: why this mistake may happen
    * ("you may say X because Arabic does Y"). Each course has its own, or none.
    */
-  hint?: { ar: string; reviewed: boolean };
+  hint?: { en?: string; ar?: string; reviewed: boolean };
 }
 
 export interface PlacementQuestion {
@@ -23,8 +23,9 @@ export interface PlacementQuestion {
 interface ExerciseBase {
   id: string;
   tags: TagId[];
-  /** Arabic explanation of the right answer. */
-  explanationAr: string;
+  /** Explanation of the right answer, in simple English. Content without it still has the Arabic one (being replaced). */
+  explanationEn?: string;
+  explanationAr?: string;
 }
 
 export interface McExercise extends ExerciseBase {
@@ -60,13 +61,19 @@ export type Exercise = McExercise | FillExercise | ReorderExercise | FixExercise
 
 export interface Example {
   en: string;
-  ar: string;
+  ar?: string;
 }
 
+/**
+ * A common mistake and the right English. `wrong` and `noteEn` are the English-only form;
+ * `ar` and `noteAr` are the older Arabic-to-English form, being replaced.
+ */
 export interface Comparison {
-  ar: string;
   en: string;
-  noteAr: string;
+  wrong?: string;
+  noteEn?: string;
+  ar?: string;
+  noteAr?: string;
 }
 
 export interface Lesson {
@@ -96,7 +103,8 @@ export interface WritingTask {
   promptAr: string;
   wordLimit: number;
   modelAnswer: string;
-  selfCheckAr: string[];
+  selfCheckEn?: string[];
+  selfCheckAr?: string[];
   lessonId?: string;
   reviewed: boolean;
 }
@@ -105,8 +113,12 @@ export interface WritingTask {
 export interface Phrase {
   id: string;
   en: string;
-  ar: string;
-  noteAr: string;
+  /** When you use the phrase, in simple English: the learner reads this and recalls the phrase. */
+  cueEn?: string;
+  /** A short usage note in simple English. */
+  noteEn?: string;
+  ar?: string;
+  noteAr?: string;
 }
 
 export interface StoryQuestion {
@@ -114,7 +126,8 @@ export interface StoryQuestion {
   prompt: string;
   options: string[];
   answer: number;
-  explanationAr: string;
+  explanationEn?: string;
+  explanationAr?: string;
 }
 
 /** A short work story: 4 lines, 3 quick questions, and a retelling from another person's view. */
@@ -122,7 +135,7 @@ export interface Story {
   id: string;
   titleEn: string;
   titleAr: string;
-  lines: { en: string; ar: string }[];
+  lines: { en: string; ar?: string }[];
   questions: StoryQuestion[];
   retell: { promptEn: string; promptAr: string; sample: string };
 }

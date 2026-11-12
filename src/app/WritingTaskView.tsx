@@ -214,11 +214,19 @@ export function WritingTaskView({ task, onDone }: { task: WritingTask; onDone: (
           <h3>{t('writing.model')}</h3>
           <p className="written en-block" lang="en" dir="ltr" data-testid="model-answer">{task.modelAnswer}</p>
           <h3>{t('writing.selfCheck')}</h3>
-          <ul data-testid="self-check" lang="ar" dir="rtl" className="self-check">
-            {task.selfCheckAr.map((s, i) => (
-              <li key={i}><ArText>{s}</ArText></li>
-            ))}
-          </ul>
+          {task.selfCheckEn ? (
+            <ul data-testid="self-check" lang="en" dir="ltr" className="self-check">
+              {task.selfCheckEn.map((s, i) => (
+                <li key={i}>{s}</li>
+              ))}
+            </ul>
+          ) : (
+            <ul data-testid="self-check" lang="ar" dir="rtl" className="self-check">
+              {(task.selfCheckAr ?? []).map((s, i) => (
+                <li key={i}><ArText>{s}</ArText></li>
+              ))}
+            </ul>
+          )}
           <p className="muted small">{t('writing.privacy')}</p>
           <button type="button" className="secondary" onClick={() => { setFindings(null); setFirst(null); setRevision(null); setRevising(false); }} data-testid="writing-edit">{t('writing.edit')}</button>
           <button type="button" className="primary big" onClick={finish} data-testid="writing-done">{t('writing.done')}</button>

@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
 import { TagHints } from './TagHint';
-import { ArText } from './ArText';
 import type { Exercise } from '../core/contentTypes';
 import { isCorrect, rightAnswerText, shuffleWords, type Response } from '../core/answers';
 import { useStore } from './store';
 import { IconCheck, IconCross } from './Icons';
 import type { MsgKey } from '../i18n';
+import { Note } from './Note';
 
 interface Props {
   exercise: Exercise;
@@ -171,7 +171,7 @@ export function ExerciseView({ exercise, onAnswer, onNext, counter }: Props) {
                 {t('session.answerIs')} <bdi className="en" lang="en" dir="ltr" data-testid="right-answer">{rightAnswerText(exercise)}</bdi>
               </p>
             )}
-            <p lang="ar" dir="rtl" className="explanation"><ArText>{exercise.explanationAr}</ArText></p>
+            <Note en={exercise.explanationEn} ar={exercise.explanationAr} className="explanation" />
             {!result && <TagHints ids={exercise.tags} />}
           </div>
           <button type="button" className="primary big" onClick={onNext} data-testid="next" autoFocus>

@@ -28,6 +28,7 @@ import { ExerciseView } from '../ExerciseView';
 import { WritingTaskView } from '../WritingTaskView';
 import { TagName } from '../TagName';
 import { ArText } from '../ArText';
+import { Note } from '../Note';
 
 const STEP_LABEL: Record<PlanStep, MsgKey> = {
   selfCheckStart: 'step.selfCheck',
@@ -285,8 +286,8 @@ function LearnStep({ phrases, onDone }: { phrases: Phrase[]; onDone: () => void 
       <p className="muted small">{t('step.learnNote')}</p>
       <p className="written en-block question" lang="en" dir="ltr" data-testid="learn-phrase">{ph.en}</p>
       <AudioButton key={ph.id} clipId={ph.id} />
-      <p lang="ar" dir="rtl"><ArText>{ph.ar}</ArText></p>
-      <p className="muted" lang="ar" dir="rtl"><ArText>{ph.noteAr}</ArText></p>
+      <Note en={ph.cueEn} ar={ph.ar} />
+      <Note en={ph.noteEn} ar={ph.noteAr} className="muted" />
       <button type="button" className="primary big" onClick={() => (index + 1 >= phrases.length ? onDone() : setIndex(index + 1))} data-testid="plan-next">
         {t('common.next')}
       </button>
@@ -307,7 +308,7 @@ function StoryStep({ story, onDone }: { story: Story; onDone: () => void }) {
           {story.lines.map((l, i) => (
             <li key={i} className="example">
               <p className="en-block" lang="en" dir="ltr">{l.en}</p>
-              <p className="ar" lang="ar" dir="rtl"><ArText>{l.ar}</ArText></p>
+              <Note ar={l.ar} className="ar" />
             </li>
           ))}
         </ol>
@@ -318,7 +319,7 @@ function StoryStep({ story, onDone }: { story: Story; onDone: () => void }) {
   if (stage <= story.questions.length) {
     const q = story.questions[stage - 1];
     if (q) {
-      const ex: McExercise = { id: q.id, type: 'mc', tags: [], prompt: q.prompt, options: q.options, answer: q.answer, explanationAr: q.explanationAr };
+      const ex: McExercise = { id: q.id, type: 'mc', tags: [], prompt: q.prompt, options: q.options, answer: q.answer, explanationEn: q.explanationEn, explanationAr: q.explanationAr };
       return (
         <ExerciseView
           key={q.id}
