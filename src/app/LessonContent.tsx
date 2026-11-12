@@ -3,8 +3,9 @@ import { exampleClipId } from '../audio/player';
 import { ArText } from './ArText';
 import { AudioButton } from './AudioButton';
 import { useStore } from './store';
+import { Note } from './Note';
 
-/** The lesson point: rule, Arabic and English comparison, examples. */
+/** The lesson point: rule, common mistakes (or the older Arabic and English comparison), examples. */
 export function LessonContent({ lesson }: { lesson: Lesson }) {
   const { t, lang } = useStore();
   return (
@@ -32,9 +33,13 @@ export function LessonContent({ lesson }: { lesson: Lesson }) {
           <ul className="list">
             {lesson.comparison.map((c, i) => (
               <li key={i} className="example">
-                <p lang="ar" dir="rtl"><ArText>{c.ar}</ArText></p>
+                {c.wrong ? (
+                  <p className="en-block wrong" lang="en" dir="ltr" data-testid="mistake-wrong"><s>{c.wrong}</s></p>
+                ) : (
+                  <Note ar={c.ar} />
+                )}
                 <p className="en-block" lang="en" dir="ltr"><strong>{c.en}</strong></p>
-                <p lang="ar" dir="rtl" className="ar"><ArText>{c.noteAr}</ArText></p>
+                <Note en={c.noteEn} ar={c.noteAr} className="ar" />
               </li>
             ))}
           </ul>
@@ -47,7 +52,7 @@ export function LessonContent({ lesson }: { lesson: Lesson }) {
             <li key={i} className="example" data-testid="lesson-example">
               <p className="en-block" lang="en" dir="ltr">{e.en}</p>
               <AudioButton clipId={exampleClipId(lesson.id, i)} />
-              <p className="ar" lang="ar" dir="rtl"><ArText>{e.ar}</ArText></p>
+              <Note ar={e.ar} className="ar" />
             </li>
           ))}
         </ul>

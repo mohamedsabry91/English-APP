@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import type { Phrase } from '../core/contentTypes';
 import { useStore } from './store';
-import { ArText } from './ArText';
 import { AudioButton } from './AudioButton';
+import { Note } from './Note';
 
 interface Props {
   phrase: Phrase;
@@ -12,7 +12,7 @@ interface Props {
   onNext: () => void;
 }
 
-/** A phrase card: see the Arabic, recall the English, then show it and say honestly whether you knew it. */
+/** A phrase card: see when it is used (or the older Arabic), recall the English, then show it and say honestly whether you knew it. */
 export function PhraseRecall({ phrase, counter, onAnswer, onNext }: Props) {
   const { t } = useStore();
   const [shown, setShown] = useState(false);
@@ -21,9 +21,7 @@ export function PhraseRecall({ phrase, counter, onAnswer, onNext }: Props) {
     <section className="exercise" data-testid="phrase-recall" data-phrase-id={phrase.id}>
       <p className="muted">{counter}</p>
       <h2 className="instruction">{t('recall.think')}</h2>
-      <p className="question" lang="ar" dir="rtl">
-        <ArText>{phrase.ar}</ArText>
-      </p>
+      <Note en={phrase.cueEn} ar={phrase.ar} className="question" testId="recall-cue" />
       {!shown ? (
         <button type="button" className="primary big" onClick={() => setShown(true)} data-testid="recall-show">
           {t('recall.show')}
@@ -32,9 +30,7 @@ export function PhraseRecall({ phrase, counter, onAnswer, onNext }: Props) {
         <>
           <p className="written en-block question" lang="en" dir="ltr" data-testid="recall-phrase">{phrase.en}</p>
           <AudioButton clipId={phrase.id} />
-          <p className="muted" lang="ar" dir="rtl">
-            <ArText>{phrase.noteAr}</ArText>
-          </p>
+          <Note en={phrase.noteEn} ar={phrase.noteAr} className="muted" />
           {answer === null ? (
             <div className="row">
               <button type="button" onClick={() => { setAnswer(false); onAnswer(false); }} data-testid="recall-not-yet">{t('recall.notYet')}</button>

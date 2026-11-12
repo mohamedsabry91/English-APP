@@ -9,8 +9,8 @@ import storyFile from '../../content/en-from-ar/stories.json';
 import sayFile from '../../content/en-from-ar/say-aloud.json';
 import { normalizeAnswer } from '../../src/core/answers';
 import { LEVELS, type TagId } from '../../src/core/types';
-import ar from '../../src/i18n/ar.json';
-import en from '../../src/i18n/en.json';
+import arUi from '../../src/i18n/ar.json';
+import enUi from '../../src/i18n/en.json';
 
 const ARABIC = /[؀-ۿ]/;
 const tagIds = new Set<string>(TAGS.map((t) => t.id));
@@ -59,8 +59,9 @@ describe('content schema and counts', () => {
     for (const t of WRITING_TASKS) {
       expect(t.reviewed, t.id).toBe(false);
       expect(t.wordLimit, t.id).toBeLessThanOrEqual(100);
-      expect(t.selfCheckAr.length, t.id).toBeGreaterThanOrEqual(3);
-      expect(t.selfCheckAr.length, t.id).toBeLessThanOrEqual(4);
+      const selfCheck = t.selfCheckEn ?? t.selfCheckAr ?? [];
+      expect(selfCheck.length, t.id).toBeGreaterThanOrEqual(3);
+      expect(selfCheck.length, t.id).toBeLessThanOrEqual(4);
       expect(t.modelAnswer.trim().split(/\s+/).length, `${t.id} model answer within limit`).toBeLessThanOrEqual(t.wordLimit);
       if (t.lessonId) expect(LESSONS.some((l) => l.id === t.lessonId), t.id).toBe(true);
     }
@@ -77,12 +78,12 @@ describe('content schema and counts', () => {
 describe('exercises', () => {
   const all = LESSONS.flatMap((l) => l.exercises.map((e) => ({ e, l })));
 
-  it('only uses the four allowed types, with known tags and an Arabic explanation', () => {
+  it('only uses the four allowed types, with known tags and an explanation (English, or the older Arabic)', () => {
     for (const { e } of all) {
       expect(['mc', 'fill', 'reorder', 'fix'], e.id).toContain(e.type);
       expect(e.tags.length, e.id).toBeGreaterThanOrEqual(1);
       for (const t of e.tags) expect(tagIds, `${e.id} tag ${t}`).toContain(t);
-      expect(e.explanationAr, e.id).toMatch(ARABIC);
+      expect(Boolean(e.explanationEn) || ARABIC.test(e.explanationAr ?? ''), e.id).toBe(true);
     }
   });
 
@@ -108,14 +109,20 @@ describe('exercises', () => {
   });
 });
 
-/** Every Arabic field and every English field in the content and interface. */
+/**
+ * Every Arabic field and every English field in the content and interface.
+ * Arabic fields that may be missing (the app is moving to English only) are listed only when present.
+ */
 function fields() {
   const arabic: [string, string][] = [];
   const english: [string, string][] = [];
+  const ar = (k: string, v: string | undefined) => { if (v !== undefined) arabic.push([k, v]); };
+  const en = (k: string, v: string | undefined) => { if (v !== undefined) english.push([k, v]); };
   for (const t of TAGS) {
     arabic.push([`tag ${t.id}`, t.nameAr]);
     english.push([`tag ${t.id}`, t.nameEn]);
-    if (t.hint) arabic.push([`tag hint ${t.id}`, t.hint.ar]);
+    ar(`tag hint ${t.id}`, t.hint?.ar);
+    en(`tag hint ${t.id}`, t.hint?.en);
   }
   for (const q of PLACEMENT) {
     english.push([q.id, q.prompt]);
@@ -125,15 +132,19 @@ function fields() {
     arabic.push([l.id, l.titleAr], [l.id, l.explanationAr]);
     english.push([l.id, l.titleEn], [l.id, l.explanationEn]);
     for (const c of l.comparison) {
-      arabic.push([l.id, c.ar], [l.id, c.noteAr]);
+      ar(l.id, c.ar);
+      ar(l.id, c.noteAr);
       english.push([l.id, c.en]);
+      en(l.id, c.wrong);
+      en(l.id, c.noteEn);
     }
     for (const x of l.examples) {
-      arabic.push([l.id, x.ar]);
+      ar(l.id, x.ar);
       english.push([l.id, x.en]);
     }
     for (const e of l.exercises) {
-      arabic.push([e.id, e.explanationAr]);
+      ar(e.id, e.explanationAr);
+      en(e.id, e.explanationEn);
       if (e.type === 'mc') english.push([e.id, e.prompt], ...e.options.map((o): [string, string] => [e.id, o]));
       if (e.type === 'fill') english.push([e.id, e.prompt], ...e.accepted.map((o): [string, string] => [e.id, o]));
       if (e.type === 'fix') english.push([e.id, e.sentence], ...e.accepted.map((o): [string, string] => [e.id, o]));
@@ -141,23 +152,27 @@ function fields() {
     }
   }
   for (const t of WRITING_TASKS) {
-    arabic.push([t.id, t.titleAr], [t.id, t.promptAr], ...t.selfCheckAr.map((s): [string, string] => [t.id, s]));
-    english.push([t.id, t.titleEn], [t.id, t.promptEn], [t.id, t.modelAnswer]);
+    arabic.push([t.id, t.titleAr], [t.id, t.promptAr], ...(t.selfCheckAr ?? []).map((s): [string, string] => [t.id, s]));
+    english.push([t.id, t.titleEn], [t.id, t.promptEn], [t.id, t.modelAnswer], ...(t.selfCheckEn ?? []).map((s): [string, string] => [t.id, s]));
   }
   for (const ph of PHRASES) {
     english.push([ph.id, ph.en]);
-    arabic.push([ph.id, ph.ar], [ph.id, ph.noteAr]);
+    en(ph.id, ph.cueEn);
+    en(ph.id, ph.noteEn);
+    ar(ph.id, ph.ar);
+    ar(ph.id, ph.noteAr);
   }
   for (const st of STORIES) {
     english.push([st.id, st.titleEn], [st.id, st.retell.promptEn], [st.id, st.retell.sample]);
     arabic.push([st.id, st.titleAr], [st.id, st.retell.promptAr]);
     for (const l of st.lines) {
       english.push([st.id, l.en]);
-      arabic.push([st.id, l.ar]);
+      ar(st.id, l.ar);
     }
     for (const q of st.questions) {
       english.push([q.id, q.prompt], ...q.options.map((o): [string, string] => [q.id, o]));
-      arabic.push([q.id, q.explanationAr]);
+      ar(q.id, q.explanationAr);
+      en(q.id, q.explanationEn);
     }
   }
   for (const sa of SAY_PROMPTS) {
@@ -172,8 +187,8 @@ function fields() {
       arabic.push([pl.id, x.ar]);
     }
   }
-  for (const [k, v] of Object.entries(ar)) arabic.push([`ar.json ${k}`, v]);
-  for (const [k, v] of Object.entries(en)) english.push([`en.json ${k}`, v]);
+  for (const [k, v] of Object.entries(arUi)) arabic.push([`ar.json ${k}`, v]);
+  for (const [k, v] of Object.entries(enUi)) english.push([`en.json ${k}`, v]);
   return { arabic, english };
 }
 
@@ -360,12 +375,22 @@ describe('Arabic-speaker hints for mistake tags', () => {
       expect(t.hint, t.id).toBeDefined();
       if (!t.hint) continue;
       expect(t.hint.reviewed, t.id).toBe(false);
-      expect(t.hint.ar, t.id).toMatch(/[\u0600-\u06FF]/);
       // "you may say X because Arabic does Y": a possibility, never a fact about learners.
-      expect(t.hint.ar.startsWith('قد '), t.id).toBe(true);
-      expect(t.hint.ar, t.id).toMatch(/لأن/);
-      expect(t.hint.ar.length, t.id).toBeLessThanOrEqual(220);
-      expect(bannedHits(t.hint.ar), t.id).toEqual([]);
+      const { en: hintEn, ar: hintAr } = t.hint;
+      if (hintEn !== undefined) {
+        expect(hintEn.startsWith('You may '), t.id).toBe(true);
+        expect(hintEn, t.id).toMatch(/because Arabic/);
+        expect(hintEn, t.id).not.toMatch(ARABIC);
+        expect(hintEn.length, t.id).toBeLessThanOrEqual(220);
+        expect(bannedHits(hintEn), t.id).toEqual([]);
+      } else {
+        expect(hintAr, t.id).toMatch(ARABIC);
+        if (hintAr === undefined) continue;
+        expect(hintAr.startsWith('قد '), t.id).toBe(true);
+        expect(hintAr, t.id).toMatch(/لأن/);
+        expect(hintAr.length, t.id).toBeLessThanOrEqual(220);
+        expect(bannedHits(hintAr), t.id).toEqual([]);
+      }
     }
   });
 
@@ -374,7 +399,11 @@ describe('Arabic-speaker hints for mistake tags', () => {
     const first = withHint[0];
     expect(first).toBeDefined();
     if (!first) return;
-    expect(tagHints([first.id, first.id], TAGS)).toEqual([{ id: first.id, ar: first.hint?.ar }]);
+    const expected = first.hint?.en ? { id: first.id, en: first.hint.en } : { id: first.id, ar: first.hint?.ar };
+    expect(tagHints([first.id, first.id], TAGS)).toEqual([expected]);
+    // An English hint is used before the Arabic one.
+    const both = [{ ...first, hint: { en: 'You may say this because Arabic does that.', ar: 'قد', reviewed: false } }];
+    expect(tagHints([first.id], both)).toEqual([{ id: first.id, en: 'You may say this because Arabic does that.' }]);
     const noHints = TAGS.map((t) => ({ id: t.id, nameEn: t.nameEn, nameAr: t.nameAr }));
     expect(tagHints(TAGS.map((t) => t.id), noHints)).toEqual([]);
     expect(tagHints([], TAGS)).toEqual([]);
